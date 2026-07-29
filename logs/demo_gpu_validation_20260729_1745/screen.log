@@ -1,0 +1,42 @@
+[38;5;2m[i 0729 17:45:52.066303 84 compiler.py:955] Jittor(1.3.11.0) src: /root/autodl-tmp/envs/siba_jittor/lib/python3.8/site-packages/jittor[m
+[38;5;2m[i 0729 17:45:52.068505 84 compiler.py:956] g++ at /usr/bin/g++(9.3.0)[m
+[38;5;2m[i 0729 17:45:52.068557 84 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor_gpu/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/default[m
+[38;5;2m[i 0729 17:45:52.071191 84 __init__.py:412] Found nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.[m
+[38;5;2m[i 0729 17:45:52.073826 84 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.[m
+[38;5;2m[i 0729 17:45:52.355232 84 compiler.py:1012] cuda key:cu11.3.109_sm_86[m
+[38;5;2m[i 0729 17:45:52.686162 84 __init__.py:227] Total mem: 755.27GB, using 16 procs for compiling.[m
+[38;5;2m[i 0729 17:45:52.778925 84 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0729 17:45:53.086905 84 init.cc:63] Found cuda archs: [86,][m
+[38;5;2m[i 0729 17:45:54.717096 84 cuda_flags.cc:55] CUDA enabled.[m
+[demo step 1/20] total=0.289332 laplacian=0.004869 intensity=0.223377 sobel=0.218303 elapsed=2.14s
+[demo step 2/20] total=0.186625 laplacian=0.003216 intensity=0.247826 sobel=0.129687 elapsed=2.44s
+[demo step 3/20] total=0.510605 laplacian=0.009287 intensity=0.301280 sobel=0.387607 elapsed=2.64s
+[demo step 4/20] total=0.206406 laplacian=0.003762 intensity=0.134024 sobel=0.155387 elapsed=2.86s
+[demo step 5/20] total=0.263496 laplacian=0.004695 intensity=0.172397 sobel=0.199309 elapsed=3.06s
+[demo step 6/20] total=0.518524 laplacian=0.010364 intensity=0.266862 sobel=0.388199 elapsed=3.27s
+[demo step 7/20] total=0.222529 laplacian=0.004190 intensity=0.150689 sobel=0.165565 elapsed=3.49s
+[demo step 8/20] total=0.222406 laplacian=0.004143 intensity=0.202416 sobel=0.160737 elapsed=3.71s
+[demo step 9/20] total=0.299379 laplacian=0.005801 intensity=0.207854 sobel=0.220585 elapsed=3.92s
+[demo step 10/20] total=0.236365 laplacian=0.004330 intensity=0.203468 sobel=0.172720 elapsed=4.13s
+[demo step 11/20] total=0.313007 laplacian=0.006963 intensity=0.142728 sobel=0.229109 elapsed=4.32s
+[demo step 12/20] total=0.338245 laplacian=0.006631 intensity=0.330639 sobel=0.238873 elapsed=4.52s
+[demo step 13/20] total=0.358745 laplacian=0.007238 intensity=0.209992 sobel=0.265368 elapsed=4.72s
+[demo step 14/20] total=0.421959 laplacian=0.009123 intensity=0.226131 sobel=0.308116 elapsed=4.91s
+[demo step 15/20] total=0.366057 laplacian=0.007236 intensity=0.278597 sobel=0.265840 elapsed=5.11s
+[demo step 16/20] total=0.360577 laplacian=0.008192 intensity=0.214410 sobel=0.257213 elapsed=5.32s
+[demo step 17/20] total=0.171970 laplacian=0.003884 intensity=0.180959 sobel=0.115038 elapsed=5.54s
+[demo step 18/20] total=0.252090 laplacian=0.005593 intensity=0.160734 sobel=0.180084 elapsed=5.76s
+[demo step 19/20] total=0.264476 laplacian=0.006547 intensity=0.137879 sobel=0.185223 elapsed=5.95s
+[demo step 20/20] total=0.117718 laplacian=0.002991 intensity=0.103073 sobel=0.077497 elapsed=6.17s
+{
+  "purpose": "live demonstration only; not used for paper metrics",
+  "uses_real_training_images": true,
+  "ir_path": "/root/autodl-tmp/datasets/SIBA/train/ir",
+  "vi_path": "/root/autodl-tmp/datasets/SIBA/train/vi",
+  "steps": 20,
+  "batch_size": 4,
+  "patch_size": 128,
+  "seed": 2025,
+  "loaded_checkpoint": "/root/autodl-tmp/SIBA-Jittor/logs/demo_shared_initial/SIBA_seed2025_initial.pth",
+  "saved_checkpoint": "/root/autodl-tmp/SIBA-Jittor/logs/demo_gpu_validation_20260729_1745/SIBA_demo_step20.pkl"
+}

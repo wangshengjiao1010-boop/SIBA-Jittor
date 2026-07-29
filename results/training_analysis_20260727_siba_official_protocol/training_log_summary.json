@@ -1,0 +1,26 @@
+{
+  "logging_policy": "The official train.py prints one sample every 50 batches.",
+  "comparison_note": "PyTorch and Jittor use different framework shuffle implementations. The curves verify full-run convergence, not batch-wise identity.",
+  "runs": [
+    {
+      "framework": "Jittor",
+      "log": "G:\\\u79d1\u7814\\\u56fe\u50cf\u878d\u5408\\\u57f9\u80b2\u671fJittor_SIBA\\logs\\jittor_msrs_roadscene_60e_20260727_siba_official_protocol\\train.log",
+      "entries": 420
+    },
+    {
+      "framework": "PyTorch",
+      "log": "G:\\\u79d1\u7814\\\u56fe\u50cf\u878d\u5408\\\u57f9\u80b2\u671fJittor_SIBA\\logs\\pytorch_msrs_roadscene_60e_20260727_siba_official_protocol\\train.log",
+      "entries": 420
+    }
+  ],
+  "epochs_per_framework": {
+    "Jittor": 60,
+    "PyTorch": 60
+  },
+  "artifacts": {
+    "samples_csv": "training_samples.csv",
+    "epoch_csv": "epoch_loss.csv",
+    "curve_png": "loss_curve.png",
+    "curve_pdf": "loss_curve.pdf"
+  }
+}

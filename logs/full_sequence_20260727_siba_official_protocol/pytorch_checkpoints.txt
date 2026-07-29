@@ -1,0 +1,1 @@
+/root/autodl-tmp/SIBA-Jittor/checkpoints/pytorch_msrs_roadscene_60e_20260727_siba_official_protocol/07-27-06-00/SIBA_epoch60.pth 2313647 bytes

@@ -1,0 +1,33 @@
+{
+  "source": "SIBA ICCV 2025 paper, Table 1, Ours",
+  "metrics": ["VIF", "SCD", "MI", "Qabf", "SSIM", "MS_SSIM", "FMI"],
+  "datasets": {
+    "MSRS": {
+      "VIF": 1.061,
+      "SCD": 1.700,
+      "MI": 5.111,
+      "Qabf": 0.715,
+      "SSIM": 0.981,
+      "MS_SSIM": 0.975,
+      "FMI": 0.933
+    },
+    "M3FD_2x": {
+      "VIF": 0.759,
+      "SCD": 1.660,
+      "MI": 3.771,
+      "Qabf": 0.654,
+      "SSIM": 0.964,
+      "MS_SSIM": 0.923,
+      "FMI": 0.883
+    },
+    "TNO": {
+      "VIF": 0.836,
+      "SCD": 1.724,
+      "MI": 3.508,
+      "Qabf": 0.588,
+      "SSIM": 0.932,
+      "MS_SSIM": 0.904,
+      "FMI": 0.914
+    }
+  }
+}

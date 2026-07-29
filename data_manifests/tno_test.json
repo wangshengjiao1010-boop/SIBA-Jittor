@@ -1,0 +1,414 @@
+{
+  "infrared_directory": "/root/autodl-tmp/datasets/SIBA/test/TNO/ir",
+  "visible_directory": "/root/autodl-tmp/datasets/SIBA/test/TNO/vi",
+  "available_pairs": 45,
+  "selected_pairs": 45,
+  "selection_seed": null,
+  "pairs": [
+    {
+      "name": "01.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "91d10118c89045ed8cac745937a29f4623af2420f4a11ac95b635c5669183d5c",
+      "visible_sha256": "f69b914ffc8e7fd88a4102cfd6354e47fb8235c9f3654e162f6287d9a353031b"
+    },
+    {
+      "name": "02.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6cb0de9d04e516503b11aa993649cb4258660d3f442cb8be0e1e69a3a49fe72f",
+      "visible_sha256": "6f5cd66cb7c9690b46898b1595688041a6c7c05d8f8745d84bdb898d8ef03a32"
+    },
+    {
+      "name": "03.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8659e16680ef621e2f1785055ea3f5b556c43d25306dad493bc99ec937714cb3",
+      "visible_sha256": "f7de684a8ec59e3b33f47e9341af02a36b6fb99d7a04e7c08bb4d22ac270bf67"
+    },
+    {
+      "name": "04.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8f70257476e59ecd1c93af8fc63dfa625c0272f55057ae95d86c07bbf37f315b",
+      "visible_sha256": "caf937062bcf64f051b9ba268779deb3f0a436c9955747b394b8320b6078e81f"
+    },
+    {
+      "name": "05.png",
+      "width": 280,
+      "height": 280,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "3789572e56be8f894a29994e6c0e7fe7bce9989044d1dd6ae1cbe331ac4abaf7",
+      "visible_sha256": "6a207ba0568253904a63b1db37ff1e5d5a692fd378c97cf524e6d4eaea3875c6"
+    },
+    {
+      "name": "06.png",
+      "width": 575,
+      "height": 475,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "dd386f1e9854038851b4a9f37936c08917f6917d96ad97f2415ca65b0228dde8",
+      "visible_sha256": "494618a4a4045097943cf2167d6364f4d11b80d4d251b08517c4f9291cf3cb05"
+    },
+    {
+      "name": "07.png",
+      "width": 599,
+      "height": 446,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "078fd0fc76f7c35a191618fd2f33d59131698f1c60f65c1b5c3885e5e0f40c41",
+      "visible_sha256": "711186abb3fa01b818c6c98208445ba250bf3f18d68a118aa5cf8a196d1c35b5"
+    },
+    {
+      "name": "08.png",
+      "width": 611,
+      "height": 458,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "5343c34b36af419fe55173e2b4ffa7c041181af098423ba60cbb3cb0a14e8aac",
+      "visible_sha256": "7f32e48ae5a5d14e8742c759c9725ec5c57a492ac4d3585f951b76ff92f215ad"
+    },
+    {
+      "name": "09.png",
+      "width": 945,
+      "height": 709,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "3b358d463e2ddbcde0778fd781561ba0d3a67a0acfa322f65a18ebea0c399951",
+      "visible_sha256": "0055d2d8a7b785f495cddb7d4a77096a159f5a9f31b9ca01b926511d158e62ab"
+    },
+    {
+      "name": "10.png",
+      "width": 640,
+      "height": 480,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "41c6b758830e383e40832c8ea9c0b260ed57f143ee4e40489af2ebc521e4d27a",
+      "visible_sha256": "64369f1a51ccedb1d84aefc1a349c917ecd910d8a7b497f0dc15778b8d80f55a"
+    },
+    {
+      "name": "11.png",
+      "width": 280,
+      "height": 280,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "ee149cfccf9a3ec71c09ebb28f548033c401cfe851b73f429e10751c26aa7cb9",
+      "visible_sha256": "225d59fca2c8e7e958769528cced86ea88437c5f5c9fc337f16066694d617932"
+    },
+    {
+      "name": "12.png",
+      "width": 595,
+      "height": 328,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "31cc11349d60b4d7a3a59e7a4d3897655ceb698880cd07212d01c539da51d474",
+      "visible_sha256": "1bae300bde79aca4b0182212760b6cd1c8eec39d9a84c72f0aa0c42f9197353f"
+    },
+    {
+      "name": "13.png",
+      "width": 749,
+      "height": 551,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "af9a8e4cb5b3982112e0a6265567a91e307f99401c16766d7416855dfa0bae72",
+      "visible_sha256": "9fd9f5ae87178672433d9c7d4d64e2493101a7a18ab0e41d35bb8e89d538673c"
+    },
+    {
+      "name": "14.png",
+      "width": 640,
+      "height": 480,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "5444b0797225952fde8f8148cb45f811dce372d54d9c49515165c0b53bb5f29e",
+      "visible_sha256": "cc4df39ee963ccc6b076f466526e72e4e522cbc72bc3de90854f96d1fdffff39"
+    },
+    {
+      "name": "15.png",
+      "width": 622,
+      "height": 458,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "84bdd5240cea9e2fcf713e1174a17aec78d386d11f4358d87a5637439ef54386",
+      "visible_sha256": "1481910700b5f5a25352d2f2466b7c0d83984c1e9a9426ef366bc432584a4ff7"
+    },
+    {
+      "name": "16.png",
+      "width": 619,
+      "height": 457,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "aa27f104a3d6d3fd9d50cfc426d9cd8d8f18177dcb1b72b2eab78002bb038dc7",
+      "visible_sha256": "71f9c0af1614ebd37e1219df6a44276acd5949ad72c2f135d8ed0c06d5cb6f36"
+    },
+    {
+      "name": "17.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "d2d1681f06a58968148303bb272309c4d5402d9cee87f7b4d712588e7d8ee248",
+      "visible_sha256": "8ccc75de2a5e0b36092ac2755b3ae77b94fc30cce7fbc245824fa48beeb49917"
+    },
+    {
+      "name": "18.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "50bd708053d657d29f0b15ef43b1f4831549c8efe099590498fe238b843d10a9",
+      "visible_sha256": "64ce4e52373580c5d8f03c96329f12493cb03dbb5f7437905bc892b660cfdf5d"
+    },
+    {
+      "name": "19.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "decf147a9b3b024844f4e0546abfc534c91412b8cf2d45b920fd9a136502fef3",
+      "visible_sha256": "3ae185bf61b5e112b27e7c75f09725edee9e83bdc398500dce5df371e4d4b01c"
+    },
+    {
+      "name": "20.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "81b5425c02602b0536de6f53594a1779f49060d45b2f5428d203f7318d24c6ed",
+      "visible_sha256": "5c3413cd7c49337b50b8004a7080c53f89dd35aaef6435e2e98c7ac831d84e22"
+    },
+    {
+      "name": "21.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "27b6d313e611c196533331a6821552fbf0cdbe28b06fdb9eb74be989d24592cd",
+      "visible_sha256": "1c8bb01346c519daafcf33a534daa03154619ecf77f1bd22daf461f2cb10c677"
+    },
+    {
+      "name": "22.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "b22b5ff4996d3941c580ca972d1dcdc0a82c2e0bc68b26458066af6dbc2d9ecb",
+      "visible_sha256": "7584daa57b5dcd0c450b12d4400fdfdeb3a48d6d2a539a34d1047e4658effdb8"
+    },
+    {
+      "name": "23.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "229592cc623091bb5534af063f99a0e09f22c733d94b91b2461d3b688298cd52",
+      "visible_sha256": "f04eba61a112571aaad8416a8a1615da56c3b6f870d9cec732328e28cb9014fe"
+    },
+    {
+      "name": "24.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a31445cc3eb0b53a68109262aa979d73ab334a751e17b8e0bb42b7c00fb47c98",
+      "visible_sha256": "43229d7fa7d6d9737ab5cdf01931caf991256ae537e56aad2b0ae9aac8b0570e"
+    },
+    {
+      "name": "25.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "300efcacf4bc31dd34d08a2a6944785ea7c75779f1ca2b6e51094156e85597a5",
+      "visible_sha256": "084ddff5c4a07f8fbbe508c0d540fe35743465e98bf0d7ed804a20378af34c03"
+    },
+    {
+      "name": "26.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c9a83a2066f07590f082889acc8234aaa7e83d54adc69e07957e534c05efc4c7",
+      "visible_sha256": "b82c693ed67fa8d60afad006238e3ccfd243f912c2c7a390ba21228251bca857"
+    },
+    {
+      "name": "27.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "0af67a7644f3808f3d7fd48cdfdb714c62ee6f2f8a985a859a414b01527bca5e",
+      "visible_sha256": "9cde5762898eebc67ec6aab6ae36f14102deb4c3bde9a738a3232b5e511905e0"
+    },
+    {
+      "name": "28.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "d57a3876e96801fbd4e555cf04768fdff28f3b2544123bc8d01c0174cc193c45",
+      "visible_sha256": "351c7ff70bf3e5d39fb7246a2498b12eb14d5c4d8618f0741d3119b657f36936"
+    },
+    {
+      "name": "29.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "5c65c36c9db9281c3d140c0cef92b612904fb4c6bbce49f58a83c44904aa2b83",
+      "visible_sha256": "3df51cb4e8de44248eda20d1600ad45ed671c7494d463cfab4b705bacc1595bf"
+    },
+    {
+      "name": "30.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "d2087a0eef5cace1db37a5bce5cdaed5d56a3bdea3c97836619bde0b1409fc54",
+      "visible_sha256": "9066cd0a91e4a176531cbd58f4b17d0e6fbf933c497256a2ab7cc4177c9aa0fe"
+    },
+    {
+      "name": "31.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "41879656d6a4234f47033a2a29972aee58e3dad987b792c4e909d349f0b7b09a",
+      "visible_sha256": "627c7ab4fb9b9b300159454ae0d5bd14eacf204d80f5713cc406559143b4e8b1"
+    },
+    {
+      "name": "32.png",
+      "width": 620,
+      "height": 450,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "69f245e600ea1b7f5720183187c403c31e9171687d656ed79b8bd374df56024f",
+      "visible_sha256": "9253e3418c96ec3c728affc5347a5fdb813e88ff4f189f4bcc2ff28e88516ab2"
+    },
+    {
+      "name": "33.png",
+      "width": 917,
+      "height": 678,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "dc79c7f422ff2f4bf207c772161a0d2943b6fff3c2eb33aba0f3ad2f5844d39d",
+      "visible_sha256": "39b63dfed73d100387a2d2a1f4efe8388e021a60cd46249eb1008466d36d9996"
+    },
+    {
+      "name": "34.png",
+      "width": 360,
+      "height": 270,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "789b67f7ae5480026568be9d0398e5e9340b9e6b5a750311f22f2388ce818458",
+      "visible_sha256": "87ebcd6ff4a3b2472c57895c801a5c379f416d70164ed5bba98c9706f6f33a03"
+    },
+    {
+      "name": "35.png",
+      "width": 360,
+      "height": 270,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "61aada6d150a4be4072bea3dea1f9cc104346c730d416de2ffc16d719ca3f250",
+      "visible_sha256": "7ab739c355b44c20c36dccb49ae9cf71dec74a8325c6da52041809c97c34b9c3"
+    },
+    {
+      "name": "36.png",
+      "width": 360,
+      "height": 270,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "994260d6c71b8cc15b199048b9534c0ff05449fc7954f12ecc5355e2f721804f",
+      "visible_sha256": "633d18cc1cc99d69e46d70fa3306163f3211ebd37808db58cc4c62258e54a586"
+    },
+    {
+      "name": "37.png",
+      "width": 359,
+      "height": 247,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "97feda29c2a4e2d427b59414fc981d12424851e1b776b25cb3511ed4deafe021",
+      "visible_sha256": "7bfbd004941029d6d1ec9ccbc5bc4361d73ac3763d3c50562ce9e2b2be4de8a3"
+    },
+    {
+      "name": "38.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9879dfbf17ab476669d1acc152742d75aac8448d4e782d4277f281a24161316c",
+      "visible_sha256": "6d490dcdb8020cc0e17ede16e75df02ef2d407a03e37cf0394bbe26d9c54db4f"
+    },
+    {
+      "name": "39.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "29dd94e61ac3df903e435fe6398d5653cd70c6b1daeb698f7253ed1261db364a",
+      "visible_sha256": "f58ab9e5f520d460c31abca73a03dc1cecd45f2ff4520ae545aec6c1f21c23bb"
+    },
+    {
+      "name": "40.png",
+      "width": 768,
+      "height": 576,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "16349aaae01880088e876a3c07f14cf7ce2372546f81bd934d263a6a2659262b",
+      "visible_sha256": "e1cecdcb3a96bf5040af61d03d1b9567966e1adfab2c164ddbf70fae6d7ab69b"
+    },
+    {
+      "name": "41.png",
+      "width": 472,
+      "height": 371,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "62973b614e5e6d6cdf666a96c064bfc2c210e68d48b0c29f7e956a76e592e5a9",
+      "visible_sha256": "781d600da3f2973c5a1a00bc18a826843f39ee84f87327e0dab874649361c635"
+    },
+    {
+      "name": "42.png",
+      "width": 604,
+      "height": 439,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "7c62202c8f205d1c6f4239f78d4cc20d25069759b10357dc1d13bd5a64e0dfa5",
+      "visible_sha256": "f24bb8aecc768ab5191d3e8320c4250ecdcbe8b320e704b42ee384dc5a7b38e5"
+    },
+    {
+      "name": "43.png",
+      "width": 616,
+      "height": 445,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "92282f903353f9bec9128c00409478d4ae7159c42b383f8c72c1b65fefbf7302",
+      "visible_sha256": "50f2fcb61e9a7c9dd76f0a030736cf062b3e2c277c4abe197f9ae9838d27f86d"
+    },
+    {
+      "name": "44.png",
+      "width": 360,
+      "height": 270,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "1c375f1a3197797b49561db4496904d38bd78ffc7694fa4d5d7a6cc6880398d7",
+      "visible_sha256": "72170f48681bc83d8de3a97c856b21a93864e3e69fb423359fce006f91e46b05"
+    },
+    {
+      "name": "45.png",
+      "width": 640,
+      "height": 480,
+      "infrared_mode": "RGB",
+      "visible_mode": "RGB",
+      "infrared_sha256": "cf3572336a5cf0e8e34189be034f1a4d234c05f5f712a597ac0ce4df88262a34",
+      "visible_sha256": "e3a5043ac9c5782a591352448a825cdd44ecde07f02c6b74eed9fa4abcd55f69"
+    }
+  ]
+}

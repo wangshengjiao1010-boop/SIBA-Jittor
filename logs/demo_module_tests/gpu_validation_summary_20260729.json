@@ -1,0 +1,657 @@
+{
+  "validation_date": "2026-07-29",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "dataset_training_pairs": 1283,
+  "live_demo": {
+    "directory": "/root/autodl-tmp/SIBA-Jittor/logs/demo_20260729_175522",
+    "training_json": {
+      "purpose": "live demonstration only; not used for paper metrics",
+      "uses_real_training_images": true,
+      "ir_path": "/root/autodl-tmp/datasets/SIBA/train/ir",
+      "vi_path": "/root/autodl-tmp/datasets/SIBA/train/vi",
+      "steps": 20,
+      "batch_size": 4,
+      "patch_size": 128,
+      "seed": 2025,
+      "loaded_checkpoint": "/root/autodl-tmp/SIBA-Jittor/logs/demo_shared_initial/SIBA_seed2025_initial.pth",
+      "saved_checkpoint": "/root/autodl-tmp/SIBA-Jittor/logs/demo_20260729_175522/SIBA_demo_step20.pkl",
+      "records": [
+        {
+          "step": 1,
+          "loss_total": 0.28933244943618774,
+          "loss_laplacian": 0.0048690419644117355,
+          "loss_intensity": 0.22337666153907776,
+          "loss_sobel": 0.2183043509721756,
+          "elapsed_seconds": 3.1348528480157256
+        },
+        {
+          "step": 2,
+          "loss_total": 0.18662455677986145,
+          "loss_laplacian": 0.0032155781518667936,
+          "loss_intensity": 0.24782702326774597,
+          "loss_sobel": 0.12968607246875763,
+          "elapsed_seconds": 3.4848018987104297
+        },
+        {
+          "step": 3,
+          "loss_total": 0.5106020569801331,
+          "loss_laplacian": 0.009286917746067047,
+          "loss_intensity": 0.30127567052841187,
+          "loss_sobel": 0.38760530948638916,
+          "elapsed_seconds": 3.7976616006344557
+        },
+        {
+          "step": 4,
+          "loss_total": 0.20640528202056885,
+          "loss_laplacian": 0.003761433297768235,
+          "loss_intensity": 0.1340242326259613,
+          "loss_sobel": 0.15538851916790009,
+          "elapsed_seconds": 4.097501276992261
+        },
+        {
+          "step": 5,
+          "loss_total": 0.26349711418151855,
+          "loss_laplacian": 0.0046950350515544415,
+          "loss_intensity": 0.1723911613225937,
+          "loss_sobel": 0.1993076652288437,
+          "elapsed_seconds": 4.336640395224094
+        },
+        {
+          "step": 6,
+          "loss_total": 0.5185274481773376,
+          "loss_laplacian": 0.010363985784351826,
+          "loss_intensity": 0.26684489846229553,
+          "loss_sobel": 0.38820311427116394,
+          "elapsed_seconds": 4.718137143179774
+        },
+        {
+          "step": 7,
+          "loss_total": 0.22252799570560455,
+          "loss_laplacian": 0.004189386032521725,
+          "loss_intensity": 0.15068881213665009,
+          "loss_sobel": 0.16556525230407715,
+          "elapsed_seconds": 4.947627157904208
+        },
+        {
+          "step": 8,
+          "loss_total": 0.2224101722240448,
+          "loss_laplacian": 0.00414293585345149,
+          "loss_intensity": 0.20241202414035797,
+          "loss_sobel": 0.16073960065841675,
+          "elapsed_seconds": 5.336296364665031
+        },
+        {
+          "step": 9,
+          "loss_total": 0.2993849515914917,
+          "loss_laplacian": 0.005801185499876738,
+          "loss_intensity": 0.2078937143087387,
+          "loss_sobel": 0.2205837070941925,
+          "elapsed_seconds": 5.565358997322619
+        },
+        {
+          "step": 10,
+          "loss_total": 0.2363760769367218,
+          "loss_laplacian": 0.004330126568675041,
+          "loss_intensity": 0.2034960240125656,
+          "loss_sobel": 0.17272520065307617,
+          "elapsed_seconds": 5.9120051469653845
+        },
+        {
+          "step": 11,
+          "loss_total": 0.3130173981189728,
+          "loss_laplacian": 0.0069631850346922874,
+          "loss_intensity": 0.14270451664924622,
+          "loss_sobel": 0.2291150838136673,
+          "elapsed_seconds": 6.206407550722361
+        },
+        {
+          "step": 12,
+          "loss_total": 0.33825987577438354,
+          "loss_laplacian": 0.006630877964198589,
+          "loss_intensity": 0.3306255638599396,
+          "loss_sobel": 0.23888851702213287,
+          "elapsed_seconds": 6.434977798722684
+        },
+        {
+          "step": 13,
+          "loss_total": 0.35876426100730896,
+          "loss_laplacian": 0.007237964775413275,
+          "loss_intensity": 0.21001730859279633,
+          "loss_sobel": 0.26538288593292236,
+          "elapsed_seconds": 6.796564212068915
+        },
+        {
+          "step": 14,
+          "loss_total": 0.4219910800457001,
+          "loss_laplacian": 0.009122764691710472,
+          "loss_intensity": 0.2262306809425354,
+          "loss_sobel": 0.308140367269516,
+          "elapsed_seconds": 7.151903675869107
+        },
+        {
+          "step": 15,
+          "loss_total": 0.3660925030708313,
+          "loss_laplacian": 0.007235058583319187,
+          "loss_intensity": 0.27864956855773926,
+          "loss_sobel": 0.26587697863578796,
+          "elapsed_seconds": 7.525073328986764
+        },
+        {
+          "step": 16,
+          "loss_total": 0.3606051802635193,
+          "loss_laplacian": 0.008191305212676525,
+          "loss_intensity": 0.2144908756017685,
+          "loss_sobel": 0.2572430372238159,
+          "elapsed_seconds": 7.732758545316756
+        },
+        {
+          "step": 17,
+          "loss_total": 0.17194804549217224,
+          "loss_laplacian": 0.0038829573895782232,
+          "loss_intensity": 0.180825874209404,
+          "loss_sobel": 0.11503587663173676,
+          "elapsed_seconds": 7.951138318516314
+        },
+        {
+          "step": 18,
+          "loss_total": 0.25209614634513855,
+          "loss_laplacian": 0.005592388100922108,
+          "loss_intensity": 0.16062594950199127,
+          "loss_sobel": 0.1801096647977829,
+          "elapsed_seconds": 8.174490401521325
+        },
+        {
+          "step": 19,
+          "loss_total": 0.2644376754760742,
+          "loss_laplacian": 0.006544426549226046,
+          "loss_intensity": 0.13769175112247467,
+          "loss_sobel": 0.18522422015666962,
+          "elapsed_seconds": 8.37392279598862
+        },
+        {
+          "step": 20,
+          "loss_total": 0.11771705746650696,
+          "loss_laplacian": 0.0029918919317424297,
+          "loss_intensity": 0.1029202863574028,
+          "loss_sobel": 0.07750611007213593,
+          "elapsed_seconds": 8.5961132068187
+        }
+      ]
+    },
+    "checkpoint_sha256": "19795713af3ae5a1ce5fe718270941bc1ab46600390e457b3fca9b303f381fab",
+    "log_sha256": "3f63b6737bb667d71d76b29fc472c36fb95f2a8247fc37bc6d48527c08d39934"
+  },
+  "module_alignment_summary": {
+    "check_count": 706,
+    "activation_max_abs": 0.000202178955078125,
+    "loss_max_abs": 2.5033950805664062e-06,
+    "gradient_preclip_cosine": 0.999945255348912,
+    "gradient_preclip_relative_l2": 0.010508162129288692,
+    "parameter_update_cosine": 0.9977371750942173,
+    "parameter_update_relative_l2": 0.06727462894543297,
+    "reference_gradient_postclip_max_abs": 5.587935447692871e-09,
+    "reference_gradient_parameter_after_step_max_abs": 2.9802322387695312e-08,
+    "forward_and_loss_passed": true,
+    "optimizer_implementation_passed": true,
+    "native_training_step_close": true,
+    "strict_training_equivalence_passed": false,
+    "functional_migration_passed": true
+  },
+  "executed_notebooks": {
+    "SIBA_Jittor_现场演示_已执行.ipynb": {
+      "code_cells": 10,
+      "executed_cells": 10,
+      "error_outputs": [],
+      "size_bytes": 2347106,
+      "sha256": "0715930ad45f0c0f448054a8ceaf7179bee8816ae8f8899c3e0aecec1b6b43a8"
+    },
+    "SIBA_Jittor_逐模块测试_已执行.ipynb": {
+      "code_cells": 20,
+      "executed_cells": 20,
+      "error_outputs": [],
+      "size_bytes": 369533,
+      "sha256": "53d129fdbdf87a70c8c31448e2ca33a66f1118b3ce7cca8e47370c8706a7bafb"
+    },
+    "SIBA_PyTorch_Jittor_对齐演示_已执行.ipynb": {
+      "code_cells": 9,
+      "executed_cells": 9,
+      "error_outputs": [],
+      "size_bytes": 326828,
+      "sha256": "422edacec5454b552f14178ecacfab0d7b3396527f023300f224d51cdec3cdba"
+    },
+    "SIBA_PyTorch_逐模块测试_已执行.ipynb": {
+      "code_cells": 16,
+      "executed_cells": 16,
+      "error_outputs": [],
+      "size_bytes": 34356,
+      "sha256": "a38a9b78f2da4ea28b9c9cdd1d6808707463defd30dcb8a981daa06c563c57c2"
+    }
+  },
+  "tno_generated_images": 45,
+  "experiment_validation": {
+    "run_tag": "20260727_siba_official_protocol",
+    "base_complete": true,
+    "gpu_complete": true,
+    "metrics_complete": true,
+    "complete": true,
+    "checks": {
+      "test_data": {
+        "MSRS": {
+          "ir": 361,
+          "vi": 361,
+          "expected": 361
+        },
+        "M3FD_2x": {
+          "ir": 300,
+          "vi": 300,
+          "expected": 300
+        },
+        "TNO": {
+          "ir": 45,
+          "vi": 45,
+          "expected": 45
+        }
+      },
+      "training_logs": {
+        "jittor": {
+          "path": "/root/autodl-tmp/SIBA-Jittor/logs/jittor_msrs_roadscene_60e_20260727_siba_official_protocol/train.log",
+          "exists": true,
+          "entries": 420,
+          "epochs": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "complete_60_epochs": true
+        },
+        "pytorch": {
+          "path": "/root/autodl-tmp/SIBA-Jittor/logs/pytorch_msrs_roadscene_60e_20260727_siba_official_protocol/train.log",
+          "exists": true,
+          "entries": 420,
+          "epochs": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "complete_60_epochs": true
+        }
+      },
+      "checkpoints": {
+        "jittor": {
+          "directory": "/root/autodl-tmp/SIBA-Jittor/checkpoints/jittor_msrs_roadscene_60e_20260727_siba_official_protocol",
+          "count": 1,
+          "files": [
+            {
+              "path": "/root/autodl-tmp/SIBA-Jittor/checkpoints/jittor_msrs_roadscene_60e_20260727_siba_official_protocol/07-27-04-52/SIBA_epoch60.pkl",
+              "bytes": 2273470,
+              "sha256": "7aecde5004cb6304d6fff9b1bdb772f4fcf5876162cda28b75a8b92e8aad45c8"
+            }
+          ],
+          "valid": true
+        },
+        "pytorch": {
+          "directory": "/root/autodl-tmp/SIBA-Jittor/checkpoints/pytorch_msrs_roadscene_60e_20260727_siba_official_protocol",
+          "count": 1,
+          "files": [
+            {
+              "path": "/root/autodl-tmp/SIBA-Jittor/checkpoints/pytorch_msrs_roadscene_60e_20260727_siba_official_protocol/07-27-06-00/SIBA_epoch60.pth",
+              "bytes": 2313647,
+              "sha256": "93ac201a9db903af19cb12f63cb3da06617449593a35b258ccaa26c5e42f2313"
+            }
+          ],
+          "valid": true
+        }
+      },
+      "self_trained_inference": {
+        "jittor": {
+          "MSRS": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/full_20260727_siba_official_protocol/jittor/MSRS",
+            "image_count": 361,
+            "expected": 361,
+            "summary_exists": true,
+            "summary_image_count": 361,
+            "valid": true
+          },
+          "M3FD_2x": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/full_20260727_siba_official_protocol/jittor/M3FD_2x",
+            "image_count": 300,
+            "expected": 300,
+            "summary_exists": true,
+            "summary_image_count": 300,
+            "valid": true
+          },
+          "TNO": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/full_20260727_siba_official_protocol/jittor/TNO",
+            "image_count": 45,
+            "expected": 45,
+            "summary_exists": true,
+            "summary_image_count": 45,
+            "valid": true
+          }
+        },
+        "pytorch": {
+          "MSRS": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/full_20260727_siba_official_protocol/pytorch/MSRS",
+            "image_count": 361,
+            "expected": 361,
+            "summary_exists": true,
+            "summary_image_count": 361,
+            "valid": true
+          },
+          "M3FD_2x": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/full_20260727_siba_official_protocol/pytorch/M3FD_2x",
+            "image_count": 300,
+            "expected": 300,
+            "summary_exists": true,
+            "summary_image_count": 300,
+            "valid": true
+          },
+          "TNO": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/full_20260727_siba_official_protocol/pytorch/TNO",
+            "image_count": 45,
+            "expected": 45,
+            "summary_exists": true,
+            "summary_image_count": 45,
+            "valid": true
+          }
+        }
+      },
+      "official_checkpoint_inference": {
+        "jittor": {
+          "MSRS": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/official_checkpoint_alignment_20260727_siba_official_protocol/jittor/MSRS",
+            "image_count": 361,
+            "expected": 361,
+            "summary_exists": true,
+            "summary_image_count": 361,
+            "valid": true
+          },
+          "M3FD_2x": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/official_checkpoint_alignment_20260727_siba_official_protocol/jittor/M3FD_2x",
+            "image_count": 300,
+            "expected": 300,
+            "summary_exists": true,
+            "summary_image_count": 300,
+            "valid": true
+          },
+          "TNO": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/official_checkpoint_alignment_20260727_siba_official_protocol/jittor/TNO",
+            "image_count": 45,
+            "expected": 45,
+            "summary_exists": true,
+            "summary_image_count": 45,
+            "valid": true
+          }
+        },
+        "pytorch": {
+          "MSRS": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/official_checkpoint_alignment_20260727_siba_official_protocol/pytorch/MSRS",
+            "image_count": 361,
+            "expected": 361,
+            "summary_exists": true,
+            "summary_image_count": 361,
+            "valid": true
+          },
+          "M3FD_2x": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/official_checkpoint_alignment_20260727_siba_official_protocol/pytorch/M3FD_2x",
+            "image_count": 300,
+            "expected": 300,
+            "summary_exists": true,
+            "summary_image_count": 300,
+            "valid": true
+          },
+          "TNO": {
+            "directory": "/root/autodl-tmp/SIBA-Jittor/results/official_checkpoint_alignment_20260727_siba_official_protocol/pytorch/TNO",
+            "image_count": 45,
+            "expected": 45,
+            "summary_exists": true,
+            "summary_image_count": 45,
+            "valid": true
+          }
+        }
+      },
+      "official_output_alignment": {
+        "MSRS": {
+          "path": "/root/autodl-tmp/SIBA-Jittor/results/output_alignment_20260727_siba_official_protocol/MSRS/summary.json",
+          "exists": true,
+          "compared_images": 361,
+          "filenames_and_shapes_match": true,
+          "valid": true
+        },
+        "M3FD_2x": {
+          "path": "/root/autodl-tmp/SIBA-Jittor/results/output_alignment_20260727_siba_official_protocol/M3FD_2x/summary.json",
+          "exists": true,
+          "compared_images": 300,
+          "filenames_and_shapes_match": true,
+          "valid": true
+        },
+        "TNO": {
+          "path": "/root/autodl-tmp/SIBA-Jittor/results/output_alignment_20260727_siba_official_protocol/TNO/summary.json",
+          "exists": true,
+          "compared_images": 45,
+          "filenames_and_shapes_match": true,
+          "valid": true
+        }
+      },
+      "markers": {
+        "training": true,
+        "remaining_gpu": true
+      },
+      "metrics": {
+        "root": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol",
+        "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/metrics_summary.csv",
+        "summary_rows": 12,
+        "expected_rows": 12,
+        "files": {
+          "PyTorchSelfTrained": {
+            "MSRS": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/PyTorchSelfTrained/MSRS/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/PyTorchSelfTrained/MSRS/per_image_summary.csv",
+              "row_count": 361,
+              "expected": 361,
+              "valid": true
+            },
+            "M3FD_2x": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/PyTorchSelfTrained/M3FD_2x/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/PyTorchSelfTrained/M3FD_2x/per_image_summary.csv",
+              "row_count": 300,
+              "expected": 300,
+              "valid": true
+            },
+            "TNO": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/PyTorchSelfTrained/TNO/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/PyTorchSelfTrained/TNO/per_image_summary.csv",
+              "row_count": 45,
+              "expected": 45,
+              "valid": true
+            }
+          },
+          "OfficialJittor": {
+            "MSRS": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialJittor/MSRS/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialJittor/MSRS/per_image_summary.csv",
+              "row_count": 361,
+              "expected": 361,
+              "valid": true
+            },
+            "M3FD_2x": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialJittor/M3FD_2x/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialJittor/M3FD_2x/per_image_summary.csv",
+              "row_count": 300,
+              "expected": 300,
+              "valid": true
+            },
+            "TNO": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialJittor/TNO/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialJittor/TNO/per_image_summary.csv",
+              "row_count": 45,
+              "expected": 45,
+              "valid": true
+            }
+          },
+          "JittorSelfTrained": {
+            "MSRS": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/JittorSelfTrained/MSRS/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/JittorSelfTrained/MSRS/per_image_summary.csv",
+              "row_count": 361,
+              "expected": 361,
+              "valid": true
+            },
+            "M3FD_2x": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/JittorSelfTrained/M3FD_2x/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/JittorSelfTrained/M3FD_2x/per_image_summary.csv",
+              "row_count": 300,
+              "expected": 300,
+              "valid": true
+            },
+            "TNO": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/JittorSelfTrained/TNO/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/JittorSelfTrained/TNO/per_image_summary.csv",
+              "row_count": 45,
+              "expected": 45,
+              "valid": true
+            }
+          },
+          "OfficialPyTorch": {
+            "MSRS": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialPyTorch/MSRS/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialPyTorch/MSRS/per_image_summary.csv",
+              "row_count": 361,
+              "expected": 361,
+              "valid": true
+            },
+            "M3FD_2x": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialPyTorch/M3FD_2x/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialPyTorch/M3FD_2x/per_image_summary.csv",
+              "row_count": 300,
+              "expected": 300,
+              "valid": true
+            },
+            "TNO": {
+              "per_image": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialPyTorch/TNO/per_image.csv",
+              "summary": "/root/autodl-tmp/SIBA-Jittor/results/metrics_20260727_siba_official_protocol/OfficialPyTorch/TNO/per_image_summary.csv",
+              "row_count": 45,
+              "expected": 45,
+              "valid": true
+            }
+          }
+        },
+        "valid": true
+      }
+    }
+  }
+}

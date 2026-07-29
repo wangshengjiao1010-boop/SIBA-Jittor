@@ -1,0 +1,352 @@
+Collecting imageio==2.32.0
+  Downloading imageio-2.32.0-py3-none-any.whl.metadata (4.9 kB)
+Collecting numpy==1.24.4
+  Downloading numpy-1.24.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.6 kB)
+Collecting opencv-python==4.8.1.78
+  Downloading opencv_python-4.8.1.78-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (19 kB)
+Collecting pillow==10.0.1
+  Downloading Pillow-10.0.1-cp38-cp38-manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+Collecting timm==0.9.10
+  Downloading timm-0.9.10-py3-none-any.whl.metadata (59 kB)
+Collecting einops==0.7.0
+  Downloading einops-0.7.0-py3-none-any.whl.metadata (13 kB)
+Collecting tqdm==4.66.1
+  Downloading tqdm-4.66.1-py3-none-any.whl.metadata (57 kB)
+Collecting kornia==0.7.0
+  Downloading kornia-0.7.0-py2.py3-none-any.whl.metadata (12 kB)
+Collecting scipy
+  Downloading scipy-1.10.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (58 kB)
+Collecting matplotlib
+  Downloading matplotlib-3.7.5-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (5.7 kB)
+Collecting pandas
+  Downloading pandas-2.0.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+Collecting scikit-image
+  Downloading scikit_image-0.21.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (14 kB)
+Collecting pyyaml
+  Downloading PyYAML-6.0.3-cp38-cp38-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+Collecting gdown
+  Downloading gdown-5.2.2-py3-none-any.whl.metadata (5.8 kB)
+Requirement already satisfied: torch>=1.7 in ./autodl-tmp/envs/siba_torch/lib/python3.8/site-packages (from timm==0.9.10) (1.10.0+cu111)
+Requirement already satisfied: torchvision in ./autodl-tmp/envs/siba_torch/lib/python3.8/site-packages (from timm==0.9.10) (0.11.0+cu111)
+Collecting huggingface-hub (from timm==0.9.10)
+  Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+Collecting safetensors (from timm==0.9.10)
+  Downloading safetensors-0.5.3-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.8 kB)
+Collecting packaging (from kornia==0.7.0)
+  Downloading packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting contourpy>=1.0.1 (from matplotlib)
+  Downloading contourpy-1.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.9 kB)
+Collecting cycler>=0.10 (from matplotlib)
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib)
+  Downloading fonttools-4.57.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (102 kB)
+Collecting kiwisolver>=1.0.1 (from matplotlib)
+  Downloading kiwisolver-1.4.7-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (6.3 kB)
+Collecting pyparsing>=2.3.1 (from matplotlib)
+  Downloading pyparsing-3.1.4-py3-none-any.whl.metadata (5.1 kB)
+Collecting python-dateutil>=2.7 (from matplotlib)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting importlib-resources>=3.2.0 (from matplotlib)
+  Downloading importlib_resources-6.4.5-py3-none-any.whl.metadata (4.0 kB)
+Collecting pytz>=2020.1 (from pandas)
+  Downloading pytz-2026.3.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.1 (from pandas)
+  Downloading tzdata-2026.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting networkx>=2.8 (from scikit-image)
+  Downloading networkx-3.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting tifffile>=2022.8.12 (from scikit-image)
+  Downloading tifffile-2023.7.10-py3-none-any.whl.metadata (31 kB)
+Collecting PyWavelets>=1.1.1 (from scikit-image)
+  Downloading PyWavelets-1.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.9 kB)
+Collecting lazy_loader>=0.2 (from scikit-image)
+  Downloading lazy_loader-0.4-py3-none-any.whl.metadata (7.6 kB)
+Collecting beautifulsoup4 (from gdown)
+  Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
+Collecting filelock (from gdown)
+  Downloading filelock-3.16.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting requests[socks] (from gdown)
+  Downloading requests-2.32.4-py3-none-any.whl.metadata (4.9 kB)
+Collecting zipp>=3.1.0 (from importlib-resources>=3.2.0->matplotlib)
+  Downloading zipp-3.20.2-py3-none-any.whl.metadata (3.7 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: typing-extensions in ./autodl-tmp/envs/siba_torch/lib/python3.8/site-packages (from torch>=1.7->timm==0.9.10) (4.9.0)
+Collecting soupsieve>=1.6.1 (from beautifulsoup4->gdown)
+  Downloading soupsieve-2.7-py3-none-any.whl.metadata (4.6 kB)
+Collecting fsspec>=2023.5.0 (from huggingface-hub->timm==0.9.10)
+  Downloading fsspec-2025.3.0-py3-none-any.whl.metadata (11 kB)
+Collecting hf-xet<2.0.0,>=1.1.3 (from huggingface-hub->timm==0.9.10)
+  Downloading hf_xet-1.5.2-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Collecting charset_normalizer<4,>=2 (from requests[socks]->gdown)
+  Downloading charset_normalizer-3.4.9-py3-none-any.whl.metadata (41 kB)
+Collecting idna<4,>=2.5 (from requests[socks]->gdown)
+  Downloading idna-3.15-py3-none-any.whl.metadata (7.7 kB)
+Collecting urllib3<3,>=1.21.1 (from requests[socks]->gdown)
+  Downloading urllib3-2.2.3-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests[socks]->gdown)
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting PySocks!=1.5.7,>=1.5.6 (from requests[socks]->gdown)
+  Downloading PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+Downloading imageio-2.32.0-py3-none-any.whl (313 kB)
+Downloading numpy-1.24.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.3/17.3 MB 2.5 MB/s eta 0:00:00
+Downloading opencv_python-4.8.1.78-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (61.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.7/61.7 MB 2.9 MB/s eta 0:00:00
+Downloading Pillow-10.0.1-cp38-cp38-manylinux_2_28_x86_64.whl (3.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 2.7 MB/s eta 0:00:00
+Downloading timm-0.9.10-py3-none-any.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 2.7 MB/s eta 0:00:00
+Downloading einops-0.7.0-py3-none-any.whl (44 kB)
+Downloading tqdm-4.66.1-py3-none-any.whl (78 kB)
+Downloading kornia-0.7.0-py2.py3-none-any.whl (705 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 705.7/705.7 kB 1.8 MB/s eta 0:00:00
+Downloading scipy-1.10.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (34.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 34.5/34.5 MB 3.0 MB/s eta 0:00:00
+Downloading matplotlib-3.7.5-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 3.8 MB/s eta 0:00:00
+Downloading pandas-2.0.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.4/12.4 MB 3.7 MB/s eta 0:00:00
+Downloading scikit_image-0.21.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.9/13.9 MB 3.5 MB/s eta 0:00:00
+Downloading PyYAML-6.0.3-cp38-cp38-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.0/806.0 kB 2.7 MB/s eta 0:00:00
+Downloading gdown-5.2.2-py3-none-any.whl (18 kB)
+Downloading contourpy-1.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (301 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.57.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 3.5 MB/s eta 0:00:00
+Downloading importlib_resources-6.4.5-py3-none-any.whl (36 kB)
+Downloading kiwisolver-1.4.7-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 3.1 MB/s eta 0:00:00
+Downloading lazy_loader-0.4-py3-none-any.whl (12 kB)
+Downloading networkx-3.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 4.2 MB/s eta 0:00:00
+Downloading packaging-26.2-py3-none-any.whl (100 kB)
+Downloading pyparsing-3.1.4-py3-none-any.whl (104 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading pytz-2026.3.post1-py2.py3-none-any.whl (508 kB)
+Downloading PyWavelets-1.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 3.9 MB/s eta 0:00:00
+Downloading tifffile-2023.7.10-py3-none-any.whl (220 kB)
+Downloading tzdata-2026.3-py2.py3-none-any.whl (348 kB)
+Downloading beautifulsoup4-4.15.0-py3-none-any.whl (109 kB)
+Downloading filelock-3.16.1-py3-none-any.whl (16 kB)
+Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 4.8 MB/s eta 0:00:00
+Downloading safetensors-0.5.3-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (471 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Downloading charset_normalizer-3.4.9-py3-none-any.whl (64 kB)
+Downloading fsspec-2025.3.0-py3-none-any.whl (193 kB)
+Downloading hf_xet-1.5.2-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 4.6 MB/s eta 0:00:00
+Downloading idna-3.15-py3-none-any.whl (72 kB)
+Downloading PySocks-1.7.1-py3-none-any.whl (16 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading soupsieve-2.7-py3-none-any.whl (36 kB)
+Downloading urllib3-2.2.3-py3-none-any.whl (126 kB)
+Downloading zipp-3.20.2-py3-none-any.whl (9.2 kB)
+Downloading requests-2.32.4-py3-none-any.whl (64 kB)
+Installing collected packages: pytz, zipp, urllib3, tzdata, tqdm, soupsieve, six, safetensors, pyyaml, PySocks, pyparsing, pillow, packaging, numpy, networkx, kiwisolver, idna, hf-xet, fsspec, fonttools, filelock, einops, cycler, charset_normalizer, certifi, tifffile, scipy, requests, PyWavelets, python-dateutil, opencv-python, lazy_loader, kornia, importlib-resources, imageio, contourpy, beautifulsoup4, scikit-image, pandas, matplotlib, huggingface-hub, timm, gdown
+  Attempting uninstall: pillow
+    Found existing installation: pillow 10.2.0
+    Uninstalling pillow-10.2.0:
+      Successfully uninstalled pillow-10.2.0
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.24.1
+    Uninstalling numpy-1.24.1:
+      Successfully uninstalled numpy-1.24.1
+Successfully installed PySocks-1.7.1 PyWavelets-1.4.1 beautifulsoup4-4.15.0 certifi-2026.7.22 charset_normalizer-3.4.9 contourpy-1.1.1 cycler-0.12.1 einops-0.7.0 filelock-3.16.1 fonttools-4.57.0 fsspec-2025.3.0 gdown-5.2.2 hf-xet-1.5.2 huggingface-hub-0.36.2 idna-3.15 imageio-2.32.0 importlib-resources-6.4.5 kiwisolver-1.4.7 kornia-0.7.0 lazy_loader-0.4 matplotlib-3.7.5 networkx-3.1 numpy-1.24.4 opencv-python-4.8.1.78 packaging-26.2 pandas-2.0.3 pillow-10.0.1 pyparsing-3.1.4 python-dateutil-2.9.0.post0 pytz-2026.3.post1 pyyaml-6.0.3 requests-2.32.4 safetensors-0.5.3 scikit-image-0.21.0 scipy-1.10.1 six-1.17.0 soupsieve-2.7 tifffile-2023.7.10 timm-0.9.10 tqdm-4.66.1 tzdata-2026.3 urllib3-2.2.3 zipp-3.20.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Requirement already satisfied: pip<25 in ./autodl-tmp/envs/siba_jittor/lib/python3.8/site-packages (24.2)
+Collecting pip<25
+  Downloading pip-24.3.1-py3-none-any.whl.metadata (3.7 kB)
+Requirement already satisfied: setuptools in ./autodl-tmp/envs/siba_jittor/lib/python3.8/site-packages (75.1.0)
+Collecting setuptools
+  Downloading setuptools-75.3.4-py3-none-any.whl.metadata (6.9 kB)
+Requirement already satisfied: wheel in ./autodl-tmp/envs/siba_jittor/lib/python3.8/site-packages (0.44.0)
+Collecting wheel
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Downloading pip-24.3.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 3.1 MB/s eta 0:00:00
+Downloading setuptools-75.3.4-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 16.1 MB/s eta 0:00:00
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Installing collected packages: wheel, setuptools, pip
+  Attempting uninstall: wheel
+    Found existing installation: wheel 0.44.0
+    Uninstalling wheel-0.44.0:
+      Successfully uninstalled wheel-0.44.0
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 75.1.0
+    Uninstalling setuptools-75.1.0:
+      Successfully uninstalled setuptools-75.1.0
+  Attempting uninstall: pip
+    Found existing installation: pip 24.2
+    Uninstalling pip-24.2:
+      Successfully uninstalled pip-24.2
+Successfully installed pip-24.3.1 setuptools-75.3.4 wheel-0.45.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Collecting jittor==1.3.11.0
+  Downloading jittor-1.3.11.0.tar.gz (1.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 3.1 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting imageio==2.32.0
+  Using cached imageio-2.32.0-py3-none-any.whl.metadata (4.9 kB)
+Collecting numpy==1.24.4
+  Using cached numpy-1.24.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.6 kB)
+Collecting opencv-python==4.8.1.78
+  Using cached opencv_python-4.8.1.78-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (19 kB)
+Collecting pillow==10.0.1
+  Using cached Pillow-10.0.1-cp38-cp38-manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+Collecting tqdm==4.66.1
+  Using cached tqdm-4.66.1-py3-none-any.whl.metadata (57 kB)
+Collecting scipy
+  Using cached scipy-1.10.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (58 kB)
+Collecting matplotlib
+  Using cached matplotlib-3.7.5-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (5.7 kB)
+Collecting pandas
+  Using cached pandas-2.0.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+Collecting scikit-image
+  Using cached scikit_image-0.21.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (14 kB)
+Collecting pyyaml
+  Using cached PyYAML-6.0.3-cp38-cp38-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+Collecting gdown
+  Using cached gdown-5.2.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting astunparse (from jittor==1.3.11.0)
+  Downloading astunparse-1.6.3-py2.py3-none-any.whl.metadata (4.4 kB)
+Collecting contourpy>=1.0.1 (from matplotlib)
+  Using cached contourpy-1.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.9 kB)
+Collecting cycler>=0.10 (from matplotlib)
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib)
+  Using cached fonttools-4.57.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (102 kB)
+Collecting kiwisolver>=1.0.1 (from matplotlib)
+  Using cached kiwisolver-1.4.7-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl.metadata (6.3 kB)
+Collecting packaging>=20.0 (from matplotlib)
+  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting pyparsing>=2.3.1 (from matplotlib)
+  Using cached pyparsing-3.1.4-py3-none-any.whl.metadata (5.1 kB)
+Collecting python-dateutil>=2.7 (from matplotlib)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting importlib-resources>=3.2.0 (from matplotlib)
+  Using cached importlib_resources-6.4.5-py3-none-any.whl.metadata (4.0 kB)
+Collecting pytz>=2020.1 (from pandas)
+  Using cached pytz-2026.3.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.1 (from pandas)
+  Using cached tzdata-2026.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting networkx>=2.8 (from scikit-image)
+  Using cached networkx-3.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting tifffile>=2022.8.12 (from scikit-image)
+  Using cached tifffile-2023.7.10-py3-none-any.whl.metadata (31 kB)
+Collecting PyWavelets>=1.1.1 (from scikit-image)
+  Using cached PyWavelets-1.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.9 kB)
+Collecting lazy_loader>=0.2 (from scikit-image)
+  Using cached lazy_loader-0.4-py3-none-any.whl.metadata (7.6 kB)
+Collecting beautifulsoup4 (from gdown)
+  Using cached beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
+Collecting filelock (from gdown)
+  Using cached filelock-3.16.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting requests[socks] (from gdown)
+  Using cached requests-2.32.4-py3-none-any.whl.metadata (4.9 kB)
+Collecting zipp>=3.1.0 (from importlib-resources>=3.2.0->matplotlib)
+  Using cached zipp-3.20.2-py3-none-any.whl.metadata (3.7 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: wheel<1.0,>=0.23.0 in ./autodl-tmp/envs/siba_jittor/lib/python3.8/site-packages (from astunparse->jittor==1.3.11.0) (0.45.1)
+Collecting soupsieve>=1.6.1 (from beautifulsoup4->gdown)
+  Using cached soupsieve-2.7-py3-none-any.whl.metadata (4.6 kB)
+Collecting typing-extensions>=4.0.0 (from beautifulsoup4->gdown)
+  Downloading typing_extensions-4.13.2-py3-none-any.whl.metadata (3.0 kB)
+Collecting charset_normalizer<4,>=2 (from requests[socks]->gdown)
+  Using cached charset_normalizer-3.4.9-py3-none-any.whl.metadata (41 kB)
+Collecting idna<4,>=2.5 (from requests[socks]->gdown)
+  Using cached idna-3.15-py3-none-any.whl.metadata (7.7 kB)
+Collecting urllib3<3,>=1.21.1 (from requests[socks]->gdown)
+  Using cached urllib3-2.2.3-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests[socks]->gdown)
+  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting PySocks!=1.5.7,>=1.5.6 (from requests[socks]->gdown)
+  Using cached PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+Using cached imageio-2.32.0-py3-none-any.whl (313 kB)
+Using cached numpy-1.24.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.3 MB)
+Using cached opencv_python-4.8.1.78-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (61.7 MB)
+Using cached Pillow-10.0.1-cp38-cp38-manylinux_2_28_x86_64.whl (3.6 MB)
+Using cached tqdm-4.66.1-py3-none-any.whl (78 kB)
+Using cached scipy-1.10.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (34.5 MB)
+Using cached matplotlib-3.7.5-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (9.2 MB)
+Using cached pandas-2.0.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.4 MB)
+Using cached scikit_image-0.21.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.9 MB)
+Using cached PyYAML-6.0.3-cp38-cp38-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+Using cached gdown-5.2.2-py3-none-any.whl (18 kB)
+Using cached contourpy-1.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (301 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Using cached fonttools-4.57.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.7 MB)
+Using cached importlib_resources-6.4.5-py3-none-any.whl (36 kB)
+Using cached kiwisolver-1.4.7-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.2 MB)
+Using cached lazy_loader-0.4-py3-none-any.whl (12 kB)
+Using cached networkx-3.1-py3-none-any.whl (2.1 MB)
+Using cached packaging-26.2-py3-none-any.whl (100 kB)
+Using cached pyparsing-3.1.4-py3-none-any.whl (104 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2026.3.post1-py2.py3-none-any.whl (508 kB)
+Using cached PyWavelets-1.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.9 MB)
+Using cached tifffile-2023.7.10-py3-none-any.whl (220 kB)
+Using cached tzdata-2026.3-py2.py3-none-any.whl (348 kB)
+Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Using cached beautifulsoup4-4.15.0-py3-none-any.whl (109 kB)
+Using cached filelock-3.16.1-py3-none-any.whl (16 kB)
+Using cached certifi-2026.7.22-py3-none-any.whl (136 kB)
+Using cached charset_normalizer-3.4.9-py3-none-any.whl (64 kB)
+Using cached idna-3.15-py3-none-any.whl (72 kB)
+Using cached PySocks-1.7.1-py3-none-any.whl (16 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached soupsieve-2.7-py3-none-any.whl (36 kB)
+Downloading typing_extensions-4.13.2-py3-none-any.whl (45 kB)
+Using cached urllib3-2.2.3-py3-none-any.whl (126 kB)
+Using cached zipp-3.20.2-py3-none-any.whl (9.2 kB)
+Using cached requests-2.32.4-py3-none-any.whl (64 kB)
+Building wheels for collected packages: jittor
+  Building wheel for jittor (setup.py): started
+  Building wheel for jittor (setup.py): finished with status 'done'
+  Created wheel for jittor: filename=jittor-1.3.11.0-py3-none-any.whl size=2259764 sha256=8d5d2c179a9efc7e9c5789aced358800a9bec03f0f3a0f58ca08feb84185ed62
+  Stored in directory: /root/autodl-tmp/.cache/pip/wheels/be/ec/ab/0585ac9f56a37afccaa80b0ce6ec4b7487e2e8ad7372118a9b
+Successfully built jittor
+Installing collected packages: pytz, zipp, urllib3, tzdata, typing-extensions, tqdm, soupsieve, six, pyyaml, PySocks, pyparsing, pillow, packaging, numpy, networkx, kiwisolver, idna, fonttools, filelock, cycler, charset_normalizer, certifi, tifffile, scipy, requests, PyWavelets, python-dateutil, opencv-python, lazy_loader, importlib-resources, imageio, contourpy, beautifulsoup4, astunparse, scikit-image, pandas, matplotlib, jittor, gdown
+Successfully installed PySocks-1.7.1 PyWavelets-1.4.1 astunparse-1.6.3 beautifulsoup4-4.15.0 certifi-2026.7.22 charset_normalizer-3.4.9 contourpy-1.1.1 cycler-0.12.1 filelock-3.16.1 fonttools-4.57.0 gdown-5.2.2 idna-3.15 imageio-2.32.0 importlib-resources-6.4.5 jittor-1.3.11.0 kiwisolver-1.4.7 lazy_loader-0.4 matplotlib-3.7.5 networkx-3.1 numpy-1.24.4 opencv-python-4.8.1.78 packaging-26.2 pandas-2.0.3 pillow-10.0.1 pyparsing-3.1.4 python-dateutil-2.9.0.post0 pytz-2026.3.post1 pyyaml-6.0.3 requests-2.32.4 scikit-image-0.21.0 scipy-1.10.1 six-1.17.0 soupsieve-2.7 tifffile-2023.7.10 tqdm-4.66.1 typing-extensions-4.13.2 tzdata-2026.3 urllib3-2.2.3 zipp-3.20.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[notice] A new release of pip is available: 24.3.1 -> 25.0.1
+[notice] To update, run: /root/autodl-tmp/envs/siba_jittor/bin/python -m pip install --upgrade pip
+torch 1.10.0+cu111 cuda 11.1
+torchvision 0.11.0+cu111 kornia 0.7.0
+opencv 4.8.1 pillow 10.0.1 numpy 1.24.4
+[i 0727 02:40:32.669815 60 lock.py:85] Create lock file:/root/autodl-tmp/.cache/jittor/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/jittor.lock
+[i 0727 02:40:32.681546 60 compiler.py:955] Jittor(1.3.11.0) src: /root/autodl-tmp/envs/siba_jittor/lib/python3.8/site-packages/jittor
+[i 0727 02:40:32.684912 60 compiler.py:956] g++ at /usr/bin/g++(9.3.0)
+[i 0727 02:40:32.684985 60 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/default
+[i 0727 02:40:32.692260 60 __init__.py:412] Found nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.
+[i 0727 02:40:32.699338 60 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.
+[i 0727 02:40:32.924682 60 compiler.py:1012] cuda key:cu11.3.109
+[i 0727 02:40:32.988760 60 compiler.py:33] Create cache dir: /root/autodl-tmp/.cache/jittor/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/default/cu11.3.109
+[i 0727 02:40:32.989042 60 compiler.py:33] Create cache dir: /root/autodl-tmp/.cache/jittor/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/default/cu11.3.109/jit
+[i 0727 02:40:32.989195 60 compiler.py:33] Create cache dir: /root/autodl-tmp/.cache/jittor/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/default/cu11.3.109/obj_files
+[i 0727 02:40:32.989333 60 compiler.py:33] Create cache dir: /root/autodl-tmp/.cache/jittor/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/default/cu11.3.109/gen
+[i 0727 02:40:32.989474 60 compiler.py:33] Create cache dir: /root/autodl-tmp/.cache/jittor/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/default/cu11.3.109/tmp
+[i 0727 02:40:32.989609 60 compiler.py:33] Create cache dir: /root/autodl-tmp/.cache/jittor/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/fe1b/default/cu11.3.109/checkpoints
+Compiling jittor_core(3/151) used: 4.388s eta: 216.482sCompiling jittor_core(4/151) used: 10.288s eta: 378.087sCompiling jittor_core(5/151) used: 17.392s eta: 507.848sCompiling jittor_core(6/151) used: 19.385s eta: 468.472sCompiling jittor_core(7/151) used: 23.285s eta: 479.004sCompiling jittor_core(8/151) used: 28.178s eta: 503.686sCompiling jittor_core(9/151) used: 32.012s eta: 505.071sCompiling jittor_core(10/151) used: 35.914s eta: 506.384sCompiling jittor_core(11/151) used: 40.181s eta: 511.398sCompiling jittor_core(12/151) used: 44.913s eta: 520.241sCompiling jittor_core(13/151) used: 48.688s eta: 516.840sCompiling jittor_core(14/151) used: 51.619s eta: 505.125sCompiling jittor_core(15/151) used: 61.576s eta: 558.287sCompiling jittor_core(16/151) used: 68.176s eta: 575.234sCompiling jittor_core(17/151) used: 75.991s eta: 598.991sCompiling jittor_core(18/151) used: 82.097s eta: 606.605sCompiling jittor_core(19/151) used: 85.912s eta: 596.863sCompiling jittor_core(20/151) used: 93.396s eta: 611.745sCompiling jittor_core(21/151) used: 120.473s eta: 745.786sCompiling jittor_core(22/151) used: 125.895s eta: 738.200sCompiling jittor_core(23/151) used: 267.909s eta: 1490.973sCompiling jittor_core(24/151) used: 271.782s eta: 1438.179sCompiling jittor_core(25/151) used: 274.920s eta: 1385.598sCompiling jittor_core(26/151) used: 280.991s eta: 1350.917sCompiling jittor_core(27/151) used: 284.387s eta: 1306.072sCompiling jittor_core(28/151) used: 288.787s eta: 1268.599sCompiling jittor_core(29/151) used: 291.405s eta: 1225.911sCompiling jittor_core(30/151) used: 297.075s eta: 1198.201sCompiling jittor_core(31/151) used: 305.905s eta: 1184.147sCompiling jittor_core(32/151) used: 315.487s eta: 1173.218sCompiling jittor_core(33/151) used: 324.690s eta: 1161.014sCompiling jittor_core(34/151) used: 327.600s eta: 1127.328sCompiling jittor_core(35/151) used: 329.389s eta: 1091.689sCompiling jittor_core(36/151) used: 330.817s eta: 1056.776sCompiling jittor_core(37/151) used: 341.884s eta: 1053.372sCompiling jittor_core(38/151) used: 351.886s eta: 1046.398sCompiling jittor_core(39/151) used: 364.213s eta: 1045.945sCompiling jittor_core(40/151) used: 368.874s eta: 1023.626sCompiling jittor_core(41/151) used: 372.292s eta: 998.833sCompiling jittor_core(42/151) used: 380.600s eta: 987.749sCompiling jittor_core(43/151) used: 383.473s eta: 963.141sCompiling jittor_core(44/151) used: 386.574s eta: 940.079sCompiling jittor_core(45/151) used: 393.211s eta: 926.230sCompiling jittor_core(46/151) used: 395.709s eta: 903.248sCompiling jittor_core(47/151) used: 397.917s eta: 880.498sCompiling jittor_core(48/151) used: 402.209s eta: 863.073sCompiling jittor_core(49/151) used: 404.424s eta: 841.862sCompiling jittor_core(50/151) used: 407.689s eta: 823.531sCompiling jittor_core(51/151) used: 409.577s eta: 803.093sCompiling jittor_core(52/151) used: 413.506s eta: 787.252sCompiling jittor_core(53/151) used: 418.185s eta: 773.247sCompiling jittor_core(54/151) used: 421.387s eta: 756.935sCompiling jittor_core(55/151) used: 423.301s eta: 738.853sCompiling jittor_core(56/151) used: 425.613s eta: 722.022sCompiling jittor_core(57/151) used: 430.208s eta: 709.466sCompiling jittor_core(58/151) used: 444.487s eta: 712.712sCompiling jittor_core(59/151) used: 446.389s eta: 696.064sCompiling jittor_core(60/151) used: 451.610s eta: 684.942sCompiling jittor_core(61/151) used: 455.489s eta: 672.032sCompiling jittor_core(62/151) used: 463.915s eta: 665.943sCompiling jittor_core(63/151) used: 469.914s eta: 656.387sCompiling jittor_core(64/151) used: 474.696s eta: 645.290sCompiling jittor_core(65/151) used: 480.480s eta: 635.712sCompiling jittor_core(66/151) used: 486.000s eta: 625.909sCompiling jittor_core(67/151) used: 489.380s eta: 613.550sCompiling jittor_core(68/151) used: 492.908s eta: 601.637sCompiling jittor_core(69/151) used: 499.811s eta: 593.978sCompiling jittor_core(70/151) used: 503.586s eta: 582.721sCompiling jittor_core(71/151) used: 506.294s eta: 570.472sCompiling jittor_core(72/151) used: 509.889s eta: 559.461sCompiling jittor_core(73/151) used: 513.697s eta: 548.882sCompiling jittor_core(74/151) used: 524.994s eta: 546.278sCompiling jittor_core(75/151) used: 528.082s eta: 535.123sCompiling jittor_core(76/151) used: 538.093s eta: 531.012sCompiling jittor_core(77/151) used: 542.103s eta: 520.982sCompiling jittor_core(78/151) used: 548.090s eta: 512.956sCompiling jittor_core(79/151) used: 553.284s eta: 504.259sCompiling jittor_core(80/151) used: 559.380s eta: 496.450sCompiling jittor_core(81/151) used: 563.007s eta: 486.549sCompiling jittor_core(82/151) used: 566.495s eta: 476.685sCompiling jittor_core(83/151) used: 573.983s eta: 470.251sCompiling jittor_core(84/151) used: 578.416s eta: 461.355sCompiling jittor_core(85/151) used: 582.489s eta: 452.285sCompiling jittor_core(86/151) used: 587.192s eta: 443.808sCompiling jittor_core(87/151) used: 592.802s eta: 436.084sCompiling jittor_core(88/151) used: 594.304s eta: 425.468sCompiling jittor_core(89/151) used: 609.518s eta: 424.608sCompiling jittor_core(90/151) used: 616.376s eta: 417.766sCompiling jittor_core(91/151) used: 635.407s eta: 418.950sCompiling jittor_core(92/151) used: 653.712s eta: 419.228sCompiling jittor_core(93/151) used: 661.493s eta: 412.544sCompiling jittor_core(94/151) used: 670.211s eta: 406.405sCompiling jittor_core(95/151) used: 673.979s eta: 397.293sCompiling jittor_core(96/151) used: 677.388s eta: 388.087sCompiling jittor_core(97/151) used: 714.119s eta: 397.551sCompiling jittor_core(98/151) used: 715.699s eta: 387.062sCompiling jittor_core(99/151) used: 718.483s eta: 377.385sCompiling jittor_core(100/151) used: 722.216s eta: 368.330sCompiling jittor_core(101/151) used: 727.687s eta: 360.241sCompiling jittor_core(102/151) used: 735.073s eta: 353.123sCompiling jittor_core(103/151) used: 745.384s eta: 347.364sCompiling jittor_core(104/151) used: 764.386s eta: 345.444sCompiling jittor_core(105/151) used: 792.290s eta: 347.098sCompiling jittor_core(106/151) used: 800.482s eta: 339.827s[38;5;2m[i 0727 02:58:36.566556 88 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0727 02:58:36.566619 88 parallel_compiler.cc:26] Load use_parallel_op_compiler: 0[m
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  [38;5;1m[f 0727 02:58:36.569057 88 helper_cuda.h:128] CUDA error at /root/autodl-tmp/envs/siba_jittor/lib/python3.8/site-packages/jittor/src/ops/array_op.cc:33  code=35( cudaErrorInsufficientDriver ) cudaStreamCreateWithFlags(&stream, cudaStreamNonBlocking)[m
+/root/autodl-tmp/SIBA-Jittor/complete_env_setup.sh: line 42:  3986 Aborted                 (core dumped) DISABLE_MULTIPROCESSING=1 "$ENV_ROOT/siba_jittor/bin/python" - <<'PY'
+import cv2
+import jittor as jt
+import numpy
+import PIL
+
+jt.flags.use_cuda = 0
+print("jittor", jt.__version__)
+print("opencv", cv2.__version__, "pillow", PIL.__version__, "numpy", numpy.__version__)
+print((jt.ones((2, 2)) + 1).numpy())
+PY
+

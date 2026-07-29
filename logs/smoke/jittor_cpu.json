@@ -1,0 +1,22 @@
+{
+  "jittor_version": "1.3.11.0",
+  "use_cuda": false,
+  "parameter_tensors": 137,
+  "parameter_count": 565941,
+  "gradient_tensors": 137,
+  "output": {
+    "shape": [
+      1,
+      1,
+      32,
+      32
+    ],
+    "minimum": 0.06617420166730881,
+    "maximum": 0.20191608369350433,
+    "mean": 0.14391447603702545
+  },
+  "loss_laplacian": 0.17401646077632904,
+  "loss_intensity": 0.5276340246200562,
+  "loss_sobel": 1.94208562374115,
+  "loss_total": 3.735013484954834
+}

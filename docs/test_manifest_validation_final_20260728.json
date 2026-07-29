@@ -1,0 +1,20 @@
+{
+  "MSRS": {
+    "manifest": "G:\\\u79d1\u7814\\\u56fe\u50cf\u878d\u5408\\\u57f9\u80b2\u671fJittor_SIBA\\data_manifests\\msrs_test.json",
+    "pairs": 361,
+    "errors": [],
+    "valid": true
+  },
+  "M3FD_2x": {
+    "manifest": "G:\\\u79d1\u7814\\\u56fe\u50cf\u878d\u5408\\\u57f9\u80b2\u671fJittor_SIBA\\data_manifests\\m3fd_2x_test.json",
+    "pairs": 300,
+    "errors": [],
+    "valid": true
+  },
+  "TNO": {
+    "manifest": "G:\\\u79d1\u7814\\\u56fe\u50cf\u878d\u5408\\\u57f9\u80b2\u671fJittor_SIBA\\data_manifests\\tno_test.json",
+    "pairs": 45,
+    "errors": [],
+    "valid": true
+  }
+}

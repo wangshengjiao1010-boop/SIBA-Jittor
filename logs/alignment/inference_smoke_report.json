@@ -1,0 +1,16 @@
+{
+  "name": "00004N.png",
+  "shape_pytorch": [
+    480,
+    640,
+    3
+  ],
+  "shape_jittor": [
+    480,
+    640,
+    3
+  ],
+  "max_abs_uint8": 1,
+  "mean_abs_uint8": 0.003023003472222222,
+  "different_values": 2786
+}

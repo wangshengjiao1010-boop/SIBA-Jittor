@@ -1,0 +1,1809 @@
+{
+  "infrared_directory": "/root/autodl-tmp/datasets/sources/RoadScene/cropinfrared",
+  "visible_directory": "/root/autodl-tmp/datasets/sources/RoadScene/crop_LR_visible",
+  "available_pairs": 221,
+  "selected_pairs": 200,
+  "selection_seed": 2025,
+  "pairs": [
+    {
+      "name": "FLIR_00006.jpg",
+      "width": 500,
+      "height": 329,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c197a119efb05eafdf617cafe0ed3441dce8b29c488346fd221edf1969055618",
+      "visible_sha256": "2462fd0d6b8bd975f528aa1f0aa1808137fb865fa6723ea025d6c6ac90d581bd"
+    },
+    {
+      "name": "FLIR_00018.jpg",
+      "width": 478,
+      "height": 322,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "58667363566e2f97cca47c17bfe805a876508312e2589895c24b7741eaeda2ee",
+      "visible_sha256": "68f10f42607269cd4502de4d016b436a99303a861c4b11a1532e36f573ff773a"
+    },
+    {
+      "name": "FLIR_00122.jpg",
+      "width": 507,
+      "height": 346,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a7a2a111a7f3f0d3aca0c8a48acd32ed04d2e3d9f8dd2b2085e06d7017f667f5",
+      "visible_sha256": "15295edac7460d75aec70481227d4a4463ff4294636b3b4d490e53a57e99bbee"
+    },
+    {
+      "name": "FLIR_00211.jpg",
+      "width": 496,
+      "height": 301,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "15ca1af4930e452151a28ca200af6902e332d37495181dcbd26951dd9d268ca0",
+      "visible_sha256": "2471de7dcb42e2782bcd2ce32294cee98db880b4f7e210daa35f1be33d5c9d69"
+    },
+    {
+      "name": "FLIR_00288.jpg",
+      "width": 609,
+      "height": 346,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6ae7968805a0b1c495e6a958dd1cd3a411b2f86aeb5e3655e2a697d58dee4980",
+      "visible_sha256": "115e24219c507d3c3afaef71df18bfbcb816205cde7ac6f94302f1987e565fbe"
+    },
+    {
+      "name": "FLIR_00306.jpg",
+      "width": 545,
+      "height": 379,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "1f556f678f76d024bae799378ebaf53812e91a92ca46931fca09a1820b31cedf",
+      "visible_sha256": "b763512dc9b205d73da379a80c80c437f97951fa92d448053b19968345a66c00"
+    },
+    {
+      "name": "FLIR_00311.jpg",
+      "width": 536,
+      "height": 283,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8662856af0476f2d3973ad22388e16514e8e0661532221b599900a4905dbfa9d",
+      "visible_sha256": "485a7d696282a0ccea3e98de4af2dd889b9027f1b64d1b2903b7e9520bf6d559"
+    },
+    {
+      "name": "FLIR_00452.jpg",
+      "width": 535,
+      "height": 271,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "bdfb0240ddc4e644c089e03dccb53f7487654b2579a6be1f3fe5fbbe65aa2f7b",
+      "visible_sha256": "3cde138a6654d1d148de65f8fe03c935a641f3b163df7cd5707eb77866e84c75"
+    },
+    {
+      "name": "FLIR_00455.jpg",
+      "width": 536,
+      "height": 311,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c139c69f5349e51c46b6dcc37885bee593745054aba681be60c1652e7dd03238",
+      "visible_sha256": "ff9d45e8c2fd0a2989678c40d1eed6d02fc00ceac7aa81a7cb185c69ade3b23b"
+    },
+    {
+      "name": "FLIR_00497.jpg",
+      "width": 551,
+      "height": 369,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "1a37bbc19459f2c43f10dec06183ddc7dd6aca518f897974252f92a6b5545e7c",
+      "visible_sha256": "60932d8f99e08d5aac583974602cc3875b103aa46ab5ae49d117205e9cdca4e6"
+    },
+    {
+      "name": "FLIR_00548.jpg",
+      "width": 541,
+      "height": 252,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "0586b2a5254e7530f4d1eb4638d1471c86fe4fc7469e5fb0fb53c98e711ecd90",
+      "visible_sha256": "f643cdebfea6b7904c8b23c994cb9937ff7f7be1d954612baa3f7a38ae124aaa"
+    },
+    {
+      "name": "FLIR_00578.jpg",
+      "width": 544,
+      "height": 326,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "400ef6b025aafe3d7f6323115f8c8fb5b516f2d4113a3626f64d07c628af5f3e",
+      "visible_sha256": "8aba176026364f735816a892ae2f84b6314db1c7c9cd6b2cf5b06c13b60a10e5"
+    },
+    {
+      "name": "FLIR_00594.jpg",
+      "width": 541,
+      "height": 343,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "49f0b7142df68ff7c5af1f61c3df614cb714168c8d0536487c31a5cf62a1d4f2",
+      "visible_sha256": "f6a45c6d883a952b4ebf2109acc86330e2b0803d4acf83c1fc638a7c1b434bd6"
+    },
+    {
+      "name": "FLIR_00603.jpg",
+      "width": 543,
+      "height": 322,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "67c4515d813e7dfa9c3bddc0889270da115e2119ba731996dedb8e7a97e158f7",
+      "visible_sha256": "7aefc797115dabbe7d29401abf57ddec5f7aecf101f16a98ac9d0e7d7b703e73"
+    },
+    {
+      "name": "FLIR_00691.jpg",
+      "width": 549,
+      "height": 233,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "19c6afa79a84cb227fef6a18b5bac8704e9b2aab2d4cfd27f7c9e0a37cb502b8",
+      "visible_sha256": "8e9232299a5172a5170c2f445139650a1358c645e8ec55aa6f273398f8e76d1c"
+    },
+    {
+      "name": "FLIR_00977.jpg",
+      "width": 505,
+      "height": 351,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9ae6ff9f2bbade86b134aa00ee289decef0a6feb046886b6dbe7f75a48d18a7d",
+      "visible_sha256": "7ca11964720c12b8ee85b3ba50957f75b3a7650c60aef52848c16c543b2ea69d"
+    },
+    {
+      "name": "FLIR_00993.jpg",
+      "width": 541,
+      "height": 270,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a12fc338e133a36f414c33813a01a74693ab1e54974d25fb682ab4ec68792cb2",
+      "visible_sha256": "d063c6a7a9dc313233b9b0adc02479492f2722b1dded243497d87e202e4fa074"
+    },
+    {
+      "name": "FLIR_01130.jpg",
+      "width": 552,
+      "height": 341,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "658504e630efe72eea8b0172a70a0af682cf13e1513c18bac3486c01a92cf074",
+      "visible_sha256": "cd75ec87a93b8664522ae1b0d0340f25d3c4b92a27ccf6953d1d557dade2a3bc"
+    },
+    {
+      "name": "FLIR_01274.jpg",
+      "width": 548,
+      "height": 375,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8e4176a96f927dd1d8062b97f8a82659c64e5eb39f031391adcd8fdab429ce7a",
+      "visible_sha256": "06e104000b2bbe9ce8517d9d5c38c87b279af90ba07b9bc231f8b773558020ab"
+    },
+    {
+      "name": "FLIR_01415.jpg",
+      "width": 543,
+      "height": 358,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2304e5a36f0b06abd1e15bf234c89bca4530995a2b231cd6568ced0f0921b0e1",
+      "visible_sha256": "4bacf7d0032381fb3658d55234e5f0b577d6f854aad182cbf48f1c29863c7da7"
+    },
+    {
+      "name": "FLIR_01871.jpg",
+      "width": 529,
+      "height": 294,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "cbc91d0032a39ac6cdb95e1a9759fe6f98ea793a5cdf1ad8b1c9ff23f016f5d9",
+      "visible_sha256": "2f7bd526bb88f4bf0c4263c152bd5c116bea8c85d70c55a09253e1ae8fa67abb"
+    },
+    {
+      "name": "FLIR_01932.jpg",
+      "width": 534,
+      "height": 296,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "86d3850a6f46561928cb2bfa63c6d4abe1716e030dd04cc1f6eabde4bb644984",
+      "visible_sha256": "da11ba06839d7a4baaf22b08e81342d7412b2166d782bbe1f7729bbbdb78e9d9"
+    },
+    {
+      "name": "FLIR_01945.jpg",
+      "width": 546,
+      "height": 290,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "ec02d173474d021bbccb9779e47720d085483aa32251e8a1ad9c0e731cd7282b",
+      "visible_sha256": "b883d0a8a17e4c152bccb8841a5a2756fc3550b7920b7beb97e5887ba110a86c"
+    },
+    {
+      "name": "FLIR_03801.jpg",
+      "width": 536,
+      "height": 293,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6fa4428a73a3bfad28201116503a48205385626d6c9fe9eba1dbefb970e4afa3",
+      "visible_sha256": "35f18e2d066ce8ccb4a787943f231359d40c09dfb89bf33352865b2122d47b06"
+    },
+    {
+      "name": "FLIR_03813.jpg",
+      "width": 529,
+      "height": 328,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8bdbcbb19848b6e6d02a2322173ef8617d6dcd162050c1acff4cbdf7760de186",
+      "visible_sha256": "a438c5c4ff36fe87d9b3135cf972fd25a1f9d357aa174a9db3e286387499a769"
+    },
+    {
+      "name": "FLIR_03909.jpg",
+      "width": 539,
+      "height": 320,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "e3c0f1a482a8ede3e40633851327a0ab4d524d61e307e9bc5c86768f261db35b",
+      "visible_sha256": "53da60f8e9d93bd6f52b68c314db85e7f89439b7910b03dbb285872878f36f77"
+    },
+    {
+      "name": "FLIR_03952.jpg",
+      "width": 532,
+      "height": 294,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "fb52899d3d83faf7048b3bc73bc32729ff3b76b84735f1641f45d2e7eba687ad",
+      "visible_sha256": "1c61743995e664a8e25b729c3947dac006a61ff228edc7c1c4af6d31447d22ac"
+    },
+    {
+      "name": "FLIR_04071.jpg",
+      "width": 527,
+      "height": 302,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "ab0a1b4510fc2d35f334242eed85c2a45beb7c8185495af35510f09833234ad0",
+      "visible_sha256": "db868227ad4cfc7668406bf4e8410f12974b117009be38539250ab806feda5ea"
+    },
+    {
+      "name": "FLIR_04208.jpg",
+      "width": 536,
+      "height": 239,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "50a0068c85e9e1dfcfac27e4e410c3d492c2a6d06b099c8a05b5ea418c5b9369",
+      "visible_sha256": "d3cd11426071fe899b36547c31d16578ec69b22d133e44ee8fb0a17d8aed7936"
+    },
+    {
+      "name": "FLIR_04215.jpg",
+      "width": 530,
+      "height": 277,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8037de76af4feaa75f646cea8b36b5c5cfb72eadde08238cfc54cc98bd142926",
+      "visible_sha256": "f09da09f5d677b25f381025a8b597f89123d88ec14e460abfe0b5f8d7a325d8c"
+    },
+    {
+      "name": "FLIR_04285.jpg",
+      "width": 529,
+      "height": 301,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9d24b2374dfd170d7e79b9e3256e434e1d9a4e74182481b5ee110813a77ff60d",
+      "visible_sha256": "9bbe6fbae8c94bff3e4d38d187ab406401a7391d1df3e077fc5b63571f68d63d"
+    },
+    {
+      "name": "FLIR_04302.jpg",
+      "width": 512,
+      "height": 287,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "676e693e0e5dd828b1535671a1497eb64aee51880470aa490ef371cd924f7965",
+      "visible_sha256": "bf602e2490d8c8f6c92aef65850c793c5a42f15fe481677a2f1b7f861557f00c"
+    },
+    {
+      "name": "FLIR_04319.jpg",
+      "width": 532,
+      "height": 313,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "7fb2d63647401c63b7f1c1faf9e456b285195c8dac2a91311fdf53be32c377d0",
+      "visible_sha256": "8dac1003dfe0835baf58a4fefc0c86933d23e2ff8c474a851feab73106e522ac"
+    },
+    {
+      "name": "FLIR_04354.jpg",
+      "width": 529,
+      "height": 346,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "ed30f2cdf6c0d7231be8dc8ec86393c0cd1eb88a54f1884b3c2098b3c8c08201",
+      "visible_sha256": "1dfa0b21a19955eaec08d9909f87c4cefecaf2729861d5e432cb7d389653f02c"
+    },
+    {
+      "name": "FLIR_04370.jpg",
+      "width": 534,
+      "height": 248,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "bbf0e9063599f1fecc4d9ab7549aa3457e56f3984e8f245a4abf244fb2db1552",
+      "visible_sha256": "f2f795d238aa08837faf36e69756a0c768fcadfbf240bb97981141273ec11ffb"
+    },
+    {
+      "name": "FLIR_04412.jpg",
+      "width": 501,
+      "height": 238,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "5aed6eca2d7897662d79a89dfe95329c28e72e95d694579fb36edc4765ff067f",
+      "visible_sha256": "1ef9a830c78e14d062c91f2acb7e0a789b5acb55bf315ab9f54c6832e788ff9a"
+    },
+    {
+      "name": "FLIR_04484.jpg",
+      "width": 535,
+      "height": 358,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f1429b47480d1854d3a330141b8522caccaa4e317b2361c79b979c109fa9fd13",
+      "visible_sha256": "264eab91589ba5f963cc1232b882cf2724e0b5e0cec3b03bd2e485dfdce3c693"
+    },
+    {
+      "name": "FLIR_04512.jpg",
+      "width": 530,
+      "height": 329,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "474318d37f1e2d019fad63a6e2481a2e145b4b23fb34e9d4c581ea2609155d09",
+      "visible_sha256": "594f147f9b6a812736645b1924a55a34c8050f83a192ec9ff21c880b6139708a"
+    },
+    {
+      "name": "FLIR_04514.jpg",
+      "width": 486,
+      "height": 319,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "74aaea40b5f28dcb28182d4d9b3df39baae3a4b41ace703530fa38e4787d1bca",
+      "visible_sha256": "16fc2707efadf90eb47c0806178acb03a6b81ae265631441003a19628ed1b2a2"
+    },
+    {
+      "name": "FLIR_04593.jpg",
+      "width": 518,
+      "height": 264,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "cf5cbdae673d20f5799c7ad390728288f7665e28aca7ccffc873930f78030260",
+      "visible_sha256": "cb56b665adebc5680dece987b260ccb94aab785b269b5ce6a84feac96efa47a5"
+    },
+    {
+      "name": "FLIR_04598.jpg",
+      "width": 537,
+      "height": 306,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "82c84a0c42b7a9843bba6cfe78df4b9e4835a5d04b14bc613964486ff9c9d8ed",
+      "visible_sha256": "b60435698f34f89917cfb3b191348ace6876f97f0a5231d782fdd8e9e32726a6"
+    },
+    {
+      "name": "FLIR_04602.jpg",
+      "width": 520,
+      "height": 246,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "4a2bc8d96c0a714cb9b05e728c03aa2cbd48374e17c373773b3059d20d4d5d43",
+      "visible_sha256": "934000669d69f56bada90cf9257d4013e3ac97b6296c2e60e3b7275a8b31e33b"
+    },
+    {
+      "name": "FLIR_04607.jpg",
+      "width": 476,
+      "height": 284,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a652d4164ab5fda339654bc1e6750551ba2639ff7039eca546b46206a5fb7a02",
+      "visible_sha256": "a204814fe430b56cba698502ef84d73f3fbe2ae9ddd3222fd70096d5508d172d"
+    },
+    {
+      "name": "FLIR_04625.jpg",
+      "width": 516,
+      "height": 274,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "5597259f481d3632ca48185f99131b888df971eb93fc20917fa8562f4d4a753a",
+      "visible_sha256": "58f6bf74c8cd9d149215aa7cfe508bdf1339b4138897c52ec3f11de1cdca7329"
+    },
+    {
+      "name": "FLIR_04688.jpg",
+      "width": 524,
+      "height": 309,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8e4f05dbefeeed65f0e398e675357cd0ed2de6f303b541c5a330f6b707cc2e75",
+      "visible_sha256": "601791752c1690e625ff42b204e4c576f3345796f12b5ea3d5aa58edcabffbe6"
+    },
+    {
+      "name": "FLIR_04701.jpg",
+      "width": 503,
+      "height": 298,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "56c3e0e3c21867371975b143825b0c93370cbd216edfe3d953c3898f1e00e719",
+      "visible_sha256": "c9a040d707669cc6ab3d1c432168092c1038260a837b8370121944c364858573"
+    },
+    {
+      "name": "FLIR_04722.jpg",
+      "width": 446,
+      "height": 259,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "ad57f6301c476f4c14927a624c18c36c82be68036a2ccdf65c2d1ff42a7b06f5",
+      "visible_sha256": "551d097b77526847c7daa6449ab513e0d25096bf985eeb7d4f179418a6b4b199"
+    },
+    {
+      "name": "FLIR_04726.jpg",
+      "width": 458,
+      "height": 252,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "1554b58664dd08b8835b0ba15faf31662cc9d32aba52425646a4d0fb13a6dc0c",
+      "visible_sha256": "80ed0b2addbcfaf617ecff66a7ee89a6a717fb3ef14ad8c5afc1c148c769607a"
+    },
+    {
+      "name": "FLIR_04735.jpg",
+      "width": 508,
+      "height": 273,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a50e850bae511b094a80cc188d53efa60ed860f68a3eae13f4144d98a04c7de4",
+      "visible_sha256": "b25410b8e4431e5eee074dae1897d063fa4a4ca36da0ec9da52256d3275d2fd1"
+    },
+    {
+      "name": "FLIR_04929.jpg",
+      "width": 513,
+      "height": 293,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "044960b4bacd8a671fd645b7656b531265feed4d502d0e9da03e4b28ac3e32fc",
+      "visible_sha256": "e0e0687ffa5710316ada1f2179e67fd47770a3c74268706f72ea69d0fb7cb18a"
+    },
+    {
+      "name": "FLIR_04932.jpg",
+      "width": 517,
+      "height": 269,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "e1d050bd7758e782e18e644aa13ad73c7d0a3321b85c84e0b0033dfe9b56b3c3",
+      "visible_sha256": "e31d50eec39ae455c8f7f444f6aa1593569b345f07deb77f141c1df2338b3bb6"
+    },
+    {
+      "name": "FLIR_04943.jpg",
+      "width": 521,
+      "height": 327,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "06fd88e39039e9b6efc8ee2257bbe5f590b9452da9a1b1eeee83450df939af3d",
+      "visible_sha256": "e2846d42efc0ad2fd70b7607826864b56329754e888085866dce1f1fc52fefbe"
+    },
+    {
+      "name": "FLIR_04968.jpg",
+      "width": 512,
+      "height": 260,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "99083008e97d01fa1ec4b9cc4b3584b0c8db3fa3c43aac84f7c48dbd2b5d4a10",
+      "visible_sha256": "e54320f53ae072d0b6a365dbae878475e1039e30a72edb81e1ba4d82277fdf76"
+    },
+    {
+      "name": "FLIR_04975.jpg",
+      "width": 523,
+      "height": 240,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a5a592d9843e4abe690e94ddde076caf179a205a9d216e9bfac85597127256c1",
+      "visible_sha256": "64a7fa32c965061512273169f912a674f7d2998ba95c2113c9b30acbd0551c0c"
+    },
+    {
+      "name": "FLIR_04997.jpg",
+      "width": 528,
+      "height": 290,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "be8fa77cd528cea62a69da7ba6f078265c66c21a1429e370e4017d9104404f56",
+      "visible_sha256": "7eb3255d419cfd591f3ff776f18aa48c9ff6b7344625c811f3eaf6e29a0f8ef8"
+    },
+    {
+      "name": "FLIR_05016.jpg",
+      "width": 512,
+      "height": 286,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9198766a4a361738431c5c51c66d665548ca1fef34925b9e876e6406866599a3",
+      "visible_sha256": "9148ac83723123f1600bcfc3d7e18b5897673732f3359104a34760f80a7537fc"
+    },
+    {
+      "name": "FLIR_05027.jpg",
+      "width": 460,
+      "height": 290,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "0269c8e3bbb5063c817baf17e26cb86933da77597336846ce32aafef73f6f9ee",
+      "visible_sha256": "1bb9a25ae893dde094f05a201de7b009972aa46f3ed5714003fe6812585886cb"
+    },
+    {
+      "name": "FLIR_05044.jpg",
+      "width": 417,
+      "height": 218,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "b862a918a74d809ebb11b189df33f6b3913daf0883ddb41ed56f521b455dd8d8",
+      "visible_sha256": "409e0e5c21b718bd37cff5ace7fa6de12416d15f858f4d9df947987607abf4c3"
+    },
+    {
+      "name": "FLIR_05053.jpg",
+      "width": 487,
+      "height": 179,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "49d3b525049db640f7753ee005206c3b57a04126d0a10bf959d9da71a0bb0fd3",
+      "visible_sha256": "ce3a04b1a92d247569e544a0f72db5302e2793b30df27b420598320cca05795f"
+    },
+    {
+      "name": "FLIR_05072.jpg",
+      "width": 504,
+      "height": 283,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "340b0248efb4f9e62566285d1f76cfb82d8cc7145cdd9c88f168026a132c8a78",
+      "visible_sha256": "a14d6ff46b9a6c7f18ccc8a55dee88fa165448a44e485e2cf0a75ab83edfdce3"
+    },
+    {
+      "name": "FLIR_05095.jpg",
+      "width": 493,
+      "height": 348,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "e9b630c2884da566cebaae95995f069b2bc1f6e99669d2611086b35fb5ba84b3",
+      "visible_sha256": "a2400388be42d17f4408ccf0eef75483fa385e0ddb1678d6e6210d5bb9b57976"
+    },
+    {
+      "name": "FLIR_05102.jpg",
+      "width": 479,
+      "height": 307,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "b8d3568e242267034a171912e09cf8477be4515a6e79bcb18eb5437e551632ae",
+      "visible_sha256": "ce3c3b1a26c28ea120e09eeb8f7f27cf96412c2a8afc24ed5b11e69e495fdaa2"
+    },
+    {
+      "name": "FLIR_05108.jpg",
+      "width": 503,
+      "height": 271,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "42facb96a7617a916807bad955ee1c523226bb90392094c262594183843e52e4",
+      "visible_sha256": "475074964cd4193338c272e85dca1303b91932c40e3e4b3ed5b653534053a7a0"
+    },
+    {
+      "name": "FLIR_05164.jpg",
+      "width": 504,
+      "height": 233,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "0a50ca49ef79c826939da1d330c6360c9f36d657c7b40229a7a2b83c8c0b8fe8",
+      "visible_sha256": "0c8b4d4e2ac0fa40074613a140cbeb170483eedf89804355b33ddf1f1ac0259b"
+    },
+    {
+      "name": "FLIR_05201.jpg",
+      "width": 500,
+      "height": 253,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a551512e2314735f118e261bdb40282fe8d913de3e295f5aa0ad5f34dd35f257",
+      "visible_sha256": "f984da7157001f4dbc42d16f3ffe9ebdc3f47c6c720a2c5cda09eb4deff27d9d"
+    },
+    {
+      "name": "FLIR_05230.jpg",
+      "width": 524,
+      "height": 257,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "232d6be880c7ab740752ceaf873480aa633e48429d3c06b2beaca8080c8ecf48",
+      "visible_sha256": "b34bbe165902a8704817745e2c85fa7e870794a76dbfa677f800b68aa1d1bb57"
+    },
+    {
+      "name": "FLIR_05245.jpg",
+      "width": 512,
+      "height": 308,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "41326855bc0e8d49bb745ea905ce5a1738f09a0c276669a353fabbed34886b8b",
+      "visible_sha256": "7e0fbd9c995b2dd88586f148241b90749b8db63f8c67e61fb1afd78af7811302"
+    },
+    {
+      "name": "FLIR_05252.jpg",
+      "width": 491,
+      "height": 266,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "1f26ce52ef796018965afa4b8e07b5b0fabcd014cd56f9eefd1b6f88e6533c6c",
+      "visible_sha256": "0f58abab5146148a074462e89ebc1d6c47a93a0d1c94a56749965bd72ff1c1e3"
+    },
+    {
+      "name": "FLIR_05514.jpg",
+      "width": 511,
+      "height": 406,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "250ca6c05e019640fdbb303b74b796b442bad8467e9d5c7f0b1f925dd01c1e5c",
+      "visible_sha256": "b5b29ca45e2b679e5e926ab59b56e5cd35f34df04c50904a99d4763e3098a7d4"
+    },
+    {
+      "name": "FLIR_05573.jpg",
+      "width": 560,
+      "height": 343,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "ae8a94cc68bf68d4428957f768cb720ead4641569cb302b4ccee354d213b93ad",
+      "visible_sha256": "8d62b8ff4660cfb8e00432fd900f38ba709d140fbb621ff7807ea729add62fd4"
+    },
+    {
+      "name": "FLIR_05759.jpg",
+      "width": 542,
+      "height": 324,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f988bcaeb62b959457996c891ac958811d2584c6753adf2cd19821e9629cee84",
+      "visible_sha256": "b1e036aeee4d8d17d4d8b769d92f263572bbb71eaff1052488991d0ef4db657c"
+    },
+    {
+      "name": "FLIR_05767.jpg",
+      "width": 538,
+      "height": 329,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a3f5ea1c4605b1216005c89edbd569d9a13dbdc442738a794c69b819a18cc7e1",
+      "visible_sha256": "b25bdb636e3c54bca67a6ba070c5f9e0c61efb350ffdb32f991fde51cf956a3b"
+    },
+    {
+      "name": "FLIR_05857.jpg",
+      "width": 531,
+      "height": 305,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "0762957db9567c5973a5add3ca7ede7ede8f773d262b560ba22f924480d8a6a4",
+      "visible_sha256": "3b826e4ab721e877201fb4425e69a9ca3c7c18db1143285bd1584208cbc36e58"
+    },
+    {
+      "name": "FLIR_05872.jpg",
+      "width": 447,
+      "height": 211,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "badc13dd98ef7aaa4644048a62842ba49d3f6b058b188a846f0d3d3d372b8bb0",
+      "visible_sha256": "f3fb3a9f7282d4fefc945fbfb2225c3902c51aa1b508f56f8ff1668a3b63635e"
+    },
+    {
+      "name": "FLIR_05879.jpg",
+      "width": 560,
+      "height": 302,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "765b7d30d59830868ef43e80d189a4b0f80f1d8e735aea1be5041f50a21b530d",
+      "visible_sha256": "a4326c92c03b9ee2ad0c3fe6779566de26362226be4e150879cfde165f390b0e"
+    },
+    {
+      "name": "FLIR_05893.jpg",
+      "width": 502,
+      "height": 324,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "1e87f07be7df911f4ad6f1f077c33b496f6a496f683c275c0c4460b8cbc86c19",
+      "visible_sha256": "00ffee60ad786abecce3268b4dd367b77c6df3ca2c33f95171231a02fa7d2d93"
+    },
+    {
+      "name": "FLIR_05914.jpg",
+      "width": 534,
+      "height": 371,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2a3e42a2b77ce3ff51aa15b6c0e78b822bddc19eb38c0e3bed4850beaefe9d9a",
+      "visible_sha256": "efa7828c1b218d1bb625077c0b71e71c166629c0b94976c67d9992ae66970ac3"
+    },
+    {
+      "name": "FLIR_05924.jpg",
+      "width": 504,
+      "height": 316,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "7fa8796de3d18ec11213ef3d2e884dacd9f79aa96bc75625bd226af13ef46c8d",
+      "visible_sha256": "5729151b599f346e2bcdee7a5e9b11bfce5de80d3d473c5db906c930d8ecf529"
+    },
+    {
+      "name": "FLIR_05955.jpg",
+      "width": 496,
+      "height": 335,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f12f56c01aa886e26d78ca35f27a2e44e2bf8ddb9a981c847428b2cc840963fd",
+      "visible_sha256": "c7ad2f98647efc0f89b903a343f0b3f87b30e2f627e1f81546c688f5eac356a0"
+    },
+    {
+      "name": "FLIR_05987.jpg",
+      "width": 538,
+      "height": 291,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "ac1b7685e7c4e40272923ace95b5a82959cbef5489541690b406acce364d0b7c",
+      "visible_sha256": "651391ac56f118622408674edcfd45d003a6cfe9e6d29891389f8c90827c49fb"
+    },
+    {
+      "name": "FLIR_06065.jpg",
+      "width": 545,
+      "height": 395,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "cc4742dd6d8c54098e5842a36404569e9fbbdc3f5bc00cf75fe8f5059add09d6",
+      "visible_sha256": "e27e1178e1ac5aee9ed7f16544fb414046687e5a92af1456fc28e9c85d695193"
+    },
+    {
+      "name": "FLIR_06099.jpg",
+      "width": 543,
+      "height": 329,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "442d40aced4d2fe66438e6f264239927bfcc6d818d41c34d617b15574a7ebd97",
+      "visible_sha256": "4c9e7dc2cb5e7eb13e0742f7d3cd547129a411c622a4c6f6c735a7268fc944b0"
+    },
+    {
+      "name": "FLIR_06128.jpg",
+      "width": 569,
+      "height": 351,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "86871967efb2e61ae19c1422634321c0445a4c71360e98762a64e572b5c63720",
+      "visible_sha256": "c945092c66e6cd83d1abd22e75a04343af02f416a875921a5ed588275325fbe8"
+    },
+    {
+      "name": "FLIR_06184.jpg",
+      "width": 561,
+      "height": 376,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "e4fb3e8ba5f4ab52e3c69af7a800abf39dc81bebb2889b9054e996f153cfe6c9",
+      "visible_sha256": "d2146b1771d8a0f5b3994049127b6f69874ff84d238a246efd3a1efba821ec03"
+    },
+    {
+      "name": "FLIR_06219.jpg",
+      "width": 495,
+      "height": 346,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "94e1d1cd3f73aee09c8396518ae0b96611c2c7f89f75263c005a47d37f99050a",
+      "visible_sha256": "f9295ce7a33720ba54b20a61c69e2e60b5637d40712b8cc7f79a124f03a6f882"
+    },
+    {
+      "name": "FLIR_06236.jpg",
+      "width": 545,
+      "height": 415,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "97adb339457f5ef37535b6a9b081d286b3b790a449262dee3eeeae2e00268e98",
+      "visible_sha256": "acc58cbfae943e7e73e5b85d6ca4e8d0ac586501c2935076e0a695f7630bae89"
+    },
+    {
+      "name": "FLIR_06282.jpg",
+      "width": 537,
+      "height": 248,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "4a1c8706d1c5f95611af563975a0e5b018b1d84268f1c242d8f50b76aae7512d",
+      "visible_sha256": "8d2795c46aefea76d19015d6565b45dc5abe696ce085f944ff94cd35e5a979e7"
+    },
+    {
+      "name": "FLIR_06307.jpg",
+      "width": 589,
+      "height": 309,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a9eaefce5ad82e5e468b7d5fc1461ec77dd38002ec70b4b69ac9d01b67494c00",
+      "visible_sha256": "53702e9108b6fbc41d796b693975425808781545cd70f3f1a381c5c89e23b14f"
+    },
+    {
+      "name": "FLIR_06325.jpg",
+      "width": 531,
+      "height": 343,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "5b242f8072e62fd1d4e27c458da11ab151a6cf38bfffda6586a6ea5c885c001a",
+      "visible_sha256": "d87fafde42689b6b9b0aa54b17636c980fa8e0c100ee821fecff1443ffcb5fe7"
+    },
+    {
+      "name": "FLIR_06392.jpg",
+      "width": 579,
+      "height": 387,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "80eea278cef2b08a0a9f3b363b2cd2d3a1a2538e378323b546f1da272fec618f",
+      "visible_sha256": "a58165c98b0308311f951b0fe27c9bd959c055531dfbce2e2850126f57a28c2f"
+    },
+    {
+      "name": "FLIR_06407.jpg",
+      "width": 563,
+      "height": 459,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6111267c466661af7b455f31c754e47fd9fb0daa893c6f40f70ce2f9aad692cb",
+      "visible_sha256": "63fd84a70a010614d624969efbc60ba51c26a075e023be4c5b257bf04797be53"
+    },
+    {
+      "name": "FLIR_06422.jpg",
+      "width": 606,
+      "height": 358,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2284bfc0e24ae325fc17c5db2d39ce187a5b4c202f98993384e6b8780388870a",
+      "visible_sha256": "399756929ba55f2f83449f28f84691680248cde20289b979831064d9896a4819"
+    },
+    {
+      "name": "FLIR_06430.jpg",
+      "width": 597,
+      "height": 370,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c0026fa7a200d455b9c3eb719c7f2f8bb5195305ea299bce7a94301e97efa9b0",
+      "visible_sha256": "df28bcf4b0cc8a091970c7282661f19481bf662fe5a8feba0fe2949dd9da6b9e"
+    },
+    {
+      "name": "FLIR_06506.jpg",
+      "width": 579,
+      "height": 415,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f16afd7d554d3de8fe7d1235cdcd627f88c30155d7959faf5efc23033e019104",
+      "visible_sha256": "3907b0d8bccdbf987760e0b500e89e9a5d0d15b95094b2b93263482c20423232"
+    },
+    {
+      "name": "FLIR_06535.jpg",
+      "width": 595,
+      "height": 331,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "08d4e99b18eec347ce069fe2c090a43ac54682069ede6d6b5dab183f732c5b9e",
+      "visible_sha256": "6934c7657f21541d018e1efa872afce3fbd4b90ec0be248175d23f011e556e34"
+    },
+    {
+      "name": "FLIR_06570.jpg",
+      "width": 585,
+      "height": 426,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6b3023719199bd68974a72187a409bd3fed853dba61b6b900b48c200d5cd4c60",
+      "visible_sha256": "3fa78150137482c2bce8b4b3b67cdbb9056846da4e38e2935b454f9a7dc21f7f"
+    },
+    {
+      "name": "FLIR_06621.jpg",
+      "width": 541,
+      "height": 211,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "44f90f02d6a098974aea7158f8389402c3a19246a96276011f13b26f1c16db89",
+      "visible_sha256": "d87b699a470399713df5c2ff25fd46270e93726a469aff25d5d8801dc20f8ae5"
+    },
+    {
+      "name": "FLIR_06643.jpg",
+      "width": 531,
+      "height": 329,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f08a544378353c55839c2c1b561457271db9460ee5cd23a46ba9f4762cfe04a4",
+      "visible_sha256": "8cb9e7db479e5cfc7bd30a3bd5d48a8c84a3e8b286432219dc4b06dcfe8c4445"
+    },
+    {
+      "name": "FLIR_06660.jpg",
+      "width": 549,
+      "height": 308,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "e353eea64dc91e2b6efd1684c6505ed1411dfac4d001ec3390c1cb1f8452db24",
+      "visible_sha256": "7d0e2b305dccceda65a6f146e413d9e18f0533387ed27fd81697ab7822cb7ed2"
+    },
+    {
+      "name": "FLIR_06763.jpg",
+      "width": 537,
+      "height": 429,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "bef6c5b57a18ff5239fee87d1fe66d79ed515608b7684b3a022d244f661c5e6c",
+      "visible_sha256": "6c852b21a3b3eeede813d22716cb402025e77218a45396587b9d00e2c9529075"
+    },
+    {
+      "name": "FLIR_06775.jpg",
+      "width": 538,
+      "height": 392,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "fc739f9df2724923fc50a7542f3b0ce08204a09f5f0c913d699bd4b778246d2c",
+      "visible_sha256": "1f761431a5bdaf7ba4f65fd4cb38f0141f3bcd74691591013f5a8a0a22ca48f2"
+    },
+    {
+      "name": "FLIR_06795.jpg",
+      "width": 486,
+      "height": 226,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "d1995f49a72617bfd1c90831aed8146e373dd6efce5b46ae18aa608a37e61d4e",
+      "visible_sha256": "ee0fa4e0c22bc02b7aa827e3cd2c6cde46cf016c8660cf52bc814fa60228a274"
+    },
+    {
+      "name": "FLIR_06832.jpg",
+      "width": 554,
+      "height": 374,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "d1a80980ea27d65b04f66c1608c4588c41743138b463a25b09f4107ce6ecbd35",
+      "visible_sha256": "2b5db849dbb0b9ec1eba81c8e6e2d374897a705db6ebbe9dade27a71403c924c"
+    },
+    {
+      "name": "FLIR_06862.jpg",
+      "width": 592,
+      "height": 406,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "e77266a1d3f24c14909ed2a964518f1693ab5c5e50e0aac1e171ef1beed30ee5",
+      "visible_sha256": "78aa78f419bf2dd6be8d7e2b7ebe69c597f915b0c8a6518edb6ffe39d1e12d72"
+    },
+    {
+      "name": "FLIR_06874.jpg",
+      "width": 581,
+      "height": 297,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a370c0bddbe058e36779728b6980dd0741456e11046df5a0def63209d5a9acb9",
+      "visible_sha256": "0835efd2f62c9d7784504970f5319dac69dfac9dd095317c91e5061f68248234"
+    },
+    {
+      "name": "FLIR_06876.jpg",
+      "width": 514,
+      "height": 329,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9f8cebcfe0f1143df8ee7849cafb319ad9747611b2ba0a27b5aea26024620d25",
+      "visible_sha256": "eb25a614c1cf6a92381988102768ecde0b3b5085dcea8f0567572cabfcf4410e"
+    },
+    {
+      "name": "FLIR_06892.jpg",
+      "width": 568,
+      "height": 278,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c642cbee6e397d4c84113ba28442c1d202ee2517df43ca7fef31928b502735b8",
+      "visible_sha256": "58f864c48c964b8f64e597bcdc5341345def7e740f53ca5620e18ce734035669"
+    },
+    {
+      "name": "FLIR_06916.jpg",
+      "width": 394,
+      "height": 380,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "b9f004ef4b975b8f011fc15f19da6192347e2e962d2b808f13db6c0c081195dc",
+      "visible_sha256": "9c408c96f6fb34552c0762bbc6c3e96e239cdf1df4ad40f617a0594bfe126f3c"
+    },
+    {
+      "name": "FLIR_06920.jpg",
+      "width": 561,
+      "height": 358,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2922ea2dcb0c2ba8c334236286b69f9c24545e7f5c5374a5c1e3006e9aceb8b6",
+      "visible_sha256": "4558784f21e96ae914abe512c711774f0cac013908275961e131b5328d00d5c9"
+    },
+    {
+      "name": "FLIR_06962.jpg",
+      "width": 586,
+      "height": 273,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "53674fb95e5aa179dc7310e5850bd596e33890a6b51cb208e76882d658235d7f",
+      "visible_sha256": "8a39b47bce4b2b5b90a60d48345268b991d3319298ace6100212c9063150ec89"
+    },
+    {
+      "name": "FLIR_06974.jpg",
+      "width": 597,
+      "height": 161,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "32521984487d688a23cb8ea55e23de19d2557968c22ee4bc859114c50e1d5614",
+      "visible_sha256": "59ea3bbcf1dd52b39a468ee0d40fc37ff1b167c604efd0f43539e5be488b75e5"
+    },
+    {
+      "name": "FLIR_06983.jpg",
+      "width": 562,
+      "height": 248,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "5cac6d5db738ff2835dcaec462ee5cff8e52cfae0696e2def92a55c485e0db90",
+      "visible_sha256": "9bade4609b692f718c0a1f9167981d1276ae83db64b47a3871caeba9c8a68ed4"
+    },
+    {
+      "name": "FLIR_06992.jpg",
+      "width": 511,
+      "height": 361,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a99b2ee195204c7e3fb021e22e2250f6292cff64d697d609d6cc5b5752522497",
+      "visible_sha256": "1553a809c880c3bd90aa3a87c16e87b2d2b020092b7c849e91f9426e27781fbe"
+    },
+    {
+      "name": "FLIR_06993.jpg",
+      "width": 585,
+      "height": 331,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c9ef7a15c5d0245aabc2465ed482d372f77c50d8d5f758f1edc0e42966803c8e",
+      "visible_sha256": "e6583a94c133467c752653280457c11de59511e1b9f3e449e188375e5515b066"
+    },
+    {
+      "name": "FLIR_06995.jpg",
+      "width": 502,
+      "height": 212,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2401f8bd264281fe8d6607c6f317c5eea117e7707880584a4d4cf97f6652a756",
+      "visible_sha256": "3faf6d622e8295425f4f52a07c40ee65bd76f7e42f2b5a4ed80f2acebf2d9f4a"
+    },
+    {
+      "name": "FLIR_06997.jpg",
+      "width": 543,
+      "height": 349,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9be084d88a48375466d46384c2a28f161a408507f9832635111ab05b753f21d2",
+      "visible_sha256": "c109f325758d4acb945cb34e80fa4d83c266e761625c86c479878e303bda1e21"
+    },
+    {
+      "name": "FLIR_07012.jpg",
+      "width": 595,
+      "height": 358,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "e55414e936b8841050605d0c20cc27e2ada6eadc7b013f0231c6bf47a8b1ac12",
+      "visible_sha256": "9f69c42ee098b2232dab2772dcb6b6153b7098cbff9cd2bf8730d4475dbb3100"
+    },
+    {
+      "name": "FLIR_07028.jpg",
+      "width": 599,
+      "height": 317,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "66d538076c459d6fdc4967093726cfb25f6f9cb1ac31ba23e049e779d1dcca22",
+      "visible_sha256": "2b598d79a1939b0f8bb1902fe1b168924bd13eb37d9f91339bfd1d0908f14138"
+    },
+    {
+      "name": "FLIR_07060.jpg",
+      "width": 574,
+      "height": 255,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9238c850a140a2daaaa09cd98eb89a6e49e7bebfabc674b71d8993dd23cd31c7",
+      "visible_sha256": "8237eb4f37d2c8c4ca1f23b39c808d91c4c78dae2b79c98fa415f29bef0152ab"
+    },
+    {
+      "name": "FLIR_07081.jpg",
+      "width": 559,
+      "height": 343,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f67affcb8c1809f1afc1607c372e82d1eccaae9378d6d37931cc997857d3419e",
+      "visible_sha256": "9a69d03deb176e650f2955dbecdf6ec684d795d6e3450ead6ba783929a8a67ff"
+    },
+    {
+      "name": "FLIR_07119.jpg",
+      "width": 594,
+      "height": 308,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "b37adb4e8f31cb68d1a613990d2282ebe8a38e6e9858b974ca258178242c13ab",
+      "visible_sha256": "66340d06eef04ee1c66310d1464aea2ae0ddb689ce7c7e1f04123b48f3344331"
+    },
+    {
+      "name": "FLIR_07125.jpg",
+      "width": 606,
+      "height": 307,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f0522c48fa9762ecc1240ad1ba9787dcb33b8807bd632a8bee05462ec052d0ea",
+      "visible_sha256": "85d8223dbf47bb2b2f87d0796e95f75256fa67108af25f413d4c999fa595bda3"
+    },
+    {
+      "name": "FLIR_07166.jpg",
+      "width": 592,
+      "height": 289,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "711ab50f7ac0326842977cec32a262b3a92b85d106b6f8ece81a1d1969d21d9c",
+      "visible_sha256": "fbbd9ddfa498dcf96e05088e54ab7a9440542e45f7eb908f0c71fb999e3eab7a"
+    },
+    {
+      "name": "FLIR_07176.jpg",
+      "width": 399,
+      "height": 282,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "15d284ae7fa1e2a96a7030103957fb46df17e1fb43aa7b0886bcebe9e290e151",
+      "visible_sha256": "80646d1d31c3fa999dbc5cc93146eef4f80c67754704f6a0265add1adcf69d96"
+    },
+    {
+      "name": "FLIR_07190.jpg",
+      "width": 606,
+      "height": 244,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a0e3cc74f776e67d124bbf395e0fd8b25c9167b6c0abfb6762189533371b7450",
+      "visible_sha256": "39686d0b55a2367339824475a1a0e98d10bbeba3a7da9371331f4df2b8e39dab"
+    },
+    {
+      "name": "FLIR_07202.jpg",
+      "width": 572,
+      "height": 446,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8eea50242d6a80c106e48a8f08076012d4a81068d985c6fca390afd6011b76f0",
+      "visible_sha256": "07406a024563eb2a797cb6099ab70a3e33672670c4fbf28edaee32233853d471"
+    },
+    {
+      "name": "FLIR_07206.jpg",
+      "width": 569,
+      "height": 282,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2a7a34509d883919c5e7d7eb0d3262c60fdd0eb0341618cda7c04746c849d324",
+      "visible_sha256": "ea27d1156253765ebeca2469ef9dbbc781381ae23eb20fa41ec67e66e69f37f4"
+    },
+    {
+      "name": "FLIR_07209.jpg",
+      "width": 442,
+      "height": 304,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8c9725c9aeefbdc20bc8eaed08809a0217346543760c75a5f414ac724df83c15",
+      "visible_sha256": "98861b4d5a0b384861e415c0c1663d73665238e84977e96312dd5f653ba8304e"
+    },
+    {
+      "name": "FLIR_07210.jpg",
+      "width": 587,
+      "height": 341,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "994d9ad3f1843040f2f1cdc2506edc859e27a6de9741f349bdacb21c584f9376",
+      "visible_sha256": "4efe4fd36ac60726ce95d4074c73af652e17ecff3afe7dd8caf0e47a403650cb"
+    },
+    {
+      "name": "FLIR_07225.jpg",
+      "width": 595,
+      "height": 397,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8ec6ecf81ec84939e17972a71467878b196ac4790b4e83e0b6bc83629c14d98f",
+      "visible_sha256": "704d96ebb423d4f76893674216e5b417381744cb14dfb8aa13faa7e80f05ac36"
+    },
+    {
+      "name": "FLIR_07365.jpg",
+      "width": 598,
+      "height": 276,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9720188db0e13ac17ec635e1cba0ca50b6ab041c0d66df9188ad1f0557a751ec",
+      "visible_sha256": "82e6c0345634cb2202d548c49ff55bb2ed79ab8c04701cc3363502bac8453b85"
+    },
+    {
+      "name": "FLIR_07371.jpg",
+      "width": 611,
+      "height": 291,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f40984269c81ae35e47ebcdbca3f390784c36e5f5b451ed1c4dd3f2cd6b5b5c2",
+      "visible_sha256": "0710918df844c2f74f05a1c3ccb036f605ce5c2a3310bbc13f5013fcb14cd9e3"
+    },
+    {
+      "name": "FLIR_07399.jpg",
+      "width": 575,
+      "height": 383,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f80c75fba3958859051b97138b98f20b40f046a64f59c2f6d182fc58d6745ea8",
+      "visible_sha256": "54c1ccf09529913e76b272527383ff92ca3581a8379b181262c97cd97f84e2b6"
+    },
+    {
+      "name": "FLIR_07427.jpg",
+      "width": 622,
+      "height": 261,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "119eb7bbdcb83d14bc87ac871615fbbbcdabb6e1baeed7dcb1a8ce5dbfddede7",
+      "visible_sha256": "ecd6cfeb9e630abf9b235acb95075f05c98c4aa77deeb2253f661b83b5f9c9d5"
+    },
+    {
+      "name": "FLIR_07428.jpg",
+      "width": 585,
+      "height": 323,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "fdf97ff147864651fcf5f6f9c3b4b522569de60c3c5408f6981e9454de9971b7",
+      "visible_sha256": "26869b2a1707afa9eb4fa50559c59ec632e4b6b3c4f7fd4d28e7733a63d8a20b"
+    },
+    {
+      "name": "FLIR_07433.jpg",
+      "width": 577,
+      "height": 257,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "15fa4d0fc820c9d986a13592cbf601b3ad073df6cccf7d09021e1f6cbf60af89",
+      "visible_sha256": "b8cf1077e4137457536fd1b6b61a422bc02d5d8b48d75e9d0a0604021c6217ff"
+    },
+    {
+      "name": "FLIR_07504.jpg",
+      "width": 421,
+      "height": 276,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "799f35047cbf34c5b81cb8a4a48599279742fec680a772d20e7fb85283a32387",
+      "visible_sha256": "d13a098df10d8f7bbed25f17a7c38318ea52e60d5457ad5c7a76c561eac6b9d7"
+    },
+    {
+      "name": "FLIR_07555.jpg",
+      "width": 436,
+      "height": 286,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a3992eefa13467e703a887f3f115849f7dd2dcfa27831812d8a35cb8eac906ee",
+      "visible_sha256": "5eb51ca30fd4a7bb916013fe962ec6ad0f7e00a64f681af417cd94cbf8fe4643"
+    },
+    {
+      "name": "FLIR_07583.jpg",
+      "width": 461,
+      "height": 306,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a92399033bb121fc03f47e9603d61823d45cba1ff1658357e255fc4e48a0d5df",
+      "visible_sha256": "875388b3cdc16445f9a5679b7c9e47aa117a128b2a665ee832fe50dd3cd8ef8a"
+    },
+    {
+      "name": "FLIR_07620.jpg",
+      "width": 526,
+      "height": 316,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "564604c1797741c5f35ddbfd1fc4986888fbf2ca1ad8d820ed03589e8b31fc5b",
+      "visible_sha256": "407c570cbd2a667c0ae448486fa7fbf76bbfe22fd6c51a85de513108176cdfa1"
+    },
+    {
+      "name": "FLIR_07732.jpg",
+      "width": 486,
+      "height": 371,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "60bf2d6a9659b3aab09058c7c8ba802f7e812a1c349a8caceff7efeeb932852b",
+      "visible_sha256": "d094b38ad78678db3d16b0c04c30a17dca5e0d9183325de8cdae6207b61b2238"
+    },
+    {
+      "name": "FLIR_07747.jpg",
+      "width": 436,
+      "height": 316,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "88d2c226fa6d9176640f0c42b128aa2b4996a7df539eba1c20771c5019b8dd53",
+      "visible_sha256": "b249dacbc486f4ddf7f37c3b3522e1fdd0990da4df7afc2e1bb4fdf65c519a11"
+    },
+    {
+      "name": "FLIR_07786.jpg",
+      "width": 476,
+      "height": 341,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2de4e4676d18d26883c98fc556f7465bbdd8fea68875f82aa78300c7da792224",
+      "visible_sha256": "9e726161b16f19f27522dcf759b6a07327e3f9182a8b75bcd9a90ba2e8ef3617"
+    },
+    {
+      "name": "FLIR_07809.jpg",
+      "width": 376,
+      "height": 351,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "a10164f95586530ac4b9e811ec5ca46f70e1a876c1828182bb57971a121f337e",
+      "visible_sha256": "0015df2ff7ba38a96290b8d371a3c1a52526b6ddef97e95c3a087b5b08964652"
+    },
+    {
+      "name": "FLIR_07968.jpg",
+      "width": 471,
+      "height": 301,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f0a3693ea67350b6425007b2815d88926fc25933db023dd8f6a005580e7880ed",
+      "visible_sha256": "bf3fe529466585ed9d5901aed5dd2ed60259a08001535bdc52e548cab680231c"
+    },
+    {
+      "name": "FLIR_07970.jpg",
+      "width": 511,
+      "height": 326,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "8f51d8d6731e19db7a61bb04507cf381f0dfc163ef14f46f9f88215605723125",
+      "visible_sha256": "5119b996a329c593415777d54e0a4dd1bf36fad918b1492bbf71a7378fbe9935"
+    },
+    {
+      "name": "FLIR_08058.jpg",
+      "width": 481,
+      "height": 311,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6c015d39eae46eb5fbbb8f1cac41cd5271304be51c8c43388e15c60e9248d39d",
+      "visible_sha256": "c4d1e9b824374dcd352127ab14f7188cb3e095c36f20a5710645db847ff6fd9f"
+    },
+    {
+      "name": "FLIR_08094.jpg",
+      "width": 446,
+      "height": 301,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c4b6b8cb087774bf9f2aa14d0e34e8f972e38e8c105bd6bf2002e622e08e1390",
+      "visible_sha256": "ac12ce8d878a19db430c85656ccb47171b06275bcc8ff14c271190387f218216"
+    },
+    {
+      "name": "FLIR_08191.jpg",
+      "width": 391,
+      "height": 271,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6f4ef0b18032e970da68d3ad3e2f76cb84049aa6525f87e60dc4ebdb5506c7b6",
+      "visible_sha256": "a606f4b363e19ff3fcc9b5861f335f6741102f260636d08451cd74fd1ef15779"
+    },
+    {
+      "name": "FLIR_08202.jpg",
+      "width": 451,
+      "height": 356,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "130b767ae0e80461113427ee5c3b66e5f7be95e4db371342d4f9cfe24f210928",
+      "visible_sha256": "8392dd3af11ac40e7b099bc19bdb2a6aa947083c40f5ca5a156151420279ec74"
+    },
+    {
+      "name": "FLIR_08220.jpg",
+      "width": 396,
+      "height": 326,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c7774af1d9da0ecca69d67f2e91735cf740f4e89b27aaab8284af1b70f841284",
+      "visible_sha256": "65aea257d599764639223f94f220ee663e2024f3e63b2df862ee633dcbe4aedd"
+    },
+    {
+      "name": "FLIR_08248.jpg",
+      "width": 481,
+      "height": 311,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "51f3c1972c55d22538f95b9e3a3a1263c897492ed164bae0de9642ab250ae4b7",
+      "visible_sha256": "42939d7de20716833ffee645a046a3159a029c6e2779e08443b62412ff7b7f36"
+    },
+    {
+      "name": "FLIR_08284.jpg",
+      "width": 421,
+      "height": 351,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "cfc213faa270a2f40035ce4ebc9e97623fa8c12fb0b51c91e13b3ce99dfef349",
+      "visible_sha256": "3e3f07b5456eb33fed5cc3358f58b112cad480cb08c53cf532d98c3fc9ef622b"
+    },
+    {
+      "name": "FLIR_08526.jpg",
+      "width": 476,
+      "height": 341,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "506559dc3cecf423afd639225b2464cd67aefeff2f8de0a1190f560761b6fa20",
+      "visible_sha256": "9bc352dd3039d2b606806c1787925fc562f89d31f11849418ef45e86653e5ef2"
+    },
+    {
+      "name": "FLIR_08592.jpg",
+      "width": 531,
+      "height": 386,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "520f3615f50f968bc0a2c2b92053e2da1a0a14fd73617154b155c97a89aeead5",
+      "visible_sha256": "67304587fc98274224bdc9b5b1b27f63d31ee7ab72685a6728b936562c5cf969"
+    },
+    {
+      "name": "FLIR_08749.jpg",
+      "width": 481,
+      "height": 281,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "1ab65ed271cee70ca370c45b14097d17535481bb656395a886176391c93e71f2",
+      "visible_sha256": "bed9a0a88935a3e2496e4e06efa598487aa16a4586aced6ce0498eddaf90919e"
+    },
+    {
+      "name": "FLIR_08756.jpg",
+      "width": 486,
+      "height": 216,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2391b44d13dc710bd27845b9c3bf6045469db37983cc23aa1928e2e74aac9479",
+      "visible_sha256": "7a84165cc527e6489b799904095b82f5a2a1a0a2610f18883e68503e5daa758f"
+    },
+    {
+      "name": "FLIR_08835.jpg",
+      "width": 371,
+      "height": 331,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "acf2fe229ff094dc40871d86f8435c96b7fb0f61400a17434fac463e4264a0e9",
+      "visible_sha256": "09b11ddee8bb702e4b75a8d2d03b6f54fefe0f2b6cf6dd222d1f099dc3ad91fa"
+    },
+    {
+      "name": "FLIR_08858.jpg",
+      "width": 446,
+      "height": 331,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9a57fe1f77c48f7caf64c6d9960088f2c5aeee1e46bec7bd3940aa72bc9157d9",
+      "visible_sha256": "08171c5f0b10536150a9a6165c90de873717a36061605e70ede5e8fdafc893e5"
+    },
+    {
+      "name": "FLIR_08865.jpg",
+      "width": 476,
+      "height": 256,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "cd55af4ff4f020a911d3f0d81b8d8284bd54f2d17f0ff2759cb56638d640a408",
+      "visible_sha256": "6a7305909af8e277ed1d581d2584e35394b3610e28f34102d5ce65973dc2b6f0"
+    },
+    {
+      "name": "FLIR_08874.jpg",
+      "width": 461,
+      "height": 271,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "b88d92193dcc9551be441663b1b16d96c186a4c570554f2631edd58f1976587e",
+      "visible_sha256": "c529531e169ab3e069cf75fc9140d797b74dc529ddf9b8f3db2098c823c3cac1"
+    },
+    {
+      "name": "FLIR_08914.jpg",
+      "width": 471,
+      "height": 231,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f4dd3503a21b99710cb502011b9e0bcc8da3510ffb58f5f703bea3891f9dc79a",
+      "visible_sha256": "9dbc241387d888e4c37433fdf02afef4e196d46204626efc777d28013283b68c"
+    },
+    {
+      "name": "FLIR_08932.jpg",
+      "width": 351,
+      "height": 261,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c6df154ae6e1366590c27743a27fee28c73a1f18fafd5efdb43cd59a317ff95d",
+      "visible_sha256": "648ddd101c10537fd3c7402c6b881f9b0099e2347a1c8255877cbd29c5d94ffb"
+    },
+    {
+      "name": "FLIR_08954.jpg",
+      "width": 501,
+      "height": 301,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "4cfb9508de2faf182debc55805cbcc7d968c53cebbd1229b762733e3396a7344",
+      "visible_sha256": "e75fef0b0cab7c4adaddbf1885f1c63ee599ccd638db24ae25f30677f887f81d"
+    },
+    {
+      "name": "FLIR_08999.jpg",
+      "width": 466,
+      "height": 216,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "06e165e5216ebfbce5343e0d525aeb241d1442eed70616c50900451dc43b5eda",
+      "visible_sha256": "1c94607789d4c523b6660fe274bd994281105aeeee46a7bb3eebc016d9f28da2"
+    },
+    {
+      "name": "FLIR_09016.jpg",
+      "width": 416,
+      "height": 191,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "df11110e6ddf901f93c752b37e9ce2b1c465104fa04e69e7fa6f2613eeac2803",
+      "visible_sha256": "d03097b4e67dda07344c67677b463f63a29092e42a02543c63f8a6ded243fdd4"
+    },
+    {
+      "name": "FLIR_09336.jpg",
+      "width": 461,
+      "height": 256,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "7b9f4bce5f6dd756629708698ddcd316bc0b839d58e655bc426bc35d3faa298c",
+      "visible_sha256": "135485dabd3f537d931e0691e0b232ae37c5cd004d6caa01d9b7a024ae88db14"
+    },
+    {
+      "name": "FLIR_09350.jpg",
+      "width": 436,
+      "height": 246,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "aff1f866c0f89f2e9a2c4b96e51ebf0c7176f6b8b2a50ef82a67580200c7c699",
+      "visible_sha256": "5171797f2ce3ac96ee8b50337a258b7a1ec6ffe127775f14e46c06a0665d70e9"
+    },
+    {
+      "name": "FLIR_09367.jpg",
+      "width": 507,
+      "height": 256,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "908b9749b742cae4e462d1afd8e5561a2c0c964c0db7357016521e21dc5bd428",
+      "visible_sha256": "9d84eaebb5cc02931a49c008e3caeaefb1da5eb8d922910b4642f8d8f13d6840"
+    },
+    {
+      "name": "FLIR_09376.jpg",
+      "width": 489,
+      "height": 227,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "3dfb3483bbbd6f35d9e37fc6e1854d950edb758a56fc0fd7725edc340545a6d2",
+      "visible_sha256": "7fd05e5529b5260dea7d8fbf5c93016e956134caef0efd432ad5bdbdbb7d95b5"
+    },
+    {
+      "name": "FLIR_09416.jpg",
+      "width": 433,
+      "height": 291,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "dfb24d5c70b68bfad07a630bb421a063e830d2c85db80339f10068da48e5166a",
+      "visible_sha256": "df7ee433b26fa398925fe0271e2f4cc6a29e64b1c04419ce56db0c7f0abc71e2"
+    },
+    {
+      "name": "FLIR_09437.jpg",
+      "width": 493,
+      "height": 304,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "0529de0740eae6d49b6a42f56a292cb95ae0ee6fd04734899478065444b51996",
+      "visible_sha256": "9a143332653d5dcae6aa88846a53d335dbcd524b3c1b62dbf27666337085c168"
+    },
+    {
+      "name": "FLIR_09465.jpg",
+      "width": 517,
+      "height": 286,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "4608c0d3691e3d82ec8131d002ed6b8ebeaac91ac0fc88ebf9dac101ca88e075",
+      "visible_sha256": "db29154a21a8968c77e32944a22713456f39b782c0f4eb4da711f15c120c5aa8"
+    },
+    {
+      "name": "FLIR_09488.jpg",
+      "width": 499,
+      "height": 248,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "68790e28b99f34dad31f725dd250864be704dd00dc61b7230694c62497c5d100",
+      "visible_sha256": "9e27b991602124b806dc579f9c635e6fe0b0e12409ccaac7d262c26bad3dbd7d"
+    },
+    {
+      "name": "FLIR_09512.jpg",
+      "width": 495,
+      "height": 319,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "e536c1556359b5a698f512bf2bb4aca8f536080601db55f859c71b41a561f63b",
+      "visible_sha256": "86e968cf26c99fa5592b3cc1355057785360a648ca748253664679e9caed8315"
+    },
+    {
+      "name": "FLIR_09519.jpg",
+      "width": 517,
+      "height": 240,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "9bb3edb01d0ad606cc12e7aa416b8a1ded723a576c55f2f7d884937548ec576b",
+      "visible_sha256": "71ab125d3f8732c39ed2180b278175183c1fb609a911720459235fba29a3a8c9"
+    },
+    {
+      "name": "FLIR_09525.jpg",
+      "width": 360,
+      "height": 235,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "b6cb42e864b6f54fad38e9a902620924c05c87cb93eec373f97739a925c70c02",
+      "visible_sha256": "47691bffcb02ae30574d749694d81afeefc205eeb6977d039775f258fe9de523"
+    },
+    {
+      "name": "FLIR_09545.jpg",
+      "width": 477,
+      "height": 259,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "603da456c26bb5031d89cab6c19cd26025663b4a46c5c55c8f4876f9709b8dfc",
+      "visible_sha256": "a19d5e295ad9b09d2d07209270cba9b63f774c2d7edb4b70a34b32a9b8e81133"
+    },
+    {
+      "name": "FLIR_09573.jpg",
+      "width": 428,
+      "height": 275,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "d05c1b82197f0d4f9f93b1cb87e75f14b3e048e36150a9c8f0a0fe134b0a24bd",
+      "visible_sha256": "8ec1bef524d87cc3d8daf5303a15336a4fe5421f3f6c8b03a624e2f7440f9132"
+    },
+    {
+      "name": "FLIR_09616.jpg",
+      "width": 368,
+      "height": 178,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "7c897e27d214e68adf6898b231081ba0ab303338c4260c7fe58e955a6c452777",
+      "visible_sha256": "57bae0f0beabee4109252cab10b907b0266d2ae46ab32e65699dd2a0409c03de"
+    },
+    {
+      "name": "FLIR_09624.jpg",
+      "width": 505,
+      "height": 313,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "08980777da95395b7a85778abdfa240c4c5dd9e741f67601510f7a87a59c55ea",
+      "visible_sha256": "dc5b5b6cf7eb02e7d286cd92d4241f68b3e42065070dde0b5452c0f6fbef47ee"
+    },
+    {
+      "name": "FLIR_09636.jpg",
+      "width": 506,
+      "height": 320,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "24cba5214e5f700066883bd2d565ae9295c3bfb16de5cc85b168a4eecd308c44",
+      "visible_sha256": "26e9ce69b78227878d2ec4b4b2429f99d29110b37523ca8496272e4ac51b236c"
+    },
+    {
+      "name": "FLIR_09652.jpg",
+      "width": 428,
+      "height": 331,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "cf1bbd3bb9601a094bbce2c96c8ea9be5868b6579c480a0577a40f02cb1af668",
+      "visible_sha256": "ced36308ebcf4a782d65d8b0daa2342d1f5f1e5c71be6a1da6e37836a33150b6"
+    },
+    {
+      "name": "FLIR_video_00069.jpg",
+      "width": 500,
+      "height": 232,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "4f88bc6df92233983b5825880d35b02cb19317b1ae81b0e8c456782217cf0565",
+      "visible_sha256": "c76cd794d6e8fc763e4fdfb430ca341fc0d93b11fb68a392d22a0fa81d49a428"
+    },
+    {
+      "name": "FLIR_video_00248.jpg",
+      "width": 505,
+      "height": 218,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "079917c2ac3c83e1eb2db200c37957bf4f4cf054da4f5e18bd807773c90e3181",
+      "visible_sha256": "3298b3091ebe94b609e281ffa0ee9061974f39f811775963d47863cba63cd915"
+    },
+    {
+      "name": "FLIR_video_00595.jpg",
+      "width": 479,
+      "height": 233,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "aa89fce0fe9f4685fcbff4d967c0380f7be539ff3b88b8321c122fad84d3124e",
+      "visible_sha256": "f7b6152bea6be137b81804f734424ddce57e81c77f7fe04519b8b7ffaeb28947"
+    },
+    {
+      "name": "FLIR_video_00727.jpg",
+      "width": 529,
+      "height": 222,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6d4379020d5075e9f3de5e6f04b7dc4aff4654472e213e03c1a282c0172a72bb",
+      "visible_sha256": "062f9eeee1e3f6715aa73cbca548ae5d6fb5069cd1d8939668d8fc08ac02618c"
+    },
+    {
+      "name": "FLIR_video_00843.jpg",
+      "width": 505,
+      "height": 275,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "f3811693190ac7059f3e405cde0c8753cc4dd44f0ad11c39694661a0ba60a3b2",
+      "visible_sha256": "1131407217fe50a4664fea3e0cbe7a4e2900d6cb5fcbbbefca897b9cfddca873"
+    },
+    {
+      "name": "FLIR_video_00939.jpg",
+      "width": 506,
+      "height": 314,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "acf2c19ee1f5e7d51f1c3eeeb44d0f77a312143d9d350e268659318c7fb9ec97",
+      "visible_sha256": "fcbafd318d112feacd6b091f4e271ac1bc5af33c190c0ed47de5e4c2cee41746"
+    },
+    {
+      "name": "FLIR_video_01053.jpg",
+      "width": 528,
+      "height": 279,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "c68e39107079883b1069a97cc9a3113b2ccbe8665f29d53f2188eee4d9698723",
+      "visible_sha256": "f02ab33c56bf317ba8ba468b5e4a2842f33e3790f5ee58ce0ebade8cba05bb2e"
+    },
+    {
+      "name": "FLIR_video_01425.jpg",
+      "width": 506,
+      "height": 270,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2fe9ff3c20e31a2339787d8e46ddda839dcc08b8f4eac109cdcf43cebe8aa38c",
+      "visible_sha256": "dd4e1dade17d7905c8171506a28558a1c35a664b04ee7e1705e1e6de27f89db6"
+    },
+    {
+      "name": "FLIR_video_01876.jpg",
+      "width": 521,
+      "height": 264,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "b55e3a41ee6b6531e4d8cd7d950678db1e9bca161e69fa9bc4d2d9e48ae49830",
+      "visible_sha256": "af563ee56c7224b8938c1f9840adcebda994dcc8051f7af5f10d4eb10cf90d12"
+    },
+    {
+      "name": "FLIR_video_02223.jpg",
+      "width": 528,
+      "height": 310,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "fe5681be9ad4657a9c2b0d5cab1b86dfc29b781459114efd6921db43ce49ed06",
+      "visible_sha256": "f267f3ed9e8d40456e7b84d257b91408e03340a39dedea7e6dc661dc575b0506"
+    },
+    {
+      "name": "FLIR_video_02829.jpg",
+      "width": 518,
+      "height": 311,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6501c835065417f8b4058ea0ae3bbe0829fe56ab3994d422701af4d06890a83a",
+      "visible_sha256": "e642518f6cd8422079283eb6dac77117ee1eebac891956ad59e356b86e51883b"
+    },
+    {
+      "name": "FLIR_video_03237.jpg",
+      "width": 506,
+      "height": 274,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "4818ac6a124c3b44fbf4befeed959774c8370bbde40e703f2e3e72f746f65cc6",
+      "visible_sha256": "151971784f3ce8526836048a4ac0a2f7650dc44d348436831d5e8362d0de557e"
+    },
+    {
+      "name": "FLIR_video_03374.jpg",
+      "width": 500,
+      "height": 308,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "75fad88dbe5993c45d4c579692438957936e393bdd2141de8c1572306b66d0b4",
+      "visible_sha256": "be3ec77ce89bc83a61c4ee05c6491466ee1fc721da2a708b01f27a48e9559861"
+    },
+    {
+      "name": "FLIR_video_03425.jpg",
+      "width": 503,
+      "height": 276,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "106702b5d928e9b763678f99b788d4c933950aa246c7026a188e6da2a3df5d68",
+      "visible_sha256": "86f6ba48665f89f56bd09ad781237b22fd4dc998a2f3d090894cb06316497704"
+    },
+    {
+      "name": "FLIR_video_03894.jpg",
+      "width": 529,
+      "height": 328,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "6884df33799845f30f2eee5683023afcbdd800eef19d045a4461c5c868296aa2",
+      "visible_sha256": "404c14b06d7265d1929ed7596d1223d7f6d544f4b788414397a044779c6c71cd"
+    },
+    {
+      "name": "FLIR_video_04111.jpg",
+      "width": 527,
+      "height": 224,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "2e5ac082d82e0ca44d867f2a271956246e894800d991a315579e43f6d9b7dc35",
+      "visible_sha256": "3445ef618bb424210ed7e3f26b5dd047e019db6a636882ca6c841b97acaf5c61"
+    },
+    {
+      "name": "FLIR_video_04215.jpg",
+      "width": 486,
+      "height": 266,
+      "infrared_mode": "L",
+      "visible_mode": "RGB",
+      "infrared_sha256": "594794f31a9834d268b79ddb7d39133678692b58516657b2cba7f492a81b7335",
+      "visible_sha256": "00edcab17074c69f9b8b97d48fb745945951b25949de6e96c9cd6980e8387b30"
+    }
+  ]
+}

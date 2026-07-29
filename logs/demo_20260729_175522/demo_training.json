@@ -1,0 +1,174 @@
+{
+  "purpose": "live demonstration only; not used for paper metrics",
+  "uses_real_training_images": true,
+  "ir_path": "/root/autodl-tmp/datasets/SIBA/train/ir",
+  "vi_path": "/root/autodl-tmp/datasets/SIBA/train/vi",
+  "steps": 20,
+  "batch_size": 4,
+  "patch_size": 128,
+  "seed": 2025,
+  "loaded_checkpoint": "/root/autodl-tmp/SIBA-Jittor/logs/demo_shared_initial/SIBA_seed2025_initial.pth",
+  "saved_checkpoint": "/root/autodl-tmp/SIBA-Jittor/logs/demo_20260729_175522/SIBA_demo_step20.pkl",
+  "records": [
+    {
+      "step": 1,
+      "loss_total": 0.28933244943618774,
+      "loss_laplacian": 0.0048690419644117355,
+      "loss_intensity": 0.22337666153907776,
+      "loss_sobel": 0.2183043509721756,
+      "elapsed_seconds": 3.1348528480157256
+    },
+    {
+      "step": 2,
+      "loss_total": 0.18662455677986145,
+      "loss_laplacian": 0.0032155781518667936,
+      "loss_intensity": 0.24782702326774597,
+      "loss_sobel": 0.12968607246875763,
+      "elapsed_seconds": 3.4848018987104297
+    },
+    {
+      "step": 3,
+      "loss_total": 0.5106020569801331,
+      "loss_laplacian": 0.009286917746067047,
+      "loss_intensity": 0.30127567052841187,
+      "loss_sobel": 0.38760530948638916,
+      "elapsed_seconds": 3.7976616006344557
+    },
+    {
+      "step": 4,
+      "loss_total": 0.20640528202056885,
+      "loss_laplacian": 0.003761433297768235,
+      "loss_intensity": 0.1340242326259613,
+      "loss_sobel": 0.15538851916790009,
+      "elapsed_seconds": 4.097501276992261
+    },
+    {
+      "step": 5,
+      "loss_total": 0.26349711418151855,
+      "loss_laplacian": 0.0046950350515544415,
+      "loss_intensity": 0.1723911613225937,
+      "loss_sobel": 0.1993076652288437,
+      "elapsed_seconds": 4.336640395224094
+    },
+    {
+      "step": 6,
+      "loss_total": 0.5185274481773376,
+      "loss_laplacian": 0.010363985784351826,
+      "loss_intensity": 0.26684489846229553,
+      "loss_sobel": 0.38820311427116394,
+      "elapsed_seconds": 4.718137143179774
+    },
+    {
+      "step": 7,
+      "loss_total": 0.22252799570560455,
+      "loss_laplacian": 0.004189386032521725,
+      "loss_intensity": 0.15068881213665009,
+      "loss_sobel": 0.16556525230407715,
+      "elapsed_seconds": 4.947627157904208
+    },
+    {
+      "step": 8,
+      "loss_total": 0.2224101722240448,
+      "loss_laplacian": 0.00414293585345149,
+      "loss_intensity": 0.20241202414035797,
+      "loss_sobel": 0.16073960065841675,
+      "elapsed_seconds": 5.336296364665031
+    },
+    {
+      "step": 9,
+      "loss_total": 0.2993849515914917,
+      "loss_laplacian": 0.005801185499876738,
+      "loss_intensity": 0.2078937143087387,
+      "loss_sobel": 0.2205837070941925,
+      "elapsed_seconds": 5.565358997322619
+    },
+    {
+      "step": 10,
+      "loss_total": 0.2363760769367218,
+      "loss_laplacian": 0.004330126568675041,
+      "loss_intensity": 0.2034960240125656,
+      "loss_sobel": 0.17272520065307617,
+      "elapsed_seconds": 5.9120051469653845
+    },
+    {
+      "step": 11,
+      "loss_total": 0.3130173981189728,
+      "loss_laplacian": 0.0069631850346922874,
+      "loss_intensity": 0.14270451664924622,
+      "loss_sobel": 0.2291150838136673,
+      "elapsed_seconds": 6.206407550722361
+    },
+    {
+      "step": 12,
+      "loss_total": 0.33825987577438354,
+      "loss_laplacian": 0.006630877964198589,
+      "loss_intensity": 0.3306255638599396,
+      "loss_sobel": 0.23888851702213287,
+      "elapsed_seconds": 6.434977798722684
+    },
+    {
+      "step": 13,
+      "loss_total": 0.35876426100730896,
+      "loss_laplacian": 0.007237964775413275,
+      "loss_intensity": 0.21001730859279633,
+      "loss_sobel": 0.26538288593292236,
+      "elapsed_seconds": 6.796564212068915
+    },
+    {
+      "step": 14,
+      "loss_total": 0.4219910800457001,
+      "loss_laplacian": 0.009122764691710472,
+      "loss_intensity": 0.2262306809425354,
+      "loss_sobel": 0.308140367269516,
+      "elapsed_seconds": 7.151903675869107
+    },
+    {
+      "step": 15,
+      "loss_total": 0.3660925030708313,
+      "loss_laplacian": 0.007235058583319187,
+      "loss_intensity": 0.27864956855773926,
+      "loss_sobel": 0.26587697863578796,
+      "elapsed_seconds": 7.525073328986764
+    },
+    {
+      "step": 16,
+      "loss_total": 0.3606051802635193,
+      "loss_laplacian": 0.008191305212676525,
+      "loss_intensity": 0.2144908756017685,
+      "loss_sobel": 0.2572430372238159,
+      "elapsed_seconds": 7.732758545316756
+    },
+    {
+      "step": 17,
+      "loss_total": 0.17194804549217224,
+      "loss_laplacian": 0.0038829573895782232,
+      "loss_intensity": 0.180825874209404,
+      "loss_sobel": 0.11503587663173676,
+      "elapsed_seconds": 7.951138318516314
+    },
+    {
+      "step": 18,
+      "loss_total": 0.25209614634513855,
+      "loss_laplacian": 0.005592388100922108,
+      "loss_intensity": 0.16062594950199127,
+      "loss_sobel": 0.1801096647977829,
+      "elapsed_seconds": 8.174490401521325
+    },
+    {
+      "step": 19,
+      "loss_total": 0.2644376754760742,
+      "loss_laplacian": 0.006544426549226046,
+      "loss_intensity": 0.13769175112247467,
+      "loss_sobel": 0.18522422015666962,
+      "elapsed_seconds": 8.37392279598862
+    },
+    {
+      "step": 20,
+      "loss_total": 0.11771705746650696,
+      "loss_laplacian": 0.0029918919317424297,
+      "loss_intensity": 0.1029202863574028,
+      "loss_sobel": 0.07750611007213593,
+      "elapsed_seconds": 8.5961132068187
+    }
+  ]
+}

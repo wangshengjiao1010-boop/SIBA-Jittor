@@ -1,0 +1,17 @@
+{
+  "framework": "pytorch",
+  "framework_version": "1.10.0+cu111",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/pytorch_msrs_roadscene_60e_20260727_siba_official_protocol/07-27-06-00/SIBA_epoch60.pth",
+  "checkpoint_sha256": "93ac201a9db903af19cb12f63cb3da06617449593a35b258ccaa26c5e42f2313",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/TNO",
+  "image_count": 45,
+  "parameter_count": 565941,
+  "total_model_seconds": 3.6543660387396812,
+  "mean_model_seconds": 0.08120813419421515,
+  "model_fps": 12.314037379659869,
+  "synchronized_fps": 12.314037379659869
+}
