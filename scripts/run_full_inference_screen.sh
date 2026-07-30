@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/env_paths.sh"
+
 PROJECT_ROOT=${PROJECT_ROOT:-/root/autodl-tmp/SIBA-Jittor}
 DATA_ROOT=${DATA_ROOT:-/root/autodl-tmp/datasets/SIBA/test}
 RUN_TAG=${RUN_TAG:-20260727_siba_official_protocol}
@@ -26,7 +29,7 @@ screen -L -Logfile "$LOG_DIR/screen.log" -dmS kk bash -lc "
     rm -rf \"\$output\"
     mkdir -p \"\$output\"
     echo '=== Jittor inference:' \"\$dataset\" '===' | tee -a '$LOG_DIR/status.log'
-    /root/autodl-tmp/envs/siba_jittor/bin/python -u tools/run_inference.py \\
+    '$JITTOR_PYTHON' -u tools/run_inference.py \\
       --framework jittor \\
       --checkpoint '$JITTOR_CHECKPOINT' \\
       --data-dir '$DATA_ROOT/'\"\$dataset\" \\
@@ -40,7 +43,7 @@ screen -L -Logfile "$LOG_DIR/screen.log" -dmS kk bash -lc "
     rm -rf \"\$output\"
     mkdir -p \"\$output\"
     echo '=== PyTorch inference:' \"\$dataset\" '===' | tee -a '$LOG_DIR/status.log'
-    /root/autodl-tmp/envs/siba_torch/bin/python -u tools/run_inference.py \\
+    '$PYTORCH_PYTHON' -u tools/run_inference.py \\
       --framework pytorch \\
       --checkpoint '$PYTORCH_CHECKPOINT' \\
       --data-dir '$DATA_ROOT/'\"\$dataset\" \\

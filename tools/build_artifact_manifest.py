@@ -6,8 +6,21 @@ from pathlib import Path
 
 
 DEFAULT_PATTERNS = (
+    "README.md",
+    "MIGRATION_LOG.md",
+    ".gitignore",
     "official_pytorch/**/*.py",
     "siba_jittor/**/*.py",
+    "scripts/*.sh",
+    "tools/*.py",
+    "tools/*.m",
+    "demo/*.md",
+    "demo/*.ipynb",
+    "docs/*.md",
+    "environment/**/*",
+    "ppt/README.md",
+    "ppt/make_ppt_v3.py",
+    "ppt/assets_v3/*.png",
     "configs/**/*",
     "data_manifests/*.json",
     "logs/**/*.log",

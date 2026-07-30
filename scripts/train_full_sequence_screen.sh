@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/env_paths.sh"
+
 PROJECT_ROOT=${PROJECT_ROOT:-/root/autodl-tmp/SIBA-Jittor}
 DATA_ROOT=${DATA_ROOT:-/root/autodl-tmp/datasets/SIBA}
 RUN_TAG=${RUN_TAG:-$(date +%Y%m%d_%H%M%S)}
@@ -33,7 +36,7 @@ screen -L -Logfile "$SEQUENCE_DIR/screen.log" -dmS kk bash -lc "
   echo '=== Jittor 60-epoch full training ===' | tee -a '$SEQUENCE_DIR/status.log'
   jittor_start=\$(date +%s)
   export JITTOR_HOME=/root/autodl-tmp/.cache/jittor_gpu
-  /root/autodl-tmp/envs/siba_jittor/bin/python -u tools/run_training.py \\
+  '$JITTOR_PYTHON' -u tools/run_training.py \\
     --framework jittor \\
     --ir-path '$DATA_ROOT/train/ir' \\
     --vi-path '$DATA_ROOT/train/vi' \\
@@ -46,7 +49,7 @@ screen -L -Logfile "$SEQUENCE_DIR/screen.log" -dmS kk bash -lc "
 
   echo '=== PyTorch 60-epoch full training ===' | tee -a '$SEQUENCE_DIR/status.log'
   pytorch_start=\$(date +%s)
-  /root/autodl-tmp/envs/siba_torch/bin/python -u tools/run_training.py \\
+  '$PYTORCH_PYTHON' -u tools/run_training.py \\
     --framework pytorch \\
     --ir-path '$DATA_ROOT/train/ir' \\
     --vi-path '$DATA_ROOT/train/vi' \\

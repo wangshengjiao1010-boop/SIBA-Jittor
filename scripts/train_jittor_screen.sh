@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/env_paths.sh"
+
 PROJECT_ROOT=${PROJECT_ROOT:-/root/autodl-tmp/SIBA-Jittor}
 DATA_ROOT=${DATA_ROOT:-/root/autodl-tmp/datasets/SIBA}
 RUN_NAME=${RUN_NAME:-jittor_msrs_roadscene_60e}
@@ -13,7 +16,7 @@ screen -L -Logfile "$LOG_DIR/screen.log" -dmS kk bash -lc "
   export JITTOR_HOME=/root/autodl-tmp/.cache/jittor_gpu
   export PYTHONUNBUFFERED=1
   cd '$PROJECT_ROOT'
-  /root/autodl-tmp/envs/siba_jittor/bin/python -u tools/run_training.py \\
+  '$JITTOR_PYTHON' -u tools/run_training.py \\
     --framework jittor \\
     --ir-path '$DATA_ROOT/train/ir' \\
     --vi-path '$DATA_ROOT/train/vi' \\

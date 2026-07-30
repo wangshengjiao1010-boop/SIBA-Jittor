@@ -27,6 +27,7 @@ ppt_work/
 ppt/assets_generated/
 ppt/assets_v3/notebooks/*.html
 deliverables/
+detele/
 logs/**/*.npz
 logs/demo_module_tests/*_已执行.ipynb
 logs/demo_*/SIBA_demo_step20.pkl

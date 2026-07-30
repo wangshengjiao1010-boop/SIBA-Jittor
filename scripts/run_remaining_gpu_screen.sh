@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/env_paths.sh"
+
 PROJECT_ROOT=${PROJECT_ROOT:-/root/autodl-tmp/SIBA-Jittor}
 DATA_ROOT=${DATA_ROOT:-/root/autodl-tmp/datasets/SIBA/test}
 RUN_TAG=${RUN_TAG:-20260727_siba_official_protocol}
@@ -35,7 +38,7 @@ screen -L -Logfile "$LOG_DIR/screen.log" -dmS kk bash -lc "
     rm -rf \"\$output\"
     mkdir -p \"\$output\"
     echo '=== Self-trained PyTorch inference:' \"\$dataset\" '===' | tee -a '$LOG_DIR/status.log'
-    /root/autodl-tmp/envs/siba_torch/bin/python -u tools/run_inference.py \\
+    '$PYTORCH_PYTHON' -u tools/run_inference.py \\
       --framework pytorch \\
       --checkpoint '$PYTORCH_CHECKPOINT' \\
       --data-dir '$DATA_ROOT/'\"\$dataset\" \\
@@ -46,9 +49,9 @@ screen -L -Logfile "$LOG_DIR/screen.log" -dmS kk bash -lc "
 
   for framework in jittor pytorch; do
     if [ \"\$framework\" = jittor ]; then
-      python_bin=/root/autodl-tmp/envs/siba_jittor/bin/python
+      python_bin='$JITTOR_PYTHON'
     else
-      python_bin=/root/autodl-tmp/envs/siba_torch/bin/python
+      python_bin='$PYTORCH_PYTHON'
     fi
     for dataset in MSRS M3FD_2x TNO; do
       output='$OFFICIAL_RESULT_ROOT/'\"\$framework/\$dataset\"
@@ -67,9 +70,9 @@ screen -L -Logfile "$LOG_DIR/screen.log" -dmS kk bash -lc "
 
   for framework in jittor pytorch; do
     if [ \"\$framework\" = jittor ]; then
-      python_bin=/root/autodl-tmp/envs/siba_jittor/bin/python
+      python_bin='$JITTOR_PYTHON'
     else
-      python_bin=/root/autodl-tmp/envs/siba_torch/bin/python
+      python_bin='$PYTORCH_PYTHON'
     fi
     for dataset in MSRS M3FD_2x TNO; do
       output='$PROJECT_ROOT/results/official_timing_$RUN_TAG/'\"\$framework/\$dataset\"
@@ -87,7 +90,7 @@ screen -L -Logfile "$LOG_DIR/screen.log" -dmS kk bash -lc "
   done
 
   for dataset in MSRS M3FD_2x TNO; do
-    /root/autodl-tmp/envs/siba_torch/bin/python tools/compare_fusion_outputs.py \\
+    '$PYTORCH_PYTHON' tools/compare_fusion_outputs.py \\
       --reference '$OFFICIAL_RESULT_ROOT/pytorch/'\"\$dataset\" \\
       --candidate '$OFFICIAL_RESULT_ROOT/jittor/'\"\$dataset\" \\
       --output '$PROJECT_ROOT/results/output_alignment_$RUN_TAG/'\"\$dataset\" \\

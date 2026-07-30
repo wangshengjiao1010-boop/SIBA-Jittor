@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/env_paths.sh"
+
 PROJECT_ROOT=${PROJECT_ROOT:-/root/autodl-tmp/SIBA-Jittor}
 SOURCE_ROOT=${SOURCE_ROOT:-/root/autodl-tmp/datasets/sources}
 DATA_ROOT=${DATA_ROOT:-/root/autodl-tmp/datasets/SIBA}
-PYTHON=${PYTHON:-/root/autodl-tmp/envs/siba_torch/bin/python}
+PYTHON=${PYTHON:-$PYTORCH_PYTHON}
 
 mkdir -p "$PROJECT_ROOT/data_manifests" "$DATA_ROOT"
 

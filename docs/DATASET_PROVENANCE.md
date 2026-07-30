@@ -31,7 +31,7 @@ The paper and official repository state that 200 RoadScene pairs are selected ra
 - Archive SHA256: `ec33d031bbd26697b75061972786526cdd815ee8111586813427d155ec522dfc`
 - Pairs: `300`
 - The archive contains `Ir/` and `Vis/` with identical filenames.
-- The official half-resolution preprocessing uses Pillow LANCZOS and integer floor division for width and height.
+- The SIBA paper, Section 4.1, requires all methods on M3FD to be evaluated after resizing every image to half its original width and height. All 300 pairs are retained; this is the paper protocol, not a reduced-data experiment. The released `utils/resize_resolution.py` uses Pillow LANCZOS and integer floor division.
 - The GitHub backup `CharlesShan-hub/M3FD-Fusion-Backup` was checked only as a mirror: all 600 image files were byte-identical to the official archive.
 - Half-resolution pair hashes are stored in `data_manifests/m3fd_2x_test.json`.
 

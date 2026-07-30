@@ -9,6 +9,7 @@ import textwrap
 from pathlib import Path
 
 import black
+import fitz
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
@@ -19,6 +20,7 @@ from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_CONNECTOR, MSO_SHAPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
+from pptx.oxml.ns import qn
 from pptx.oxml.xmlchemy import OxmlElement
 from pptx.util import Inches, Pt
 
@@ -39,27 +41,31 @@ CHECK_PATH = OUTPUT_DIR / "PPT检查报告.md"
 SLIDE_W = 13.333
 SLIDE_H = 7.5
 
-FONT_CN = "Noto Sans SC"
-FONT_CN_BOLD = "Noto Sans SC Bold"
-FONT_CODE = "Consolas"
-FONT_MATH = "Cambria Math"
+FONT_CN = "Times New Roman"
+FONT_CN_BOLD = "Times New Roman"
+FONT_CODE = "Times New Roman"
+FONT_MATH = "Times New Roman"
 
-BG = RGBColor(248, 245, 242)
+BG = RGBColor(255, 255, 255)
 TEXT = RGBColor(43, 43, 43)
 MUTED = RGBColor(104, 100, 98)
-CODE_BG = RGBColor(237, 239, 240)
-BLUE = RGBColor(76, 111, 153)
+CODE_BG = RGBColor(247, 248, 249)
+BLUE = RGBColor(11, 105, 177)
 ORANGE = RGBColor(207, 126, 75)
 GREEN = RGBColor(81, 139, 105)
 PURPLE = RGBColor(124, 100, 154)
 RED = RGBColor(179, 77, 74)
 PINK = RGBColor(235, 191, 196)
-LIGHT_BLUE = RGBColor(205, 220, 240)
-LIGHT_ORANGE = RGBColor(244, 220, 192)
-LIGHT_GREEN = RGBColor(211, 231, 214)
-LIGHT_PURPLE = RGBColor(222, 214, 238)
-LIGHT_PINK = RGBColor(245, 218, 220)
-LIGHT_GRAY = RGBColor(231, 229, 226)
+LIGHT_BLUE = RGBColor(184, 207, 237)
+LIGHT_ORANGE = RGBColor(244, 205, 164)
+LIGHT_GREEN = RGBColor(187, 220, 193)
+LIGHT_PURPLE = RGBColor(207, 191, 235)
+LIGHT_PINK = RGBColor(239, 188, 195)
+LIGHT_GRAY = RGBColor(216, 218, 221)
+BLACK = RGBColor(0, 0, 0)
+FOOTER_BLUE = RGBColor(51, 128, 184)
+FOOTER_MID = RGBColor(54, 92, 154)
+FOOTER_DARK = RGBColor(39, 66, 118)
 
 NOTES = []
 
@@ -73,7 +79,14 @@ def set_run_font(run, name, size, color=TEXT, bold=False):
     run.font.size = Pt(size)
     run.font.color.rgb = color
     run.font.bold = bold
-    run._r.get_or_add_rPr().set("lang", "zh-CN")
+    properties = run._r.get_or_add_rPr()
+    properties.set("lang", "zh-CN")
+    for tag in ("a:latin", "a:ea", "a:cs"):
+        node = properties.find(tag, properties.nsmap)
+        if node is None:
+            node = OxmlElement(tag)
+            properties.append(node)
+        node.set("typeface", name)
 
 
 def add_text(
@@ -113,8 +126,12 @@ def add_text(
     return shape
 
 
-def add_rich_text(slide, x, y, w, h, parts, size=20, align=PP_ALIGN.LEFT):
+def add_rich_text(
+    slide, x, y, w, h, parts, size=20, align=PP_ALIGN.LEFT, name=None
+):
     shape = slide.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
+    if name:
+        shape.name = name
     frame = shape.text_frame
     frame.clear()
     frame.word_wrap = True
@@ -141,11 +158,13 @@ def add_rect(slide, x, y, w, h, fill, line=None, width=1.0, rounded=False, name=
         shape.line.width = Pt(width)
     if name:
         shape.name = name
+    if shape._element.spPr.find(qn("a:effectLst")) is None:
+        shape._element.spPr.append(OxmlElement("a:effectLst"))
     return shape
 
 
 def add_box(slide, x, y, w, h, text, fill, line=None, size=18, bold=False, name=None):
-    shape = add_rect(slide, x, y, w, h, fill, line or fill, 1.0, True, name)
+    shape = add_rect(slide, x, y, w, h, fill, BLACK, 1.15, True, name)
     frame = shape.text_frame
     frame.clear()
     frame.word_wrap = True
@@ -166,7 +185,12 @@ def add_arrow(slide, x1, y1, x2, y2, color=MUTED, width=2.0, name=None):
     )
     line.line.color.rgb = color
     line.line.width = Pt(width)
-    line.line.end_arrowhead = True
+    line_xml = line.line._get_or_add_ln()
+    tail = OxmlElement("a:tailEnd")
+    tail.set("type", "triangle")
+    tail.set("w", "sm")
+    tail.set("len", "sm")
+    line_xml.append(tail)
     if name:
         line.name = name
     return line
@@ -208,16 +232,60 @@ def add_picture_cover(slide, path, x, y, w, h):
     return shape
 
 
+def add_footer(slide, page):
+    add_rect(slide, 0, 7.16, 3.85, 0.34, FOOTER_BLUE, FOOTER_BLUE)
+    add_rect(slide, 3.85, 7.16, 8.0, 0.34, FOOTER_MID, FOOTER_MID)
+    add_rect(slide, 11.85, 7.16, 1.483, 0.34, FOOTER_DARK, FOOTER_DARK)
+    add_text(
+        slide,
+        0.55,
+        7.16,
+        3.0,
+        0.34,
+        "培育期",
+        18,
+        rgb((255, 255, 255)),
+        font=FONT_CN,
+        valign=MSO_ANCHOR.MIDDLE,
+    )
+    add_text(
+        slide,
+        4.1,
+        7.16,
+        7.5,
+        0.34,
+        "SIBA 的 Jittor 复现",
+        18,
+        rgb((255, 255, 255)),
+        font=FONT_CN,
+        align=PP_ALIGN.CENTER,
+        valign=MSO_ANCHOR.MIDDLE,
+    )
+    add_text(
+        slide,
+        12.25,
+        7.16,
+        0.55,
+        0.34,
+        str(page),
+        18,
+        rgb((255, 255, 255)),
+        font=FONT_CN,
+        align=PP_ALIGN.CENTER,
+        valign=MSO_ANCHOR.MIDDLE,
+    )
+
+
 def add_base_slide(prs, title, page, source=None):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     slide.background.fill.solid()
     slide.background.fill.fore_color.rgb = BG
-    add_text(slide, 0.55, 0.25, 8.8, 0.55, title, 32, TEXT, True, FONT_CN_BOLD)
+    add_text(slide, 0.55, 0.16, 8.8, 0.55, title, 32, TEXT, True, FONT_CN_BOLD)
     if source:
         add_text(
             slide,
             9.15,
-            0.31,
+            0.22,
             3.6,
             0.42,
             source,
@@ -230,25 +298,13 @@ def add_base_slide(prs, title, page, source=None):
     line = slide.shapes.add_connector(
         MSO_CONNECTOR.STRAIGHT,
         Inches(0.55),
-        Inches(0.91),
+        Inches(0.78),
         Inches(12.78),
-        Inches(0.91),
+        Inches(0.78),
     )
-    line.line.color.rgb = rgb((217, 213, 210))
-    line.line.width = Pt(1)
-    add_text(
-        slide,
-        12.34,
-        7.02,
-        0.42,
-        0.3,
-        str(page),
-        18,
-        MUTED,
-        False,
-        FONT_CN,
-        PP_ALIGN.RIGHT,
-    )
+    line.line.color.rgb = BLUE
+    line.line.width = Pt(1.5)
+    add_footer(slide, page)
     return slide
 
 
@@ -265,7 +321,7 @@ def add_dot_list(slide, items, x, y, w, h, size=20, color=TEXT, gap=5):
         paragraph.font.size = Pt(size)
         paragraph.font.color.rgb = color
         paragraph.space_after = Pt(gap)
-        paragraph.line_spacing = 1.1
+        paragraph.line_spacing = 1.25
         properties = paragraph._p.get_or_add_pPr()
         bullet = OxmlElement("a:buChar")
         bullet.set("char", "•")
@@ -303,6 +359,7 @@ def add_code(
     name=None,
     background=True,
     line_spacing=0.56,
+    leading=None,
 ):
     if background:
         add_rect(slide, x, y, w, h, CODE_BG, None, rounded=False)
@@ -330,9 +387,10 @@ def add_code(
         paragraph = frame.paragraphs[0] if index == 0 else frame.add_paragraph()
         paragraph.space_before = Pt(0)
         paragraph.space_after = Pt(0)
-        paragraph.line_spacing = line_spacing
+        paragraph.line_spacing = Pt(leading if leading is not None else size + 2)
         for token_type, value in lex(line, lexer):
-            if value == "\n":
+            value = value.replace("\r", "").replace("\n", "")
+            if not value:
                 continue
             run = paragraph.add_run()
             run.text = value
@@ -356,9 +414,12 @@ def add_table(slide, rows, x, y, w, h, font_size=18, col_widths=None):
             cell.margin_top = Inches(0.03)
             cell.margin_bottom = Inches(0.03)
             cell.fill.solid()
-            cell.fill.fore_color.rgb = (
-                rgb((69, 83, 101)) if row_index == 0 else rgb((246, 246, 245))
-            )
+            cell.fill.fore_color.rgb = BG
+            properties = cell._tc.get_or_add_tcPr()
+            for edge in ("a:lnL", "a:lnR", "a:lnT", "a:lnB", "a:lnTlToBr", "a:lnBlToTr"):
+                border = OxmlElement(edge)
+                border.append(OxmlElement("a:noFill"))
+                properties.append(border)
             paragraph = cell.text_frame.paragraphs[0]
             paragraph.alignment = PP_ALIGN.CENTER
             paragraph.vertical_anchor = MSO_ANCHOR.MIDDLE
@@ -368,9 +429,20 @@ def add_table(slide, rows, x, y, w, h, font_size=18, col_widths=None):
                 run,
                 FONT_CN,
                 font_size,
-                rgb((255, 255, 255)) if row_index == 0 else TEXT,
+                TEXT,
                 row_index == 0,
             )
+    row_height = h / len(rows)
+    for rule_y, width in ((y, 1.5), (y + row_height, 1.0), (y + h, 1.5)):
+        rule = slide.shapes.add_connector(
+            MSO_CONNECTOR.STRAIGHT,
+            Inches(x),
+            Inches(rule_y),
+            Inches(x + w),
+            Inches(rule_y),
+        )
+        rule.line.color.rgb = BLACK
+        rule.line.width = Pt(width)
     return shape
 
 
@@ -424,6 +496,25 @@ def split_code(code, preferred=None):
     return "\n".join(lines[:preferred]), "\n".join(lines[preferred:])
 
 
+def split_code_n(code, count):
+    lines = [line for line in code.splitlines() if line.strip()]
+    chunk_size = math.ceil(len(lines) / count)
+    chunks = [
+        "\n".join(lines[start : start + chunk_size])
+        for start in range(0, len(lines), chunk_size)
+    ]
+    while len(chunks) < count:
+        chunks.append("")
+    return chunks[:count]
+
+
+def class_method_excerpt(class_name, method_code):
+    indented = "\n".join(
+        f"  {line}" if line.strip() else line for line in method_code.splitlines()
+    )
+    return f"class {class_name}(nn.Module):\n{indented}"
+
+
 def compact_indent(code):
     compacted = []
     for line in code.splitlines():
@@ -469,6 +560,8 @@ def prepare_cover():
 def prepare_source_attention():
     source = ASSET_SOURCE / "source_attention_observation.png"
     target = ASSET_DIR / "source_attention_four.png"
+    if target.exists():
+        return target
     image = Image.open(source).convert("RGB")
     width, height = image.size
     cell_w = width // 3
@@ -486,6 +579,23 @@ def prepare_source_attention():
         )
     canvas.save(target)
     return target
+
+
+def render_paper_figures_hd():
+    document = fitz.open(ROOT / "paper_SIBA_ICCV2025.pdf")
+    matrix = fitz.Matrix(8.0, 8.0)
+    scale = 8.0 / 3.0
+    crops = {
+        "paper_fig2_arch_hd.png": (3, (115, 165, 1730, 780)),
+        "paper_fig3_cbsm_hd.png": (3, (115, 1535, 930, 1840)),
+        "paper_fig4_cross_attention_hd.png": (4, (95, 350, 940, 1000)),
+    }
+    for name, (page_index, crop) in crops.items():
+        pixmap = document[page_index].get_pixmap(matrix=matrix, alpha=False)
+        image = Image.frombytes("RGB", (pixmap.width, pixmap.height), pixmap.samples)
+        box = tuple(round(value * scale) for value in crop)
+        image.crop(box).save(ASSET_DIR / name, optimize=True)
+    document.close()
 
 
 def prepare_terminal_image():
@@ -574,77 +684,87 @@ def prepare_performance_chart():
 
 def prepare_assets():
     ASSET_DIR.mkdir(parents=True, exist_ok=True)
-    prepare_cover()
+    render_paper_figures_hd()
     prepare_source_attention()
     prepare_terminal_image()
     prepare_performance_chart()
+    shutil.copy2(
+        ASSET_SOURCE / "official_alignment_examples.png",
+        ASSET_DIR / "official_alignment_examples.png",
+    )
 
 
 def build_cover(prs):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
-    add_picture_cover(slide, ASSET_DIR / "cover_gradient.png", 0, 0, SLIDE_W, SLIDE_H)
+    slide.background.fill.solid()
+    slide.background.fill.fore_color.rgb = BG
+    add_rect(slide, 0, 0, SLIDE_W, 3.52, BLUE, BLUE)
     add_text(
         slide,
         0.75,
         0.58,
-        8.8,
+        11.83,
         0.72,
-        "Jittor 迁移演示",
-        40,
-        rgb((62, 52, 68)),
-        False,
-        FONT_CN,
+        "SIBA 的 Jittor 复现",
+        42,
+        rgb((255, 255, 255)),
+        True,
+        FONT_CN_BOLD,
+        PP_ALIGN.CENTER,
     )
     add_text(
         slide,
-        0.77,
-        1.42,
-        9.4,
-        0.88,
+        1.4,
+        1.48,
+        10.53,
+        1.25,
         "The Source Image is the Best Attention\nfor Infrared and Visible Image Fusion",
-        24,
-        rgb((72, 63, 77)),
-        False,
-        "Arial",
+        28,
+        rgb((255, 255, 255)),
+        True,
+        FONT_CN_BOLD,
+        PP_ALIGN.CENTER,
     )
     add_text(
         slide,
-        0.78,
-        2.48,
-        9.2,
+        1.5,
+        2.87,
+        10.33,
         0.44,
         "Song Wang, Xie Han, Liqun Kuang, et al. · ICCV 2025",
         18,
-        rgb((82, 73, 88)),
+        rgb((235, 242, 249)),
+        font=FONT_CN,
+        align=PP_ALIGN.CENTER,
     )
-    add_dot_list(
-        slide,
-        ["模型结构讲解", "Jittor 代码实现", "训练与测试演示", "实验结果对比"],
-        0.9,
-        3.25,
-        4.4,
-        2.25,
-        20,
-        rgb((73, 65, 78)),
-        7,
-    )
-    add_text(slide, 0.78, 6.42, 4.4, 0.42, "汇报人：王胜娇", 20, rgb((72, 63, 77)))
-    add_picture_contain(slide, ASSET_DIR / "jittor_logo.png", 5.5, 5.83, 2.3, 0.8)
     add_text(
         slide,
-        8.18,
-        6.05,
-        3.5,
-        0.4,
-        "Jittor 复现 · ICCV 2025",
-        18,
-        BLUE,
+        3.0,
+        4.18,
+        7.33,
+        0.55,
+        "汇报人：王胜娇",
+        25,
+        TEXT,
         True,
         FONT_CN_BOLD,
+        PP_ALIGN.CENTER,
     )
     add_text(
-        slide, 12.35, 7.0, 0.4, 0.3, "1", 18, MUTED, False, FONT_CN, PP_ALIGN.RIGHT
+        slide,
+        3.0,
+        4.95,
+        7.33,
+        0.45,
+        "Jittor 复现 · ICCV 2025",
+        22,
+        TEXT,
+        False,
+        FONT_CN,
+        PP_ALIGN.CENTER,
     )
+    add_picture_contain(slide, ASSET_DIR / "jittor_logo.png", 5.4, 5.58, 2.53, 0.62)
+    add_footer(slide, 1)
     note(
         "各位老师好，我是王胜娇。今天汇报使用 Jittor 框架复现 ICCV 2025 图像融合论文 SIBA。内容分为模型结构、Jittor 代码、训练与测试演示、实验结果四部分。"
     )
@@ -691,7 +811,19 @@ def build_method_slides(prs):
         18,
         name="ANIM_02_05",
     )
-    add_text(slide, 3.25, 1.2, 3.5, 0.4, "SIBA", 22, TEXT, True, FONT_CN_BOLD)
+    add_text(
+        slide,
+        3.25,
+        1.2,
+        3.5,
+        0.4,
+        "SIBA",
+        22,
+        TEXT,
+        True,
+        FONT_CN_BOLD,
+        name="ANIM_02_06",
+    )
     add_box(
         slide,
         3.35,
@@ -702,7 +834,7 @@ def build_method_slides(prs):
         LIGHT_BLUE,
         BLUE,
         18,
-        name="ANIM_02_06",
+        name="ANIM_02_07",
     )
     add_box(
         slide,
@@ -714,7 +846,7 @@ def build_method_slides(prs):
         LIGHT_PINK,
         RED,
         18,
-        name="ANIM_02_07",
+        name="ANIM_02_08",
     )
     add_box(
         slide,
@@ -726,7 +858,7 @@ def build_method_slides(prs):
         LIGHT_BLUE,
         BLUE,
         18,
-        name="ANIM_02_08",
+        name="ANIM_02_09",
     )
     add_box(
         slide,
@@ -738,10 +870,10 @@ def build_method_slides(prs):
         LIGHT_PINK,
         RED,
         18,
-        name="ANIM_02_09",
+        name="ANIM_02_10",
     )
-    for x in (4.15, 6.25):
-        add_arrow(slide, x, 3.35, x, 3.85, MUTED, name=f"ANIM_02_{int(x*10):02d}")
+    add_arrow(slide, 4.15, 3.35, 4.15, 3.85, MUTED, name="ANIM_02_11")
+    add_arrow(slide, 6.25, 3.35, 6.25, 3.85, MUTED, name="ANIM_02_12")
     add_box(
         slide,
         3.85,
@@ -753,9 +885,9 @@ def build_method_slides(prs):
         GREEN,
         18,
         True,
-        name="ANIM_02_10",
+        name="ANIM_02_13",
     )
-    add_arrow(slide, 5.2, 4.68, 5.2, 5.2, GREEN, name="ANIM_02_11")
+    add_arrow(slide, 5.2, 4.68, 5.2, 5.2, GREEN, name="ANIM_02_14")
     add_box(
         slide,
         3.62,
@@ -767,10 +899,16 @@ def build_method_slides(prs):
         PURPLE,
         18,
         True,
-        name="ANIM_02_12",
+        name="ANIM_02_15",
     )
     add_picture_contain(
-        slide, ASSET_DIR / "source_attention_four.png", 7.45, 1.45, 5.35, 3.35
+        slide,
+        ASSET_DIR / "source_attention_four.png",
+        7.45,
+        1.45,
+        5.35,
+        3.35,
+        name="ANIM_02_16",
     )
     add_rich_text(
         slide,
@@ -783,6 +921,7 @@ def build_method_slides(prs):
             ("查询来自源图像，不再完全依赖深层特征。", BLUE, True, FONT_CN_BOLD),
         ],
         20,
+        name="ANIM_02_17",
     )
     add_text(
         slide,
@@ -793,6 +932,7 @@ def build_method_slides(prs):
         "原图和负变换分别提供显著目标与背景信息。",
         19,
         TEXT,
+        name="ANIM_02_18",
     )
     note(
         "传统注意力通常从中间特征生成 Q、K、V。随着特征逐层压缩，原始图像中的显著目标和背景信息可能被削弱。SIBA 直接使用红外、可见光及其负变换，经 CBSM 生成查询 Q，再与另一模态特征做交叉注意力。"
@@ -801,7 +941,7 @@ def build_method_slides(prs):
     slide = add_base_slide(prs, "基本架构", 3, "Wang et al., ICCV 2025 · Fig. 2")
     add_picture_contain(
         slide,
-        ASSET_SOURCE / "paper_fig2_arch.png",
+        ASSET_DIR / "paper_fig2_arch_hd.png",
         0.55,
         1.22,
         12.2,
@@ -826,10 +966,19 @@ def build_method_slides(prs):
             line,
             18,
             True,
-            name=f"ANIM_03_{index+1:02d}",
+            name=f"ANIM_03_{index * 2:02d}",
         )
         if index < len(boxes):
-            add_arrow(slide, x + 2.28, 6.32, x + 2.68, 6.32, MUTED, 1.6)
+            add_arrow(
+                slide,
+                x + 2.28,
+                6.32,
+                x + 2.68,
+                6.32,
+                MUTED,
+                1.6,
+                name=f"ANIM_03_{index * 2 + 1:02d}",
+            )
     note(
         "模型输入为红外图像和可见光图像。两路 SE-ResNet 与 Restormer 提取中间特征；原图和负变换经四个 CBSM 形成查询；I-SCA 与 V-SCA 完成四路跨模态交互；最后拼接四路 48 通道特征并重建单通道融合图像。"
     )
@@ -838,7 +987,7 @@ def build_method_slides(prs):
         prs, "CBSM：源图像查询", 4, "Wang et al., ICCV 2025 · Fig. 3"
     )
     add_picture_contain(
-        slide, ASSET_SOURCE / "paper_fig3_cbsm.png", 0.72, 1.42, 5.35, 3.62
+        slide, ASSET_DIR / "paper_fig3_cbsm_hd.png", 0.72, 1.42, 5.35, 3.62
     )
     flow = [
         (6.65, 1.45, 1.5, 0.68, "1×H×W", LIGHT_PINK, RED),
@@ -847,12 +996,19 @@ def build_method_slides(prs):
         (9.85, 2.78, 2.2, 0.68, "SE 通道增强", LIGHT_GREEN, GREEN),
         (7.15, 2.78, 1.55, 0.68, "PReLU", LIGHT_PURPLE, PURPLE),
     ]
-    for index, item in enumerate(flow, 1):
-        add_box(slide, *item, 18, index in (4,), name=f"ANIM_04_{index:02d}")
-    add_arrow(slide, 8.18, 1.79, 8.58, 1.79, RED)
-    add_arrow(slide, 10.35, 1.79, 10.75, 1.79, ORANGE)
-    add_arrow(slide, 11.42, 2.16, 11.42, 2.7, ORANGE)
-    add_arrow(slide, 9.75, 3.12, 8.77, 3.12, GREEN)
+    animation_steps = (1, 3, 5, 7, 9)
+    for index, item in enumerate(flow):
+        add_box(
+            slide,
+            *item,
+            18,
+            index == 3,
+            name=f"ANIM_04_{animation_steps[index]:02d}",
+        )
+    add_arrow(slide, 8.18, 1.79, 8.58, 1.79, RED, name="ANIM_04_02")
+    add_arrow(slide, 10.35, 1.79, 10.75, 1.79, ORANGE, name="ANIM_04_04")
+    add_arrow(slide, 11.42, 2.16, 11.42, 2.7, ORANGE, name="ANIM_04_06")
+    add_arrow(slide, 9.75, 3.12, 8.77, 3.12, GREEN, name="ANIM_04_08")
     add_dot_list(
         slide,
         ["空间映射：1 → 48 通道", "SE 对通道响应重新加权", "输出尺寸与中间特征一致"],
@@ -881,7 +1037,7 @@ def build_method_slides(prs):
 
     slide = add_base_slide(prs, "I-SCA / V-SCA", 5, "Wang et al., ICCV 2025 · Fig. 4")
     add_picture_contain(
-        slide, ASSET_SOURCE / "paper_fig4_cross_attention.png", 0.52, 1.2, 6.4, 5.5
+        slide, ASSET_DIR / "paper_fig4_cross_attention_hd.png", 0.52, 1.2, 6.4, 5.5
     )
     add_text(
         slide,
@@ -920,10 +1076,10 @@ def build_method_slides(prs):
         BLUE,
         18,
         True,
-        name="ANIM_05_03",
+        name="ANIM_05_04",
     )
-    add_arrow(slide, 8.57, 2.73, 9.75, 3.42, RED, 1.8)
-    add_arrow(slide, 11.25, 2.73, 10.0, 3.42, BLUE, 1.8)
+    add_arrow(slide, 8.57, 2.73, 9.75, 3.42, RED, 1.8, name="ANIM_05_03")
+    add_arrow(slide, 11.25, 2.73, 10.0, 3.42, BLUE, 1.8, name="ANIM_05_05")
     add_box(
         slide,
         8.65,
@@ -935,9 +1091,9 @@ def build_method_slides(prs):
         PURPLE,
         18,
         True,
-        name="ANIM_05_04",
+        name="ANIM_05_06",
     )
-    add_arrow(slide, 9.78, 4.15, 9.78, 4.62, PURPLE)
+    add_arrow(slide, 9.78, 4.15, 9.78, 4.62, PURPLE, name="ANIM_05_07")
     add_box(
         slide,
         8.65,
@@ -949,7 +1105,7 @@ def build_method_slides(prs):
         GREEN,
         18,
         True,
-        name="ANIM_05_05",
+        name="ANIM_05_08",
     )
     add_dot_list(
         slide,
@@ -987,9 +1143,18 @@ def build_method_slides(prs):
             line,
             18,
             True,
-            name=f"ANIM_06_{index:02d}",
+            name=f"ANIM_06_{index * 2 - 1:02d}",
         )
-        add_arrow(slide, x + 0.8, 2.1, 5.3, 2.92, line, 1.5)
+        add_arrow(
+            slide,
+            x + 0.8,
+            2.1,
+            5.3,
+            2.92,
+            line,
+            1.5,
+            name=f"ANIM_06_{index * 2:02d}",
+        )
     add_box(
         slide,
         4.58,
@@ -1001,9 +1166,9 @@ def build_method_slides(prs):
         MUTED,
         18,
         True,
-        name="ANIM_06_05",
+        name="ANIM_06_09",
     )
-    add_arrow(slide, 6.72, 3.28, 7.35, 3.28, MUTED)
+    add_arrow(slide, 6.72, 3.28, 7.35, 3.28, MUTED, name="ANIM_06_10")
     add_box(
         slide,
         7.42,
@@ -1014,9 +1179,9 @@ def build_method_slides(prs):
         LIGHT_ORANGE,
         ORANGE,
         18,
-        name="ANIM_06_06",
+        name="ANIM_06_11",
     )
-    add_arrow(slide, 9.18, 3.28, 9.72, 3.28, MUTED)
+    add_arrow(slide, 9.18, 3.28, 9.72, 3.28, MUTED, name="ANIM_06_12")
     add_box(
         slide,
         9.8,
@@ -1027,9 +1192,9 @@ def build_method_slides(prs):
         LIGHT_GREEN,
         GREEN,
         18,
-        name="ANIM_06_07",
+        name="ANIM_06_13",
     )
-    add_arrow(slide, 11.56, 3.28, 12.05, 3.28, MUTED)
+    add_arrow(slide, 11.56, 3.28, 12.05, 3.28, MUTED, name="ANIM_06_14")
     add_box(
         slide,
         12.1,
@@ -1041,7 +1206,7 @@ def build_method_slides(prs):
         BLUE,
         18,
         True,
-        name="ANIM_06_08",
+        name="ANIM_06_15",
     )
     add_text(
         slide,
@@ -1149,6 +1314,53 @@ def code_dual_slide(
     return slide
 
 
+def code_columns_slide(
+    prs,
+    page,
+    title,
+    chunks,
+    labels,
+    source,
+    notes,
+    widths=None,
+    y=0.96,
+    h=6.1,
+    leadings=None,
+):
+    slide = add_base_slide(prs, title, page, source)
+    column_count = len(chunks)
+    gap = 0.12
+    x0 = 0.42
+    total_width = 12.49
+    if widths is None:
+        widths = [
+            (total_width - gap * (column_count - 1)) / column_count
+        ] * column_count
+    if len(widths) != column_count:
+        raise ValueError("width count must match code column count")
+    if leadings is None:
+        leadings = [None] * column_count
+    if len(leadings) != column_count:
+        raise ValueError("leading count must match code column count")
+    x = x0
+    for index, (code, label) in enumerate(zip(chunks, labels)):
+        width = widths[index]
+        add_code(
+            slide,
+            code,
+            x,
+            y,
+            width,
+            h,
+            18,
+            label,
+            leading=leadings[index],
+        )
+        x += width + gap
+    note(notes)
+    return slide
+
+
 def code_grid_slide(prs, page, title, items, source, notes):
     slide = add_base_slide(prs, title, page, source)
     positions = [
@@ -1163,303 +1375,206 @@ def code_grid_slide(prs, page, title, items, source, notes):
 
 
 def build_code_slides(prs):
-    code = extract_code("models/SIBA.py", "SIBA", "__init__", 38)
-    left, right = split_code(code)
-    code_dual_slide(
+    code = class_method_excerpt(
+        "SIBA", extract_code("models/SIBA.py", "SIBA", "__init__", 38)
+    )
+    chunks = split_code_n(code, 3)
+    code_columns_slide(
         prs,
         7,
-        "顶层模型：组件定义",
-        left,
-        right,
-        "SIBA.__init__",
-        "SIBA.__init__（续）",
+        "模型核心：SIBA 组件定义",
+        chunks,
+        ["SIBA.__init__（1/3）", "SIBA.__init__（2/3）", "SIBA.__init__（3/3）"],
         "models/SIBA.py",
         "这一页展示完整的构造函数。左侧定义两路特征提取、Restormer 与四个 CBSM；右侧定义四组交叉注意力、融合模块和输出层。通道数和层数均与官方代码一致。",
     )
 
-    code = extract_code("models/SIBA.py", "SIBA", "execute", 38)
+    code = class_method_excerpt(
+        "SIBA", extract_code("models/SIBA.py", "SIBA", "execute", 38)
+    )
     code = "\n".join(
         line for line in code.splitlines() if not line.lstrip().startswith("#")
     )
     code_lines = code.splitlines()
-    split_index = next(
-        index
-        for index, line in enumerate(code_lines)
-        if line.strip() == "ir2vi_ca = vi_sa"
-    )
-    left = "\n".join(code_lines[:split_index])
-    right = "\n".join(code_lines[split_index:])
-    code_dual_slide(
+    code = "\n".join(code_lines)
+    chunks = split_code_n(code, 3)
+    code_columns_slide(
         prs,
         8,
-        "顶层模型：完整前向传播",
-        left,
-        right,
-        "SIBA.execute",
-        "SIBA.execute（续）",
+        "模型核心：SIBA 前向传播",
+        chunks,
+        ["SIBA.execute（1/3）", "SIBA.execute（2/3）", "SIBA.execute（3/3）"],
         "models/SIBA.py",
         "前向传播先保存原图并计算负变换，再提取红外和可见光特征，生成四个查询。四路交叉注意力按官方顺序执行，最后拼接并重建输出。函数从输入到 return 完整展示，没有截断。",
-        line_spacing=0.46,
     )
 
-    slide = add_base_slide(prs, "CBSM 与 SE", 9, "cbsm.py · SE.py")
-    add_code(
-        slide,
-        extract_code("base_blocks/cbsm.py", "CBSM", "__init__", 38),
-        0.55,
-        1.04,
-        6.05,
-        4.25,
-        18,
-        "CBSM.__init__",
+    cbsm_init = class_method_excerpt(
+        "CBSM", extract_code("base_blocks/cbsm.py", "CBSM", "__init__", 38)
     )
-    add_code(
-        slide,
-        extract_code("base_blocks/SE.py", "se_module", "__init__", 38),
-        6.75,
-        1.04,
-        6.03,
-        4.25,
-        18,
-        "se_module.__init__",
+    se_init = extract_code("base_blocks/SE.py", "se_module", "__init__", 38)
+    execute_code = "\n".join(
+        [
+            extract_code("base_blocks/cbsm.py", "CBSM", "execute", 38),
+            extract_code("base_blocks/SE.py", "se_module", "execute", 38),
+        ]
     )
-    add_code(
-        slide,
-        extract_code("base_blocks/cbsm.py", "CBSM", "execute", 38),
-        0.55,
-        5.33,
-        6.05,
-        1.63,
-        18,
-        "CBSM.execute",
+    slide = code_columns_slide(
+        prs,
+        9,
+        "模型核心：CBSM 与 SE",
+        [cbsm_init, se_init, execute_code],
+        ["CBSM.__init__", "se_module.__init__", "两个 execute 函数"],
+        "cbsm.py · SE.py",
+        "三栏依次展示 CBSM 初始化、SE 初始化和两个执行函数。Jittor 仅将 forward 改为 execute，并替换模块 API；卷积、激活、池化和通道重标定顺序不变。",
+        y=0.86,
+        h=6.28,
+        leadings=[20, 19, 20],
     )
-    add_code(
+    add_picture_contain(
         slide,
-        extract_code("base_blocks/SE.py", "se_module", "execute", 38),
-        6.75,
-        5.33,
-        6.03,
-        1.63,
-        18,
-        "se_module.execute",
-    )
-    note(
-        "上方分别展示 CBSM 和 SE 的完整初始化，下方展示两个完整执行函数。Jittor 仅将 forward 改为 execute，并替换模块 API；卷积、激活、池化和通道重标定顺序不变。"
+        ASSET_DIR / "paper_fig3_cbsm_hd.png",
+        9.25,
+        5.55,
+        3.2,
+        1.1,
     )
 
     code = extract_code("base_blocks/se_resnet.py", "Res_SE", None, 38)
-    left, right = split_code(code)
-    code_dual_slide(
+    chunks = split_code_n(code, 3)
+    code_columns_slide(
         prs,
         10,
-        "特征提取：SE-ResNet",
-        left,
-        right,
-        "Res_SE",
-        "Res_SE（续）",
+        "模型核心：SE-ResNet",
+        chunks,
+        ["Res_SE（1/3）", "Res_SE（2/3）", "Res_SE（3/3）"],
         "se_resnet.py",
-        "SE-ResNet 使用 1×1 卷积匹配残差通道，两层 3×3 卷积提取特征，SE 完成通道增强，然后与残差相加。完整类分两栏展示。",
+        "SE-ResNet 使用 1×1 卷积匹配残差通道，两层 3×3 卷积提取特征，SE 完成通道增强，然后与残差相加。完整类分三栏连续展示。",
     )
 
-    code = wrap_rearrange_patterns(
-        extract_code("base_blocks/restormer.py", "Self_Attention", "execute", 34)
+    code = class_method_excerpt(
+        "Self_Attention",
+        wrap_rearrange_patterns(
+            extract_code("base_blocks/restormer.py", "Self_Attention", "execute", 34)
+        ),
     )
-    left, right = split_code(code)
-    slide = add_base_slide(prs, "自注意力：完整执行函数", 11, "restormer.py")
-    add_code(
-        slide,
-        left,
-        0.55,
-        1.04,
-        6.05,
-        3.35,
-        18,
-        "Self_Attention.execute",
-        line_spacing=0.46,
+    attention_chunks = split_code_n(code, 2)
+    support_code = "\n".join(
+        [
+            extract_code("base_blocks/restormer.py", None, "normalize", 36),
+            extract_code("base_blocks/restormer.py", "Mlp", "execute", 36),
+        ]
     )
-    add_code(
-        slide,
-        right,
-        6.75,
-        1.04,
-        6.03,
-        3.35,
-        18,
-        "Self_Attention.execute（续）",
-        line_spacing=0.46,
-    )
-    add_code(
-        slide,
-        extract_code("base_blocks/restormer.py", None, "normalize", 36),
-        0.55,
-        4.53,
-        6.05,
-        2.43,
-        18,
-        "normalize",
-        line_spacing=0.52,
-    )
-    add_code(
-        slide,
-        extract_code("base_blocks/restormer.py", "Mlp", "execute", 36),
-        6.75,
-        4.53,
-        6.03,
-        2.43,
-        18,
-        "Mlp.execute",
-        line_spacing=0.52,
-    )
-    note(
-        "上方完整展示自注意力执行函数。左下是为替代 PyTorch normalize 编写的完整 Jittor 函数，右下是完整的门控前馈执行函数。卷积、重排、归一化、注意力和输出投影均可在本页代码中顺序对应。"
+    code_columns_slide(
+        prs,
+        11,
+        "模型核心：自注意力",
+        [attention_chunks[0], attention_chunks[1], support_code],
+        ["Self_Attention.execute（1/2）", "Self_Attention.execute（2/2）", "normalize / Mlp.execute"],
+        "restormer.py",
+        "前两栏连续展示自注意力执行函数，第三栏展示 normalize 和门控前馈执行函数。卷积、重排、归一化、注意力和输出投影均可在本页代码中顺序对应。"
     )
 
-    code = wrap_rearrange_patterns(
-        extract_code("base_blocks/restormer.py", "Cross_Attention", "execute", 34)
+    code = class_method_excerpt(
+        "Cross_Attention",
+        wrap_rearrange_patterns(
+            extract_code("base_blocks/restormer.py", "Cross_Attention", "execute", 34)
+        ),
     )
-    left, right = split_code(code)
-    slide = add_base_slide(prs, "交叉注意力：完整执行函数", 12, "restormer.py")
-    add_code(
-        slide,
-        left,
-        0.55,
-        1.04,
-        6.05,
-        3.35,
-        18,
-        "Cross_Attention.execute",
-        line_spacing=0.46,
-    )
-    add_code(
-        slide,
-        right,
-        6.75,
-        1.04,
-        6.03,
-        3.35,
-        18,
-        "Cross_Attention.execute（续）",
-        line_spacing=0.46,
-    )
+    attention_chunks = split_code_n(code, 2)
     layer_norm_code = "\n\n".join(
         [
-            extract_code("base_blocks/restormer.py", "LayerNorm", "execute", 36),
+            extract_code("base_blocks/restormer.py", "LayerNorm", "execute", 44),
             extract_code(
-                "base_blocks/restormer.py", "WithBias_LayerNorm", "execute", 36
+                "base_blocks/restormer.py", "WithBias_LayerNorm", "execute", 44
+            ),
+            extract_code(
+                "base_blocks/restormer.py", "TransformerBlock_CA", "execute", 44
             ),
         ]
     )
-    add_code(
-        slide,
-        layer_norm_code,
-        0.55,
-        4.43,
-        6.05,
-        2.53,
-        18,
-        "LayerNorm 与 WithBias",
-        line_spacing=0.46,
+    slide = code_columns_slide(
+        prs,
+        12,
+        "模型核心：交叉注意力",
+        [attention_chunks[0], attention_chunks[1], layer_norm_code],
+        ["Cross_Attention.execute（1/2）", "Cross_Attention.execute（2/2）", "归一化 / TransformerBlock_CA"],
+        "restormer.py",
+        "前两栏连续展示交叉注意力执行函数，第三栏展示 LayerNorm、带偏置归一化和交叉注意力块。查询来自源图，键和值来自另一模态特征。",
+        widths=[3.82, 3.82, 4.61],
     )
-    add_code(
-        slide,
-        extract_code("base_blocks/restormer.py", "TransformerBlock_CA", "execute", 36),
-        6.75,
-        4.53,
-        6.03,
-        1.48,
-        18,
-        "TransformerBlock_CA.execute",
-        line_spacing=0.50,
-    )
-    add_box(slide, 7.0, 6.17, 1.48, 0.52, "Q：源图", LIGHT_PINK, RED, 18, True)
-    add_box(slide, 8.85, 6.17, 1.72, 0.52, "K,V：特征", LIGHT_BLUE, BLUE, 18, True)
-    add_arrow(slide, 8.5, 6.43, 8.81, 6.43, MUTED, 1.5)
-    add_arrow(slide, 10.6, 6.43, 10.91, 6.43, MUTED, 1.5)
-    add_box(slide, 10.95, 6.17, 1.55, 0.52, "交叉注意力", LIGHT_GREEN, GREEN, 18, True)
-    note(
-        "上方完整展示交叉注意力执行函数。左下展示 LayerNorm 和带偏置归一化的完整执行函数，右下展示完整交叉注意力块执行函数，并标出查询来自源图、键和值来自另一模态特征。"
-    )
-
-    slide = add_base_slide(prs, "数据加载与随机裁剪", 13, "train_loader.py")
     item_code = extract_code(
-        "loader/train_loader.py", "TrainLoader", "__getitem__", 100
+        "loader/train_loader.py", "TrainLoader", "__getitem__", 38
     )
     item_code = item_code.replace(
-        'assert ir_path.name == vi_path.name, f"Mismatch ir:{ir_path.name} vi:{vi_path.name}."',
-        "assert ir_path.name == vi_path.name, (\n"
-        '    f"Mismatch ir:{ir_path.name} "\n'
-        '    f"vi:{vi_path.name}."\n'
-        ")",
+        '    ), f"Mismatch ir:{ir_path.name} vi:{vi_path.name}."',
+        "    ), (\n"
+        '        f"Mismatch ir:{ir_path.name} "\n'
+        '        f"vi:{vi_path.name}."\n'
+        "    )",
     )
-    add_code(slide, item_code, 0.55, 1.04, 12.23, 2.32, 18, "TrainLoader.__getitem__")
-    add_code(
-        slide,
-        extract_code("loader/train_loader.py", "TrainLoader", "get_patch", 38),
-        0.55,
-        3.50,
-        6.05,
-        3.46,
-        18,
-        "TrainLoader.get_patch",
-    )
-    add_code(
-        slide,
-        extract_code("loader/train_loader.py", "TrainLoader", "imread", 38),
-        6.75,
-        3.50,
-        6.03,
-        3.46,
-        18,
-        "TrainLoader.imread",
-    )
-    note(
-        "上方完整展示样本索引、配对校验和张量返回；左下完整展示同坐标随机裁剪；右下完整展示灰度读取、归一化和通道扩展。三段均直接来自同一 TrainLoader。"
+    slide = code_columns_slide(
+        prs,
+        13,
+        "训练输入：数据加载与随机裁剪",
+        [
+            item_code,
+            extract_code("loader/train_loader.py", "TrainLoader", "get_patch", 38),
+            extract_code("loader/train_loader.py", "TrainLoader", "imread", 38),
+        ],
+        ["TrainLoader.__getitem__", "TrainLoader.get_patch", "TrainLoader.imread"],
+        "train_loader.py",
+        "三栏依次展示样本索引与配对校验、同坐标随机裁剪、灰度读取与归一化。三段均直接来自同一 TrainLoader。",
+        widths=[4.45, 3.55, 4.25],
+        y=0.86,
+        h=6.28,
     )
 
     code = extract_code("loss/loss.py", None, "laplacian", 38)
-    left, right = split_code(code)
-    code_dual_slide(
+    chunks = split_code_n(code, 3)
+    code_columns_slide(
         prs,
         14,
-        "Jittor 手动实现 Laplacian",
-        left,
-        right,
-        "laplacian",
-        "laplacian（续）",
+        "损失核心：Laplacian",
+        chunks,
+        ["laplacian（1/3）", "laplacian（2/3）", "laplacian（3/3）"],
         "loss/loss.py",
         "Jittor 没有 Kornia，因此按 Kornia 0.7.0 的归一化 3×3 Laplacian、reflect padding 和逐通道卷积完整实现。该函数与官方损失逐项对齐。",
     )
 
-    left = extract_code("loss/loss.py", "JointGrad", "execute", 38)
-    right = extract_code("loss/loss.py", "Fusionloss", "execute", 38)
-    code_dual_slide(
+    joint_code = extract_code("loss/loss.py", "JointGrad", "execute", 38)
+    fusion_chunks = split_code_n(
+        extract_code("loss/loss.py", "Fusionloss", "execute", 38), 2
+    )
+    code_columns_slide(
         prs,
         15,
-        "Laplacian、强度与梯度约束",
-        left,
-        right,
-        "JointGrad.execute",
-        "Fusionloss.execute",
+        "损失核心：强度与梯度约束",
+        [joint_code, fusion_chunks[0], fusion_chunks[1]],
+        ["JointGrad.execute", "Fusionloss.execute（1/2）", "Fusionloss.execute（2/2）"],
         "loss/loss.py",
         "JointGrad 完整展示较强 Laplacian 响应的选择。Fusionloss 完整展示逐像素最大值强度损失和 Sobel 梯度损失。",
+        y=0.86,
+        h=6.28,
     )
 
     code = compact_indent(
         extract_code("compat/pytorch_clip.py", None, "clip_grad_norm_pytorch", 38)
     )
-    left, right = split_code(code)
-    slide = code_dual_slide(
+    chunks = split_code_n(code, 3)
+    slide = code_columns_slide(
         prs,
         16,
-        "梯度裁剪：完整实现",
-        left,
-        right,
-        "clip_grad_norm_pytorch",
-        "clip_grad_norm_pytorch（续）",
+        "迁移实现：梯度裁剪",
+        chunks,
+        [
+            "clip_grad_norm_pytorch（1/3）",
+            "clip_grad_norm_pytorch（2/3）",
+            "clip_grad_norm_pytorch（3/3）",
+        ],
         "compat/pytorch_clip.py",
         "Jittor 内置梯度裁剪与 PyTorch 1.10 的数值路径不同，因此按 PyTorch 的全局 L2 范数、裁剪系数和逐梯度缩放顺序完整实现。",
     )
-    add_text(slide, 0.82, 5.55, 3.0, 0.3, "裁剪顺序", 18, MUTED, True, FONT_CN_BOLD)
+    add_text(slide, 0.82, 5.84, 3.0, 0.3, "裁剪顺序", 18, MUTED, True, FONT_CN_BOLD)
     clip_steps = [
         (0.82, "收集可训练梯度", LIGHT_PINK, RED),
         (3.75, "计算全局 L2 范数", LIGHT_ORANGE, ORANGE),
@@ -1470,7 +1585,7 @@ def build_code_slides(prs):
         add_box(
             slide,
             x,
-            5.94,
+            6.18,
             2.35,
             0.62,
             label,
@@ -1478,27 +1593,32 @@ def build_code_slides(prs):
             line,
             18,
             True,
-            name=f"ANIM_16_{index:02d}",
+            name=f"ANIM_16_{index * 2 - 1:02d}",
         )
         if index < len(clip_steps):
-            add_arrow(slide, x + 2.39, 6.25, x + 2.86, 6.25, MUTED, 1.5)
+            add_arrow(
+                slide,
+                x + 2.39,
+                6.49,
+                x + 2.86,
+                6.49,
+                MUTED,
+                1.5,
+                name=f"ANIM_16_{index * 2:02d}",
+            )
 
     code = extract_code("compat/pytorch_adam.py", "PyTorchAdam", "step", 38)
-    chunks = []
-    lines = code.splitlines()
-    chunk_size = math.ceil(len(lines) / 4)
-    for start in range(0, len(lines), chunk_size):
-        chunks.append("\n".join(lines[start : start + chunk_size]))
-    while len(chunks) < 4:
-        chunks.append("")
-    slide = code_dual_slide(
+    chunks = split_code_n(code, 6)
+    slide = code_columns_slide(
         prs,
         17,
-        "PyTorch 兼容 Adam（1/2）",
-        chunks[0],
-        chunks[1],
-        "PyTorchAdam.step（1/4）",
-        "PyTorchAdam.step（2/4）",
+        "迁移实现：兼容 Adam（1/2）",
+        chunks[:3],
+        [
+            "PyTorchAdam.step（1/6）",
+            "PyTorchAdam.step（2/6）",
+            "PyTorchAdam.step（3/6）",
+        ],
         "compat/pytorch_adam.py",
         "这一页展示完整 Adam 更新函数的前半部分，包括梯度收集、状态初始化、指数滑动平均和偏置修正。下一页继续展示同一函数直至结束。",
     )
@@ -1523,19 +1643,30 @@ def build_code_slides(prs):
             line,
             18,
             True,
-            name=f"ANIM_17_{index:02d}",
+            name=f"ANIM_17_{index * 2 - 1:02d}",
         )
         if index < len(adam_prepare):
-            add_arrow(slide, x + 2.39, 6.25, x + 2.86, 6.25, MUTED, 1.5)
+            add_arrow(
+                slide,
+                x + 2.39,
+                6.25,
+                x + 2.86,
+                6.25,
+                MUTED,
+                1.5,
+                name=f"ANIM_17_{index * 2:02d}",
+            )
 
-    slide = code_dual_slide(
+    slide = code_columns_slide(
         prs,
         18,
-        "PyTorch 兼容 Adam（2/2）",
-        chunks[2],
-        chunks[3],
-        "PyTorchAdam.step（3/4）",
-        "PyTorchAdam.step（4/4）",
+        "迁移实现：兼容 Adam（2/2）",
+        chunks[3:],
+        [
+            "PyTorchAdam.step（4/6）",
+            "PyTorchAdam.step（5/6）",
+            "PyTorchAdam.step（6/6）",
+        ],
         "compat/pytorch_adam.py",
         "这一页接续上一页，完整展示参数更新、状态写回和 Jittor 优化器收尾。相同参考梯度下，一步参数最大误差为 2.98e-8。",
     )
@@ -1558,10 +1689,19 @@ def build_code_slides(prs):
             line,
             18,
             True,
-            name=f"ANIM_18_{index:02d}",
+            name=f"ANIM_18_{index * 2 - 1:02d}",
         )
         if index < len(adam_update):
-            add_arrow(slide, x + 2.39, 6.25, x + 2.86, 6.25, MUTED, 1.5)
+            add_arrow(
+                slide,
+                x + 2.39,
+                6.25,
+                x + 2.86,
+                6.25,
+                MUTED,
+                1.5,
+                name=f"ANIM_18_{index * 2:02d}",
+            )
 
 
 def build_engineering_slides_legacy(prs):
@@ -1654,7 +1794,7 @@ def build_engineering_slides_legacy(prs):
         4.62,
         3.7,
         1.22,
-        "706 对测试图像已逐文件核验 SHA256；M3FD 按官方代码缩小至一半分辨率。",
+        "M3FD 按论文统一使用半分辨率，完整保留 300 对图像。",
         19,
         TEXT,
     )
@@ -1708,7 +1848,7 @@ def build_engineering_slides_legacy(prs):
 
     slide = add_base_slide(prs, "推理演示", 22, "tools/run_inference.py")
     add_picture_contain(
-        slide, ASSET_SOURCE / "official_alignment_examples.png", 0.62, 1.3, 12.05, 2.75
+        slide, ASSET_DIR / "official_alignment_examples.png", 0.62, 1.3, 12.05, 2.75
     )
     add_code(
         slide,
@@ -1762,10 +1902,31 @@ def build_engineering_slides(prs):
         (5.08, "共享初始权重\n137 个张量", LIGHT_BLUE, BLUE),
         (5.88, "Jittor\n真实图像训练 20 步", LIGHT_GREEN, GREEN),
     ]
-    for index, (y, label, fill, line) in enumerate(flow):
-        add_box(slide, 8.55, y, 3.85, 0.62, label, fill, line, 18, True)
-        if index < len(flow) - 1:
-            add_arrow(slide, 10.48, y + 0.64, 10.48, y + 0.78, MUTED, 1.8)
+    for index, (y, label, fill, line) in enumerate(flow, 1):
+        add_box(
+            slide,
+            8.55,
+            y,
+            3.85,
+            0.62,
+            label,
+            fill,
+            line,
+            18,
+            True,
+            name=f"ANIM_19_{index * 2 - 1:02d}",
+        )
+        if index < len(flow):
+            add_arrow(
+                slide,
+                10.48,
+                y + 0.64,
+                10.48,
+                y + 0.78,
+                MUTED,
+                1.8,
+                name=f"ANIM_19_{index * 2:02d}",
+            )
     add_text(
         slide,
         0.78,
@@ -1869,7 +2030,7 @@ def build_engineering_slides(prs):
         4.62,
         3.7,
         1.22,
-        "706 对测试图像已逐文件核验 SHA256；M3FD 按官方代码缩小至一半分辨率。",
+        "M3FD 按论文统一使用半分辨率，完整保留 300 对图像。",
         19,
         TEXT,
     )
@@ -1879,7 +2040,7 @@ def build_engineering_slides(prs):
 
     slide = add_base_slide(prs, "推理演示", 22, "tools/run_inference.py")
     add_picture_contain(
-        slide, ASSET_SOURCE / "official_alignment_examples.png", 0.62, 1.3, 12.05, 2.75
+        slide, ASSET_DIR / "official_alignment_examples.png", 0.62, 1.3, 12.05, 2.75
     )
     add_code(
         slide,
@@ -2071,78 +2232,16 @@ def build_result_slides(prs):
     metric_names = ["VIF", "SCD", "MI", "Qabf", "SSIM", "MS_SSIM", "FMI"]
 
     slide = add_base_slide(
-        prs, "MSRS：论文指标复现", 26, "released checkpoint · 361 pairs"
+        prs,
+        "三数据集：官方权重推理对齐",
+        26,
+        "released checkpoint · 706 pairs · not self-trained",
     )
-    rows = [["实现"] + [name.replace("MS_SSIM", "MS-SSIM") for name in metric_names]]
-    rows.append(["Paper"] + [f"{paper['MSRS'][name]:.3f}" for name in metric_names])
-    for experiment, label in (
-        ("OfficialPyTorch", "PyTorch"),
-        ("OfficialJittor", "Jittor"),
+    for panel, dataset, y in (
+        ("MSRS", "MSRS", 1.18),
+        ("M3FD 1/2", "M3FD_2x", 3.03),
+        ("TNO", "TNO", 4.88),
     ):
-        row = next(
-            item
-            for item in metrics
-            if item["experiment"] == experiment and item["dataset"] == "MSRS"
-        )
-        rows.append([label] + [f"{float(row[name]):.3f}" for name in metric_names])
-    add_table(slide, rows, 0.48, 1.42, 12.35, 2.45, 18, [1.55] + [1.54] * 7)
-    add_box(
-        slide,
-        0.92,
-        4.35,
-        3.35,
-        0.72,
-        "三行均按论文保留三位小数",
-        LIGHT_GREEN,
-        GREEN,
-        20,
-        True,
-    )
-    add_box(
-        slide,
-        4.95,
-        4.35,
-        3.35,
-        0.72,
-        "Jittor 与 PyTorch 指标差异很小",
-        LIGHT_BLUE,
-        BLUE,
-        20,
-        True,
-    )
-    add_box(
-        slide,
-        8.98,
-        4.35,
-        3.35,
-        0.72,
-        "361 张输出最大像素差 1",
-        LIGHT_PURPLE,
-        PURPLE,
-        20,
-        True,
-    )
-    add_text(
-        slide,
-        1.0,
-        5.55,
-        11.3,
-        0.62,
-        "官方权重是最受控的端到端迁移证据：同一参数、同一数据、同一评价代码。",
-        22,
-        BLUE,
-        True,
-        FONT_CN_BOLD,
-        PP_ALIGN.CENTER,
-    )
-    note(
-        "MSRS 上，论文、官方 PyTorch 和 Jittor 三行指标在三位小数上相同。官方权重下 361 张图像最大像素差只有 1 个灰度级。由于参数、数据和评价代码都受控，这是迁移最可靠的端到端证据。"
-    )
-
-    slide = add_base_slide(
-        prs, "M3FD 与 TNO：跨数据集结果", 27, "released checkpoint · no retraining"
-    )
-    for panel, dataset, y in (("M3FD 1/2", "M3FD_2x", 1.28), ("TNO", "TNO", 4.02)):
         rows = [[panel] + [name.replace("MS_SSIM", "MS-SSIM") for name in metric_names]]
         rows.append(
             ["Paper"] + [f"{paper[dataset][name]:.3f}" for name in metric_names]
@@ -2156,23 +2255,50 @@ def build_result_slides(prs):
                 for item in metrics
                 if item["experiment"] == experiment and item["dataset"] == dataset
             )
-            rows.append([label] + [f"{float(row[name]):.3f}" for name in metric_names])
-        add_table(slide, rows, 0.48, y, 12.35, 2.05, 18, [1.55] + [1.54] * 7)
+            rows.append([label] + [f"{float(row[name]):.6f}" for name in metric_names])
+        add_table(slide, rows, 0.48, y, 12.35, 1.62, 18, [1.55] + [1.54] * 7)
+    note(
+        "本页三组结果都使用作者发布的同一份权重，不是两框架各自训练得到的权重。MSRS、M3FD 和 TNO 共 706 对图像，Jittor 与 PyTorch 输出最大像素差均为 1 个灰度级。表格保留实测六位小数，不能因为论文只保留三位小数就写成完全相同。M3FD 按论文第 4.1 节对全部 300 对图像统一使用半分辨率，没有减少测试样本。"
+    )
+
+    slide = add_base_slide(
+        prs,
+        "三数据集：完整 60 轮自训练",
+        27,
+        "1,283 training pairs · PyTorch and Jittor checkpoints",
+    )
+    for panel, dataset, y in (
+        ("MSRS", "MSRS", 1.22),
+        ("M3FD 1/2", "M3FD_2x", 2.96),
+        ("TNO", "TNO", 4.70),
+    ):
+        rows = [[panel] + [name.replace("MS_SSIM", "MS-SSIM") for name in metric_names]]
+        for experiment, label in (
+            ("PyTorchSelfTrained", "PyTorch"),
+            ("JittorSelfTrained", "Jittor"),
+        ):
+            row = next(
+                item
+                for item in metrics
+                if item["experiment"] == experiment and item["dataset"] == dataset
+            )
+            rows.append([label] + [f"{float(row[name]):.6f}" for name in metric_names])
+        add_table(slide, rows, 0.48, y, 12.35, 1.42, 18, [1.55] + [1.54] * 7)
     add_text(
         slide,
         0.82,
-        6.55,
+        6.32,
         11.7,
-        0.36,
-        "无重新训练：300 对 M3FD 与 45 对 TNO 均复现论文三位小数。",
+        0.48,
+        "两套训练均完整收敛；因初始化、shuffle 与裁剪顺序不同，不作逐批次严格排名。",
         20,
-        BLUE,
+        RED,
         True,
         FONT_CN_BOLD,
         PP_ALIGN.CENTER,
     )
     note(
-        "M3FD 和 TNO 测试不进行重新训练。两个数据集上，Jittor 与官方 PyTorch 都复现了论文表格的三位小数。完整评价包含 VIF、SCD、MI、Qabf、SSIM、MS-SSIM 和 FMI 七项。"
+        "本页是 PyTorch 和 Jittor 分别使用全部 1283 对训练图像完成 60 轮后得到的真实结果。它证明两套完整训练链都能收敛并产生有效权重。两边没有从同一参数文件、同一显式 batch 顺序和同一 crop 清单开始，因此不能把最终差异解释为严格框架优劣，也不能写成逐批次对齐。官方权重的严格迁移证据在上一页。"
     )
 
     slide = add_base_slide(
@@ -2318,7 +2444,7 @@ def build_result_slides(prs):
         20,
         BLUE,
         True,
-        "Arial",
+        FONT_CN,
     )
     add_text(
         slide,
@@ -2389,6 +2515,10 @@ def add_notes_and_export():
         except Exception:
             pass
         for shape in slide.Shapes:
+            try:
+                shape.Shadow.Visible = 0
+            except Exception:
+                pass
             try:
                 if not str(shape.Name).startswith("CODE_TEXT_"):
                     continue

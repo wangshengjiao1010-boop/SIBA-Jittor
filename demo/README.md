@@ -1,6 +1,8 @@
 # SIBA-Jittor 现场演示
 
-现场演示采用两套独立环境和成对 Notebook。PyTorch 先生成基准，Jittor 使用相同输入与权重逐项比较。完整实验结果来自已经完成的60轮训练和706对测试；32×32受控张量及20步短训练只用于代码验证。
+现场演示以 PyCharm 远程 SSH 为主，成对 Notebook 用于逐模块结果展示。PyTorch 先生成基准，Jittor 使用相同输入与权重逐项比较。完整实验结果来自已经完成的60轮训练和706对测试；32×32受控张量及20步短训练只用于代码验证。
+
+正式环境名称为 `PytorchDome` 和 `JittorDome`。PyCharm 配置见 `docs/PYCHARM_REMOTE_GUIDE.md`。
 
 ## Notebook
 

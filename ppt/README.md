@@ -1,6 +1,6 @@
 # PPT Generation
 
-`make_ppt_v3.py` creates the final editable 30-slide SIBA-Jittor report. The earlier `make_ppt.py` and `make_ppt_v2.py` files are retained as generation history.
+`make_ppt_v3.py` creates the final editable 30-slide SIBA-Jittor report. Earlier generators and the exemplar-video extraction script are archived locally under `detele/` and are not part of the formal GitHub repository.
 
 The deck uses only:
 

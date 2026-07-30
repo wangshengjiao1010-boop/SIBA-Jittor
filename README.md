@@ -26,7 +26,7 @@ Venue, publication date, topic match, Jittor-Sprouts duplication, and public Jit
 
 Every reported quantitative result has its fused images, per-image CSV, summary CSV, command log, and checkpoint hash retained in the repository or reproducible data workspace.
 
-The final per-file audit is `docs/逐文件迁移最终审计_20260728.md`. SHA256 integrity records for retained source, logs, checkpoints, tables, curves, and visual comparisons are stored in `docs/artifact_manifest_20260728.json` and `docs/artifact_manifest_20260728.sha256`.
+The final per-file audit is `docs/逐文件迁移最终审计_20260728.md`. The post-cleanup source audit and experiment validation are `docs/source_audit_runtime_final_20260731.json` and `docs/final_validation_20260731.json`. SHA256 integrity records covering 3,195 local source, log, checkpoint, table, curve, and full-output files are stored in `docs/artifact_manifest_final_20260731.json` and `docs/artifact_manifest_final_20260731.sha256`.
 
 ## Repository Layout
 
@@ -37,6 +37,7 @@ configs/            Paper reference values and experiment configuration
 data_manifests/     Pair lists, dimensions, and SHA256 provenance records
 docs/               Source audit, dataset provenance, and protocol notes
 scripts/            Environment, data, training, inference, and GPU scripts
+environment/        Named Conda environment notes
 tools/              Audit, alignment, logging, evaluation, and visualization tools
 ppt/                Editable presentation generator and generation notes
 checkpoints/        Full-training checkpoints
@@ -58,14 +59,22 @@ The paper reports an NVIDIA TITAN RTX 24 GB and Intel Core i9-9900K. This reprod
 | Metric runtime | Linked MATLAB toolkit | MATLAB R2021b |
 | Training seed | Not released | 2025 for both frameworks |
 
-Create both environments:
+Create both named Conda environments on the AutoDL data disk:
 
 ```bash
 bash scripts/setup_envs.sh
 bash scripts/complete_env_setup.sh
+source /root/miniconda3/etc/profile.d/conda.sh
+conda activate PytorchDome
+conda deactivate
+conda activate JittorDome
 ```
 
-The exact installed package lists are stored in `logs/environment/` after environment capture.
+The interpreters are `/root/autodl-tmp/envs/PytorchDome/bin/python` and `/root/autodl-tmp/envs/JittorDome/bin/python`. They are the Python executables inside the two Conda environments, not independent manually created interpreters. The exact installed package lists are stored in `logs/environment/` after environment capture.
+
+The completed experiments were produced with the tested legacy prefixes `/root/autodl-tmp/envs/siba_torch` and `/root/autodl-tmp/envs/siba_jittor`. To keep those exact installed packages while using the requested names, run `bash scripts/clone_tested_envs_to_named.sh`. Runtime scripts prefer `PytorchDome` and `JittorDome` and fall back to the tested legacy prefixes.
+
+PyCharm remote setup, interpreter switching, `screen -S kk`, inference demonstration, and GitHub synchronization are documented in `docs/PYCHARM_REMOTE_GUIDE.md`.
 
 ## Data Preparation
 
@@ -86,7 +95,7 @@ The exact source repositories, frozen commits, archive hashes, modality-director
 | Dataset | Pairs | Processing |
 |---|---:|---|
 | MSRS test | 361 | Original test resolution |
-| M3FD | 300 | Width and height divided by two with Pillow LANCZOS |
+| M3FD | 300 | Paper protocol: all 300 pairs use half spatial resolution; no pair is removed |
 | TNO | 45 | Complete official SIBA Google Drive set |
 
 All final pairs pass filename and image-size checks. Machine-readable manifests are under `data_manifests/`.
@@ -265,6 +274,8 @@ The complete GPU demonstration was rechecked on 2026-07-29. All four notebooks e
 
 The detailed order for IDE, training, inference, result images, logs, and GitHub is recorded in `docs/现场演示脚本_20260728.md`.
 
+The formal experiment matrix and comparison with the SFDFusion Jittor reference are recorded in `docs/EXPERIMENT_DESIGN_AND_REFERENCE_COMPARISON.md`. The final GitHub file boundary and local archive policy are recorded in `docs/FINAL_REPOSITORY_SCOPE.md`.
+
 ## Official Metric Evaluation
 
 The paper links `Linfeng-Tang/Evaluation-for-Image-Fusion`. The repository is frozen at commit `f5f055bcadb49c22fb734c3498aef6c56fc71f2a`, and the same MATLAB definitions are used for VIF, SCD, MI, Qabf, SSIM, MS-SSIM, and FMI.
@@ -295,7 +306,7 @@ python tools/compare_metrics_to_paper.py \
   --output results/metrics_<tag>/paper_delta.csv
 ```
 
-Final released-checkpoint results reproduce Table 1 after rounding to three decimals:
+Final released-checkpoint results closely match Table 1. Small differences remain after rounding to three decimals, so the six-decimal measured values are retained below:
 
 | Dataset | Implementation | VIF | SCD | MI | Qabf | SSIM | MS-SSIM | FMI |
 |---|---|---:|---:|---:|---:|---:|---:|---:|

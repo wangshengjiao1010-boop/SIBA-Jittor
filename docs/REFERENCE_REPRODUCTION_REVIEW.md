@@ -26,3 +26,4 @@ The task workflow was checked against `GrokCV/Jittor-Sprouts` and representative
 5. MSRS, half-resolution M3FD, and TNO are evaluated using the seven paper metrics.
 6. Environment, data manifests, logs, curves, fusion outputs, speed, memory, and debugging history are retained.
 
+The detailed item-by-item comparison, experiment matrix, and presentation order are documented in `docs/EXPERIMENT_DESIGN_AND_REFERENCE_COMPARISON.md`.

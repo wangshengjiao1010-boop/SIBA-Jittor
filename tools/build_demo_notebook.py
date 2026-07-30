@@ -102,7 +102,7 @@ print((PROJECT_ROOT / 'results/training_analysis_20260727_siba_official_protocol
             """
 JITTOR_CHECKPOINT = PROJECT_ROOT / 'checkpoints/jittor_msrs_roadscene_60e_20260727_siba_official_protocol/07-27-04-52/SIBA_epoch60.pkl'
 DEMO_OUTPUT = PROJECT_ROOT / 'results/demo_jittor_tno'
-JITTOR_PYTHON = Path('/root/autodl-tmp/envs/siba_jittor/bin/python')
+JITTOR_PYTHON = Path('/root/autodl-tmp/envs/JittorDome/bin/python')
 !"{JITTOR_PYTHON}" "{PROJECT_ROOT / 'tools/run_inference.py'}" --framework jittor --checkpoint "{JITTOR_CHECKPOINT}" --data-dir /root/autodl-tmp/datasets/SIBA/test/TNO --output "{DEMO_OUTPUT}" --use-cuda --warmup-runs 3 --timing-mode synchronized
 """
         ),
@@ -250,7 +250,7 @@ import pandas as pd
 from IPython.display import Image, display
 
 PROJECT_ROOT = Path('/root/autodl-tmp/SIBA-Jittor')
-TORCH_PYTHON = Path('/root/autodl-tmp/envs/siba_torch/bin/python')
+TORCH_PYTHON = Path('/root/autodl-tmp/envs/PytorchDome/bin/python')
 OFFICIAL_CHECKPOINT = PROJECT_ROOT / 'official_pytorch/checkpoint/SIBA_epoch60.pth'
 TEST_ROOT = PROJECT_ROOT / 'logs/demo_module_tests'
 PYTORCH_REFERENCE = TEST_ROOT / 'pytorch_seed2025.npz'
@@ -412,7 +412,7 @@ import pandas as pd
 from IPython.display import Image, display
 
 PROJECT_ROOT = Path('/root/autodl-tmp/SIBA-Jittor')
-JITTOR_PYTHON = Path('/root/autodl-tmp/envs/siba_jittor/bin/python')
+JITTOR_PYTHON = Path('/root/autodl-tmp/envs/JittorDome/bin/python')
 OFFICIAL_CHECKPOINT = PROJECT_ROOT / 'official_pytorch/checkpoint/SIBA_epoch60.pth'
 TEST_ROOT = PROJECT_ROOT / 'logs/demo_module_tests'
 PYTORCH_REFERENCE = TEST_ROOT / 'pytorch_seed2025.npz'

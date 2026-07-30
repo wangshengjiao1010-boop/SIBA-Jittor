@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/env_paths.sh"
+
 PROJECT_ROOT=${PROJECT_ROOT:-/root/autodl-tmp/SIBA-Jittor}
 DATA_ROOT=${DATA_ROOT:-/root/autodl-tmp/datasets/SIBA}
 DEMO_TAG=${DEMO_TAG:-$(date +%Y%m%d_%H%M%S)}
@@ -10,7 +13,7 @@ INITIAL_CHECKPOINT=${INITIAL_CHECKPOINT:-$PROJECT_ROOT/logs/demo_shared_initial/
 mkdir -p "$DEMO_DIR"
 if [[ ! -f "$INITIAL_CHECKPOINT" ]]; then
   mkdir -p "$(dirname "$INITIAL_CHECKPOINT")"
-  /root/autodl-tmp/envs/siba_torch/bin/python \
+  "$PYTORCH_PYTHON" \
     "$PROJECT_ROOT/tools/export_pytorch_initial_weights.py" \
     --project-root "$PROJECT_ROOT" \
     --seed 2025 \
@@ -23,7 +26,7 @@ screen -L -Logfile "$DEMO_DIR/screen.log" -dmS kk bash -lc "
   export PYTHONUNBUFFERED=1
   export JITTOR_HOME=/root/autodl-tmp/.cache/jittor_gpu
   cd '$PROJECT_ROOT'
-  /root/autodl-tmp/envs/siba_jittor/bin/python -u tools/demo_train_step.py \
+  '$JITTOR_PYTHON' -u tools/demo_train_step.py \
     --ir-path '$DATA_ROOT/train/ir' \
     --vi-path '$DATA_ROOT/train/vi' \
     --steps 20 \
