@@ -1,0 +1,403 @@
+{
+  "official": {
+    "args/args_SIBA.py": {
+      "bytes": 351,
+      "lines": 20,
+      "sha256": "c67e62c9604dd81898b241b94fef50fe265b85586aaf17ba7a78061dd6664b75",
+      "classes": [
+        "args"
+      ],
+      "functions": []
+    },
+    "base_blocks/cbsm.py": {
+      "bytes": 621,
+      "lines": 17,
+      "sha256": "b6923277947afce69952a6e55407312b9220a72d893ea5e398e40a7de715b549",
+      "classes": [
+        "CBSM"
+      ],
+      "functions": [
+        "__init__",
+        "forward"
+      ]
+    },
+    "base_blocks/restormer.py": {
+      "bytes": 7819,
+      "lines": 244,
+      "sha256": "ab2f605e24d6dc00d904f230773519eeb1cba556bcff442e333f634b1f86ed94",
+      "classes": [
+        "BiasFree_LayerNorm",
+        "Cross_Attention",
+        "LayerNorm",
+        "Mlp",
+        "Self_Attention",
+        "TransformerBlock_CA",
+        "TransformerBlock_SA",
+        "WithBias_LayerNorm"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "forward",
+        "forward",
+        "forward",
+        "forward",
+        "forward",
+        "forward",
+        "forward",
+        "forward",
+        "to_3d",
+        "to_4d"
+      ]
+    },
+    "base_blocks/SE.py": {
+      "bytes": 883,
+      "lines": 32,
+      "sha256": "625f50c96b6056e61506145085e0506a051264f40d987cbcd5eb4b947493bffd",
+      "classes": [
+        "se_module"
+      ],
+      "functions": [
+        "__init__",
+        "forward"
+      ]
+    },
+    "base_blocks/se_resnet.py": {
+      "bytes": 1280,
+      "lines": 44,
+      "sha256": "67aaa4825b39146a8395fa250bad64668c98733011b34177c17c67baefed8030",
+      "classes": [
+        "Res_SE"
+      ],
+      "functions": [
+        "__init__",
+        "forward"
+      ]
+    },
+    "loader/test_loader.py": {
+      "bytes": 1377,
+      "lines": 35,
+      "sha256": "6ccb4554c7bd165fb6ff31e46565421f63692ac1183b35acab9c20007655b39a",
+      "classes": [
+        "TestLoader"
+      ],
+      "functions": [
+        "__getitem__",
+        "__init__",
+        "__len__"
+      ]
+    },
+    "loader/train_loader.py": {
+      "bytes": 1745,
+      "lines": 41,
+      "sha256": "b2f342c2709dd47d6e79ac03910e20b1faf51822938fb6d7282c0e87a606ee0d",
+      "classes": [
+        "TrainLoader"
+      ],
+      "functions": [
+        "__getitem__",
+        "__init__",
+        "__len__",
+        "get_patch",
+        "imread"
+      ]
+    },
+    "loss/loss.py": {
+      "bytes": 2364,
+      "lines": 67,
+      "sha256": "78b513b0da2e59f445a978a2ae0e6c4938a3d3a4b51684c8dd2b6cb23b76ce5c",
+      "classes": [
+        "Fusionloss",
+        "JointGrad",
+        "Sobelxy"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "__init__",
+        "forward",
+        "forward",
+        "forward"
+      ]
+    },
+    "models/SIBA.py": {
+      "bytes": 3507,
+      "lines": 112,
+      "sha256": "34c7d8daa16b9a6c7a36a78b13af63017273458586861632e019f8e2e8ba43b2",
+      "classes": [
+        "SIBA"
+      ],
+      "functions": [
+        "__init__",
+        "_init_weights",
+        "forward"
+      ]
+    },
+    "README.md": {
+      "bytes": 2879,
+      "lines": 74,
+      "sha256": "1b2cff66fc66adf39581bb588e4fb9d8839307a62f2e6cb9e35d01ea8cd069c0",
+      "classes": [],
+      "functions": []
+    },
+    "test.py": {
+      "bytes": 1612,
+      "lines": 50,
+      "sha256": "9c35d3e25e4047a187ebe6cfd1950c9f5ec42426cd9fd0ce0c5fad8a04c97378",
+      "classes": [],
+      "functions": []
+    },
+    "train.py": {
+      "bytes": 2929,
+      "lines": 97,
+      "sha256": "adb74bb91b14099ebb7389fb766cd9b11f19befaf08a26dfc14000098ad64a48",
+      "classes": [],
+      "functions": []
+    },
+    "utils/resize_resolution.py": {
+      "bytes": 1066,
+      "lines": 30,
+      "sha256": "f3ba83551634edc679d0f86ab617f0d8a92d4b8cd6e7c64a50aaa5d51af54d8b",
+      "classes": [],
+      "functions": [
+        "resize_image"
+      ]
+    },
+    "utils/RGB2YCrBb.py": {
+      "bytes": 1123,
+      "lines": 43,
+      "sha256": "844c662b6f5ebaa9c5806af0dba450e84df42dcb5d57a94667cacc5887559281",
+      "classes": [],
+      "functions": [
+        "RGB2YCrCb",
+        "YCrCb2RGB",
+        "clamp"
+      ]
+    }
+  },
+  "mirror": {
+    "args/args_SIBA.py": {
+      "bytes": 351,
+      "lines": 20,
+      "sha256": "c67e62c9604dd81898b241b94fef50fe265b85586aaf17ba7a78061dd6664b75",
+      "classes": [
+        "args"
+      ],
+      "functions": []
+    },
+    "base_blocks/SE.py": {
+      "bytes": 871,
+      "lines": 32,
+      "sha256": "b3ba5480c1e658f6adb63ca26f3048e2a2687ca503a21f676a620ae93b8116bf",
+      "classes": [
+        "se_module"
+      ],
+      "functions": [
+        "__init__",
+        "execute"
+      ]
+    },
+    "base_blocks/cbsm.py": {
+      "bytes": 616,
+      "lines": 17,
+      "sha256": "6949d0b7475aa3735421d39bc5aa7972f15b0439b805a0a6645939f2a2bcfa13",
+      "classes": [
+        "CBSM"
+      ],
+      "functions": [
+        "__init__",
+        "execute"
+      ]
+    },
+    "base_blocks/restormer.py": {
+      "bytes": 7740,
+      "lines": 248,
+      "sha256": "860b1232545ba8beb99bf8fc2b35c409381b24911bd15929e3d3a6f3bd5d9314",
+      "classes": [
+        "BiasFree_LayerNorm",
+        "Cross_Attention",
+        "LayerNorm",
+        "Mlp",
+        "Self_Attention",
+        "TransformerBlock_CA",
+        "TransformerBlock_SA",
+        "WithBias_LayerNorm"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "__init__",
+        "execute",
+        "execute",
+        "execute",
+        "execute",
+        "execute",
+        "execute",
+        "execute",
+        "execute",
+        "normalize",
+        "to_3d",
+        "to_4d"
+      ]
+    },
+    "base_blocks/se_resnet.py": {
+      "bytes": 1281,
+      "lines": 44,
+      "sha256": "698e99ad8ca3ee2d1520484a6ee3416aee2b3dc274bae150e2b5bc20a030aaf4",
+      "classes": [
+        "Res_SE"
+      ],
+      "functions": [
+        "__init__",
+        "execute"
+      ]
+    },
+    "loader/test_loader.py": {
+      "bytes": 1414,
+      "lines": 36,
+      "sha256": "7519e530b5efa7c04683a12f8a924addc0bb37640548c3402d86b379987a723c",
+      "classes": [
+        "TestLoader"
+      ],
+      "functions": [
+        "__getitem__",
+        "__init__",
+        "__len__"
+      ]
+    },
+    "loader/train_loader.py": {
+      "bytes": 1751,
+      "lines": 41,
+      "sha256": "d1b6bf8a2cf1aeb59336f89cc41b75bfb22a4abfe52e76889c36cb44e667d038",
+      "classes": [
+        "TrainLoader"
+      ],
+      "functions": [
+        "__getitem__",
+        "__init__",
+        "__len__",
+        "get_patch",
+        "imread"
+      ]
+    },
+    "loss/loss.py": {
+      "bytes": 2983,
+      "lines": 81,
+      "sha256": "2ceee47bd3b07b6931ebcd6983239ad85a27cf0e1926aec5e3381a2a855633b1",
+      "classes": [
+        "Fusionloss",
+        "JointGrad",
+        "Sobelxy"
+      ],
+      "functions": [
+        "__init__",
+        "__init__",
+        "__init__",
+        "execute",
+        "execute",
+        "execute",
+        "laplacian"
+      ]
+    },
+    "models/SIBA.py": {
+      "bytes": 3461,
+      "lines": 111,
+      "sha256": "725821248bf25ca514066549fd75b33126f5f4097af5fff3f2668e4111e3b732",
+      "classes": [
+        "SIBA"
+      ],
+      "functions": [
+        "__init__",
+        "_init_weights",
+        "execute"
+      ]
+    },
+    "test.py": {
+      "bytes": 1938,
+      "lines": 61,
+      "sha256": "db325a0d50844454f663dd70055b2185c88d33fe8a3fcf7ca2b20067827fa88f",
+      "classes": [],
+      "functions": [
+        "parse_runtime_args"
+      ]
+    },
+    "train.py": {
+      "bytes": 3679,
+      "lines": 119,
+      "sha256": "94fd0d643962088fb89315a108f577dcdcca702a9d3fbd22e626b3a7c2320705",
+      "classes": [],
+      "functions": [
+        "parse_runtime_args"
+      ]
+    },
+    "utils/RGB2YCrBb.py": {
+      "bytes": 1209,
+      "lines": 46,
+      "sha256": "6093f9b11a563b7aa8dfdd4c254076012925eb096cf04c13f8983a82157e6415",
+      "classes": [],
+      "functions": [
+        "RGB2YCrCb",
+        "YCrCb2RGB",
+        "clamp"
+      ]
+    },
+    "utils/resize_resolution.py": {
+      "bytes": 1066,
+      "lines": 30,
+      "sha256": "f3ba83551634edc679d0f86ab617f0d8a92d4b8cd6e7c64a50aaa5d51af54d8b",
+      "classes": [],
+      "functions": [
+        "resize_image"
+      ]
+    }
+  },
+  "comparison": {
+    "missing_files": [],
+    "extra_files": [],
+    "symbol_differences": {
+      "base_blocks/restormer.py": {
+        "functions": {
+          "missing": [],
+          "extra": [
+            "normalize"
+          ]
+        }
+      },
+      "loss/loss.py": {
+        "functions": {
+          "missing": [],
+          "extra": [
+            "laplacian"
+          ]
+        }
+      },
+      "test.py": {
+        "functions": {
+          "missing": [],
+          "extra": [
+            "parse_runtime_args"
+          ]
+        }
+      },
+      "train.py": {
+        "functions": {
+          "missing": [],
+          "extra": [
+            "parse_runtime_args"
+          ]
+        }
+      }
+    }
+  }
+}

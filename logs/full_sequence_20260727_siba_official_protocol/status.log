@@ -1,9 +1,0 @@
-run_tag=20260727_siba_official_protocol
-start_time=2026-07-27T04:52:38+08:00
-official_commit=880a1ddf9eaa610c64e5f25f87fbb146448addc9
-training_pairs=1283
-=== Jittor 60-epoch full training ===
-jittor_duration_seconds=4079
-=== PyTorch 60-epoch full training ===
-pytorch_duration_seconds=2221
-end_time=2026-07-27T06:37:38+08:00

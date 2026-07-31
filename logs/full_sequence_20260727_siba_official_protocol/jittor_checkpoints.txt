@@ -1,1 +1,0 @@
-/root/autodl-tmp/SIBA-Jittor/checkpoints/jittor_msrs_roadscene_60e_20260727_siba_official_protocol/07-27-04-52/SIBA_epoch60.pkl 2273470 bytes

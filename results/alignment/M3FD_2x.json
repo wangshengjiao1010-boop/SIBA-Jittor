@@ -1,0 +1,14 @@
+{
+  "reference": "released-checkpoint/PyTorch/M3FD_2x",
+  "candidate": "released-checkpoint/Jittor/M3FD_2x",
+  "reference_images": 300,
+  "candidate_images": 300,
+  "compared_images": 300,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 1,
+  "global_mean_abs_uint8": 0.024743071166070107,
+  "different_value_fraction": 0.024743071166070107,
+  "all_filenames_and_shapes_match": true
+}

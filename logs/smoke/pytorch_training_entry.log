@@ -1,4 +1,0 @@
-
-libgomp: Invalid value for environment variable OMP_NUM_THREADS
-[Epoch 0/1] [lr 0.0001] [loss: 0.1704] ETA: 0:00:02.147251
-done

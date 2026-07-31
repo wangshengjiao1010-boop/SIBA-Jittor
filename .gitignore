@@ -5,30 +5,48 @@ __pycache__/
 .vscode/
 .DS_Store
 
-data/
-datasets/
-checkpoint/
-logs/**/*.pid
-logs/**/*.screenlog
-results/generated/
-checkpoints/smoke_*/
-results/full_*/**/*.png
-results/official_checkpoint_alignment_*/**/*.png
-results/metric_smoke_*/
-results/metric_benchmark/
-results/tool_smoke/
-third_party/
-paper_SIBA_ICCV2025.pdf
-
+# Local environments and compiler caches
 .cache/
 .jittor/
-.playwright-cli/
-ppt_work/
-ppt/assets_generated/
-ppt/assets_v3/notebooks/*.html
+envs/
+
+# Datasets and downloaded reference repositories
+datasets/
+third_party/
+official_pytorch/
+
+# Local reports, presentation sources, and archived development material
+assets/
 deliverables/
+demo/
 detele/
-logs/**/*.npz
-logs/demo_module_tests/*_已执行.ipynb
-logs/demo_*/SIBA_demo_step20.pkl
-logs/demo_shared_initial/*.pth
+docs/
+environment/
+ppt/
+ppt_work/
+scripts/
+tools/
+siba_jittor/
+checkpoints/
+data_manifests/
+paper_SIBA_ICCV2025.pdf
+.playwright-cli/
+
+# Keep only the formal public experiment evidence under logs/results.
+logs/*
+!logs/final/
+!logs/final/**
+
+results/*/
+!results/alignment/
+!results/alignment/**
+!results/visual/
+!results/visual/**
+
+# Generated inference outputs and temporary checkpoints
+checkpoint/*
+!checkpoint/SIBA_epoch60.pkl
+results/fused/
+results/generated/
+*.pid
+*.screenlog

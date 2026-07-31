@@ -1,8 +1,0 @@
-{
-  "samples": 541,
-  "start": "2026/07/27 09:55:58.633",
-  "end": "2026/07/27 10:05:38.815",
-  "maximum_gpu_utilization_percent": 100.0,
-  "maximum_memory_used_mib": 14587.0,
-  "maximum_power_watts": 321.98
-}
