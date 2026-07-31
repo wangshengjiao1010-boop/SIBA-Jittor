@@ -3,6 +3,30 @@ import math
 import jittor as jt
 
 
+def update_parameter(
+    parameter,
+    gradient,
+    exp_avg,
+    exp_avg_sq,
+    learning_rate,
+    epsilon,
+    weight_decay,
+    beta1,
+    beta2,
+    bias_correction1,
+    bias_correction2_sqrt,
+):
+    if parameter.is_stop_grad():
+        return
+    gradient = gradient + parameter * weight_decay
+    exp_avg.update(beta1 * exp_avg + (1 - beta1) * gradient)
+    exp_avg_sq.update(beta2 * exp_avg_sq + (1 - beta2) * gradient * gradient)
+    denominator = jt.sqrt(exp_avg_sq) / bias_correction2_sqrt + epsilon
+    parameter.update(
+        parameter - learning_rate / bias_correction1 * exp_avg / denominator
+    )
+
+
 class PyTorchAdam(jt.optim.Optimizer):
     def __init__(
         self,
@@ -54,16 +78,17 @@ class PyTorchAdam(jt.optim.Optimizer):
                 param_group["exp_avg"],
                 param_group["exp_avg_sq"],
             ):
-                if parameter.is_stop_grad():
-                    continue
-                gradient = gradient + parameter * weight_decay
-                exp_avg.update(beta1 * exp_avg + (1 - beta1) * gradient)
-                exp_avg_sq.update(
-                    beta2 * exp_avg_sq + (1 - beta2) * gradient * gradient
-                )
-                denominator = jt.sqrt(exp_avg_sq) / bias_correction2_sqrt + epsilon
-                parameter.update(
-                    parameter
-                    - learning_rate / bias_correction1 * exp_avg / denominator
+                update_parameter(
+                    parameter,
+                    gradient,
+                    exp_avg,
+                    exp_avg_sq,
+                    learning_rate,
+                    epsilon,
+                    weight_decay,
+                    beta1,
+                    beta2,
+                    bias_correction1,
+                    bias_correction2_sqrt,
                 )
         self.post_step()

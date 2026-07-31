@@ -8,6 +8,9 @@
 *.txt text eol=lf
 *.ipynb text eol=lf
 
+# Paper-linked metric helpers are evaluation support, not implementation code.
+evaluation/*.m linguist-vendored
+
 *.png binary
 *.pdf binary
 *.pth binary

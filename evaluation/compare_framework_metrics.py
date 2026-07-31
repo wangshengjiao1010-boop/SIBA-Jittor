@@ -9,6 +9,7 @@ METRICS = ("VIF", "SCD", "MI", "Qabf", "SSIM", "MS_SSIM", "FMI")
 COMPARISONS = (
     ("released_checkpoint", "OfficialJittor", "OfficialPyTorch"),
     ("self_trained", "JittorSelfTrained", "PyTorchSelfTrained"),
+    ("controlled_training", "ControlledJittor", "ControlledPyTorch"),
 )
 
 
@@ -28,6 +29,11 @@ def main():
     for label, jittor_name, pytorch_name in COMPARISONS:
         maxima[label] = {}
         for dataset in datasets:
+            if (jittor_name, dataset) not in indexed or (
+                pytorch_name,
+                dataset,
+            ) not in indexed:
+                continue
             jittor = indexed[(jittor_name, dataset)]
             pytorch = indexed[(pytorch_name, dataset)]
             output = {"comparison": label, "dataset": dataset}
@@ -38,8 +44,12 @@ def main():
                 output[f"{metric}_delta"] = difference
                 maxima[label][metric] = max(maxima[label].get(metric, 0.0), abs(difference))
             output_rows.append(output)
+        if not maxima[label]:
+            del maxima[label]
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
+    if not output_rows:
+        raise ValueError("No complete framework comparison was found")
     with args.output.open("w", newline="", encoding="utf-8-sig") as file:
         writer = csv.DictWriter(file, fieldnames=output_rows[0].keys())
         writer.writeheader()
