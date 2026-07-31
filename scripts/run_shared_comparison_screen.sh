@@ -113,6 +113,7 @@ worker() {
     tests/generate_training_schedule.py \
     tests/train_pytorch_reference.py \
     tests/verify_shared_training_inputs.py \
+    tests/compare_fusion_outputs.py \
     evaluation/run_inference.py \
     evaluation/summarize_gpu_monitor.py
   "$JITTOR_PYTHON" -m py_compile \
@@ -218,9 +219,16 @@ worker() {
 
   local pytorch_checkpoint="$CHECKPOINT_ROOT/pytorch/SIBA_epoch60.pth"
   local jittor_checkpoint="$CHECKPOINT_ROOT/jittor/shared_seed2025/SIBA_epoch60.pkl"
+  cp "$pytorch_checkpoint" "$PROJECT_ROOT/checkpoint/PyTorch_SIBA_shared_seed2025.pth"
+  cp "$jittor_checkpoint" "$PROJECT_ROOT/checkpoint/SIBA_shared_seed2025.pkl"
   for dataset in MSRS M3FD_2x TNO; do
     run_inference pytorch "$PYTORCH_PYTHON" "$pytorch_checkpoint" "$dataset"
     run_inference jittor "$JITTOR_PYTHON" "$jittor_checkpoint" "$dataset"
+    "$PYTORCH_PYTHON" tests/compare_fusion_outputs.py \
+      --reference "$RESULT_ROOT/pytorch/$dataset" \
+      --candidate "$RESULT_ROOT/jittor/$dataset" \
+      --output "$RESULT_ROOT/alignment/$dataset" \
+      2>&1 | tee "$RUN_ROOT/${dataset}_output_comparison.log"
   done
 
   stop_gpu_monitor

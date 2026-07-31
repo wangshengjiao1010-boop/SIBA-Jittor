@@ -116,6 +116,18 @@ The independently trained PyTorch comparison checkpoint is retained as [checkpoi
 
 For a detached AutoDL run, create `screen -S kk`, execute the same command with `python -u`, then use `screen -r kk` to inspect the live loss output.
 
+### Controlled PyTorch/Jittor training comparison
+
+The default command above preserves the released data-loader behavior. For a tightly controlled framework comparison, the formal runner exports one seed-`2025` PyTorch initialization, loads it in both frameworks, applies the same 60-epoch sample and crop schedule, records all four loss terms for every batch, and tests both final checkpoints on all 706 pairs.
+
+```bash
+conda activate JittorDome
+bash scripts/run_shared_comparison_screen.sh
+screen -r kk
+```
+
+The runner refuses to overwrite an existing formal run. Successful completion is marked by `logs/shared_seed2025/EXPERIMENT_COMPLETE`; initialization, schedule, checkpoints, batch logs, and datasets are verified by SHA256 or manifests. This shared schedule is an experimental control, not a replacement for the released default shuffle implementation.
+
 The official script prints one loss value every 50 batches. Each retained log contains 420 entries across 60 epochs. Jittor training took 4,079 s; PyTorch training took 2,221 s on the RTX 3090 reproduction machine.
 
 ![60-epoch loss curves](results/loss_curve.png)
