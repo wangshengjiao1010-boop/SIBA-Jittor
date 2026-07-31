@@ -20,7 +20,10 @@ assets/
 deliverables/
 demo/
 detele/
-docs/
+docs/*
+!docs/
+!docs/EXPERIMENT_DESIGN_AND_REFERENCE_COMPARISON.md
+!docs/PYCHARM_REMOTE_GUIDE.md
 environment/
 ppt/
 ppt_work/
@@ -32,21 +35,70 @@ data_manifests/
 paper_SIBA_ICCV2025.pdf
 .playwright-cli/
 
-# Keep only the formal public experiment evidence under logs/results.
+# Only the formal logs from the completed run are public.
 logs/*
 !logs/final/
 !logs/final/**
+!logs/environment/
+logs/environment/*
+!logs/environment/key_packages.txt
+!logs/environment/pip_freeze_jittor.txt
+!logs/environment/pip_freeze_pytorch.txt
+!logs/alignment/
+logs/alignment/*
+!logs/alignment/alignment_assessment_final_20260728.json
+!logs/alignment/data_loader_report.json
+!logs/alignment/jittor_gpu_report.json
+!logs/alignment/pytorch_gpu_seed2025.json
+!logs/alignment/test_dataset_pairing.json
+!logs/alignment/training_dataset_validation.json
+!logs/full_inference_20260727_siba_official_protocol/
+!logs/full_inference_20260727_siba_official_protocol/**
+!logs/full_sequence_20260727_siba_official_protocol/
+!logs/full_sequence_20260727_siba_official_protocol/**
+!logs/metric_evaluation_20260727/
+!logs/metric_evaluation_20260727/**
+!logs/remaining_gpu_20260727_siba_official_protocol/
+!logs/remaining_gpu_20260727_siba_official_protocol/**
 
-results/*/
+# Only the complete formal result directories are public.
+results/*
+!results/
+!results/*.csv
+!results/*.json
+!results/*.png
 !results/alignment/
 !results/alignment/**
 !results/visual/
 !results/visual/**
+!results/demo_jittor_tno/
+!results/demo_jittor_tno/**
+!results/full_20260727_siba_official_protocol/
+!results/full_20260727_siba_official_protocol/**
+!results/metrics_20260727_siba_official_protocol/
+!results/metrics_20260727_siba_official_protocol/**
+!results/official_checkpoint_alignment_20260727_siba_official_protocol/
+!results/official_checkpoint_alignment_20260727_siba_official_protocol/**
+!results/official_timing_20260727_siba_official_protocol/
+!results/official_timing_20260727_siba_official_protocol/**
+!results/output_alignment_20260727_siba_official_protocol/
+!results/output_alignment_20260727_siba_official_protocol/**
+!results/performance_summary_20260727_siba_official_protocol/
+!results/performance_summary_20260727_siba_official_protocol/**
+!results/training_analysis_20260727_siba_official_protocol/
+!results/training_analysis_20260727_siba_official_protocol/**
+
+# Full fused-image batches remain in the local experiment archive (0.862 GiB).
+# Their complete filenames, timing, metrics, and alignment records are tracked.
+results/full_20260727_siba_official_protocol/**/*.png
+results/official_checkpoint_alignment_20260727_siba_official_protocol/**/*.png
 
 # Generated inference outputs and temporary checkpoints
 checkpoint/*
 !checkpoint/SIBA_epoch60.pkl
+!checkpoint/PyTorch_SIBA_epoch60.pth
 results/fused/
 results/generated/
+results/*_reproduced/
 *.pid
 *.screenlog

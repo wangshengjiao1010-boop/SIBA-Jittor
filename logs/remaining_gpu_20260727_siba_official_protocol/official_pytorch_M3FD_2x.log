@@ -1,0 +1,17 @@
+{
+  "framework": "pytorch",
+  "framework_version": "1.10.0+cu111",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/official_pytorch/checkpoint/SIBA_epoch60.pth",
+  "checkpoint_sha256": "c93d70653eddbbaa7ad4b53ccb9034e02e4fb39434e8f7187a06a5d8ee43ba54",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/M3FD_2x",
+  "image_count": 300,
+  "parameter_count": 565941,
+  "total_model_seconds": 15.131600550375879,
+  "mean_model_seconds": 0.05043866850125293,
+  "model_fps": 19.826058651313513,
+  "synchronized_fps": 19.826058651313513
+}

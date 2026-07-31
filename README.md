@@ -21,7 +21,7 @@ SIBA-Jittor/
 |-- evaluation/             # wrapper for the metric code linked by SIBA
 |-- tests/                  # source, tensor, gradient, and image alignment
 |-- logs/final/             # complete 60-epoch training logs
-|-- results/                # metrics, timing, curves, and visual comparisons
+|-- results/                # summaries plus complete per-image experiment outputs
 |-- prepare_data.py         # complete train/test data preparation
 |-- train.py                # Jittor training entry
 `-- test.py                 # Jittor inference entry
@@ -112,6 +112,8 @@ The checkpoint is saved under a timestamped directory. The completed Jittor chec
 - [logs/final/jittor_train_60e.log](logs/final/jittor_train_60e.log)
 - [logs/final/pytorch_train_60e.log](logs/final/pytorch_train_60e.log)
 
+The independently trained PyTorch comparison checkpoint is retained as [checkpoint/PyTorch_SIBA_epoch60.pth](checkpoint/PyTorch_SIBA_epoch60.pth).
+
 For a detached AutoDL run, create `screen -S kk`, execute the same command with `python -u`, then use `screen -r kk` to inspect the live loss output.
 
 The official script prints one loss value every 50 batches. Each retained log contains 420 entries across 60 epochs. Jittor training took 4,079 s; PyTorch training took 2,221 s on the RTX 3090 reproduction machine.
@@ -134,6 +136,19 @@ python test.py --checkpoint checkpoint/SIBA_epoch60.pkl --data-dir datasets/test
 ```
 
 `test.py` preserves the official YCbCr decomposition, luminance fusion, RGB reconstruction, clipping, and image saving logic. Only paths and device selection were exposed as command-line arguments.
+
+For the formal PyCharm demonstration, run the complete 45-pair TNO test with synchronized timing:
+
+```bash
+python evaluation/run_inference.py \
+  --framework jittor \
+  --checkpoint checkpoint/SIBA_epoch60.pkl \
+  --data-dir datasets/test/TNO \
+  --output results/TNO_reproduced \
+  --use-cuda --warmup-runs 3 --timing-mode synchronized
+```
+
+The retained completed demonstration contains all 45 fused images, not a reduced sample: [results/demo_jittor_tno](results/demo_jittor_tno). PyCharm setup and presentation order are documented in [docs/PYCHARM_REMOTE_GUIDE.md](docs/PYCHARM_REMOTE_GUIDE.md).
 
 ## PyTorch Alignment
 
@@ -228,6 +243,8 @@ python evaluation/run_matlab_evaluation.py \
 ```
 
 MATLAB is used only for the paper-linked metric definitions. Jittor training and inference are entirely Python/Jittor.
+
+Complete per-image CSV files, MATLAB logs, summary tables, and metric plots for all four experiment branches and all three datasets are retained under [results/metrics_20260727_siba_official_protocol](results/metrics_20260727_siba_official_protocol). Complete inference timing, released-checkpoint alignment, training analysis, and raw formal run logs are retained alongside the concise top-level summaries. Development smoke tests and 20-step training outputs are intentionally excluded.
 
 ### Released checkpoint
 

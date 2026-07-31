@@ -1,0 +1,17 @@
+{
+  "framework": "jittor",
+  "framework_version": "1.3.11.0",
+  "use_cuda": true,
+  "warmup_runs": 0,
+  "timing_mode": "official",
+  "skip_save": true,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/official_pytorch/checkpoint/SIBA_epoch60.pth",
+  "checkpoint_sha256": "c93d70653eddbbaa7ad4b53ccb9034e02e4fb39434e8f7187a06a5d8ee43ba54",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/MSRS",
+  "image_count": 361,
+  "parameter_count": 565941,
+  "total_model_seconds": 0.9865741664543748,
+  "mean_model_seconds": 0.0027328924278514537,
+  "model_fps": 365.91268277111817,
+  "official_unsynchronized_fps": 365.91268277111817
+}

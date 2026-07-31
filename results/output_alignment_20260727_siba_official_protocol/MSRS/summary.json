@@ -1,0 +1,14 @@
+{
+  "reference": "/root/autodl-tmp/SIBA-Jittor/results/official_checkpoint_alignment_20260727_siba_official_protocol/pytorch/MSRS",
+  "candidate": "/root/autodl-tmp/SIBA-Jittor/results/official_checkpoint_alignment_20260727_siba_official_protocol/jittor/MSRS",
+  "reference_images": 361,
+  "candidate_images": 361,
+  "compared_images": 361,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 1,
+  "global_mean_abs_uint8": 0.002843669446368113,
+  "different_value_fraction": 0.002843669446368113,
+  "all_filenames_and_shapes_match": true
+}

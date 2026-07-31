@@ -1,0 +1,23 @@
+{
+  "MSRS": {
+    "ir_count": 361,
+    "vi_count": 361,
+    "paired_count": 361,
+    "ir_only": [],
+    "vi_only": []
+  },
+  "M3FD_2x": {
+    "ir_count": 300,
+    "vi_count": 300,
+    "paired_count": 300,
+    "ir_only": [],
+    "vi_only": []
+  },
+  "TNO": {
+    "ir_count": 45,
+    "vi_count": 45,
+    "paired_count": 45,
+    "ir_only": [],
+    "vi_only": []
+  }
+}
