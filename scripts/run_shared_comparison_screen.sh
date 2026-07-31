@@ -10,6 +10,45 @@ RUN_ROOT=${RUN_ROOT:-$PROJECT_ROOT/logs/shared_seed2025}
 CHECKPOINT_ROOT=${CHECKPOINT_ROOT:-$PROJECT_ROOT/checkpoints/shared_seed2025}
 RESULT_ROOT=${RESULT_ROOT:-$PROJECT_ROOT/results/shared_seed2025}
 SHARED_ROOT=${SHARED_ROOT:-$PROJECT_ROOT/shared}
+GPU_MONITOR_INTERVAL=${GPU_MONITOR_INTERVAL:-1}
+
+GPU_MONITOR_PID=""
+
+stop_gpu_monitor() {
+  if [[ -n "$GPU_MONITOR_PID" ]]; then
+    kill "$GPU_MONITOR_PID" >/dev/null 2>&1 || true
+    wait "$GPU_MONITOR_PID" >/dev/null 2>&1 || true
+    GPU_MONITOR_PID=""
+  fi
+}
+
+start_gpu_monitor() {
+  local output=$1
+  echo "timestamp,gpu_name,memory_used_mib,memory_total_mib,utilization_gpu_percent,power_draw_w" > "$output"
+  (
+    while true; do
+      nvidia-smi \
+        --query-gpu=timestamp,name,memory.used,memory.total,utilization.gpu,power.draw \
+        --format=csv,noheader,nounits >> "$output" 2>/dev/null || true
+      sleep "$GPU_MONITOR_INTERVAL"
+    done
+  ) &
+  GPU_MONITOR_PID=$!
+}
+
+finish_worker() {
+  local status=$?
+  trap - EXIT INT TERM
+  stop_gpu_monitor
+  date --iso-8601=seconds | tee "$RUN_ROOT/finished_at.txt"
+  nvidia-smi | tee "$RUN_ROOT/nvidia_smi_end.txt" || true
+  if [[ $status -eq 0 ]]; then
+    touch "$RUN_ROOT/EXPERIMENT_COMPLETE"
+  else
+    printf '%s\n' "$status" > "$RUN_ROOT/EXPERIMENT_FAILED_EXIT_CODE.txt"
+  fi
+  exit "$status"
+}
 
 run_inference() {
   local framework=$1
@@ -41,12 +80,22 @@ worker() {
     "$SHARED_ROOT" \
     "$PROJECT_ROOT/detele/shared_initial_validation"
 
+  if [[ -e "$RUN_ROOT/started_at.txt" || -e "$RUN_ROOT/EXPERIMENT_COMPLETE" ]]; then
+    echo "Formal run directory already contains an experiment: $RUN_ROOT" >&2
+    echo "Archive it before starting another run; existing evidence will not be overwritten." >&2
+    exit 2
+  fi
+
   export CUDA_VISIBLE_DEVICES=0
   export PYTHONUNBUFFERED=1
   export OMP_NUM_THREADS=4
   export MKL_NUM_THREADS=4
   export JITTOR_HOME=/root/autodl-tmp/.cache/jittor_gpu
   cd "$PROJECT_ROOT"
+
+  trap finish_worker EXIT
+  trap 'exit 130' INT
+  trap 'exit 143' TERM
 
   if [[ -n "$(git status --porcelain --untracked-files=no)" ]]; then
     echo "Tracked working tree is not clean; refusing to start a formal run." >&2
@@ -57,6 +106,43 @@ worker() {
   git status --short | tee "$RUN_ROOT/code_status.txt"
   date --iso-8601=seconds | tee "$RUN_ROOT/started_at.txt"
   nvidia-smi | tee "$RUN_ROOT/nvidia_smi_start.txt"
+  start_gpu_monitor "$RUN_ROOT/gpu_monitor.csv"
+
+  "$PYTORCH_PYTHON" -m py_compile \
+    tests/export_shared_initialization.py \
+    tests/generate_training_schedule.py \
+    tests/train_pytorch_reference.py \
+    tests/verify_shared_training_inputs.py \
+    evaluation/run_inference.py \
+    evaluation/summarize_gpu_monitor.py
+  "$JITTOR_PYTHON" -m py_compile \
+    train.py \
+    compat/pytorch_adam.py \
+    compat/pytorch_clip.py \
+    loader/train_loader.py
+
+  "$PYTORCH_PYTHON" tests/validate_dataset_manifests.py \
+    --dataset "train=$PROJECT_ROOT/data/manifests/combined_training_1283.json,$DATA_ROOT/train/ir,$DATA_ROOT/train/vi" \
+    --dataset "MSRS=$PROJECT_ROOT/data/manifests/msrs_test.json,$DATA_ROOT/test/MSRS/ir,$DATA_ROOT/test/MSRS/vi" \
+    --dataset "M3FD_2x=$PROJECT_ROOT/data/manifests/m3fd_2x_test.json,$DATA_ROOT/test/M3FD_2x/ir,$DATA_ROOT/test/M3FD_2x/vi" \
+    --dataset "TNO=$PROJECT_ROOT/data/manifests/tno_test.json,$DATA_ROOT/test/TNO/ir,$DATA_ROOT/test/TNO/vi" \
+    --output "$RUN_ROOT/dataset_integrity.json" \
+    2>&1 | tee "$RUN_ROOT/dataset_integrity.log"
+
+  "$PYTORCH_PYTHON" tests/export_pytorch_alignment.py \
+    --pytorch-root "$PYTORCH_ROOT" \
+    --checkpoint "$PYTORCH_ROOT/checkpoint/SIBA_epoch60.pth" \
+    --output "$RUN_ROOT/pytorch_alignment_reference.npz" \
+    --device cuda \
+    2>&1 | tee "$RUN_ROOT/export_alignment_reference.log"
+
+  "$JITTOR_PYTHON" tests/check_jittor_alignment.py \
+    --project-root "$PROJECT_ROOT" \
+    --checkpoint "$PYTORCH_ROOT/checkpoint/SIBA_epoch60.pth" \
+    --reference "$RUN_ROOT/pytorch_alignment_reference.npz" \
+    --output "$RUN_ROOT/jittor_alignment_report.json" \
+    --use-cuda \
+    2>&1 | tee "$RUN_ROOT/jittor_alignment.log"
 
   "$PYTORCH_PYTHON" tests/export_shared_initialization.py \
     --pytorch-root "$PYTORCH_ROOT" \
@@ -137,9 +223,13 @@ worker() {
     run_inference jittor "$JITTOR_PYTHON" "$jittor_checkpoint" "$dataset"
   done
 
+  stop_gpu_monitor
+  "$PYTORCH_PYTHON" evaluation/summarize_gpu_monitor.py \
+    --input "$RUN_ROOT/gpu_monitor.csv" \
+    --output "$RUN_ROOT/gpu_summary.json" \
+    2>&1 | tee "$RUN_ROOT/gpu_summary.log"
+
   date --iso-8601=seconds | tee "$RUN_ROOT/completed_at.txt"
-  nvidia-smi | tee "$RUN_ROOT/nvidia_smi_end.txt"
-  touch "$RUN_ROOT/EXPERIMENT_COMPLETE"
 }
 
 if [[ "${1:-}" == "--worker" ]]; then

@@ -28,18 +28,30 @@ def main():
     for value in args.dataset:
         label, paths = value.split("=", 1)
         manifest_path, infrared_dir, visible_dir = map(Path, paths.split(",", 2))
+        for path in (manifest_path, infrared_dir, visible_dir):
+            if not path.exists():
+                raise FileNotFoundError(f"{label}: required path does not exist: {path}")
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         pairs = {pair["name"]: pair for pair in manifest["pairs"]}
         errors = []
+        expected_names = set(pairs)
+        infrared_names = {path.name for path in infrared_dir.iterdir() if path.is_file()}
+        visible_names = {path.name for path in visible_dir.iterdir() if path.is_file()}
+        for name in sorted(expected_names - infrared_names):
+            errors.append({"name": name, "error": f"missing {infrared_dir / name}"})
+        for name in sorted(expected_names - visible_names):
+            errors.append({"name": name, "error": f"missing {visible_dir / name}"})
+        for name in sorted(infrared_names - expected_names):
+            errors.append({"name": name, "error": f"unexpected {infrared_dir / name}"})
+        for name in sorted(visible_names - expected_names):
+            errors.append({"name": name, "error": f"unexpected {visible_dir / name}"})
         for name, pair in pairs.items():
             for directory, key in (
                 (infrared_dir, "infrared_sha256"),
                 (visible_dir, "visible_sha256"),
             ):
                 path = directory / name
-                if not path.exists():
-                    errors.append({"name": name, "error": f"missing {path}"})
-                elif sha256(path) != pair[key]:
+                if path.exists() and sha256(path) != pair[key]:
                     errors.append({"name": name, "error": f"hash mismatch {path}"})
         report[label] = {
             "manifest": str(manifest_path.resolve()),
