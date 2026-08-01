@@ -21,51 +21,24 @@ from compat.pytorch_clip import clip_grad_norm_pytorch
 from loader.train_loader import TrainLoader
 from loss.loss import Fusionloss, JointGrad
 from models.SIBA import SIBA
-from utils.runtime_config import DEFAULT_CONFIG, load_config, resolve_path
 
 
 def parse_runtime_args():
-    config_parser = argparse.ArgumentParser(add_help=False)
-    config_parser.add_argument("--config", default=str(DEFAULT_CONFIG))
-    config_args, _ = config_parser.parse_known_args()
-    config = load_config(config_args.config)
-    train_config = config["train"]
-    device_config = config["device"]
-
     parser = argparse.ArgumentParser(
-        description="Train SIBA with Jittor; paths are read from configs/siba.json"
+        description="Train SIBA with Jittor; defaults are read from args/args_SIBA.py"
     )
-    parser.add_argument("--config", default=str(config_args.config))
-    parser.add_argument(
-        "--ir-path", default=str(resolve_path(train_config["infrared_dir"]))
-    )
-    parser.add_argument(
-        "--vi-path", default=str(resolve_path(train_config["visible_dir"]))
-    )
-    parser.add_argument(
-        "--output", default=str(resolve_path(train_config["output_dir"]))
-    )
-    parser.add_argument("--gpu-number", default=str(device_config["gpu_number"]))
-    parser.add_argument(
-        "--cpu", action="store_true", default=not device_config["use_cuda"]
-    )
-    parser.add_argument("--epochs", type=int, default=train_config["epochs"])
-    parser.add_argument("--seed", type=int, default=train_config["seed"])
-    parser.add_argument(
-        "--initial-weights",
-        type=pathlib.Path,
-        default=resolve_path(train_config["initial_weights"]),
-    )
-    parser.add_argument(
-        "--schedule", type=pathlib.Path, default=resolve_path(train_config["schedule"])
-    )
-    parser.add_argument("--run-name", default=train_config["run_name"])
-    parser.add_argument(
-        "--log-csv", type=pathlib.Path, default=resolve_path(train_config["batch_log"])
-    )
-    parser.add_argument(
-        "--metadata", type=pathlib.Path, default=resolve_path(train_config["metadata"])
-    )
+    parser.add_argument("--ir-path", default=args.ir_path)
+    parser.add_argument("--vi-path", default=args.vi_path)
+    parser.add_argument("--output", default=args.model_save_path)
+    parser.add_argument("--gpu-number", default=args.use_gpu_number)
+    parser.add_argument("--cpu", action="store_true", default=not args.use_gpu)
+    parser.add_argument("--epochs", type=int, default=args.epochs)
+    parser.add_argument("--seed", type=int)
+    parser.add_argument("--initial-weights", type=pathlib.Path)
+    parser.add_argument("--schedule", type=pathlib.Path)
+    parser.add_argument("--run-name")
+    parser.add_argument("--log-csv", type=pathlib.Path)
+    parser.add_argument("--metadata", type=pathlib.Path)
     return parser.parse_args()
 
 
@@ -125,6 +98,7 @@ def main():
 
     os.environ["CUDA_VISIBLE_DEVICES"] = args.use_gpu_number
     jt.flags.use_cuda = 1 if args.use_gpu else 0
+    device = "cuda" if args.use_gpu else "cpu"
     if runtime_args.seed is not None:
         random.seed(runtime_args.seed)
         np.random.seed(runtime_args.seed)
@@ -138,6 +112,20 @@ def main():
     clip_grad_norm_value = 0.01
     optim_step = args.optim_step
     optim_gamma = args.optim_gamma
+
+    run_name = runtime_args.run_name
+    if run_name is None:
+        run_name = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    run_directory = (
+        pathlib.Path(model_save_path)
+        if run_name in ("", ".")
+        else pathlib.Path(model_save_path) / run_name
+    )
+    run_directory.mkdir(parents=True, exist_ok=True)
+    if runtime_args.log_csv is None:
+        runtime_args.log_csv = run_directory / "train_batches.csv"
+    if runtime_args.metadata is None:
+        runtime_args.metadata = run_directory / "train_metadata.json"
 
     model = SIBA()
     if runtime_args.initial_weights is not None:
@@ -161,6 +149,8 @@ def main():
         args.patch_size,
         schedule_path=runtime_args.schedule,
     )
+    print(f"Training data: {args.ir_path} and {args.vi_path}")
+    print(f"Training pairs: {len(data)}; epochs: {num_epochs}; device: {device}")
     if data.scheduled and data.schedule_epochs < num_epochs:
         raise ValueError(
             f"Training schedule has {data.schedule_epochs} epochs, "
@@ -274,13 +264,6 @@ def main():
         if csv_file is not None:
             csv_file.close()
 
-    run_name = runtime_args.run_name
-    run_directory = (
-        pathlib.Path(model_save_path)
-        if run_name in (None, "", ".")
-        else pathlib.Path(model_save_path) / run_name
-    )
-    run_directory.mkdir(parents=True, exist_ok=True)
     save_path = run_directory / f"SIBA_epoch{num_epochs}.pkl"
     jt.save({"model": model.state_dict()}, str(save_path))
     final_fingerprint = state_fingerprint(model)
@@ -339,6 +322,9 @@ def main():
             encoding="utf-8",
         )
 
+    print(f"Checkpoint saved to: {save_path}")
+    if runtime_args.log_csv is not None:
+        print(f"Batch log saved to: {runtime_args.log_csv}")
     print("done")
 
 

@@ -13,7 +13,7 @@ Map the local repository to one remote project directory. Do not place environme
 
 ## Complete Training Entry
 
-Select `JittorDome`, set the working directory to the repository root, and edit the train paths in `configs/siba.json`. Run:
+Select `JittorDome`, set the working directory to the repository root, and confirm that `ir_path` and `vi_path` in `args/args_SIBA.py` point to the prepared AutoDL directories. Run:
 
 ```bash
 python train.py
@@ -33,13 +33,13 @@ Do not start another 60-epoch run only for presentation.
 
 ## Complete Test Demonstration
 
-Set `test.checkpoint`, the three dataset paths, and `test.output_root` in `configs/siba.json`, then run:
+Set `model_path`, `testdata_paths`, and `result_save_path` near the top of `test.py`, then run:
 
 ```bash
 python test.py
 ```
 
-The command processes all configured MSRS, M3FD and TNO pairs and saves every fused image under `results/jittor_run/`. The previously completed 45-image TNO demonstration is retained under `results/demo_jittor_tno/`.
+The command processes all configured MSRS, M3FD and TNO pairs and saves every fused image under `results/jittor_test/`. The previously completed 45-image TNO demonstration is retained under `results/demo_jittor_tno/`.
 
 ## Module Test Demonstration
 
@@ -53,7 +53,7 @@ The script checks the main feature block, source-image query module, self-attent
 
 ## Alignment Demonstration
 
-Use `PytorchDome` to run `tests/export_pytorch_alignment.py` against a separately cloned official SIBA repository. Then use `JittorDome` to run `tests/check_jittor_alignment.py` with the exported `.npz` file. The exact commands and tolerances are documented in `README.md`.
+Use `PytorchDome` to run `tests/export_pytorch_alignment.py` against a separately cloned official SIBA repository. Then use `JittorDome` to run `tests/check_jittor_alignment.py` with the exported `.npz` file. The recorded checks and tolerances are documented in `MIGRATION.md` and `docs/REPRODUCIBILITY_AUDIT.md`.
 
 This demonstration covers the same inputs and parameters, major activations, all loss terms, gradients, clipping, and one Adam update. It does not claim bitwise training-step equality.
 

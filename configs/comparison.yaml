@@ -1,0 +1,27 @@
+# Optional controlled PyTorch/Jittor comparison. Ordinary train.py and test.py
+# do not read this file.
+experiment:
+  name: shared_seed2025
+  seed: 2025
+
+paths:
+  data_root: /root/autodl-tmp/datasets/SIBA
+  pytorch_root: official_pytorch
+  jittor_python: /root/miniconda3/envs/JittorDome/bin/python
+  pytorch_python: /root/miniconda3/envs/PytorchDome/bin/python
+
+protocol:
+  epochs: 60
+  batch_size: 4
+  patch_size: 128
+  training_pairs: 1283
+
+runtime:
+  gpu_number: 0
+  gpu_monitor_interval: 1
+
+output:
+  logs: logs
+  checkpoints: checkpoints
+  results: results
+  shared: shared

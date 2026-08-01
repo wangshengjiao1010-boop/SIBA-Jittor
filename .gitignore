@@ -14,7 +14,7 @@ envs/
 datasets/
 third_party/
 official_pytorch/
-shared/*.pth
+shared/
 
 # Local reports, presentation sources, and archived development material
 assets/
@@ -27,11 +27,13 @@ docs/*
 !docs/PYCHARM_REMOTE_GUIDE.md
 !docs/CODE_WALKTHROUGH.md
 !docs/REPRODUCIBILITY_AUDIT.md
+!docs/CONTROLLED_COMPARISON.md
 environment/
 ppt/
 ppt_work/
 scripts/*
 !scripts/run_shared_comparison_screen.sh
+!scripts/load_comparison_config.py
 tools/
 siba_jittor/
 checkpoints/
@@ -64,8 +66,6 @@ logs/alignment/*
 !logs/metric_evaluation_20260727/**
 !logs/remaining_gpu_20260727_siba_official_protocol/
 !logs/remaining_gpu_20260727_siba_official_protocol/**
-!logs/shared_seed2025/
-!logs/shared_seed2025/**
 
 # Only the complete formal result directories are public.
 results/*
@@ -93,22 +93,16 @@ results/*
 !results/performance_summary_20260727_siba_official_protocol/**
 !results/training_analysis_20260727_siba_official_protocol/
 !results/training_analysis_20260727_siba_official_protocol/**
-!results/shared_seed2025/
-!results/shared_seed2025/**
 
 # Full fused-image batches remain in the local experiment archive (0.862 GiB).
 # Their complete filenames, timing, metrics, and alignment records are tracked.
 results/full_20260727_siba_official_protocol/**/*.png
 results/official_checkpoint_alignment_20260727_siba_official_protocol/**/*.png
-results/shared_seed2025/pytorch/**/*.png
-results/shared_seed2025/jittor/**/*.png
 
 # Generated inference outputs and temporary checkpoints
 checkpoint/*
 !checkpoint/SIBA_epoch60.pkl
 !checkpoint/PyTorch_SIBA_epoch60.pth
-!checkpoint/SIBA_shared_seed2025.pkl
-!checkpoint/PyTorch_SIBA_shared_seed2025.pth
 results/fused/
 results/generated/
 results/*_reproduced/

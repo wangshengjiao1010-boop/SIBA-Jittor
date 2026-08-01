@@ -3,26 +3,18 @@ set -euo pipefail
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PROJECT_ROOT=${PROJECT_ROOT:-$(cd "$SCRIPT_DIR/.." && pwd)}
-COMPARISON_CONFIG=${SIBA_COMPARISON_CONFIG:-$PROJECT_ROOT/configs/comparison.sh}
+COMPARISON_CONFIG=${SIBA_COMPARISON_CONFIG:-$PROJECT_ROOT/configs/comparison.yaml}
 if [[ ! -f "$COMPARISON_CONFIG" ]]; then
   echo "Comparison config not found: $COMPARISON_CONFIG" >&2
   exit 2
 fi
-source "$COMPARISON_CONFIG"
-
-PROJECT_ROOT=${PROJECT_ROOT:-$(cd "$SCRIPT_DIR/.." && pwd)}
-DATA_ROOT=${DATA_ROOT:-$PROJECT_ROOT/datasets}
-PYTORCH_ROOT=${PYTORCH_ROOT:-$PROJECT_ROOT/official_pytorch}
-JITTOR_PYTHON=${JITTOR_PYTHON:-/root/miniconda3/envs/JittorDome/bin/python}
-PYTORCH_PYTHON=${PYTORCH_PYTHON:-/root/miniconda3/envs/PytorchDome/bin/python}
-RUN_ID=${RUN_ID:-shared_seed2025}
-RUN_ROOT=${RUN_ROOT:-$PROJECT_ROOT/logs/$RUN_ID}
-CHECKPOINT_ROOT=${CHECKPOINT_ROOT:-$PROJECT_ROOT/checkpoints/$RUN_ID}
-RESULT_ROOT=${RESULT_ROOT:-$PROJECT_ROOT/results/$RUN_ID}
-SHARED_ROOT=${SHARED_ROOT:-$PROJECT_ROOT/shared/$RUN_ID}
-GPU_MONITOR_INTERVAL=${GPU_MONITOR_INTERVAL:-1}
+CONFIG_PYTHON=${SIBA_CONFIG_PYTHON:-python}
+CONFIG_EXPORTS=$("$CONFIG_PYTHON" "$PROJECT_ROOT/scripts/load_comparison_config.py" \
+  --config "$COMPARISON_CONFIG" --project-root "$PROJECT_ROOT")
+eval "$CONFIG_EXPORTS"
 
 GPU_MONITOR_PID=""
+PREFLIGHT_ROOT="$SHARED_ROOT/preflight"
 
 stop_gpu_monitor() {
   if [[ -n "$GPU_MONITOR_PID" ]]; then
@@ -77,7 +69,7 @@ run_inference() {
     --checkpoint "$checkpoint" \
     --data-dir "$DATA_ROOT/test/$dataset" \
     --output "$output" \
-    --gpu-number 0 --use-cuda --timing-mode synchronized \
+    --gpu-number "$GPU_NUMBER" --use-cuda --timing-mode synchronized \
     2>&1 | tee "$RUN_ROOT/${framework}_${dataset}_inference.log"
 }
 
@@ -88,7 +80,7 @@ worker() {
     "$CHECKPOINT_ROOT/pytorch" \
     "$RESULT_ROOT" \
     "$SHARED_ROOT" \
-    "$PROJECT_ROOT/detele/shared_initial_validation"
+    "$PREFLIGHT_ROOT"
 
   if [[ -e "$RUN_ROOT/started_at.txt" || -e "$RUN_ROOT/EXPERIMENT_COMPLETE" ]]; then
     echo "Formal run directory already contains an experiment: $RUN_ROOT" >&2
@@ -96,8 +88,9 @@ worker() {
     exit 2
   fi
 
-  export CUDA_VISIBLE_DEVICES=0
+  export CUDA_VISIBLE_DEVICES="$GPU_NUMBER"
   export PYTHONUNBUFFERED=1
+  export PYTHONPATH="$PROJECT_ROOT${PYTHONPATH:+:$PYTHONPATH}"
   export OMP_NUM_THREADS=4
   export MKL_NUM_THREADS=4
   export JITTOR_HOME=/root/autodl-tmp/.cache/jittor_gpu
@@ -158,7 +151,7 @@ worker() {
   "$PYTORCH_PYTHON" tests/export_shared_initialization.py \
     --pytorch-root "$PYTORCH_ROOT" \
     --output-dir "$SHARED_ROOT" \
-    --name initial --seed 2025 \
+    --name initial --seed "$SEED" \
     2>&1 | tee "$RUN_ROOT/export_initial.log"
 
   "$PYTORCH_PYTHON" tests/generate_training_schedule.py \
@@ -166,14 +159,14 @@ worker() {
     --vi-path "$DATA_ROOT/train/vi" \
     --output "$SHARED_ROOT/schedule.npz" \
     --metadata "$SHARED_ROOT/schedule.json" \
-    --epochs 60 --patch-size 128 --seed 2025 \
+    --epochs "$EPOCHS" --patch-size "$PATCH_SIZE" --seed "$SEED" \
     2>&1 | tee "$RUN_ROOT/generate_schedule.log"
 
   "$JITTOR_PYTHON" -u train.py \
     --ir-path "$DATA_ROOT/train/ir" \
     --vi-path "$DATA_ROOT/train/vi" \
-    --output "$PROJECT_ROOT/detele/shared_initial_validation" \
-    --run-name jittor --epochs 0 --gpu-number 0 --seed 2025 \
+    --output "$PREFLIGHT_ROOT" \
+    --run-name jittor --epochs 0 --gpu-number "$GPU_NUMBER" --seed "$SEED" \
     --initial-weights "$SHARED_ROOT/initial.npz" \
     --schedule "$SHARED_ROOT/schedule.npz" \
     --log-csv "$RUN_ROOT/jittor_initial_batches.csv" \
@@ -184,7 +177,7 @@ worker() {
     --initial-metadata "$SHARED_ROOT/initial.json" \
     --schedule-metadata "$SHARED_ROOT/schedule.json" \
     --jittor-metadata "$RUN_ROOT/jittor_initial_validation.json" \
-    --epochs 0 --training-pairs 1283 \
+    --epochs 0 --training-pairs "$TRAINING_PAIRS" \
     --output "$RUN_ROOT/initial_inputs_verified.json" \
     2>&1 | tee "$RUN_ROOT/initial_inputs_verified.log"
 
@@ -194,17 +187,19 @@ worker() {
     --vi-path "$DATA_ROOT/train/vi" \
     --initial-weights "$SHARED_ROOT/initial.npz" \
     --schedule "$SHARED_ROOT/schedule.npz" \
-    --output "$CHECKPOINT_ROOT/pytorch/SIBA_epoch60.pth" \
+    --output "$CHECKPOINT_ROOT/pytorch/SIBA_epoch${EPOCHS}.pth" \
     --log-csv "$RUN_ROOT/pytorch_batches.csv" \
     --metadata "$RUN_ROOT/pytorch_metadata.json" \
-    --epochs 60 --batch-size 4 --patch-size 128 --seed 2025 --gpu-number 0 \
+    --epochs "$EPOCHS" --batch-size "$BATCH_SIZE" --patch-size "$PATCH_SIZE" \
+    --seed "$SEED" --gpu-number "$GPU_NUMBER" \
     2>&1 | tee "$RUN_ROOT/pytorch_train.log"
 
   "$JITTOR_PYTHON" -u train.py \
     --ir-path "$DATA_ROOT/train/ir" \
     --vi-path "$DATA_ROOT/train/vi" \
     --output "$CHECKPOINT_ROOT/jittor" \
-    --run-name shared_seed2025 --epochs 60 --gpu-number 0 --seed 2025 \
+    --run-name "$EXPERIMENT_NAME" --epochs "$EPOCHS" --gpu-number "$GPU_NUMBER" \
+    --seed "$SEED" \
     --initial-weights "$SHARED_ROOT/initial.npz" \
     --schedule "$SHARED_ROOT/schedule.npz" \
     --log-csv "$RUN_ROOT/jittor_batches.csv" \
@@ -216,7 +211,7 @@ worker() {
     --schedule-metadata "$SHARED_ROOT/schedule.json" \
     --pytorch-metadata "$RUN_ROOT/pytorch_metadata.json" \
     --jittor-metadata "$RUN_ROOT/jittor_metadata.json" \
-    --epochs 60 --training-pairs 1283 \
+    --epochs "$EPOCHS" --training-pairs "$TRAINING_PAIRS" \
     --output "$RUN_ROOT/training_inputs_verified.json" \
     2>&1 | tee "$RUN_ROOT/training_inputs_verified.log"
 
@@ -227,10 +222,10 @@ worker() {
     --summary-csv "$RESULT_ROOT/epoch_loss_components.csv" \
     2>&1 | tee "$RUN_ROOT/plot_training_components.log"
 
-  local pytorch_checkpoint="$CHECKPOINT_ROOT/pytorch/SIBA_epoch60.pth"
-  local jittor_checkpoint="$CHECKPOINT_ROOT/jittor/shared_seed2025/SIBA_epoch60.pkl"
-  cp "$pytorch_checkpoint" "$PROJECT_ROOT/checkpoint/PyTorch_SIBA_shared_seed2025.pth"
-  cp "$jittor_checkpoint" "$PROJECT_ROOT/checkpoint/SIBA_shared_seed2025.pkl"
+  local pytorch_checkpoint="$CHECKPOINT_ROOT/pytorch/SIBA_epoch${EPOCHS}.pth"
+  local jittor_checkpoint="$CHECKPOINT_ROOT/jittor/$EXPERIMENT_NAME/SIBA_epoch${EPOCHS}.pkl"
+  cp "$pytorch_checkpoint" "$PROJECT_ROOT/checkpoint/PyTorch_SIBA_${EXPERIMENT_NAME}.pth"
+  cp "$jittor_checkpoint" "$PROJECT_ROOT/checkpoint/SIBA_${EXPERIMENT_NAME}.pkl"
   for dataset in MSRS M3FD_2x TNO; do
     run_inference pytorch "$PYTORCH_PYTHON" "$pytorch_checkpoint" "$dataset"
     run_inference jittor "$JITTOR_PYTHON" "$jittor_checkpoint" "$dataset"
@@ -256,7 +251,10 @@ if [[ "${1:-}" == "--worker" ]]; then
 fi
 
 mkdir -p "$RUN_ROOT"
-screen -S kk -X quit >/dev/null 2>&1 || true
+if screen -ls | grep -Eq '[.]kk[[:space:]]'; then
+  echo "screen session 'kk' already exists; attach with: screen -r kk" >&2
+  exit 2
+fi
 screen -L -Logfile "$RUN_ROOT/screen.log" -dmS kk \
   bash "$(readlink -f "$0")" --worker
 echo "$RUN_ROOT"

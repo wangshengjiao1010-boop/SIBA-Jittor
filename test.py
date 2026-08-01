@@ -3,29 +3,33 @@ import os
 import time
 from pathlib import Path
 
-from utils.runtime_config import PROJECT_ROOT, load_config, resolve_path
+PROJECT_ROOT = Path(__file__).resolve().parent
 
-config_parser = argparse.ArgumentParser(add_help=False)
-config_parser.add_argument("--config", default="configs/siba.json")
-config_args, _ = config_parser.parse_known_args()
+# Edit these paths before running on another machine. This follows the
+# path-at-entry layout of the official SIBA test.py.
+model_path = "./checkpoint/SIBA_epoch60.pkl"
+testdata_paths = {
+    "MSRS": "/root/autodl-tmp/datasets/SIBA/test/MSRS",
+    "M3FD_2x": "/root/autodl-tmp/datasets/SIBA/test/M3FD_2x",
+    "TNO": "/root/autodl-tmp/datasets/SIBA/test/TNO",
+}
+result_save_path = "./results/jittor_test"
+test_dataset = "all"
+use_gpu_number = "0"
+use_gpu = True
 
-config = load_config(config_args.config)
-test_config = config["test"]
-device_config = config["device"]
-default_checkpoint = resolve_path(test_config["checkpoint"])
-default_output_root = resolve_path(test_config["output_root"])
-configured_datasets = test_config["datasets"]
+default_output_root = Path(result_save_path)
+configured_datasets = testdata_paths
 
 parser = argparse.ArgumentParser(
-    description="Test SIBA with Jittor; defaults are read from configs/siba.json"
+    description="Test SIBA with Jittor; paths are configured near the top of test.py"
 )
-parser.add_argument("--config", default=config_args.config)
-parser.add_argument("--checkpoint", default=str(default_checkpoint))
-parser.add_argument("--dataset", default=test_config["dataset"])
+parser.add_argument("--checkpoint", default=model_path)
+parser.add_argument("--dataset", default=test_dataset)
 parser.add_argument("--data-dir")
 parser.add_argument("--output")
-parser.add_argument("--gpu-number", default=str(device_config["gpu_number"]))
-parser.add_argument("--cpu", action="store_true", default=not device_config["use_cuda"])
+parser.add_argument("--gpu-number", default=use_gpu_number)
+parser.add_argument("--cpu", action="store_true", default=not use_gpu)
 runtime_args = parser.parse_args()
 
 os.environ["CUDA_VISIBLE_DEVICES"] = runtime_args.gpu_number
@@ -50,7 +54,7 @@ def selected_datasets():
         return [(name, Path(runtime_args.data_dir), Path(output))]
     if runtime_args.dataset == "all":
         return [
-            (name, resolve_path(data_dir), default_output_root / name)
+            (name, Path(data_dir), default_output_root / name)
             for name, data_dir in configured_datasets.items()
         ]
     if runtime_args.dataset not in configured_datasets:
@@ -61,7 +65,7 @@ def selected_datasets():
     return [
         (
             runtime_args.dataset,
-            resolve_path(configured_datasets[runtime_args.dataset]),
+            Path(configured_datasets[runtime_args.dataset]),
             Path(output),
         )
     ]
@@ -95,7 +99,7 @@ def main():
         model_path = PROJECT_ROOT / model_path
     if not model_path.is_file():
         raise FileNotFoundError(
-            f"Checkpoint not found: {model_path}. Update test.checkpoint in configs/siba.json."
+            f"Checkpoint not found: {model_path}. Update model_path in test.py."
         )
     model = SIBA()
     model.load_parameters(jt.load(str(model_path))["model"])

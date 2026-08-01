@@ -1,53 +1,16 @@
 # SIBA-Jittor
 
-Jittor reproduction of **The Source Image is the Best Attention for Infrared and Visible Image Fusion**.
+Unofficial Jittor reproduction of **The Source Image is the Best Attention for Infrared and Visible Image Fusion** (ICCV 2025).
 
-- Paper: Song Wang et al., ICCV 2025
-- Paper page: <https://openaccess.thecvf.com/content/ICCV2025/html/Wang_The_Source_Image_is_the_Best_Attention_for_Infrared_and_ICCV_2025_paper.html>
-- Official PyTorch code: <https://github.com/Afreshbird/SIBA>
-- Official source commit: `880a1ddf9eaa610c64e5f25f87fbb146448addc9`
-- Jittor: <https://github.com/Jittor/jittor>
+[Paper](https://openaccess.thecvf.com/content/ICCV2025/html/Wang_The_Source_Image_is_the_Best_Attention_for_Infrared_and_ICCV_2025_paper.html) | [Official PyTorch](https://github.com/Afreshbird/SIBA) | [Jittor](https://github.com/Jittor/jittor)
 
-This repository changes the implementation framework only. The network topology, losses and loss weights, optimizer, learning-rate schedule, gradient clipping, data loading, random cropping, 60-epoch training protocol, and inference color reconstruction follow the released PyTorch code.
+This repository migrates the official PyTorch implementation at commit `880a1ddf9eaa610c64e5f25f87fbb146448addc9` to Jittor. It preserves the network, losses, optimizer behavior, scheduler, gradient clipping, data protocol, 60-epoch training schedule and inference color reconstruction.
 
-## Repository
-
-```text
-SIBA-Jittor/
-|-- args/ base_blocks/ loader/ loss/ models/ utils/  # official same-path modules
-|-- compat/                 # PyTorch-compatible Adam and gradient clipping
-|-- configs/                # paths for simple runs and controlled comparison
-|-- checkpoint/             # Jittor 60-epoch checkpoint
-|-- data/                   # dataset protocol and integrity manifests
-|-- evaluation/             # wrapper for the metric code linked by SIBA
-|-- tests/                  # source, tensor, gradient, and image alignment
-|-- logs/final/             # complete 60-epoch training logs
-|-- results/                # summaries plus complete per-image experiment outputs
-|-- prepare_data.py         # complete train/test data preparation
-|-- train.py                # Jittor training entry
-`-- test.py                 # Jittor inference entry
-```
-
-The 13 official Python files retain the same relative paths. Jittor-specific compatibility code is isolated in `compat/`. The official PyTorch source is not duplicated here; alignment scripts take a separately cloned official repository through `--pytorch-root`.
-
-## Published Artifacts
-
-The main public results can be opened directly on GitHub:
-
-| Artifact | Repository path |
-|---|---|
-| Complete 60-epoch logs | [logs/final](logs/final) |
-| Training loss curve | [results/loss_curve.png](results/loss_curve.png) |
-| Epoch loss values | [results/epoch_loss.csv](results/epoch_loss.csv) |
-| Seven-metric summary | [results/metrics_summary.csv](results/metrics_summary.csv) |
-| Complete per-image metric records | [results/metrics_20260727_siba_official_protocol](results/metrics_20260727_siba_official_protocol) |
-| Qualitative comparison grids | [results/visual](results/visual) |
-| Complete 45-image TNO demonstration | [results/demo_jittor_tno](results/demo_jittor_tno) |
-| Tensor and training-step alignment | [results/alignment](results/alignment) |
+![SIBA architecture](figs/SIBA_architecture.png)
 
 ## Environment
 
-The paper reports a TITAN RTX 24 GB. The reproduction used an RTX 3090 24 GB because the paper GPU was unavailable on AutoDL. Runtime is therefore reported as reproduction-hardware performance, not same-hardware replication.
+The reproduction was tested on Ubuntu 20.04, Python 3.8.18, CUDA 11.3 and an RTX 3090 24 GB. The paper reports a TITAN RTX 24 GB.
 
 ```bash
 conda create -n JittorDome python=3.8.18 -y
@@ -55,244 +18,117 @@ conda activate JittorDome
 pip install -r requirements.txt
 ```
 
-Tested versions:
-
-| Component | Version |
-|---|---|
-| Ubuntu | 20.04 |
-| CUDA toolkit | 11.3 |
-| Python | 3.8.18 |
-| Jittor | 1.3.11.0 |
-| NumPy | 1.24.4 |
-| OpenCV | 4.8.1.78 |
-| Pillow | 10.0.1 |
-
-The captured machine and package record is [logs/final/environment.txt](logs/final/environment.txt).
+Core versions are pinned in [requirements.txt](requirements.txt). The captured environment is available at [logs/final/environment.txt](logs/final/environment.txt).
 
 ## Data
 
-The complete protocol uses 1,283 training pairs and 706 test pairs.
+Datasets are not included in this repository. Download them from the official sources:
 
-| Split | Source | Pairs | Processing |
+| Usage | Dataset | Pairs | Download |
 |---|---|---:|---|
-| Train | MSRS | 1,083 | released training set |
-| Train | RoadScene | 200 | deterministic public subset, seed 2025 |
-| Test | MSRS | 361 | all released test pairs |
-| Test | M3FD | 300 | all pairs, half width and height as required by SIBA Sec. 4.1 |
-| Test | TNO | 45 | complete SIBA-linked set |
+| Train | MSRS | 1,083 | [MSRS](https://github.com/Linfeng-Tang/MSRS/tree/main/train) |
+| Train | RoadScene | 200 | [RoadScene](https://github.com/hanna-xu/RoadScene) |
+| Test | MSRS | 361 | [MSRS](https://github.com/Linfeng-Tang/MSRS/tree/main/test) |
+| Test | M3FD | 300 | [M3FD](https://github.com/JinyuanLiu-CV/TarDAL#download) |
+| Test | TNO | 45 | [Google Drive](https://drive.google.com/drive/folders/1yURIsV9R9kEYLQovQ-vPogUkXqrIZswA) / [official SIBA links](https://github.com/Afreshbird/SIBA#-testing-datasets) |
 
-Download the sources linked by the official repository:
-
-- MSRS: <https://github.com/Linfeng-Tang/MSRS>
-- RoadScene: <https://github.com/hanna-xu/RoadScene>
-- M3FD: <https://github.com/JinyuanLiu-CV/TarDAL>
-- TNO: use the Google Drive or Baidu links in the official SIBA README
-
-Prepare all data without reducing any split:
+Prepare the complete official-protocol data:
 
 ```bash
 python prepare_data.py \
   --msrs-root /path/to/MSRS \
   --roadscene-root /path/to/RoadScene \
   --m3fd-root /path/to/M3FD_Fusion \
-  --tno-root /path/to/TNO \
-  --output datasets
+  --tno-root /path/to/TNO
 ```
 
-Expected output:
+The default output is `/root/autodl-tmp/datasets/SIBA`. Use `--output` on another machine. The prepared structure is:
 
 ```text
-datasets/train/{ir,vi}          1,283 pairs
-datasets/test/MSRS/{ir,vi}        361 pairs
-datasets/test/M3FD_2x/{ir,vi}     300 pairs
-datasets/test/TNO/{ir,vi}          45 pairs
+SIBA/
+|-- train/{ir,vi}                 # 1,283 pairs
+`-- test/
+    |-- MSRS/{ir,vi}              # 361 pairs
+    |-- M3FD_2x/{ir,vi}           # 300 pairs
+    `-- TNO/{ir,vi}               # 45 pairs
 ```
 
-File lists, dimensions, and SHA256 values are retained in [data/manifests](data/manifests). The authors did not publish their 200 RoadScene filenames or random seed, so this reproduction does not claim that its RoadScene subset is identical to the unpublished author subset. Full provenance is recorded in [data/README.md](data/README.md).
+M3FD keeps all 300 pairs and follows SIBA Section 4.1 by resizing width and height to one half. Dataset provenance, citations and SHA256 manifests are documented in [data/README.md](data/README.md).
 
-After data preparation, edit only the path and device fields in [configs/siba.json](configs/siba.json). Relative paths are resolved from the repository root.
+Before running on another machine:
 
-| Field | Purpose |
-|---|---|
-| `device.gpu_number` | CUDA device used by `train.py` and `test.py` |
-| `train.infrared_dir` / `train.visible_dir` | complete training directories |
-| `train.output_dir` | Jittor checkpoint directory |
-| `test.checkpoint` | checkpoint loaded by `test.py` |
-| `test.datasets` | complete MSRS, M3FD and TNO test directories |
-| `test.output_root` | fused-image output directory |
+- Set `ir_path` and `vi_path` in [args/args_SIBA.py](args/args_SIBA.py).
+- Set `model_path`, `testdata_paths` and `result_save_path` near the top of [test.py](test.py).
 
-The paper hyperparameters remain in [args/args_SIBA.py](args/args_SIBA.py), matching the official source layout. The runtime configuration above contains paths and device selection only.
+## Training
 
-## Module Tests
-
-Run the deterministic CPU module checks before training:
+Optional module checks:
 
 ```bash
-conda activate JittorDome
 python tests/test_jittor_modules.py
 ```
 
-The checks cover `Res_SE`, `CBSM`, self-attention, cross-attention, the complete `SIBA` forward path, Laplacian loss, intensity loss, and Sobel loss. Their tensors are test fixtures only and are not reported as experimental data.
-
-## Train
-
-The command below runs the complete official 60-epoch schedule with batch size 4, patch size 128, Adam learning rate `1e-4`, StepLR step 25/gamma 0.5, and global gradient clipping at 0.01.
+Complete Jittor training:
 
 ```bash
-conda activate JittorDome
 python train.py
 ```
 
-The default paths are read from [configs/siba.json](configs/siba.json). Training saves `checkpoint/jittor_run/SIBA_epoch60.pkl`, `logs/jittor_run/train_batches.csv`, and `logs/jittor_run/train_metadata.json`. This separate run directory does not overwrite the published checkpoint. Optional command-line overrides remain available for automated experiments, but are not required for normal use.
+The default settings match the official code: 60 epochs, batch size 4, patch size 128, Adam learning rate `1e-4`, StepLR step 25/gamma 0.5 and global gradient clipping at `0.01`.
 
-The completed Jittor checkpoint is provided as [checkpoint/SIBA_epoch60.pkl](checkpoint/SIBA_epoch60.pkl). The unmodified complete training logs are:
+Each run is saved automatically:
 
-- [logs/final/jittor_train_60e.log](logs/final/jittor_train_60e.log)
-- [logs/final/pytorch_train_60e.log](logs/final/pytorch_train_60e.log)
+```text
+checkpoint/test/<YYYYMMDD_HHMMSS>/
+|-- SIBA_epoch60.pkl
+|-- train_batches.csv
+`-- train_metadata.json
+```
 
-The independently trained PyTorch comparison checkpoint is retained as [checkpoint/PyTorch_SIBA_epoch60.pth](checkpoint/PyTorch_SIBA_epoch60.pth).
+The completed checkpoint is provided at [checkpoint/SIBA_epoch60.pkl](checkpoint/SIBA_epoch60.pkl).
 
-For a detached AutoDL run, create `screen -S kk`, run `python -u train.py`, then use `screen -r kk` to inspect the live loss output.
+## Testing
 
-### Controlled PyTorch/Jittor training comparison
-
-The default command above preserves the released data-loader behavior. For a tightly controlled framework comparison, the formal runner exports one seed-`2025` PyTorch initialization, loads it in both frameworks, applies the same 60-epoch sample and crop schedule, records all four loss terms for every batch, and tests both final checkpoints on all 706 pairs.
-
-First edit [configs/comparison.sh](configs/comparison.sh): set `DATA_ROOT`, `PYTORCH_ROOT`, the two Conda Python paths, and a unique `RUN_ID`. All log, checkpoint, result, and shared-input directories are derived from `RUN_ID`; no manual `export` commands are needed.
+Run MSRS, M3FD and TNO with the paths defined in `test.py`:
 
 ```bash
-conda activate JittorDome
+python test.py
+```
+
+Run one configured dataset only:
+
+```bash
+python test.py --dataset TNO
+```
+
+Fused images are saved to `results/jittor_test/<dataset>/`. A complete 45-image TNO output is provided in [results/demo_jittor_tno](results/demo_jittor_tno).
+
+## Comparison
+
+Ordinary Jittor training and testing do not require a config file. The optional [configs/comparison.yaml](configs/comparison.yaml) defines a controlled PyTorch/Jittor workflow with shared initialization, a shared 60-epoch sample/crop schedule, component-wise loss logs and all 706 test pairs.
+
+After editing the dataset, official repository and Conda interpreter paths in the YAML file:
+
+```bash
 bash scripts/run_shared_comparison_screen.sh
 screen -r kk
 ```
 
-The runner refuses to overwrite an existing formal run. Successful completion is marked by `logs/shared_seed2025/EXPERIMENT_COMPLETE`; initialization, schedule, checkpoints, batch logs, and datasets are verified by SHA256 or manifests. This shared schedule is an experimental control, not a replacement for the released default shuffle implementation.
+The shell script only coordinates two Conda environments, GNU screen and GPU monitoring; model and experiment parameters are stored in YAML. Details are in [docs/CONTROLLED_COMPARISON.md](docs/CONTROLLED_COMPARISON.md).
 
-The official script prints one loss value every 50 batches. Each retained log contains 420 entries across 60 epochs. Jittor training took 4,079 s; PyTorch training took 2,221 s on the RTX 3090 reproduction machine.
+## Results
 
-![60-epoch loss curves](results/loss_curve.png)
+### Training logs
 
-## Test
+- [Jittor 60-epoch log](logs/final/jittor_train_60e.log)
+- [PyTorch 60-epoch log](logs/final/pytorch_train_60e.log)
+- [Per-epoch loss values](results/epoch_loss.csv)
 
-Edit `test.checkpoint`, `test.datasets`, and `test.output_root` in [configs/siba.json](configs/siba.json), then run all three complete test sets:
+![PyTorch and Jittor training loss](results/loss_curve.png)
 
-```bash
-conda activate JittorDome
-python test.py
-```
+### Released-checkpoint alignment
 
-`test.py` processes the configured MSRS, M3FD and TNO directories in one run and writes them below `results/jittor_run/`. It preserves the official YCbCr decomposition, luminance fusion, RGB reconstruction, clipping, and image saving logic. Optional `--dataset`, `--checkpoint`, `--data-dir`, and `--output` arguments remain available for automated experiments.
-
-For the formal PyCharm demonstration, run the complete 45-pair TNO test with synchronized timing:
-
-```bash
-python evaluation/run_inference.py \
-  --framework jittor \
-  --checkpoint checkpoint/SIBA_epoch60.pkl \
-  --data-dir datasets/test/TNO \
-  --output results/TNO_reproduced \
-  --use-cuda --warmup-runs 3 --timing-mode synchronized
-```
-
-The retained completed demonstration contains all 45 fused images, not a reduced sample: [results/demo_jittor_tno](results/demo_jittor_tno). PyCharm setup and presentation order are documented in [docs/PYCHARM_REMOTE_GUIDE.md](docs/PYCHARM_REMOTE_GUIDE.md).
-
-## PyTorch Alignment
-
-Clone the frozen official source separately:
-
-```bash
-git clone https://github.com/Afreshbird/SIBA.git ../SIBA-official
-git -C ../SIBA-official checkout 880a1ddf9eaa610c64e5f25f87fbb146448addc9
-```
-
-Create the independent PyTorch reference environment used by the alignment scripts:
-
-```bash
-conda create -n PytorchDome python=3.8.18 -y
-conda activate PytorchDome
-pip install torch==1.10.0+cu111 torchvision==0.11.0+cu111 \
-  -f https://download.pytorch.org/whl/torch_stable.html
-pip install kornia==0.7.0 numpy==1.24.4 opencv-python==4.8.1.78 Pillow==10.0.1 tqdm==4.66.1
-```
-
-Check file and symbol coverage:
-
-```bash
-python tests/audit_source.py \
-  --official ../SIBA-official \
-  --mirror . \
-  --output results/source_audit.json
-```
-
-The retained audit has no missing official Python file and no missing official class or function. Jittor-only helper functions are reported separately rather than hidden.
-
-Export the PyTorch reference with the official checkpoint:
-
-```bash
-conda activate PytorchDome
-python tests/export_pytorch_alignment.py \
-  --pytorch-root ../SIBA-official \
-  --checkpoint ../SIBA-official/checkpoint/SIBA_epoch60.pth \
-  --output alignment/pytorch_reference.npz \
-  --device cuda
-```
-
-Check the same parameters, inputs, intermediate activations, losses, gradients, clipping, and one Adam update in Jittor:
-
-```bash
-conda activate JittorDome
-python tests/check_jittor_alignment.py \
-  --checkpoint ../SIBA-official/checkpoint/SIBA_epoch60.pth \
-  --reference alignment/pytorch_reference.npz \
-  --output alignment/jittor_report.json \
-  --use-cuda
-```
-
-Controlled results:
-
-| Check | Result |
-|---|---:|
-| Major activation maximum absolute error | `2.0206e-4` |
-| Loss maximum absolute error | `2.9802e-6` |
-| Native gradient cosine similarity | `0.999945` |
-| Native gradient relative L2 error | `1.0508%` |
-| One-step update cosine similarity | `0.997738` |
-| One-step update relative L2 error | `6.7269%` |
-| Adam update error with shared reference gradients | `2.9802e-8` |
-
-Forward/loss alignment and the migrated clipping/Adam implementation pass the declared functional checks. Native framework gradients are close but do not satisfy a `1e-3` strict relative-L2 threshold; strict training-step equality is not claimed. The retained report is [results/alignment/training_step.json](results/alignment/training_step.json).
-
-Released-checkpoint outputs were compared on all 706 images. Filenames and shapes match, and the maximum Jittor/PyTorch pixel difference is one uint8 level on every dataset:
-
-| Dataset | Pairs | Max pixel difference |
-|---|---:|---:|
-| MSRS | 361 | 1 |
-| M3FD_2x | 300 | 1 |
-| TNO | 45 | 1 |
-
-Machine-readable summaries are in [results/alignment](results/alignment).
-
-## Quantitative Results
-
-Metrics use the SIBA-linked `Linfeng-Tang/Evaluation-for-Image-Fusion` implementation frozen at commit `f5f055bcadb49c22fb734c3498aef6c56fc71f2a`. The retained wrapper is under [evaluation](evaluation), and the complete summary is [results/metrics_summary.csv](results/metrics_summary.csv).
-
-```bash
-git clone https://github.com/Linfeng-Tang/Evaluation-for-Image-Fusion.git ../Evaluation-for-Image-Fusion
-git -C ../Evaluation-for-Image-Fusion checkout f5f055bcadb49c22fb734c3498aef6c56fc71f2a
-
-python evaluation/run_matlab_evaluation.py \
-  --matlab /path/to/matlab \
-  --evaluation-dir ../Evaluation-for-Image-Fusion/Evaluation \
-  --data-root datasets/test \
-  --experiment Jittor=results/fused \
-  --output-dir results/metric_run
-```
-
-MATLAB is used only for the paper-linked metric definitions. Jittor training and inference are entirely Python/Jittor.
-
-Complete per-image CSV files, MATLAB logs, summary tables, and metric plots for all four experiment branches and all three datasets are retained under [results/metrics_20260727_siba_official_protocol](results/metrics_20260727_siba_official_protocol). Complete inference timing, released-checkpoint alignment, training analysis, and raw formal run logs are retained alongside the concise top-level summaries. Development smoke tests and 20-step training outputs are intentionally excluded.
-
-### Released checkpoint
+Both frameworks load the same author-released checkpoint. All 706 output pairs have matching filenames and dimensions; the maximum pixel difference is one uint8 level.
 
 | Dataset | Framework | VIF | SCD | MI | Qabf | SSIM | MS-SSIM | FMI |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
@@ -314,11 +150,11 @@ Complete per-image CSV files, MATLAB logs, summary tables, and metric plots for 
 | TNO | PyTorch | 0.799915 | 1.754528 | 3.162455 | 0.577163 | 0.946520 | 0.917269 | 0.911972 |
 | TNO | Jittor | 0.802737 | 1.736843 | 3.334378 | 0.567382 | 0.947852 | 0.915246 | 0.911662 |
 
-Independent full training demonstrates convergence and usable outputs. It is not treated as batch-wise numerical equivalence because PyTorch and Jittor use different data-loader shuffle sequences.
+These are complete 60-epoch runs with the official settings. Because the retained runs used framework-native initialization and shuffling, they demonstrate end-to-end trainability and convergence rather than batch-wise numerical equivalence. Complete per-image metrics and MATLAB logs are available in [results/metrics_20260727_siba_official_protocol](results/metrics_20260727_siba_official_protocol) and [results/metrics_summary.csv](results/metrics_summary.csv). MATLAB is used only for the metric definitions linked by the official SIBA repository; training and inference are Python/Jittor.
 
-## Performance
+### Runtime
 
-Synchronized model-forward timing on RTX 3090:
+Synchronized inference on the same RTX 3090:
 
 | Dataset | Jittor FPS | PyTorch FPS |
 |---|---:|---:|
@@ -326,30 +162,28 @@ Synchronized model-forward timing on RTX 3090:
 | M3FD_2x | 12.66 | 19.90 |
 | TNO | 6.93 | 12.31 |
 
-The full timing table, including the official unsynchronized timer, is [results/inference_timing.csv](results/inference_timing.csv). Unsynchronized CUDA timing is retained for protocol fidelity but is not presented as completed inference latency.
+The complete timing table is [results/inference_timing.csv](results/inference_timing.csv).
 
-## Visual Results
+### Visual comparison
 
-Released-checkpoint comparison on MSRS:
+![MSRS released-checkpoint comparison](results/visual/MSRS_official_checkpoint_grid.png)
 
-![MSRS released checkpoint comparison](results/visual/MSRS_official_checkpoint_grid.png)
+![MSRS independently trained comparison](results/visual/MSRS_self_trained_grid.png)
 
-Independent 60-epoch comparison on MSRS:
+Additional MSRS, M3FD and TNO comparisons are provided in [results/visual](results/visual).
 
-![MSRS self-trained comparison](results/visual/MSRS_self_trained_grid.png)
+## Migration
 
-M3FD_2x and TNO comparisons are also retained in [results/visual](results/visual).
+The 13 official Python files retain the same relative paths. Framework-specific substitutions are limited to Jittor APIs and compatibility helpers:
 
-## Migration Notes
+| PyTorch | Jittor reproduction |
+|---|---|
+| `forward` | `execute` |
+| `torch.utils.data.Dataset` | `jittor.dataset.Dataset` |
+| `torch.optim.Adam` | PyTorch-compatible Jittor Adam in `compat/` |
+| `clip_grad_norm_` | matching global L2 clipping in `compat/` |
 
-All framework-forced substitutions and debugging records are documented in [MIGRATION.md](MIGRATION.md). The main non-mechanical points are:
-
-- PyTorch `forward` becomes Jittor `execute`.
-- Kornia's normalized Laplacian is reproduced with the same kernel, reflect padding, and grouped convolution.
-- PyTorch 1.10 Adam epsilon placement is reproduced in `compat/pytorch_adam.py`.
-- PyTorch global L2 clipping operation order is reproduced in `compat/pytorch_clip.py`.
-- Jittor dataset length and batching use `set_attrs`; sample discovery, normalization, crops, and pairing are unchanged.
-- Jittor image output is transposed from CHW to HWC immediately before `ToPILImage`.
+Source coverage, numerical alignment and limitations are documented in [MIGRATION.md](MIGRATION.md), [docs/CODE_WALKTHROUGH.md](docs/CODE_WALKTHROUGH.md) and [docs/REPRODUCIBILITY_AUDIT.md](docs/REPRODUCIBILITY_AUDIT.md).
 
 ## Citation
 
@@ -358,7 +192,10 @@ All framework-forced substitutions and debugging records are documented in [MIGR
     author    = {Wang, Song and Han, Xie and Kuang, Liqun and Wang, Boying and Chen, Zhongyu and Qiao, Zherui and Yang, Fan and Liu, Xiaoxia and Zhang, Bingyu and Wang, Zhixun},
     title     = {The Source Image is the Best Attention for Infrared and Visible Image Fusion},
     booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
     year      = {2025},
     pages     = {13513--13522}
 }
 ```
+
+Please also cite Jittor and the datasets used in your experiments. Dataset citations are listed in [data/README.md](data/README.md).

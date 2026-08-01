@@ -6,8 +6,8 @@ from pathlib import Path
 
 from PIL import Image
 
-
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff"}
+DEFAULT_DATA_ROOT = Path("/root/autodl-tmp/datasets/SIBA")
 
 
 def image_files(directory):
@@ -29,7 +29,9 @@ def matched_pairs(infrared, visible):
             json.dumps(
                 {
                     "missing_visible": sorted(set(infrared_files) - set(visible_files)),
-                    "missing_infrared": sorted(set(visible_files) - set(infrared_files)),
+                    "missing_infrared": sorted(
+                        set(visible_files) - set(infrared_files)
+                    ),
                 },
                 ensure_ascii=False,
             )
@@ -72,7 +74,9 @@ def prepare_training(args):
         args.roadscene_root / "crop_LR_visible",
     )
     manifest = json.loads(args.roadscene_manifest.read_text(encoding="utf-8"))
-    roadscene_by_name = {name: (infrared, visible) for name, infrared, visible in roadscene_pairs}
+    roadscene_by_name = {
+        name: (infrared, visible) for name, infrared, visible in roadscene_pairs
+    }
     selected_names = [pair["name"] for pair in manifest["pairs"]]
     selected_roadscene = [
         (name, *roadscene_by_name[name])
@@ -88,7 +92,9 @@ def prepare_training(args):
     if len(names) != len(set(names)):
         raise RuntimeError("MSRS and RoadScene contain colliding filenames")
     if len(msrs_pairs) != 1083:
-        raise RuntimeError(f"Expected 1083 MSRS training pairs, found {len(msrs_pairs)}")
+        raise RuntimeError(
+            f"Expected 1083 MSRS training pairs, found {len(msrs_pairs)}"
+        )
 
     materialize_pairs(msrs_pairs + selected_roadscene, args.output / "train")
     return len(msrs_pairs) + len(selected_roadscene)
@@ -97,7 +103,9 @@ def prepare_training(args):
 def prepare_linked_test(name, infrared, visible, output, expected_count):
     pairs = matched_pairs(infrared, visible)
     if len(pairs) != expected_count:
-        raise RuntimeError(f"Expected {expected_count} {name} pairs, found {len(pairs)}")
+        raise RuntimeError(
+            f"Expected {expected_count} {name} pairs, found {len(pairs)}"
+        )
     for filename, infrared_path, visible_path in pairs:
         with Image.open(infrared_path) as infrared_image, Image.open(
             visible_path
@@ -139,7 +147,7 @@ def main():
         type=Path,
         default=Path("data/manifests/roadscene_200_seed2025.json"),
     )
-    parser.add_argument("--output", type=Path, default=Path("datasets"))
+    parser.add_argument("--output", type=Path, default=DEFAULT_DATA_ROOT)
     args = parser.parse_args()
 
     report = {

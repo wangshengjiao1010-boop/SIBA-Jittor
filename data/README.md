@@ -1,5 +1,18 @@
 # Dataset Provenance
 
+## Storage contract
+
+Datasets are not redistributed through this repository. The public code tracks only preparation logic and integrity manifests. The AutoDL reproduction stores the prepared data outside the Git checkout at `/root/autodl-tmp/datasets/SIBA`; users on another machine change the training paths in `args/args_SIBA.py` and the testing paths in `test.py`.
+
+```text
+SIBA/
+|-- train/{ir,vi}                 # 1,283 pairs
+`-- test/
+    |-- MSRS/{ir,vi}              # 361 pairs
+    |-- M3FD_2x/{ir,vi}           # 300 pairs
+    `-- TNO/{ir,vi}               # 45 pairs
+```
+
 ## Training data
 
 ### MSRS
@@ -51,3 +64,51 @@ A commonly mirrored 25-pair TNO subset was initially inspected and rejected beca
 - Official SIBA link: <https://github.com/Linfeng-Tang/Evaluation-for-Image-Fusion>
 - Frozen repository commit: `f5f055bcadb49c22fb734c3498aef6c56fc71f2a`
 - Reported metrics: VIF, SCD, MI, Qabf, SSIM, MS-SSIM, and FMI.
+
+## Dataset citations
+
+The following entries come from the corresponding official dataset or framework repositories. Users should also review each upstream license and citation notice.
+
+```bibtex
+@article{Tang2022PIAFusion,
+  title={PIAFusion: A progressive infrared and visible image fusion network based on illumination aware},
+  author={Tang, Linfeng and Yuan, Jiteng and Zhang, Hao and Jiang, Xingyu and Ma, Jiayi},
+  journal={Information Fusion},
+  year={2022},
+  publisher={Elsevier}
+}
+
+@inproceedings{xu2020aaai,
+  title={FusionDN: A Unified Densely Connected Network for Image Fusion},
+  author={Xu, Han and Ma, Jiayi and Le, Zhuliang and Jiang, Junjun and Guo, Xiaojie},
+  booktitle={Proceedings of the Thirty-Fourth AAAI Conference on Artificial Intelligence},
+  year={2020}
+}
+
+@inproceedings{liu2022target,
+  title={Target-aware Dual Adversarial Learning and a Multi-scenario Multi-Modality Benchmark to Fuse Infrared and Visible for Object Detection},
+  author={Liu, Jinyuan and Fan, Xin and Huang, Zhanbo and Wu, Guanyao and Liu, Risheng and Zhong, Wei and Luo, Zhongxuan},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={5802--5811},
+  year={2022}
+}
+
+@article{toet2017tno,
+  title={The TNO multiband image data collection},
+  author={Toet, Alexander},
+  journal={Data in Brief},
+  volume={15},
+  pages={249--251},
+  year={2017}
+}
+
+@article{hu2020jittor,
+  title={Jittor: a novel deep learning framework with meta-operators and unified graph execution},
+  author={Hu, Shi-Min and Liang, Dun and Yang, Guo-Ye and Yang, Guo-Wei and Zhou, Wen-Yang},
+  journal={Science China Information Sciences},
+  volume={63},
+  number={222103},
+  pages={1--21},
+  year={2020}
+}
+```
