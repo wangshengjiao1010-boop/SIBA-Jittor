@@ -58,14 +58,6 @@ logs/alignment/*
 !logs/alignment/pytorch_gpu_seed2025.json
 !logs/alignment/test_dataset_pairing.json
 !logs/alignment/training_dataset_validation.json
-!logs/full_inference_20260727_siba_official_protocol/
-!logs/full_inference_20260727_siba_official_protocol/**
-!logs/full_sequence_20260727_siba_official_protocol/
-!logs/full_sequence_20260727_siba_official_protocol/**
-!logs/metric_evaluation_20260727/
-!logs/metric_evaluation_20260727/**
-!logs/remaining_gpu_20260727_siba_official_protocol/
-!logs/remaining_gpu_20260727_siba_official_protocol/**
 
 # Only the complete formal result directories are public.
 results/*
@@ -73,36 +65,27 @@ results/*
 !results/*.csv
 !results/*.json
 !results/*.png
+!results/README.md
 !results/alignment/
 !results/alignment/**
 !results/visual/
 !results/visual/**
-!results/demo_jittor_tno/
-!results/demo_jittor_tno/**
-!results/full_20260727_siba_official_protocol/
-!results/full_20260727_siba_official_protocol/**
-!results/metrics_20260727_siba_official_protocol/
-!results/metrics_20260727_siba_official_protocol/**
-!results/official_checkpoint_alignment_20260727_siba_official_protocol/
-!results/official_checkpoint_alignment_20260727_siba_official_protocol/**
-!results/official_timing_20260727_siba_official_protocol/
-!results/official_timing_20260727_siba_official_protocol/**
-!results/output_alignment_20260727_siba_official_protocol/
-!results/output_alignment_20260727_siba_official_protocol/**
-!results/performance_summary_20260727_siba_official_protocol/
-!results/performance_summary_20260727_siba_official_protocol/**
-!results/training_analysis_20260727_siba_official_protocol/
-!results/training_analysis_20260727_siba_official_protocol/**
+!results/jittor_test/
+!results/jittor_test/TNO/
+!results/jittor_test/TNO/**
+!results/metrics/
+!results/metrics/**
 
 # Full fused-image batches remain in the local experiment archive (0.862 GiB).
 # Their complete filenames, timing, metrics, and alignment records are tracked.
-results/full_20260727_siba_official_protocol/**/*.png
-results/official_checkpoint_alignment_20260727_siba_official_protocol/**/*.png
+results/jittor_test/MSRS/**/*.png
+results/jittor_test/M3FD_2x/**/*.png
 
 # Generated inference outputs and temporary checkpoints
 checkpoint/*
-!checkpoint/SIBA_epoch60.pkl
-!checkpoint/PyTorch_SIBA_epoch60.pth
+!checkpoint/README.md
+!checkpoint/SIBA_jittor_self_trained_epoch60.pkl
+!checkpoint/SIBA_pytorch_self_trained_epoch60.pth
 results/fused/
 results/generated/
 results/*_reproduced/

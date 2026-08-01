@@ -14,7 +14,7 @@ LOSSES = (
     ("loss_intensity", "Intensity loss"),
     ("loss_sobel", "Sobel-gradient loss"),
 )
-COLORS = {"PyTorch": "#3572A5", "Jittor": "#D55E00"}
+COLORS = {"PyTorch": "#3572A5", "Jittor": "#009E9A"}
 
 
 def read_epoch_means(path):
@@ -30,23 +30,17 @@ def read_epoch_means(path):
     }
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--run", action="append", required=True, metavar="LABEL=CSV")
-    parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--summary-csv", type=Path, required=True)
-    args = parser.parse_args()
-
+def write_component_artifacts(run_specs, output, summary_csv):
     runs = {}
-    for value in args.run:
+    for value in run_specs:
         label, raw_path = value.split("=", 1)
         runs[label] = read_epoch_means(Path(raw_path))
     if len({tuple(values) for values in runs.values()}) != 1:
         raise ValueError("All runs must contain the same epochs")
 
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.summary_csv.parent.mkdir(parents=True, exist_ok=True)
-    with args.summary_csv.open("w", encoding="utf-8", newline="") as file:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    summary_csv.parent.mkdir(parents=True, exist_ok=True)
+    with summary_csv.open("w", encoding="utf-8", newline="") as file:
         fieldnames = ["framework", "epoch"] + [key for key, _ in LOSSES]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
@@ -72,8 +66,18 @@ def main():
         axis.grid(axis="y", color="#D9D9D9", linewidth=0.7, alpha=0.8)
         axis.spines[["top", "right"]].set_visible(False)
     axes[0, 0].legend(frameon=False)
-    figure.savefig(args.output, dpi=240, facecolor="white")
-    figure.savefig(args.output.with_suffix(".pdf"), facecolor="white")
+    figure.savefig(output, dpi=240, facecolor="white")
+    figure.savefig(output.with_suffix(".pdf"), facecolor="white")
+    plt.close(figure)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--run", action="append", required=True, metavar="LABEL=CSV")
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--summary-csv", type=Path, required=True)
+    args = parser.parse_args()
+    write_component_artifacts(args.run, args.output, args.summary_csv)
 
 
 if __name__ == "__main__":

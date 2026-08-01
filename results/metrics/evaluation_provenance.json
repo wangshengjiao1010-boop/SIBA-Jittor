@@ -1,0 +1,32 @@
+{
+  "status": "completed",
+  "protocol": {
+    "datasets": {
+      "MSRS": 361,
+      "M3FD_2x": 300,
+      "TNO": 45
+    },
+    "total_pairs": 706,
+    "metrics": ["VIF", "SCD", "MI", "Qabf", "SSIM", "MS_SSIM", "FMI"]
+  },
+  "runs": {
+    "OfficialPyTorch": "author checkpoint evaluated with the official PyTorch implementation",
+    "OfficialJittor": "the same author checkpoint converted and evaluated with Jittor",
+    "PyTorchSelfTrained": "independent complete 60-epoch PyTorch training",
+    "JittorSelfTrained": "independent complete 60-epoch Jittor training"
+  },
+  "artifacts": {
+    "summary": "results/metrics/metrics_summary.csv",
+    "per_image_root": "results/metrics",
+    "official_checkpoint_alignment": "results/alignment/official_checkpoint",
+    "qualitative_grids": "results/visual",
+    "training_curve": "results/loss_curve.png",
+    "performance": "results/inference_timing.csv",
+    "historical_machine_manifest": "results/metrics/evaluation_manifest_historical.json"
+  },
+  "notes": [
+    "MATLAB is used only for the metric definitions linked by the official SIBA repository.",
+    "The historical manifest preserves the original absolute paths and commands for audit purposes.",
+    "Shared-initialization and shared-crop 60-epoch training is implemented but not reported as completed."
+  ]
+}

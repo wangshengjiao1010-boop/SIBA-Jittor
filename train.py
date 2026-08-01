@@ -13,7 +13,8 @@ import jittor as jt
 import numpy as np
 from jittor.lr_scheduler import StepLR
 
-sys.path.append("./")
+PROJECT_ROOT = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from args.args_SIBA import args
 from compat.pytorch_adam import PyTorchAdam
@@ -50,6 +51,11 @@ def file_sha256(path):
     return digest.hexdigest()
 
 
+def project_path(path):
+    path = pathlib.Path(path).expanduser()
+    return path if path.is_absolute() else PROJECT_ROOT / path
+
+
 def state_fingerprint(model):
     digest = hashlib.sha256()
     for name, value in sorted(model.state_dict().items()):
@@ -62,7 +68,7 @@ def state_fingerprint(model):
 
 
 def load_initial_weights(model, path):
-    path = pathlib.Path(path)
+    path = project_path(path)
     if not path.is_file():
         raise FileNotFoundError(path)
     if path.suffix.lower() == ".npz":
@@ -95,6 +101,10 @@ def main():
     args.use_gpu_number = runtime_args.gpu_number
     args.use_gpu = not runtime_args.cpu
     args.epochs = runtime_args.epochs
+    if runtime_args.initial_weights is not None:
+        runtime_args.initial_weights = project_path(runtime_args.initial_weights)
+    if runtime_args.schedule is not None:
+        runtime_args.schedule = project_path(runtime_args.schedule)
 
     os.environ["CUDA_VISIBLE_DEVICES"] = args.use_gpu_number
     jt.flags.use_cuda = 1 if args.use_gpu else 0
@@ -104,7 +114,7 @@ def main():
         np.random.seed(runtime_args.seed)
         jt.set_global_seed(runtime_args.seed)
 
-    model_save_path = args.model_save_path
+    model_save_path = project_path(args.model_save_path)
     num_epochs = args.epochs
     learning_rate = args.init_lr
     weight_decay = args.weight_decay
@@ -124,8 +134,12 @@ def main():
     run_directory.mkdir(parents=True, exist_ok=True)
     if runtime_args.log_csv is None:
         runtime_args.log_csv = run_directory / "train_batches.csv"
+    else:
+        runtime_args.log_csv = project_path(runtime_args.log_csv)
     if runtime_args.metadata is None:
         runtime_args.metadata = run_directory / "train_metadata.json"
+    else:
+        runtime_args.metadata = project_path(runtime_args.metadata)
 
     model = SIBA()
     if runtime_args.initial_weights is not None:
@@ -144,8 +158,8 @@ def main():
     intensity_grad_loss = Fusionloss()
 
     data = TrainLoader(
-        pathlib.Path(args.ir_path),
-        pathlib.Path(args.vi_path),
+        project_path(args.ir_path),
+        project_path(args.vi_path),
         args.patch_size,
         schedule_path=runtime_args.schedule,
     )
@@ -267,6 +281,15 @@ def main():
     save_path = run_directory / f"SIBA_epoch{num_epochs}.pkl"
     jt.save({"model": model.state_dict()}, str(save_path))
     final_fingerprint = state_fingerprint(model)
+    from evaluation.plot_training_components import write_component_artifacts
+
+    loss_plot_path = run_directory / "loss_components.png"
+    loss_summary_path = run_directory / "epoch_loss_components.csv"
+    write_component_artifacts(
+        [f"Jittor={runtime_args.log_csv}"],
+        loss_plot_path,
+        loss_summary_path,
+    )
 
     if runtime_args.metadata is not None:
         runtime_args.metadata.parent.mkdir(parents=True, exist_ok=True)
@@ -316,6 +339,8 @@ def main():
                 if runtime_args.log_csv is not None
                 else None
             ),
+            "loss_component_plot": str(loss_plot_path.resolve()),
+            "loss_component_summary": str(loss_summary_path.resolve()),
         }
         runtime_args.metadata.write_text(
             json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",
@@ -325,6 +350,7 @@ def main():
     print(f"Checkpoint saved to: {save_path}")
     if runtime_args.log_csv is not None:
         print(f"Batch log saved to: {runtime_args.log_csv}")
+    print(f"Loss components saved to: {loss_plot_path}")
     print("done")
 
 

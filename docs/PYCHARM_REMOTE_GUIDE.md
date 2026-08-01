@@ -25,9 +25,9 @@ The completed run is already retained in:
 
 - `logs/final/jittor_train_60e.log`
 - `logs/final/pytorch_train_60e.log`
-- `results/training_analysis_20260727_siba_official_protocol/`
-- `checkpoint/SIBA_epoch60.pkl`
-- `checkpoint/PyTorch_SIBA_epoch60.pth`
+- `results/epoch_loss.csv` and `results/loss_curve.png`
+- `checkpoint/SIBA_jittor_self_trained_epoch60.pkl`
+- `checkpoint/SIBA_pytorch_self_trained_epoch60.pth`
 
 Do not start another 60-epoch run only for presentation.
 
@@ -39,7 +39,7 @@ Set `model_path`, `testdata_paths`, and `result_save_path` near the top of `test
 python test.py
 ```
 
-The command processes all configured MSRS, M3FD and TNO pairs and saves every fused image under `results/jittor_test/`. The previously completed 45-image TNO demonstration is retained under `results/demo_jittor_tno/`.
+The command processes all configured MSRS, M3FD and TNO pairs and saves every fused image, `timing.csv`, and `summary.json` under `results/jittor_test/`. The complete 45-image TNO output is retained under `results/jittor_test/TNO/`.
 
 ## Module Test Demonstration
 

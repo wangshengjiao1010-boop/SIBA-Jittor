@@ -27,7 +27,7 @@ Jittor 版保留官方 13 个 Python 文件的相对路径。框架兼容逻辑�
 
 ### `base_blocks/cbsm.py`
 
-- 官方职责：将单通道源图映射到 48 通道查询特征，执行顺序为 `Conv-PReLU-Conv-PReLU-SE`。
+- 官方职责：将单通道源图映射到 48 通道查询特征，执行顺序为 `Conv-PReLU-Conv-SE-PReLU`。
 - Jittor 迁移：仅替换模块 API 和入口名称；卷积核、步幅、padding、通道数及返回值不变。
 
 ### `base_blocks/se_resnet.py`

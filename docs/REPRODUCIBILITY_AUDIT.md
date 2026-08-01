@@ -16,8 +16,8 @@
 | 训练协议 | 60 epochs，batch 4，patch 128 | `args/args_SIBA.py`、训练元数据 |
 | 训练数据 | 1,083 MSRS + 200 RoadScene | `data/manifests/combined_training_1283.json` |
 | 测试数据 | 361 MSRS + 300 M3FD_2x + 45 TNO | 三份测试 manifest |
-| 作者权重推理 | 两框架均完成 706 对 | `results/official_checkpoint_alignment_20260727_siba_official_protocol/` |
-| 逐图指标 | 7 项指标、每图 CSV | `results/metrics_20260727_siba_official_protocol/` |
+| 作者权重推理 | 两框架均完成 706 对 | `results/alignment/official_checkpoint/` |
+| 逐图指标 | 7 项指标、每图 CSV | `results/metrics/` |
 
 ## 数据真实性
 

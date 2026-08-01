@@ -4,7 +4,7 @@ class args:
     vi_path = "/root/autodl-tmp/datasets/SIBA/train/vi"
     patch_size = 128
 
-    model_save_path = "./checkpoint/test"
+    model_save_path = "./checkpoint/runs"
     use_gpu_number = "0"
     middle_channel = 48
 
