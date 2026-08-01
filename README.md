@@ -2,11 +2,11 @@
 
 Unofficial Jittor reproduction of **The Source Image is the Best Attention for Infrared and Visible Image Fusion** (ICCV 2025).
 
-[Paper](https://openaccess.thecvf.com/content/ICCV2025/html/Wang_The_Source_Image_is_the_Best_Attention_for_Infrared_and_ICCV_2025_paper.html) | [Official PyTorch](https://github.com/Afreshbird/SIBA) | [Jittor](https://github.com/Jittor/jittor)
+- Original paper: <https://openaccess.thecvf.com/content/ICCV2025/html/Wang_The_Source_Image_is_the_Best_Attention_for_Infrared_and_ICCV_2025_paper.html>
+- Original PyTorch repository: <https://github.com/Afreshbird/SIBA>
+- Jittor framework: <https://github.com/Jittor/jittor>
 
 This repository migrates the official PyTorch implementation at commit `880a1ddf9eaa610c64e5f25f87fbb146448addc9` to Jittor. It preserves the network, losses, optimizer behavior, scheduler, gradient clipping, data protocol, 60-epoch training schedule and inference color reconstruction.
-
-![SIBA architecture](figs/SIBA_architecture.png)
 
 ## Environment
 
