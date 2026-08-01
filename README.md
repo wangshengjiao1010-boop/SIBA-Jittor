@@ -143,7 +143,7 @@ conda activate JittorDome
 python train.py
 ```
 
-The default paths are read from [configs/siba.json](configs/siba.json). Training saves `checkpoint/SIBA_epoch60.pkl`, `logs/jittor_train_batches.csv`, and `logs/jittor_train_metadata.json`. Optional command-line overrides remain available for automated experiments, but are not required for normal use.
+The default paths are read from [configs/siba.json](configs/siba.json). Training saves `checkpoint/jittor_run/SIBA_epoch60.pkl`, `logs/jittor_run/train_batches.csv`, and `logs/jittor_run/train_metadata.json`. This separate run directory does not overwrite the published checkpoint. Optional command-line overrides remain available for automated experiments, but are not required for normal use.
 
 The completed Jittor checkpoint is provided as [checkpoint/SIBA_epoch60.pkl](checkpoint/SIBA_epoch60.pkl). The unmodified complete training logs are:
 
@@ -181,7 +181,7 @@ conda activate JittorDome
 python test.py
 ```
 
-`test.py` processes the configured MSRS, M3FD and TNO directories in one run. It preserves the official YCbCr decomposition, luminance fusion, RGB reconstruction, clipping, and image saving logic. Optional `--dataset`, `--checkpoint`, `--data-dir`, and `--output` arguments remain available for automated experiments.
+`test.py` processes the configured MSRS, M3FD and TNO directories in one run and writes them below `results/jittor_run/`. It preserves the official YCbCr decomposition, luminance fusion, RGB reconstruction, clipping, and image saving logic. Optional `--dataset`, `--checkpoint`, `--data-dir`, and `--output` arguments remain available for automated experiments.
 
 For the formal PyCharm demonstration, run the complete 45-pair TNO test with synchronized timing:
 

@@ -39,7 +39,7 @@ Set `test.checkpoint`, the three dataset paths, and `test.output_root` in `confi
 python test.py
 ```
 
-The command processes all configured MSRS, M3FD and TNO pairs and saves every fused image under `results/fused/`. The previously completed 45-image TNO demonstration is retained under `results/demo_jittor_tno/`.
+The command processes all configured MSRS, M3FD and TNO pairs and saves every fused image under `results/jittor_run/`. The previously completed 45-image TNO demonstration is retained under `results/demo_jittor_tno/`.
 
 ## Module Test Demonstration
 
