@@ -8,6 +8,9 @@
 *.txt text eol=lf
 *.ipynb text eol=lf
 
+# GNU screen logs contain carriage-return control bytes and must not be normalized.
+logs/**/screen.log -text
+
 # Paper-linked metric helpers are evaluation support, not implementation code.
 evaluation/*.m linguist-vendored
 
