@@ -13,10 +13,10 @@ Map the local repository to one remote project directory. Do not place environme
 
 ## Complete Training Entry
 
-Select `JittorDome`, set the working directory to the repository root, and run `train.py` with:
+Select `JittorDome`, set the working directory to the repository root, and edit the train paths in `configs/siba.json`. Run:
 
-```text
---ir-path datasets/train/ir --vi-path datasets/train/vi --output checkpoint --gpu-number 0
+```bash
+python train.py
 ```
 
 This is the complete official 60-epoch configuration. A long run should be started from the PyCharm terminal inside `screen -S kk`; closing the PyCharm SSH session must not terminate training.
@@ -31,15 +31,25 @@ The completed run is already retained in:
 
 Do not start another 60-epoch run only for presentation.
 
-## Complete TNO Test Demonstration
+## Complete Test Demonstration
 
-Select `JittorDome` and run `evaluation/run_inference.py` with:
+Set `test.checkpoint`, the three dataset paths, and `test.output_root` in `configs/siba.json`, then run:
 
-```text
---framework jittor --checkpoint checkpoint/SIBA_epoch60.pkl --data-dir datasets/test/TNO --output results/TNO_reproduced --use-cuda --warmup-runs 3 --timing-mode synchronized
+```bash
+python test.py
 ```
 
-The command processes all 45 TNO pairs, saves every fused image, and writes `summary.json` and `timing.csv`. The previously completed demonstration is retained under `results/demo_jittor_tno/`.
+The command processes all configured MSRS, M3FD and TNO pairs and saves every fused image under `results/fused/`. The previously completed 45-image TNO demonstration is retained under `results/demo_jittor_tno/`.
+
+## Module Test Demonstration
+
+Run the migrated Jittor modules before training:
+
+```bash
+python tests/test_jittor_modules.py
+```
+
+The script checks the main feature block, source-image query module, self-attention, cross-attention, complete SIBA forward path, and all three loss terms on deterministic test fixtures.
 
 ## Alignment Demonstration
 

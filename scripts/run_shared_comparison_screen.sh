@@ -1,15 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_ROOT=${PROJECT_ROOT:-/root/autodl-tmp/SIBA-Jittor}
-DATA_ROOT=${DATA_ROOT:-/root/autodl-tmp/datasets/SIBA}
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+PROJECT_ROOT=${PROJECT_ROOT:-$(cd "$SCRIPT_DIR/.." && pwd)}
+COMPARISON_CONFIG=${SIBA_COMPARISON_CONFIG:-$PROJECT_ROOT/configs/comparison.sh}
+if [[ ! -f "$COMPARISON_CONFIG" ]]; then
+  echo "Comparison config not found: $COMPARISON_CONFIG" >&2
+  exit 2
+fi
+source "$COMPARISON_CONFIG"
+
+PROJECT_ROOT=${PROJECT_ROOT:-$(cd "$SCRIPT_DIR/.." && pwd)}
+DATA_ROOT=${DATA_ROOT:-$PROJECT_ROOT/datasets}
 PYTORCH_ROOT=${PYTORCH_ROOT:-$PROJECT_ROOT/official_pytorch}
 JITTOR_PYTHON=${JITTOR_PYTHON:-/root/miniconda3/envs/JittorDome/bin/python}
 PYTORCH_PYTHON=${PYTORCH_PYTHON:-/root/miniconda3/envs/PytorchDome/bin/python}
-RUN_ROOT=${RUN_ROOT:-$PROJECT_ROOT/logs/shared_seed2025}
-CHECKPOINT_ROOT=${CHECKPOINT_ROOT:-$PROJECT_ROOT/checkpoints/shared_seed2025}
-RESULT_ROOT=${RESULT_ROOT:-$PROJECT_ROOT/results/shared_seed2025}
-SHARED_ROOT=${SHARED_ROOT:-$PROJECT_ROOT/shared}
+RUN_ID=${RUN_ID:-shared_seed2025}
+RUN_ROOT=${RUN_ROOT:-$PROJECT_ROOT/logs/$RUN_ID}
+CHECKPOINT_ROOT=${CHECKPOINT_ROOT:-$PROJECT_ROOT/checkpoints/$RUN_ID}
+RESULT_ROOT=${RESULT_ROOT:-$PROJECT_ROOT/results/$RUN_ID}
+SHARED_ROOT=${SHARED_ROOT:-$PROJECT_ROOT/shared/$RUN_ID}
 GPU_MONITOR_INTERVAL=${GPU_MONITOR_INTERVAL:-1}
 
 GPU_MONITOR_PID=""

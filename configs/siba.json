@@ -1,0 +1,28 @@
+{
+  "device": {
+    "gpu_number": "0",
+    "use_cuda": true
+  },
+  "train": {
+    "infrared_dir": "datasets/train/ir",
+    "visible_dir": "datasets/train/vi",
+    "output_dir": "checkpoint",
+    "run_name": ".",
+    "epochs": 60,
+    "seed": null,
+    "initial_weights": null,
+    "schedule": null,
+    "batch_log": "logs/jittor_train_batches.csv",
+    "metadata": "logs/jittor_train_metadata.json"
+  },
+  "test": {
+    "checkpoint": "checkpoint/SIBA_epoch60.pkl",
+    "dataset": "all",
+    "output_root": "results/fused",
+    "datasets": {
+      "MSRS": "datasets/test/MSRS",
+      "M3FD_2x": "datasets/test/M3FD_2x",
+      "TNO": "datasets/test/TNO"
+    }
+  }
+}

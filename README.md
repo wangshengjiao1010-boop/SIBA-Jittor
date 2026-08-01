@@ -16,6 +16,7 @@ This repository changes the implementation framework only. The network topology,
 SIBA-Jittor/
 |-- args/ base_blocks/ loader/ loss/ models/ utils/  # official same-path modules
 |-- compat/                 # PyTorch-compatible Adam and gradient clipping
+|-- configs/                # paths for simple runs and controlled comparison
 |-- checkpoint/             # Jittor 60-epoch checkpoint
 |-- data/                   # dataset protocol and integrity manifests
 |-- evaluation/             # wrapper for the metric code linked by SIBA
@@ -28,6 +29,21 @@ SIBA-Jittor/
 ```
 
 The 13 official Python files retain the same relative paths. Jittor-specific compatibility code is isolated in `compat/`. The official PyTorch source is not duplicated here; alignment scripts take a separately cloned official repository through `--pytorch-root`.
+
+## Published Artifacts
+
+The main public results can be opened directly on GitHub:
+
+| Artifact | Repository path |
+|---|---|
+| Complete 60-epoch logs | [logs/final](logs/final) |
+| Training loss curve | [results/loss_curve.png](results/loss_curve.png) |
+| Epoch loss values | [results/epoch_loss.csv](results/epoch_loss.csv) |
+| Seven-metric summary | [results/metrics_summary.csv](results/metrics_summary.csv) |
+| Complete per-image metric records | [results/metrics_20260727_siba_official_protocol](results/metrics_20260727_siba_official_protocol) |
+| Qualitative comparison grids | [results/visual](results/visual) |
+| Complete 45-image TNO demonstration | [results/demo_jittor_tno](results/demo_jittor_tno) |
+| Tensor and training-step alignment | [results/alignment](results/alignment) |
 
 ## Environment
 
@@ -94,31 +110,55 @@ datasets/test/TNO/{ir,vi}          45 pairs
 
 File lists, dimensions, and SHA256 values are retained in [data/manifests](data/manifests). The authors did not publish their 200 RoadScene filenames or random seed, so this reproduction does not claim that its RoadScene subset is identical to the unpublished author subset. Full provenance is recorded in [data/README.md](data/README.md).
 
+After data preparation, edit only the path and device fields in [configs/siba.json](configs/siba.json). Relative paths are resolved from the repository root.
+
+| Field | Purpose |
+|---|---|
+| `device.gpu_number` | CUDA device used by `train.py` and `test.py` |
+| `train.infrared_dir` / `train.visible_dir` | complete training directories |
+| `train.output_dir` | Jittor checkpoint directory |
+| `test.checkpoint` | checkpoint loaded by `test.py` |
+| `test.datasets` | complete MSRS, M3FD and TNO test directories |
+| `test.output_root` | fused-image output directory |
+
+The paper hyperparameters remain in [args/args_SIBA.py](args/args_SIBA.py), matching the official source layout. The runtime configuration above contains paths and device selection only.
+
+## Module Tests
+
+Run the deterministic CPU module checks before training:
+
+```bash
+conda activate JittorDome
+python tests/test_jittor_modules.py
+```
+
+The checks cover `Res_SE`, `CBSM`, self-attention, cross-attention, the complete `SIBA` forward path, Laplacian loss, intensity loss, and Sobel loss. Their tensors are test fixtures only and are not reported as experimental data.
+
 ## Train
 
 The command below runs the complete official 60-epoch schedule with batch size 4, patch size 128, Adam learning rate `1e-4`, StepLR step 25/gamma 0.5, and global gradient clipping at 0.01.
 
 ```bash
 conda activate JittorDome
-python train.py \
-  --ir-path datasets/train/ir \
-  --vi-path datasets/train/vi \
-  --output checkpoint \
-  --gpu-number 0
+python train.py
 ```
 
-The checkpoint is saved under a timestamped directory. The completed Jittor checkpoint is provided as [checkpoint/SIBA_epoch60.pkl](checkpoint/SIBA_epoch60.pkl). The unmodified complete training logs are:
+The default paths are read from [configs/siba.json](configs/siba.json). Training saves `checkpoint/SIBA_epoch60.pkl`, `logs/jittor_train_batches.csv`, and `logs/jittor_train_metadata.json`. Optional command-line overrides remain available for automated experiments, but are not required for normal use.
+
+The completed Jittor checkpoint is provided as [checkpoint/SIBA_epoch60.pkl](checkpoint/SIBA_epoch60.pkl). The unmodified complete training logs are:
 
 - [logs/final/jittor_train_60e.log](logs/final/jittor_train_60e.log)
 - [logs/final/pytorch_train_60e.log](logs/final/pytorch_train_60e.log)
 
 The independently trained PyTorch comparison checkpoint is retained as [checkpoint/PyTorch_SIBA_epoch60.pth](checkpoint/PyTorch_SIBA_epoch60.pth).
 
-For a detached AutoDL run, create `screen -S kk`, execute the same command with `python -u`, then use `screen -r kk` to inspect the live loss output.
+For a detached AutoDL run, create `screen -S kk`, run `python -u train.py`, then use `screen -r kk` to inspect the live loss output.
 
 ### Controlled PyTorch/Jittor training comparison
 
 The default command above preserves the released data-loader behavior. For a tightly controlled framework comparison, the formal runner exports one seed-`2025` PyTorch initialization, loads it in both frameworks, applies the same 60-epoch sample and crop schedule, records all four loss terms for every batch, and tests both final checkpoints on all 706 pairs.
+
+First edit [configs/comparison.sh](configs/comparison.sh): set `DATA_ROOT`, `PYTORCH_ROOT`, the two Conda Python paths, and a unique `RUN_ID`. All log, checkpoint, result, and shared-input directories are derived from `RUN_ID`; no manual `export` commands are needed.
 
 ```bash
 conda activate JittorDome
@@ -134,20 +174,14 @@ The official script prints one loss value every 50 batches. Each retained log co
 
 ## Test
 
-Run the Jittor checkpoint on each complete test set:
+Edit `test.checkpoint`, `test.datasets`, and `test.output_root` in [configs/siba.json](configs/siba.json), then run all three complete test sets:
 
 ```bash
-python test.py \
-  --checkpoint checkpoint/SIBA_epoch60.pkl \
-  --data-dir datasets/test/MSRS \
-  --output results/fused/MSRS \
-  --gpu-number 0
-
-python test.py --checkpoint checkpoint/SIBA_epoch60.pkl --data-dir datasets/test/M3FD_2x --output results/fused/M3FD_2x --gpu-number 0
-python test.py --checkpoint checkpoint/SIBA_epoch60.pkl --data-dir datasets/test/TNO --output results/fused/TNO --gpu-number 0
+conda activate JittorDome
+python test.py
 ```
 
-`test.py` preserves the official YCbCr decomposition, luminance fusion, RGB reconstruction, clipping, and image saving logic. Only paths and device selection were exposed as command-line arguments.
+`test.py` processes the configured MSRS, M3FD and TNO directories in one run. It preserves the official YCbCr decomposition, luminance fusion, RGB reconstruction, clipping, and image saving logic. Optional `--dataset`, `--checkpoint`, `--data-dir`, and `--output` arguments remain available for automated experiments.
 
 For the formal PyCharm demonstration, run the complete 45-pair TNO test with synchronized timing:
 
