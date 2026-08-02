@@ -10,3 +10,5 @@ The included weights come from the independent complete 60-epoch runs recorded i
 Protocol: 1,283 training pairs, 60 epochs, batch size 4, patch size 128, Adam `1e-4`, StepLR `25/0.5`, and global L2 gradient clipping at `0.01`.
 
 The author-released checkpoint remains in the separately cloned official repository and is used by the alignment scripts through an explicit path.
+
+The controlled shared-initialization checkpoints are stored separately in `comparisons/shared_seed2025/`. They use the same initial parameter archive and the same 60-epoch crop schedule; their SHA256 values and training metadata are retained in `logs/comparisons/shared_seed2025/`.

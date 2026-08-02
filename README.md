@@ -14,6 +14,7 @@ SIBA-Jittor/
 |-- compat/                 # PyTorch-compatible Adam and gradient clipping
 |-- checkpoint/             # completed self-trained checkpoints
 |-- data/                   # dataset protocol and SHA256 manifests
+|-- datasets/               # local images (ignored except its README)
 |-- evaluation/             # optional metrics and visualization tools
 |-- results/                # curves, metrics, alignment and fused images
 |-- tests/                  # module and cross-framework verification
@@ -45,39 +46,41 @@ Datasets are not redistributed. Download them from their official sources:
 | Test | M3FD | 300 | [M3FD](https://github.com/JinyuanLiu-CV/TarDAL#download) |
 | Test | TNO | 45 | [SIBA Google Drive](https://drive.google.com/drive/folders/1yURIsV9R9kEYLQovQ-vPogUkXqrIZswA) |
 
-Prepare the complete protocol:
+Place the original downloads under `datasets/source/` as shown in
+[datasets/README.md](datasets/README.md), then prepare the complete protocol:
 
 ```bash
-python prepare_data.py \
-  --msrs-root /path/to/MSRS \
-  --roadscene-root /path/to/RoadScene \
-  --m3fd-root /path/to/M3FD_Fusion \
-  --tno-root /path/to/TNO
+python prepare_data.py
 ```
 
-The default output is `/root/autodl-tmp/datasets/SIBA`:
+The default output is `./datasets/SIBA` inside the repository:
 
 ```text
-SIBA/
-|-- train/{ir,vi}                 # 1,283 pairs
-`-- test/
-    |-- MSRS/{ir,vi}              # 361 pairs
-    |-- M3FD_2x/{ir,vi}           # 300 pairs
-    `-- TNO/{ir,vi}               # 45 pairs
+datasets/
+`-- SIBA/
+    |-- train/{ir,vi}                 # 1,283 pairs
+    `-- test/
+        |-- MSRS/{ir,vi}              # 361 pairs
+        |-- M3FD_2x/{ir,vi}           # 300 pairs
+        `-- TNO/{ir,vi}               # 45 pairs
 ```
 
 M3FD retains all 300 pairs and halves width and height as required by SIBA Section 4.1. Provenance, the deterministic RoadScene subset and citations are documented in [data/README.md](data/README.md).
 
-Before running on another machine, edit only:
-
-- training paths in [args/args_SIBA.py](args/args_SIBA.py);
-- checkpoint, test paths and output root near the top of [test.py](test.py).
+The prepared training directory deliberately combines MSRS and RoadScene because SIBA trains one model on both sources. Dataset files remain ignored by Git. Once the tree above exists, no absolute path needs to be edited.
 
 ## Training
+
+Optional module smoke test (terminal checks only; no files are generated):
 
 ```bash
 conda activate JittorDome
 python tests/test_jittor_modules.py
+```
+
+Complete training:
+
+```bash
 python train.py
 ```
 
@@ -86,6 +89,7 @@ python train.py
 ```text
 checkpoint/runs/<YYYYMMDD_HHMMSS>/
 |-- SIBA_epoch60.pkl
+|-- train.log
 |-- train_batches.csv
 |-- epoch_loss_components.csv
 |-- loss_components.{png,pdf}
@@ -96,7 +100,7 @@ The published self-trained checkpoint is [checkpoint/SIBA_jittor_self_trained_ep
 
 ## Testing
 
-`test.py` defaults to the published Jittor self-trained checkpoint and all three configured datasets:
+`test.py` uses the newest completed checkpoint under `checkpoint/runs/`. On a fresh clone with no new run, it falls back to the published Jittor checkpoint. It tests all three configured datasets:
 
 ```bash
 conda activate JittorDome
@@ -109,18 +113,19 @@ Run one dataset when needed:
 python test.py --dataset TNO
 ```
 
-The script validates infrared/visible filenames, fuses the visible Y channel, restores Cb/Cr, synchronizes CUDA timing and saves fused images, `timing.csv`, and `summary.json` under `results/jittor_test/<dataset>/`. The complete 45-image TNO output is included in [results/jittor_test/TNO](results/jittor_test/TNO).
+The script prints the selected checkpoint, validates infrared/visible filenames, fuses the visible Y channel, restores Cb/Cr, synchronizes CUDA timing and saves fused images, `timing.csv`, and `summary.json` under `results/jittor_test/<dataset>/`. Each summary records the checkpoint hash and input/output directories. The complete 45-image TNO output is included in [results/jittor_test/TNO](results/jittor_test/TNO).
 
 ## Experiments
 
-The public evidence contains four complementary checks:
+The public evidence contains five complementary checks:
 
 1. module shape and finite-value checks;
 2. released PyTorch checkpoint alignment for activations, losses, gradients, one update and 706 fused images;
 3. independent complete 60-epoch PyTorch and Jittor training;
-4. qualitative comparison, seven metrics and synchronized inference timing.
+4. controlled 60-epoch training from one initialization and one crop schedule;
+5. qualitative comparison, seven metrics and synchronized inference timing.
 
-The optional [configs/comparison.yaml](configs/comparison.yaml) and [scripts/run_shared_comparison_screen.sh](scripts/run_shared_comparison_screen.sh) additionally control both frameworks with one PyTorch initialization and one shared 60-epoch sample/crop schedule. This workflow is implemented but is not reported as completed until `EXPERIMENT_COMPLETE`, both batch CSV files and all downstream results exist. See [docs/CONTROLLED_COMPARISON.md](docs/CONTROLLED_COMPARISON.md).
+The optional [configs/comparison.yaml](configs/comparison.yaml) and [scripts/run_shared_comparison_screen.sh](scripts/run_shared_comparison_screen.sh) control both frameworks with one PyTorch initialization and one shared 60-epoch sample/crop schedule. The complete `shared_seed2025` run is published under `logs/comparisons`, `checkpoint/comparisons`, `results/comparisons`, and `shared/comparisons`; its completion marker and both 19,260-row batch logs are retained. See [docs/CONTROLLED_COMPARISON.md](docs/CONTROLLED_COMPARISON.md).
 
 ## Results
 
@@ -134,11 +139,47 @@ The optional [configs/comparison.yaml](configs/comparison.yaml) and [scripts/run
 
 ![Independent 60-epoch total loss](results/loss_curve.png)
 
-The retained historical logs contain total loss only. Current `train.py` records total, Laplacian, intensity and Sobel losses for every batch and plots them automatically for new runs; those new curves are not claimed as completed controlled results until a full run artifact is published.
+The retained independent-run logs contain total loss only. The completed controlled run records total, Laplacian, intensity and Sobel losses for every batch and publishes the four curves in [results/comparisons/shared_seed2025](results/comparisons/shared_seed2025).
+
+### Controlled shared-initialization training
+
+The controlled run started both frameworks from the same exported parameter state and used the same 60-epoch filename and crop schedule. It completed 1,283 training pairs, 19,260 batches per framework and all 706 test pairs on an RTX 3090.
+
+| Framework | Training time | Final checkpoint |
+|---|---:|---|
+| PyTorch 1.10.0 | 2,195 s | [SIBA_epoch60.pth](checkpoint/comparisons/shared_seed2025/pytorch/SIBA_epoch60.pth) |
+| Jittor 1.3.11.0 | 4,092 s | [SIBA_epoch60.pkl](checkpoint/comparisons/shared_seed2025/jittor/SIBA_epoch60.pkl) |
+
+![Controlled total and component losses](results/comparisons/shared_seed2025/loss_components.png)
+
+Shared inputs and crop order remove two major experimental confounders, but they do not force framework arithmetic and optimizer trajectories to be identical. The final fused-image differences are therefore reported rather than hidden:
+
+| Dataset | Pairs | Max abs. uint8 | Mean abs. uint8 | PyTorch FPS | Jittor FPS |
+|---|---:|---:|---:|---:|---:|
+| MSRS | 361 | 65 | 0.9847 | 12.01 | 9.13 |
+| M3FD_2x | 300 | 108 | 3.0865 | 19.85 | 12.71 |
+| TNO | 45 | 46 | 3.0649 | 12.28 | 6.94 |
+
+Raw completion evidence, metadata, batch logs, per-image differences, timing CSVs and selected qualitative samples are indexed in [results/comparisons/shared_seed2025/README.md](results/comparisons/shared_seed2025/README.md). The run used code revision `99a9e2c`; later path and logging changes do not alter the model, loss, optimizer or data schedule, so retraining is not required for those engineering-only changes.
+
+The same seven metric definitions used for the released and independent checkpoints were applied to the complete controlled outputs:
+
+| Dataset | Framework | VIF | SCD | MI | Qabf | SSIM | MS-SSIM | FMI |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| MSRS | PyTorch | 1.055237 | 1.714541 | 5.130400 | 0.710143 | 0.978958 | 0.974892 | 0.932377 |
+| MSRS | Jittor | 1.066052 | 1.707117 | 5.289614 | 0.712088 | 0.975139 | 0.972079 | 0.932299 |
+| M3FD_2x | PyTorch | 0.747906 | 1.710948 | 3.774727 | 0.649228 | 0.966981 | 0.931367 | 0.881405 |
+| M3FD_2x | Jittor | 0.745284 | 1.702015 | 3.806073 | 0.642969 | 0.963600 | 0.928666 | 0.880173 |
+| TNO | PyTorch | 0.790482 | 1.750000 | 3.094837 | 0.567956 | 0.944528 | 0.918185 | 0.912177 |
+| TNO | Jittor | 0.820913 | 1.741826 | 3.153798 | 0.570551 | 0.937843 | 0.911943 | 0.912216 |
+
+Jittor preserves more VIF and MI on MSRS and TNO, while PyTorch retains higher structure scores on several M3FD and TNO measures. These are framework trajectory differences under controlled inputs, not evidence that one framework dominates every criterion.
 
 ### Released-checkpoint alignment
 
 Both frameworks load the same author-released PyTorch checkpoint. Across all 706 test pairs, filenames and dimensions match and the maximum pixel difference is one uint8 level (`1/255`). Per-image comparisons are retained in [results/alignment/official_checkpoint](results/alignment/official_checkpoint); activation, loss, gradient and update thresholds are recorded in [logs/alignment/alignment_assessment_final_20260728.json](logs/alignment/alignment_assessment_final_20260728.json).
+
+The independently trained checkpoints are not identical. Their per-image output differences are retained separately in [results/alignment/self_trained](results/alignment/self_trained); these reports distinguish genuine training-trajectory differences from the expected near-equivalence of the shared author checkpoint.
 
 | Dataset | Framework | VIF | SCD | MI | Qabf | SSIM | MS-SSIM | FMI |
 |---|---|---:|---:|---:|---:|---:|---:|---:|

@@ -1,5 +1,6 @@
 import argparse
 import csv
+import hashlib
 import json
 import os
 import time
@@ -7,13 +8,13 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 
-# Edit these paths before running on another machine. This follows the
-# path-at-entry layout of the official SIBA test.py.
-model_path = "./checkpoint/SIBA_jittor_self_trained_epoch60.pkl"
+# Use the newest completed local training run when present. On a fresh clone,
+# fall back to the published Jittor checkpoint included in this repository.
+model_path = "latest"
 testdata_paths = {
-    "MSRS": "/root/autodl-tmp/datasets/SIBA/test/MSRS",
-    "M3FD_2x": "/root/autodl-tmp/datasets/SIBA/test/M3FD_2x",
-    "TNO": "/root/autodl-tmp/datasets/SIBA/test/TNO",
+    "MSRS": "./datasets/SIBA/test/MSRS",
+    "M3FD_2x": "./datasets/SIBA/test/M3FD_2x",
+    "TNO": "./datasets/SIBA/test/TNO",
 }
 result_save_path = "./results/jittor_test"
 test_dataset = "all"
@@ -27,6 +28,26 @@ configured_datasets = testdata_paths
 def project_path(path):
     path = Path(path).expanduser()
     return path if path.is_absolute() else PROJECT_ROOT / path
+
+
+def file_sha256(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as file:
+        for block in iter(lambda: file.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def resolve_checkpoint(path):
+    if path != "latest":
+        return project_path(path)
+    checkpoint_root = PROJECT_ROOT / "checkpoint"
+    completed_runs = list(
+        (checkpoint_root / "runs").glob("*/SIBA_epoch60.pkl")
+    ) + list(checkpoint_root.glob("[0-9]*-*/SIBA_epoch60.pkl"))
+    if completed_runs:
+        return max(completed_runs, key=lambda candidate: candidate.stat().st_mtime)
+    return PROJECT_ROOT / "checkpoint" / "SIBA_jittor_self_trained_epoch60.pkl"
 
 parser = argparse.ArgumentParser(
     description="Test SIBA with Jittor; paths are configured near the top of test.py"
@@ -60,8 +81,13 @@ def selected_datasets():
         output = runtime_args.output or str(default_output_root / name)
         return [(name, project_path(runtime_args.data_dir), project_path(output))]
     if runtime_args.dataset == "all":
+        output_root = (
+            project_path(runtime_args.output)
+            if runtime_args.output
+            else default_output_root
+        )
         return [
-            (name, project_path(data_dir), default_output_root / name)
+            (name, project_path(data_dir), output_root / name)
             for name, data_dir in configured_datasets.items()
         ]
     if runtime_args.dataset not in configured_datasets:
@@ -78,7 +104,7 @@ def selected_datasets():
     ]
 
 
-def run_dataset(model, name, data_dir, output_dir):
+def run_dataset(model, checkpoint_path, checkpoint_sha256, name, data_dir, output_dir):
     output_dir.mkdir(parents=True, exist_ok=True)
     test_dataset = TestLoader(str(data_dir))
     test_loader = test_dataset.set_attrs(
@@ -116,6 +142,10 @@ def run_dataset(model, name, data_dir, output_dir):
         "framework_version": jt.__version__,
         "dataset": name,
         "image_count": len(test_dataset),
+        "checkpoint": str(checkpoint_path.resolve()),
+        "checkpoint_sha256": checkpoint_sha256,
+        "data_dir": str(data_dir.resolve()),
+        "output_dir": str(output_dir.resolve()),
         "timing_mode": "synchronized model forward",
         "warmup_runs": 0,
         "total_model_seconds": elapsed,
@@ -127,25 +157,34 @@ def run_dataset(model, name, data_dir, output_dir):
     )
     print(
         f"{name}: {len(test_dataset)} images, model time {elapsed:.3f}s, "
-        f"{summary['model_fps']:.3f} FPS"
+        f"{summary['model_fps']:.3f} FPS, output: {output_dir}"
     )
 
 
 def main():
     jt.flags.use_cuda = 0 if runtime_args.cpu else 1
-    model_path = project_path(runtime_args.checkpoint)
-    if not model_path.is_file():
+    checkpoint_path = resolve_checkpoint(runtime_args.checkpoint)
+    if not checkpoint_path.is_file():
         raise FileNotFoundError(
-            f"Checkpoint not found: {model_path}. Update model_path in test.py."
+            f"Checkpoint not found: {checkpoint_path}. Train the model or pass --checkpoint."
         )
+    checkpoint_sha256 = file_sha256(checkpoint_path)
+    print(f"Checkpoint: {checkpoint_path}")
     model = SIBA()
-    checkpoint = jt.load(str(model_path))
+    checkpoint = jt.load(str(checkpoint_path))
     model.load_parameters(checkpoint.get("model", checkpoint))
     total = sum(params.numel() for params in model.parameters())
     print("Number of params: {%.3f M}" % (total / 1e6))
     model.eval()
     for name, data_dir, output_dir in selected_datasets():
-        run_dataset(model, name, data_dir, output_dir)
+        run_dataset(
+            model,
+            checkpoint_path,
+            checkpoint_sha256,
+            name,
+            data_dir,
+            output_dir,
+        )
 
 
 if __name__ == "__main__":

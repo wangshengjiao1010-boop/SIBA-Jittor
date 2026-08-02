@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "shared_initial_state_sha256": "f58dcdaf3e64504646723d79a25a79bbb341f66e6e48239969bdf818cf6919be",
+  "initialization_archive_sha256": "870e1e10c7a1927d23dc77a8e36ea1974f2ef66325e87342267e30e1f3533983",
+  "schedule_sha256": "41a68929ee9759eaee89eae8f36c8231693d55da7f677f52650b0d8a99ae02fa",
+  "epochs": 60,
+  "batch_size": 4,
+  "patch_size": 128,
+  "training_pairs": 1283,
+  "frameworks": [
+    "PyTorch",
+    "Jittor"
+  ]
+}

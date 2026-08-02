@@ -1,0 +1,26 @@
+{
+  "train": {
+    "manifest": "/root/autodl-tmp/SIBA-Jittor/data/manifests/combined_training_1283.json",
+    "pairs": 1283,
+    "errors": [],
+    "valid": true
+  },
+  "MSRS": {
+    "manifest": "/root/autodl-tmp/SIBA-Jittor/data/manifests/msrs_test.json",
+    "pairs": 361,
+    "errors": [],
+    "valid": true
+  },
+  "M3FD_2x": {
+    "manifest": "/root/autodl-tmp/SIBA-Jittor/data/manifests/m3fd_2x_test.json",
+    "pairs": 300,
+    "errors": [],
+    "valid": true
+  },
+  "TNO": {
+    "manifest": "/root/autodl-tmp/SIBA-Jittor/data/manifests/tno_test.json",
+    "pairs": 45,
+    "errors": [],
+    "valid": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "reference": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/pytorch/MSRS",
+  "candidate": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/jittor/MSRS",
+  "reference_images": 361,
+  "candidate_images": 361,
+  "compared_images": 361,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 65,
+  "global_mean_abs_uint8": 0.9846533248210988,
+  "different_value_fraction": 0.7053729663213681,
+  "all_filenames_and_shapes_match": true
+}

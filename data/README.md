@@ -2,16 +2,30 @@
 
 ## Storage contract
 
-Datasets are not redistributed through this repository. The public code tracks only preparation logic and integrity manifests. The AutoDL reproduction stores the prepared data outside the Git checkout at `/root/autodl-tmp/datasets/SIBA`; users on another machine change the training paths in `args/args_SIBA.py` and the testing paths in `test.py`.
+Datasets are not redistributed through this repository. The public code tracks only preparation logic and integrity manifests. Original downloads use the dataset-first layout under `datasets/source/`; `python prepare_data.py` generates the model-ready `datasets/SIBA` tree. Training and testing therefore require no machine-specific path edits.
 
 ```text
-SIBA/
-|-- train/{ir,vi}                 # 1,283 pairs
-`-- test/
-    |-- MSRS/{ir,vi}              # 361 pairs
-    |-- M3FD_2x/{ir,vi}           # 300 pairs
-    `-- TNO/{ir,vi}               # 45 pairs
+datasets/source/
+|-- MSRS/{train,test}/{ir,vi}/
+|-- RoadScene/{cropinfrared,crop_LR_visible}/
+|-- M3FD_Fusion/{Ir,Vis}/
+`-- TNO/{ir,vi}/
 ```
+
+M3FD and TNO are evaluation datasets. They are intentionally not placed under
+the training directory.
+
+```text
+datasets/
+`-- SIBA/
+    |-- train/{ir,vi}                 # 1,283 pairs
+    `-- test/
+        |-- MSRS/{ir,vi}              # 361 pairs
+        |-- M3FD_2x/{ir,vi}           # 300 pairs
+        `-- TNO/{ir,vi}               # 45 pairs
+```
+
+The prepared training directory combines 1,083 MSRS pairs and the fixed 200-pair RoadScene subset because the official SIBA protocol trains one model on both sources. The original downloaded datasets may be stored anywhere; `prepare_data.py` validates and materializes the exact training and test layout above.
 
 ## Training data
 

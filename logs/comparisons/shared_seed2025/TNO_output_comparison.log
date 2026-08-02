@@ -1,0 +1,14 @@
+{
+  "reference": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/pytorch/TNO",
+  "candidate": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/jittor/TNO",
+  "reference_images": 45,
+  "candidate_images": 45,
+  "compared_images": 45,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 46,
+  "global_mean_abs_uint8": 3.064897121781003,
+  "different_value_fraction": 0.8773009385345281,
+  "all_filenames_and_shapes_match": true
+}

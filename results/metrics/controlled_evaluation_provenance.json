@@ -1,0 +1,28 @@
+{
+  "status": "completed",
+  "completed_on": "2026-08-03",
+  "metric_implementation": {
+    "repository": "https://github.com/Linfeng-Tang/Evaluation-for-Image-Fusion",
+    "commit": "f5f055bcadb49c22fb734c3498aef6c56fc71f2a"
+  },
+  "protocol": {
+    "datasets": {
+      "MSRS": 361,
+      "M3FD_2x": 300,
+      "TNO": 45
+    },
+    "metrics": ["VIF", "SCD", "MI", "Qabf", "SSIM", "MS_SSIM", "FMI"]
+  },
+  "experiments": {
+    "ControlledPyTorch": "results/comparisons/shared_seed2025/pytorch",
+    "ControlledJittor": "results/comparisons/shared_seed2025/jittor"
+  },
+  "artifacts": {
+    "summary": "results/metrics/metrics_summary.csv",
+    "pytorch_per_image": "results/metrics/ControlledPyTorch",
+    "jittor_per_image": "results/metrics/ControlledJittor",
+    "framework_delta": "results/metrics/framework_delta.csv",
+    "training_evidence": "results/comparisons/shared_seed2025"
+  },
+  "note": "MATLAB was used only for the established metric definitions; training and inference were completed on AutoDL with PyTorch and Jittor."
+}

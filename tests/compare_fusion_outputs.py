@@ -20,6 +20,14 @@ def image_files(directory):
     }
 
 
+def report_path(path):
+    resolved = path.resolve()
+    try:
+        return resolved.relative_to(Path.cwd().resolve()).as_posix()
+    except ValueError:
+        return str(resolved)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--reference", type=Path, required=True)
@@ -76,8 +84,8 @@ def main():
         writer.writerows(rows)
 
     summary = {
-        "reference": str(args.reference.resolve()),
-        "candidate": str(args.candidate.resolve()),
+        "reference": report_path(args.reference),
+        "candidate": report_path(args.candidate),
         "reference_images": len(reference_files),
         "candidate_images": len(candidate_files),
         "compared_images": len(rows),

@@ -1,0 +1,28 @@
+[38;5;2m[i 0801 18:07:55.082879 16 compiler.py:955] Jittor(1.3.11.0) src: /root/miniconda3/envs/JittorDome/lib/python3.8/site-packages/jittor[m
+[38;5;2m[i 0801 18:07:55.088584 16 compiler.py:956] g++ at /usr/bin/g++(9.3.0)[m
+[38;5;2m[i 0801 18:07:55.088650 16 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor_gpu/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/82d5/default[m
+[38;5;2m[i 0801 18:07:55.095083 16 __init__.py:412] Found /usr/local/cuda/bin/nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.[m
+[38;5;2m[i 0801 18:07:55.099883 16 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.[m
+[38;5;2m[i 0801 18:07:55.286338 16 compiler.py:1012] cuda key:cu11.3.109_sm_86[m
+[38;5;2m[i 0801 18:07:55.680368 16 __init__.py:227] Total mem: 755.27GB, using 16 procs for compiling.[m
+[38;5;2m[i 0801 18:07:55.773761 16 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0801 18:07:55.962406 16 init.cc:63] Found cuda archs: [86,][m
+[38;5;2m[i 0801 18:07:57.590386 16 cuda_flags.cc:55] CUDA enabled.[m
+[38;5;3m[w 0801 18:08:42.412882 16 cudnn_conv__Tx_float32__Ty_float32__Tw_float32__XFORMAT_abcd__WFORMAT_oihw__YFORMAT_abcd_____hash_4d5b3e2d24c769d3_op.cc:214] forward_ algorithm cache is full[m
+{
+  "framework": "jittor",
+  "framework_version": "1.3.11.0",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/jittor/shared_seed2025/SIBA_epoch60.pkl",
+  "checkpoint_sha256": "8d4e84b46e3f6ac5e1c93466828ddb608391a1bf8d62607e7eba495fd1e45cbd",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/M3FD_2x",
+  "image_count": 300,
+  "parameter_count": 565941,
+  "total_model_seconds": 23.610918222926557,
+  "mean_model_seconds": 0.07870306074308853,
+  "model_fps": 12.705986152994909,
+  "synchronized_fps": 12.705986152994909
+}

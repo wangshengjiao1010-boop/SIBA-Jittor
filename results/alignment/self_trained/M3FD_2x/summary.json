@@ -1,0 +1,14 @@
+{
+  "reference": "results/full_20260727_siba_official_protocol/pytorch/M3FD_2x",
+  "candidate": "results/full_20260727_siba_official_protocol/jittor/M3FD_2x",
+  "reference_images": 300,
+  "candidate_images": 300,
+  "compared_images": 300,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 125,
+  "global_mean_abs_uint8": 4.3967140013957255,
+  "different_value_fraction": 0.9052933393228264,
+  "all_filenames_and_shapes_match": true
+}

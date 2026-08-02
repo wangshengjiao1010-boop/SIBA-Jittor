@@ -1,0 +1,17 @@
+{
+  "framework": "pytorch",
+  "framework_version": "1.10.0+cu111",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/pytorch/SIBA_epoch60.pth",
+  "checkpoint_sha256": "83a74b175f4286e8f5fefc1b554b82e188692023cbf9e29ba5ac12883c26d366",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/TNO",
+  "image_count": 45,
+  "parameter_count": 565941,
+  "total_model_seconds": 3.6640338506549597,
+  "mean_model_seconds": 0.0814229744589991,
+  "model_fps": 12.281545922933022,
+  "synchronized_fps": 12.281545922933022
+}

@@ -3,6 +3,7 @@ import csv
 import datetime
 import hashlib
 import json
+import logging
 import os
 import pathlib
 import random
@@ -93,6 +94,20 @@ def load_initial_weights(model, path):
         model.load_parameters(parameters)
 
 
+def build_logger(path):
+    logger = logging.getLogger("siba_train")
+    logger.setLevel(logging.INFO)
+    logger.handlers.clear()
+    formatter = logging.Formatter("%(asctime)s | %(message)s")
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setFormatter(formatter)
+    file_handler = logging.FileHandler(path, mode="w", encoding="utf-8")
+    file_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
+    logger.addHandler(file_handler)
+    return logger
+
+
 def main():
     runtime_args = parse_runtime_args()
     args.ir_path = runtime_args.ir_path
@@ -132,6 +147,8 @@ def main():
         else pathlib.Path(model_save_path) / run_name
     )
     run_directory.mkdir(parents=True, exist_ok=True)
+    train_log_path = run_directory / "train.log"
+    logger = build_logger(train_log_path)
     if runtime_args.log_csv is None:
         runtime_args.log_csv = run_directory / "train_batches.csv"
     else:
@@ -163,8 +180,13 @@ def main():
         args.patch_size,
         schedule_path=runtime_args.schedule,
     )
-    print(f"Training data: {args.ir_path} and {args.vi_path}")
-    print(f"Training pairs: {len(data)}; epochs: {num_epochs}; device: {device}")
+    logger.info("Training data: %s and %s", args.ir_path, args.vi_path)
+    logger.info(
+        "Training pairs: %d; epochs: %d; device: %s",
+        len(data),
+        num_epochs,
+        device,
+    )
     if data.scheduled and data.schedule_epochs < num_epochs:
         raise ValueError(
             f"Training schedule has {data.schedule_epochs} epochs, "
@@ -251,7 +273,7 @@ def main():
                 )
                 previous_time = time.time()
                 if batch % 50 == 0:
-                    print(
+                    logger.info(
                         "[Epoch {}/{}] [batch {}/{}] [lr {}] "
                         "[total {:.6f}] [joint {:.6f}] [intensity {:.6f}] "
                         "[sobel {:.6f}] ETA: {}".format(
@@ -265,8 +287,7 @@ def main():
                             values["loss_intensity"],
                             values["loss_sobel"],
                             eta,
-                        ),
-                        flush=True,
+                        )
                     )
                 global_step += 1
             scheduler.step()
@@ -339,6 +360,7 @@ def main():
                 if runtime_args.log_csv is not None
                 else None
             ),
+            "train_log": str(train_log_path.resolve()),
             "loss_component_plot": str(loss_plot_path.resolve()),
             "loss_component_summary": str(loss_summary_path.resolve()),
         }
@@ -347,11 +369,16 @@ def main():
             encoding="utf-8",
         )
 
-    print(f"Checkpoint saved to: {save_path}")
+    logger.info("Checkpoint saved to: %s", save_path)
+    logger.info("Training log saved to: %s", train_log_path)
     if runtime_args.log_csv is not None:
-        print(f"Batch log saved to: {runtime_args.log_csv}")
-    print(f"Loss components saved to: {loss_plot_path}")
-    print("done")
+        logger.info("Batch log saved to: %s", runtime_args.log_csv)
+    logger.info("Epoch loss summary saved to: %s", loss_summary_path)
+    logger.info("Loss curve PNG saved to: %s", loss_plot_path)
+    logger.info("Loss curve PDF saved to: %s", loss_plot_path.with_suffix(".pdf"))
+    if runtime_args.metadata is not None:
+        logger.info("Training metadata saved to: %s", runtime_args.metadata)
+    logger.info("done")
 
 
 if __name__ == "__main__":

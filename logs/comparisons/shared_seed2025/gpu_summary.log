@@ -1,0 +1,10 @@
+{
+  "samples": 6310,
+  "first_timestamp": "2026/08/01 16:17:53.020",
+  "last_timestamp": "2026/08/01 18:09:26.716",
+  "gpu_name": "NVIDIA GeForce RTX 3090",
+  "memory_total_mib": 24576.0,
+  "peak_memory_used_mib": 15053.0,
+  "peak_gpu_utilization_percent": 100.0,
+  "peak_power_draw_w": 309.07
+}

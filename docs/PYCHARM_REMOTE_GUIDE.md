@@ -13,7 +13,7 @@ Map the local repository to one remote project directory. Do not place environme
 
 ## Complete Training Entry
 
-Select `JittorDome`, set the working directory to the repository root, and confirm that `ir_path` and `vi_path` in `args/args_SIBA.py` point to the prepared AutoDL directories. Run:
+Select `JittorDome`, set the working directory to the repository root, and place the prepared data under `datasets/SIBA` as documented in the README. Run:
 
 ```bash
 python train.py

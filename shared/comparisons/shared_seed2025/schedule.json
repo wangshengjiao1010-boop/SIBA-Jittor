@@ -1,0 +1,11 @@
+{
+  "purpose": "Shared data order and random crop coordinates for framework comparison",
+  "seed": 2025,
+  "epochs": 60,
+  "training_pairs": 1283,
+  "patch_size": 128,
+  "ir_path": "/root/autodl-tmp/datasets/SIBA/train/ir",
+  "vi_path": "/root/autodl-tmp/datasets/SIBA/train/vi",
+  "schedule": "/root/autodl-tmp/SIBA-Jittor/shared/schedule.npz",
+  "schedule_sha256": "41a68929ee9759eaee89eae8f36c8231693d55da7f677f52650b0d8a99ae02fa"
+}

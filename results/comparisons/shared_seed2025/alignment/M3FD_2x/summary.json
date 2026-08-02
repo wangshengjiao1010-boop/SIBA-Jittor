@@ -1,0 +1,14 @@
+{
+  "reference": "results/comparisons/shared_seed2025/pytorch/M3FD_2x",
+  "candidate": "results/comparisons/shared_seed2025/jittor/M3FD_2x",
+  "reference_images": 300,
+  "candidate_images": 300,
+  "compared_images": 300,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 108,
+  "global_mean_abs_uint8": 3.086499829712122,
+  "different_value_fraction": 0.9065499419152766,
+  "all_filenames_and_shapes_match": true
+}

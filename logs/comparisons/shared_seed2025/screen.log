@@ -1,0 +1,1253 @@
+99a9e2cfd22fccf8f40b8a5e9a8d836e3879a3b9
+?? datasets
+?? logs/shared_seed2025/
+?? official_pytorch
+2026-08-01T16:17:52+08:00
+Sat Aug  1 16:17:52 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        On  |   00000000:53:00.0 Off |                  N/A |
+| 30%   27C    P8             23W /  350W |       0MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+{
+  "train": {
+    "manifest": "/root/autodl-tmp/SIBA-Jittor/data/manifests/combined_training_1283.json",
+    "pairs": 1283,
+    "errors": [],
+    "valid": true
+  },
+  "MSRS": {
+    "manifest": "/root/autodl-tmp/SIBA-Jittor/data/manifests/msrs_test.json",
+    "pairs": 361,
+    "errors": [],
+    "valid": true
+  },
+  "M3FD_2x": {
+    "manifest": "/root/autodl-tmp/SIBA-Jittor/data/manifests/m3fd_2x_test.json",
+    "pairs": 300,
+    "errors": [],
+    "valid": true
+  },
+  "TNO": {
+    "manifest": "/root/autodl-tmp/SIBA-Jittor/data/manifests/tno_test.json",
+    "pairs": 45,
+    "errors": [],
+    "valid": true
+  }
+}
+{
+  "framework": "PyTorch",
+  "torch_version": "1.10.0+cu111",
+  "device": "cuda",
+  "checkpoint": "/root/autodl-tmp/delete/SIBA-Jittor_legacy_20260801_024314/official_pytorch/checkpoint/SIBA_epoch60.pth",
+  "seed": 2025,
+  "shape": [
+    1,
+    1,
+    32,
+    32
+  ],
+  "arrays": 707
+}
+[38;5;2m[i 0801 16:18:01.272423 52 compiler.py:955] Jittor(1.3.11.0) src: /root/miniconda3/envs/JittorDome/lib/python3.8/site-packages/jittor[m
+[38;5;2m[i 0801 16:18:01.276115 52 compiler.py:956] g++ at /usr/bin/g++(9.3.0)[m
+[38;5;2m[i 0801 16:18:01.276165 52 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor_gpu/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/82d5/default[m
+[38;5;2m[i 0801 16:18:01.280669 52 __init__.py:412] Found /usr/local/cuda/bin/nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.[m
+[38;5;2m[i 0801 16:18:01.284700 52 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.[m
+[38;5;2m[i 0801 16:18:01.450068 52 compiler.py:1012] cuda key:cu11.3.109_sm_86[m
+[38;5;2m[i 0801 16:18:01.836778 52 __init__.py:227] Total mem: 755.27GB, using 16 procs for compiling.[m
+[38;5;2m[i 0801 16:18:01.928565 52 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0801 16:18:02.118560 52 init.cc:63] Found cuda archs: [86,][m
+[38;5;2m[i 0801 16:18:03.707315 52 cuda_flags.cc:55] CUDA enabled.[m
+
+Compiling Operators(1/1) used: 2.03s eta:    0s
+
+
+Compiling Operators(1/1) used: 2.01s eta:    0s
+
+
+Compiling Operators(1/1) used:    2s eta:    0s
+
+[alignment] forward activations: start
+
+Compiling Operators(29/30) used: 2.31s eta: 0.0797s
+Compiling Operators(30/30) used: 3.31s eta:    0s
+
+[alignment] forward activations: done
+[alignment] losses: start
+
+Compiling Operators(10/10) used: 3.31s eta:    0s
+
+[alignment] losses: done
+[alignment] pre-clip gradients: start
+
+Compiling Operators(47/58) used: 2.31s eta: 0.541s
+Compiling Operators(58/58) used: 3.31s eta:    0s
+
+[alignment] pre-clip gradients: done
+[alignment] post-clip gradients: start
+[alignment] post-clip gradients: done
+[alignment] Adam step: start
+[alignment] Adam step: done
+[alignment] reference-gradient clip: start
+[alignment] reference-gradient clip: done
+[alignment] reference-gradient Adam step: start
+[alignment] reference-gradient Adam step: done
+{
+  "check_count": 706,
+  "activation_max_abs": 0.00020229816436767578,
+  "loss_max_abs": 3.337860107421875e-06,
+  "gradient_preclip_cosine": 0.999945296094024,
+  "gradient_preclip_relative_l2": 0.010504294484336634,
+  "parameter_update_cosine": 0.9977376305741568,
+  "parameter_update_relative_l2": 0.06726786928923395,
+  "reference_gradient_postclip_max_abs": 5.587935447692871e-09,
+  "reference_gradient_parameter_after_step_max_abs": 2.9802322387695312e-08,
+  "forward_and_loss_passed": true,
+  "optimizer_implementation_passed": true,
+  "native_training_step_close": true,
+  "strict_training_equivalence_passed": false,
+  "functional_migration_passed": true
+}
+{
+  "purpose": "Shared initialization for complete PyTorch/Jittor training comparison",
+  "official_pytorch_root": "/root/autodl-tmp/delete/SIBA-Jittor_legacy_20260801_024314/official_pytorch",
+  "seed": 2025,
+  "torch_version": "1.10.0+cu111",
+  "state_tensors": 137,
+  "trainable_parameters": 565941,
+  "state_sha256": "f58dcdaf3e64504646723d79a25a79bbb341f66e6e48239969bdf818cf6919be",
+  "pytorch_checkpoint": "/root/autodl-tmp/SIBA-Jittor/shared/initial.pth",
+  "pytorch_checkpoint_sha256": "d1a88192b4b18c058bf09071e94fa3f4c6a54ea73e0cc8cb5fa7ab7e60c1795f",
+  "framework_neutral_archive": "/root/autodl-tmp/SIBA-Jittor/shared/initial.npz",
+  "framework_neutral_archive_sha256": "870e1e10c7a1927d23dc77a8e36ea1974f2ef66325e87342267e30e1f3533983"
+}
+{
+  "purpose": "Shared data order and random crop coordinates for framework comparison",
+  "seed": 2025,
+  "epochs": 60,
+  "training_pairs": 1283,
+  "patch_size": 128,
+  "ir_path": "/root/autodl-tmp/datasets/SIBA/train/ir",
+  "vi_path": "/root/autodl-tmp/datasets/SIBA/train/vi",
+  "schedule": "/root/autodl-tmp/SIBA-Jittor/shared/schedule.npz",
+  "schedule_sha256": "41a68929ee9759eaee89eae8f36c8231693d55da7f677f52650b0d8a99ae02fa"
+}
+[38;5;2m[i 0801 16:18:38.717445 56 compiler.py:955] Jittor(1.3.11.0) src: /root/miniconda3/envs/JittorDome/lib/python3.8/site-packages/jittor[m
+[38;5;2m[i 0801 16:18:38.721075 56 compiler.py:956] g++ at /usr/bin/g++(9.3.0)[m
+[38;5;2m[i 0801 16:18:38.721127 56 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor_gpu/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/82d5/default[m
+[38;5;2m[i 0801 16:18:38.725216 56 __init__.py:412] Found /usr/local/cuda/bin/nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.[m
+[38;5;2m[i 0801 16:18:38.727781 56 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.[m
+[38;5;2m[i 0801 16:18:39.020643 56 compiler.py:1012] cuda key:cu11.3.109_sm_86[m
+[38;5;2m[i 0801 16:18:39.383673 56 __init__.py:227] Total mem: 755.27GB, using 16 procs for compiling.[m
+[38;5;2m[i 0801 16:18:39.477405 56 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0801 16:18:39.729334 56 init.cc:63] Found cuda archs: [86,][m
+[38;5;2m[i 0801 16:18:41.432491 56 cuda_flags.cc:55] CUDA enabled.[m
+done
+{
+  "passed": true,
+  "shared_initial_state_sha256": "f58dcdaf3e64504646723d79a25a79bbb341f66e6e48239969bdf818cf6919be",
+  "initialization_archive_sha256": "870e1e10c7a1927d23dc77a8e36ea1974f2ef66325e87342267e30e1f3533983",
+  "schedule_sha256": "41a68929ee9759eaee89eae8f36c8231693d55da7f677f52650b0d8a99ae02fa",
+  "epochs": 0,
+  "batch_size": 4,
+  "patch_size": 128,
+  "training_pairs": 1283,
+  "frameworks": [
+    "Jittor"
+  ]
+}
+[Epoch 0/60] [batch 0/321] [lr 0.0001] [total 0.298099] [joint 0.005498] [intensity 0.149208] [sobel 0.228196] ETA: 5:02:37.819161
+[Epoch 0/60] [batch 50/321] [lr 0.0001] [total 0.218720] [joint 0.006712] [intensity 0.205451] [sobel 0.131051] ETA: 0:34:54.965682
+[Epoch 0/60] [batch 100/321] [lr 0.0001] [total 0.112371] [joint 0.003843] [intensity 0.114623] [sobel 0.062481] ETA: 0:34:12.707701
+[Epoch 0/60] [batch 150/321] [lr 0.0001] [total 0.190341] [joint 0.006773] [intensity 0.126025] [sobel 0.110013] ETA: 0:37:33.167224
+[Epoch 0/60] [batch 200/321] [lr 0.0001] [total 0.226432] [joint 0.008939] [intensity 0.220808] [sobel 0.114960] ETA: 0:35:18.687639
+[Epoch 0/60] [batch 250/321] [lr 0.0001] [total 0.147310] [joint 0.005663] [intensity 0.139985] [sobel 0.076682] ETA: 0:34:37.269845
+[Epoch 0/60] [batch 300/321] [lr 0.0001] [total 0.221385] [joint 0.008341] [intensity 0.186962] [sobel 0.119278] ETA: 0:34:43.830528
+[Epoch 1/60] [batch 0/321] [lr 0.0001] [total 0.192253] [joint 0.006695] [intensity 0.203658] [sobel 0.104938] ETA: 1:23:35.567830
+[Epoch 1/60] [batch 50/321] [lr 0.0001] [total 0.115537] [joint 0.003886] [intensity 0.121542] [sobel 0.064527] ETA: 0:37:36.049605
+[Epoch 1/60] [batch 100/321] [lr 0.0001] [total 0.152695] [joint 0.005673] [intensity 0.176797] [sobel 0.078290] ETA: 0:34:28.366885
+[Epoch 1/60] [batch 150/321] [lr 0.0001] [total 0.166642] [joint 0.006436] [intensity 0.124600] [sobel 0.089822] ETA: 0:34:11.628905
+[Epoch 1/60] [batch 200/321] [lr 0.0001] [total 0.133604] [joint 0.004721] [intensity 0.189020] [sobel 0.067490] ETA: 0:37:53.840087
+[Epoch 1/60] [batch 250/321] [lr 0.0001] [total 0.098402] [joint 0.005103] [intensity 0.070526] [sobel 0.040319] ETA: 0:37:25.779101
+[Epoch 1/60] [batch 300/321] [lr 0.0001] [total 0.140293] [joint 0.006308] [intensity 0.119549] [sobel 0.065258] ETA: 0:34:13.812045
+[Epoch 2/60] [batch 0/321] [lr 0.0001] [total 0.167018] [joint 0.007328] [intensity 0.184030] [sobel 0.075338] ETA: 0:37:29.622917
+[Epoch 2/60] [batch 50/321] [lr 0.0001] [total 0.180106] [joint 0.008370] [intensity 0.191697] [sobel 0.077237] ETA: 0:37:13.917345
+[Epoch 2/60] [batch 100/321] [lr 0.0001] [total 0.121248] [joint 0.005741] [intensity 0.123167] [sobel 0.051524] ETA: 0:37:12.352197
+[Epoch 2/60] [batch 150/321] [lr 0.0001] [total 0.067869] [joint 0.001740] [intensity 0.058528] [sobel 0.044618] ETA: 0:29:34.829335
+[Epoch 2/60] [batch 200/321] [lr 0.0001] [total 0.071202] [joint 0.002145] [intensity 0.118669] [sobel 0.037882] ETA: 0:36:28.592741
+[Epoch 2/60] [batch 250/321] [lr 0.0001] [total 0.064995] [joint 0.001605] [intensity 0.051250] [sobel 0.043823] ETA: 0:26:39.178925
+[Epoch 2/60] [batch 300/321] [lr 0.0001] [total 0.186084] [joint 0.009513] [intensity 0.179956] [sobel 0.072959] ETA: 0:36:49.709548
+[Epoch 3/60] [batch 0/321] [lr 0.0001] [total 0.180336] [joint 0.008747] [intensity 0.193913] [sobel 0.073473] ETA: 0:36:46.129345
+[Epoch 3/60] [batch 50/321] [lr 0.0001] [total 0.209587] [joint 0.008597] [intensity 0.178278] [sobel 0.105789] ETA: 0:34:23.797553
+[Epoch 3/60] [batch 100/321] [lr 0.0001] [total 0.120819] [joint 0.004076] [intensity 0.119966] [sobel 0.068063] ETA: 0:29:50.526171
+[Epoch 3/60] [batch 150/321] [lr 0.0001] [total 0.207441] [joint 0.009728] [intensity 0.262547] [sobel 0.083902] ETA: 0:36:27.372733
+[Epoch 3/60] [batch 200/321] [lr 0.0001] [total 0.119219] [joint 0.004673] [intensity 0.088964] [sobel 0.063589] ETA: 0:29:24.950925
+[Epoch 3/60] [batch 250/321] [lr 0.0001] [total 0.044415] [joint 0.001403] [intensity 0.034910] [sobel 0.026895] ETA: 0:32:43.237041
+[Epoch 3/60] [batch 300/321] [lr 0.0001] [total 0.124604] [joint 0.004801] [intensity 0.176365] [sobel 0.058956] ETA: 0:36:27.142091
+[Epoch 4/60] [batch 0/321] [lr 0.0001] [total 0.058290] [joint 0.001787] [intensity 0.035619] [sobel 0.036860] ETA: 0:32:15.610016
+[Epoch 4/60] [batch 50/321] [lr 0.0001] [total 0.169535] [joint 0.006560] [intensity 0.224563] [sobel 0.081475] ETA: 0:32:53.969422
+[Epoch 4/60] [batch 100/321] [lr 0.0001] [total 0.140970] [joint 0.004578] [intensity 0.180731] [sobel 0.077119] ETA: 0:36:39.547580
+[Epoch 4/60] [batch 150/321] [lr 0.0001] [total 0.142364] [joint 0.006382] [intensity 0.126051] [sobel 0.065935] ETA: 0:35:48.000564
+[Epoch 4/60] [batch 200/321] [lr 0.0001] [total 0.155339] [joint 0.005461] [intensity 0.133330] [sobel 0.087394] ETA: 0:29:20.132977
+[Epoch 4/60] [batch 250/321] [lr 0.0001] [total 0.126959] [joint 0.006675] [intensity 0.120646] [sobel 0.048143] ETA: 0:32:51.821742
+[Epoch 4/60] [batch 300/321] [lr 0.0001] [total 0.055386] [joint 0.001962] [intensity 0.040621] [sobel 0.031707] ETA: 0:31:29.837917
+[Epoch 5/60] [batch 0/321] [lr 0.0001] [total 0.116040] [joint 0.004949] [intensity 0.096577] [sobel 0.056890] ETA: 0:35:44.468215
+[Epoch 5/60] [batch 50/321] [lr 0.0001] [total 0.159966] [joint 0.008599] [intensity 0.141488] [sobel 0.059831] ETA: 0:32:28.640745
+[Epoch 5/60] [batch 100/321] [lr 0.0001] [total 0.110069] [joint 0.002961] [intensity 0.086407] [sobel 0.071815] ETA: 0:28:17.002642
+[Epoch 5/60] [batch 150/321] [lr 0.0001] [total 0.118826] [joint 0.003465] [intensity 0.111303] [sobel 0.073048] ETA: 0:31:54.621896
+[Epoch 5/60] [batch 200/321] [lr 0.0001] [total 0.195582] [joint 0.008486] [intensity 0.329875] [sobel 0.077739] ETA: 0:35:04.444339
+[Epoch 5/60] [batch 250/321] [lr 0.0001] [total 0.106066] [joint 0.003610] [intensity 0.108597] [sobel 0.059104] ETA: 0:31:34.156669
+[Epoch 5/60] [batch 300/321] [lr 0.0001] [total 0.108978] [joint 0.005262] [intensity 0.096668] [sobel 0.046689] ETA: 0:32:06.339855
+[Epoch 6/60] [batch 0/321] [lr 0.0001] [total 0.075550] [joint 0.004046] [intensity 0.045422] [sobel 0.030546] ETA: 0:34:22.848591
+[Epoch 6/60] [batch 50/321] [lr 0.0001] [total 0.075132] [joint 0.003298] [intensity 0.071970] [sobel 0.034960] ETA: 0:34:50.367650
+[Epoch 6/60] [batch 100/321] [lr 0.0001] [total 0.182580] [joint 0.008594] [intensity 0.228508] [sobel 0.073787] ETA: 0:35:08.875353
+[Epoch 6/60] [batch 150/321] [lr 0.0001] [total 0.179081] [joint 0.008978] [intensity 0.179066] [sobel 0.071394] ETA: 0:32:02.305298
+[Epoch 6/60] [batch 200/321] [lr 0.0001] [total 0.195133] [joint 0.009182] [intensity 0.245521] [sobel 0.078756] ETA: 0:31:25.301941
+[Epoch 6/60] [batch 250/321] [lr 0.0001] [total 0.125581] [joint 0.005356] [intensity 0.093795] [sobel 0.062638] ETA: 0:30:49.471679
+[Epoch 6/60] [batch 300/321] [lr 0.0001] [total 0.100072] [joint 0.003234] [intensity 0.099764] [sobel 0.057751] ETA: 0:34:32.563462
+[Epoch 7/60] [batch 0/321] [lr 0.0001] [total 0.165993] [joint 0.008148] [intensity 0.159757] [sobel 0.068538] ETA: 0:30:56.696041
+[Epoch 7/60] [batch 50/321] [lr 0.0001] [total 0.179273] [joint 0.008442] [intensity 0.210832] [sobel 0.073772] ETA: 0:34:16.964509
+[Epoch 7/60] [batch 100/321] [lr 0.0001] [total 0.077077] [joint 0.003260] [intensity 0.082890] [sobel 0.036188] ETA: 0:30:38.391305
+[Epoch 7/60] [batch 150/321] [lr 0.0001] [total 0.133969] [joint 0.004582] [intensity 0.225210] [sobel 0.065625] ETA: 0:30:49.420211
+[Epoch 7/60] [batch 200/321] [lr 0.0001] [total 0.100444] [joint 0.003167] [intensity 0.203432] [sobel 0.048427] ETA: 0:33:25.372140
+[Epoch 7/60] [batch 250/321] [lr 0.0001] [total 0.126881] [joint 0.005673] [intensity 0.120847] [sobel 0.058061] ETA: 0:30:22.574351
+[Epoch 7/60] [batch 300/321] [lr 0.0001] [total 0.164717] [joint 0.007104] [intensity 0.158614] [sobel 0.077816] ETA: 0:33:43.038921
+[Epoch 8/60] [batch 0/321] [lr 0.0001] [total 0.100169] [joint 0.005079] [intensity 0.119046] [sobel 0.037479] ETA: 0:33:54.322377
+[Epoch 8/60] [batch 50/321] [lr 0.0001] [total 0.150851] [joint 0.004761] [intensity 0.150031] [sobel 0.088238] ETA: 0:27:47.928109
+[Epoch 8/60] [batch 100/321] [lr 0.0001] [total 0.262966] [joint 0.014248] [intensity 0.277420] [sobel 0.092746] ETA: 0:34:23.548668
+[Epoch 8/60] [batch 150/321] [lr 0.0001] [total 0.157757] [joint 0.007224] [intensity 0.158716] [sobel 0.069647] ETA: 0:33:13.202022
+[Epoch 8/60] [batch 200/321] [lr 0.0001] [total 0.098348] [joint 0.004688] [intensity 0.145840] [sobel 0.036885] ETA: 0:32:38.819773
+[Epoch 8/60] [batch 250/321] [lr 0.0001] [total 0.067319] [joint 0.002242] [intensity 0.060324] [sobel 0.038868] ETA: 0:32:41.959977
+[Epoch 8/60] [batch 300/321] [lr 0.0001] [total 0.159973] [joint 0.008175] [intensity 0.160107] [sobel 0.062217] ETA: 0:30:10.621943
+[Epoch 9/60] [batch 0/321] [lr 0.0001] [total 0.144687] [joint 0.006908] [intensity 0.163182] [sobel 0.059285] ETA: 0:33:15.958004
+[Epoch 9/60] [batch 50/321] [lr 0.0001] [total 0.152424] [joint 0.006617] [intensity 0.130651] [sobel 0.073185] ETA: 0:26:48.233532
+[Epoch 9/60] [batch 100/321] [lr 0.0001] [total 0.082768] [joint 0.003992] [intensity 0.088179] [sobel 0.034026] ETA: 0:31:53.337120
+[Epoch 9/60] [batch 150/321] [lr 0.0001] [total 0.174791] [joint 0.007995] [intensity 0.196249] [sobel 0.075217] ETA: 0:32:57.747300
+[Epoch 9/60] [batch 200/321] [lr 0.0001] [total 0.121994] [joint 0.005792] [intensity 0.117314] [sobel 0.052338] ETA: 0:29:30.522905
+[Epoch 9/60] [batch 250/321] [lr 0.0001] [total 0.123621] [joint 0.005896] [intensity 0.138121] [sobel 0.050848] ETA: 0:32:23.857972
+[Epoch 9/60] [batch 300/321] [lr 0.0001] [total 0.093123] [joint 0.004434] [intensity 0.082045] [sobel 0.040581] ETA: 0:32:01.299379
+[Epoch 10/60] [batch 0/321] [lr 0.0001] [total 0.106807] [joint 0.005501] [intensity 0.107238] [sobel 0.041072] ETA: 0:32:10.590105
+[Epoch 10/60] [batch 50/321] [lr 0.0001] [total 0.201071] [joint 0.008265] [intensity 0.262458] [sobel 0.092180] ETA: 0:33:04.169006
+[Epoch 10/60] [batch 100/321] [lr 0.0001] [total 0.130629] [joint 0.005819] [intensity 0.142943] [sobel 0.058147] ETA: 0:28:37.531538
+[Epoch 10/60] [batch 150/321] [lr 0.0001] [total 0.136204] [joint 0.005559] [intensity 0.175988] [sobel 0.063015] ETA: 0:29:29.105029
+[Epoch 10/60] [batch 200/321] [lr 0.0001] [total 0.078210] [joint 0.003407] [intensity 0.040754] [sobel 0.040066] ETA: 0:28:15.917773
+[Epoch 10/60] [batch 250/321] [lr 0.0001] [total 0.077151] [joint 0.002742] [intensity 0.061237] [sobel 0.043605] ETA: 0:28:27.357454
+[Epoch 10/60] [batch 300/321] [lr 0.0001] [total 0.153620] [joint 0.005651] [intensity 0.199592] [sobel 0.077147] ETA: 0:28:45.596488
+[Epoch 11/60] [batch 0/321] [lr 0.0001] [total 0.166688] [joint 0.007124] [intensity 0.175830] [sobel 0.077864] ETA: 0:29:06.504973
+[Epoch 11/60] [batch 50/321] [lr 0.0001] [total 0.094464] [joint 0.003498] [intensity 0.081593] [sobel 0.051327] ETA: 0:28:29.417952
+[Epoch 11/60] [batch 100/321] [lr 0.0001] [total 0.168677] [joint 0.006591] [intensity 0.175042] [sobel 0.085260] ETA: 0:29:27.014702
+[Epoch 11/60] [batch 150/321] [lr 0.0001] [total 0.111791] [joint 0.005049] [intensity 0.125694] [sobel 0.048735] ETA: 0:28:53.091989
+[Epoch 11/60] [batch 200/321] [lr 0.0001] [total 0.115866] [joint 0.006486] [intensity 0.141004] [sobel 0.036908] ETA: 0:31:40.265290
+[Epoch 11/60] [batch 250/321] [lr 0.0001] [total 0.123528] [joint 0.006314] [intensity 0.122732] [sobel 0.048116] ETA: 0:28:21.666113
+[Epoch 11/60] [batch 300/321] [lr 0.0001] [total 0.111037] [joint 0.003874] [intensity 0.115664] [sobel 0.060732] ETA: 0:25:38.031793
+[Epoch 12/60] [batch 0/321] [lr 0.0001] [total 0.082419] [joint 0.002380] [intensity 0.064338] [sobel 0.052184] ETA: 0:27:47.675720
+[Epoch 12/60] [batch 50/321] [lr 0.0001] [total 0.075781] [joint 0.002885] [intensity 0.099921] [sobel 0.036936] ETA: 0:30:55.144156
+[Epoch 12/60] [batch 100/321] [lr 0.0001] [total 0.169150] [joint 0.006072] [intensity 0.075105] [sobel 0.100920] ETA: 0:24:54.983920
+[Epoch 12/60] [batch 150/321] [lr 0.0001] [total 0.096938] [joint 0.003277] [intensity 0.113247] [sobel 0.052838] ETA: 0:27:51.990439
+[Epoch 12/60] [batch 200/321] [lr 0.0001] [total 0.104038] [joint 0.004196] [intensity 0.174962] [sobel 0.044582] ETA: 0:30:18.729015
+[Epoch 12/60] [batch 250/321] [lr 0.0001] [total 0.114114] [joint 0.005741] [intensity 0.119326] [sobel 0.044770] ETA: 0:30:03.168923
+[Epoch 12/60] [batch 300/321] [lr 0.0001] [total 0.122967] [joint 0.006276] [intensity 0.086820] [sobel 0.051526] ETA: 0:30:07.292281
+[Epoch 13/60] [batch 0/321] [lr 0.0001] [total 0.142764] [joint 0.006214] [intensity 0.144367] [sobel 0.066188] ETA: 0:30:45.624334
+[Epoch 13/60] [batch 50/321] [lr 0.0001] [total 0.107354] [joint 0.004025] [intensity 0.087767] [sobel 0.058330] ETA: 0:24:43.898058
+[Epoch 13/60] [batch 100/321] [lr 0.0001] [total 0.099948] [joint 0.005615] [intensity 0.096020] [sobel 0.034199] ETA: 0:29:58.566919
+[Epoch 13/60] [batch 150/321] [lr 0.0001] [total 0.127236] [joint 0.006509] [intensity 0.141579] [sobel 0.047990] ETA: 0:29:40.191123
+[Epoch 13/60] [batch 200/321] [lr 0.0001] [total 0.106273] [joint 0.005341] [intensity 0.132182] [sobel 0.039647] ETA: 0:30:07.056397
+[Epoch 13/60] [batch 250/321] [lr 0.0001] [total 0.094605] [joint 0.004574] [intensity 0.071510] [sobel 0.041714] ETA: 0:26:42.177274
+[Epoch 13/60] [batch 300/321] [lr 0.0001] [total 0.121873] [joint 0.004753] [intensity 0.161834] [sobel 0.058159] ETA: 0:30:06.072579
+[Epoch 14/60] [batch 0/321] [lr 0.0001] [total 0.197705] [joint 0.007394] [intensity 0.156669] [sobel 0.108097] ETA: 0:27:06.807285
+[Epoch 14/60] [batch 50/321] [lr 0.0001] [total 0.140051] [joint 0.005265] [intensity 0.196552] [sobel 0.067747] ETA: 0:24:04.800156
+[Epoch 14/60] [batch 100/321] [lr 0.0001] [total 0.131233] [joint 0.004351] [intensity 0.133092] [sobel 0.074413] ETA: 0:23:52.009770
+[Epoch 14/60] [batch 150/321] [lr 0.0001] [total 0.055708] [joint 0.001681] [intensity 0.049641] [sobel 0.033938] ETA: 0:26:34.959068
+[Epoch 14/60] [batch 200/321] [lr 0.0001] [total 0.116533] [joint 0.005201] [intensity 0.109278] [sobel 0.053598] ETA: 0:26:37.709097
+[Epoch 14/60] [batch 250/321] [lr 0.0001] [total 0.172939] [joint 0.009270] [intensity 0.138427] [sobel 0.066394] ETA: 0:29:58.136940
+[Epoch 14/60] [batch 300/321] [lr 0.0001] [total 0.098922] [joint 0.002160] [intensity 0.089369] [sobel 0.068381] ETA: 0:21:18.406483
+[Epoch 15/60] [batch 0/321] [lr 0.0001] [total 0.156707] [joint 0.006718] [intensity 0.195407] [sobel 0.069990] ETA: 0:24:19.348962
+[Epoch 15/60] [batch 50/321] [lr 0.0001] [total 0.134054] [joint 0.004973] [intensity 0.169363] [sobel 0.067392] ETA: 0:29:19.302554
+[Epoch 15/60] [batch 100/321] [lr 0.0001] [total 0.104482] [joint 0.002674] [intensity 0.077920] [sobel 0.069953] ETA: 0:23:19.781049
+[Epoch 15/60] [batch 150/321] [lr 0.0001] [total 0.085712] [joint 0.002779] [intensity 0.103977] [sobel 0.047522] ETA: 0:26:07.448680
+[Epoch 15/60] [batch 200/321] [lr 0.0001] [total 0.143381] [joint 0.005957] [intensity 0.166670] [sobel 0.067148] ETA: 0:23:19.498678
+[Epoch 15/60] [batch 250/321] [lr 0.0001] [total 0.063696] [joint 0.002397] [intensity 0.030840] [sobel 0.036646] ETA: 0:25:57.746030
+[Epoch 15/60] [batch 300/321] [lr 0.0001] [total 0.090828] [joint 0.002406] [intensity 0.095623] [sobel 0.057209] ETA: 0:25:48.879901
+[Epoch 16/60] [batch 0/321] [lr 0.0001] [total 0.104797] [joint 0.004066] [intensity 0.093455] [sobel 0.054791] ETA: 0:25:49.998333
+[Epoch 16/60] [batch 50/321] [lr 0.0001] [total 0.130246] [joint 0.005058] [intensity 0.115079] [sobel 0.068160] ETA: 0:28:20.907868
+[Epoch 16/60] [batch 100/321] [lr 0.0001] [total 0.060828] [joint 0.001432] [intensity 0.022219] [sobel 0.044287] ETA: 0:25:43.935839
+[Epoch 16/60] [batch 150/321] [lr 0.0001] [total 0.044354] [joint 0.001341] [intensity 0.009999] [sobel 0.029943] ETA: 0:28:21.675955
+[Epoch 16/60] [batch 200/321] [lr 0.0001] [total 0.059473] [joint 0.001542] [intensity 0.014562] [sobel 0.042594] ETA: 0:28:37.182144
+[Epoch 16/60] [batch 250/321] [lr 0.0001] [total 0.066358] [joint 0.001624] [intensity 0.027019] [sobel 0.047421] ETA: 0:25:04.105160
+[Epoch 16/60] [batch 300/321] [lr 0.0001] [total 0.075620] [joint 0.001839] [intensity 0.042856] [sobel 0.052940] ETA: 0:22:33.862793
+[Epoch 17/60] [batch 0/321] [lr 0.0001] [total 0.054339] [joint 0.001374] [intensity 0.016112] [sobel 0.038984] ETA: 0:25:20.174742
+[Epoch 17/60] [batch 50/321] [lr 0.0001] [total 0.048473] [joint 0.001203] [intensity 0.012780] [sobel 0.035166] ETA: 0:27:45.648267
+[Epoch 17/60] [batch 100/321] [lr 0.0001] [total 0.090585] [joint 0.002070] [intensity 0.053711] [sobel 0.064509] ETA: 0:22:28.402925
+[Epoch 17/60] [batch 150/321] [lr 0.0001] [total 0.065332] [joint 0.001481] [intensity 0.025653] [sobel 0.047959] ETA: 0:24:58.000536
+[Epoch 17/60] [batch 200/321] [lr 0.0001] [total 0.028536] [joint 0.000816] [intensity 0.011338] [sobel 0.019238] ETA: 0:26:58.795348
+[Epoch 17/60] [batch 250/321] [lr 0.0001] [total 0.039590] [joint 0.001161] [intensity 0.021944] [sobel 0.025786] ETA: 0:24:50.983680
+[Epoch 17/60] [batch 300/321] [lr 0.0001] [total 0.063442] [joint 0.001620] [intensity 0.028271] [sobel 0.044414] ETA: 0:21:57.242261
+[Epoch 18/60] [batch 0/321] [lr 0.0001] [total 0.036222] [joint 0.001053] [intensity 0.008870] [sobel 0.024800] ETA: 0:27:06.812948
+[Epoch 18/60] [batch 50/321] [lr 0.0001] [total 0.102347] [joint 0.002405] [intensity 0.060951] [sobel 0.072202] ETA: 0:19:34.452635
+[Epoch 18/60] [batch 100/321] [lr 0.0001] [total 0.048169] [joint 0.001310] [intensity 0.013821] [sobel 0.033689] ETA: 0:24:39.241928
+[Epoch 18/60] [batch 150/321] [lr 0.0001] [total 0.115709] [joint 0.002834] [intensity 0.040443] [sobel 0.083323] ETA: 0:19:17.600344
+[Epoch 18/60] [batch 200/321] [lr 0.0001] [total 0.041974] [joint 0.001296] [intensity 0.009202] [sobel 0.028097] ETA: 0:27:21.699615
+[Epoch 18/60] [batch 250/321] [lr 0.0001] [total 0.071733] [joint 0.001919] [intensity 0.021635] [sobel 0.050376] ETA: 0:26:58.531094
+[Epoch 18/60] [batch 300/321] [lr 0.0001] [total 0.031718] [joint 0.001115] [intensity 0.009809] [sobel 0.019592] ETA: 0:26:51.758268
+[Epoch 19/60] [batch 0/321] [lr 0.0001] [total 0.034466] [joint 0.000938] [intensity 0.006482] [sobel 0.024437] ETA: 0:26:25.368224
+[Epoch 19/60] [batch 50/321] [lr 0.0001] [total 0.074400] [joint 0.001950] [intensity 0.046126] [sobel 0.050287] ETA: 0:21:33.359233
+[Epoch 19/60] [batch 100/321] [lr 0.0001] [total 0.024776] [joint 0.000851] [intensity 0.006255] [sobel 0.015642] ETA: 0:25:58.913860
+[Epoch 19/60] [batch 150/321] [lr 0.0001] [total 0.055595] [joint 0.001511] [intensity 0.025599] [sobel 0.037922] ETA: 0:21:18.065933
+[Epoch 19/60] [batch 200/321] [lr 0.0001] [total 0.044054] [joint 0.001231] [intensity 0.019729] [sobel 0.029774] ETA: 0:21:05.852442
+[Epoch 19/60] [batch 250/321] [lr 0.0001] [total 0.135680] [joint 0.003954] [intensity 0.045024] [sobel 0.091638] ETA: 0:20:46.615379
+[Epoch 19/60] [batch 300/321] [lr 0.0001] [total 0.056442] [joint 0.001461] [intensity 0.036158] [sobel 0.038217] ETA: 0:23:50.211870
+[Epoch 20/60] [batch 0/321] [lr 0.0001] [total 0.057080] [joint 0.001520] [intensity 0.022138] [sobel 0.039662] ETA: 0:23:27.748547
+[Epoch 20/60] [batch 50/321] [lr 0.0001] [total 0.035871] [joint 0.001109] [intensity 0.007966] [sobel 0.023988] ETA: 0:25:19.146101
+[Epoch 20/60] [batch 100/321] [lr 0.0001] [total 0.034436] [joint 0.000900] [intensity 0.018254] [sobel 0.023607] ETA: 0:23:14.333549
+[Epoch 20/60] [batch 150/321] [lr 0.0001] [total 0.065658] [joint 0.002168] [intensity 0.006542] [sobel 0.043322] ETA: 0:25:46.679070
+[Epoch 20/60] [batch 200/321] [lr 0.0001] [total 0.027551] [joint 0.000905] [intensity 0.008194] [sobel 0.017684] ETA: 0:25:04.439735
+[Epoch 20/60] [batch 250/321] [lr 0.0001] [total 0.037627] [joint 0.001137] [intensity 0.018531] [sobel 0.024406] ETA: 0:25:22.180967
+[Epoch 20/60] [batch 300/321] [lr 0.0001] [total 0.068463] [joint 0.001774] [intensity 0.027914] [sobel 0.047931] ETA: 0:22:59.921894
+[Epoch 21/60] [batch 0/321] [lr 0.0001] [total 0.057586] [joint 0.001424] [intensity 0.033705] [sobel 0.039980] ETA: 0:25:32.893273
+[Epoch 21/60] [batch 50/321] [lr 0.0001] [total 0.027198] [joint 0.000825] [intensity 0.011045] [sobel 0.017847] ETA: 0:22:07.430108
+[Epoch 21/60] [batch 100/321] [lr 0.0001] [total 0.046883] [joint 0.001195] [intensity 0.011971] [sobel 0.033739] ETA: 0:25:12.908893
+[Epoch 21/60] [batch 150/321] [lr 0.0001] [total 0.030442] [joint 0.001029] [intensity 0.006311] [sobel 0.019521] ETA: 0:24:50.102858
+[Epoch 21/60] [batch 200/321] [lr 0.0001] [total 0.022475] [joint 0.000784] [intensity 0.007681] [sobel 0.013869] ETA: 0:24:59.287513
+[Epoch 21/60] [batch 250/321] [lr 0.0001] [total 0.036239] [joint 0.001157] [intensity 0.008486] [sobel 0.023821] ETA: 0:24:53.202248
+[Epoch 21/60] [batch 300/321] [lr 0.0001] [total 0.030102] [joint 0.000965] [intensity 0.007148] [sobel 0.019739] ETA: 0:24:21.690254
+[Epoch 22/60] [batch 0/321] [lr 0.0001] [total 0.025810] [joint 0.000881] [intensity 0.006287] [sobel 0.016370] ETA: 0:24:38.788336
+[Epoch 22/60] [batch 50/321] [lr 0.0001] [total 0.049121] [joint 0.001191] [intensity 0.035574] [sobel 0.033651] ETA: 0:22:15.589404
+[Epoch 22/60] [batch 100/321] [lr 0.0001] [total 0.079743] [joint 0.002156] [intensity 0.022892] [sobel 0.055892] ETA: 0:22:05.344544
+[Epoch 22/60] [batch 150/321] [lr 0.0001] [total 0.057019] [joint 0.001545] [intensity 0.018427] [sobel 0.039725] ETA: 0:21:58.743874
+[Epoch 22/60] [batch 200/321] [lr 0.0001] [total 0.051080] [joint 0.001330] [intensity 0.016813] [sobel 0.036104] ETA: 0:22:06.684100
+[Epoch 22/60] [batch 250/321] [lr 0.0001] [total 0.027093] [joint 0.000866] [intensity 0.007774] [sobel 0.017657] ETA: 0:23:35.607193
+[Epoch 22/60] [batch 300/321] [lr 0.0001] [total 0.051302] [joint 0.001228] [intensity 0.033364] [sobel 0.035687] ETA: 0:21:11.232134
+[Epoch 23/60] [batch 0/321] [lr 0.0001] [total 0.060926] [joint 0.001581] [intensity 0.023566] [sobel 0.042757] ETA: 0:22:13.256612
+[Epoch 23/60] [batch 50/321] [lr 0.0001] [total 0.027111] [joint 0.000871] [intensity 0.009255] [sobel 0.017474] ETA: 0:23:48.684898
+[Epoch 23/60] [batch 100/321] [lr 0.0001] [total 0.058756] [joint 0.001757] [intensity 0.018661] [sobel 0.039316] ETA: 0:21:11.486870
+[Epoch 23/60] [batch 150/321] [lr 0.0001] [total 0.027165] [joint 0.000809] [intensity 0.009911] [sobel 0.018088] ETA: 0:21:26.037686
+[Epoch 23/60] [batch 200/321] [lr 0.0001] [total 0.045154] [joint 0.001302] [intensity 0.022094] [sobel 0.029922] ETA: 0:23:46.027522
+[Epoch 23/60] [batch 250/321] [lr 0.0001] [total 0.038333] [joint 0.001301] [intensity 0.004960] [sobel 0.024827] ETA: 0:23:16.103562
+[Epoch 23/60] [batch 300/321] [lr 0.0001] [total 0.078342] [joint 0.002007] [intensity 0.040401] [sobel 0.054233] ETA: 0:18:29.318603
+[Epoch 24/60] [batch 0/321] [lr 0.0001] [total 0.040942] [joint 0.001442] [intensity 0.009827] [sobel 0.025540] ETA: 0:20:38.950908
+[Epoch 24/60] [batch 50/321] [lr 0.0001] [total 0.041690] [joint 0.001249] [intensity 0.007635] [sobel 0.028437] ETA: 0:20:53.989032
+[Epoch 24/60] [batch 100/321] [lr 0.0001] [total 0.019773] [joint 0.000729] [intensity 0.012089] [sobel 0.011277] ETA: 0:23:06.455185
+[Epoch 24/60] [batch 150/321] [lr 0.0001] [total 0.027624] [joint 0.001059] [intensity 0.004328] [sobel 0.016605] ETA: 0:22:55.432899
+[Epoch 24/60] [batch 200/321] [lr 0.0001] [total 0.023810] [joint 0.000868] [intensity 0.006807] [sobel 0.014444] ETA: 0:22:56.532270
+[Epoch 24/60] [batch 250/321] [lr 0.0001] [total 0.038093] [joint 0.001182] [intensity 0.009075] [sobel 0.025366] ETA: 0:22:55.342333
+[Epoch 24/60] [batch 300/321] [lr 0.0001] [total 0.028821] [joint 0.000898] [intensity 0.013994] [sobel 0.018440] ETA: 0:22:48.954042
+[Epoch 25/60] [batch 0/321] [lr 5e-05] [total 0.052604] [joint 0.001449] [intensity 0.033312] [sobel 0.034786] ETA: 0:20:56.203752
+[Epoch 25/60] [batch 50/321] [lr 5e-05] [total 0.039663] [joint 0.001068] [intensity 0.034315] [sobel 0.025548] ETA: 0:20:20.183321
+[Epoch 25/60] [batch 100/321] [lr 5e-05] [total 0.029343] [joint 0.000943] [intensity 0.005412] [sobel 0.019376] ETA: 0:22:33.725655
+[Epoch 25/60] [batch 150/321] [lr 5e-05] [total 0.049593] [joint 0.001206] [intensity 0.038170] [sobel 0.033714] ETA: 0:20:27.071303
+[Epoch 25/60] [batch 200/321] [lr 5e-05] [total 0.021777] [joint 0.000780] [intensity 0.003441] [sobel 0.013635] ETA: 0:22:13.856951
+[Epoch 25/60] [batch 250/321] [lr 5e-05] [total 0.061664] [joint 0.001671] [intensity 0.020187] [sobel 0.042932] ETA: 0:20:07.411236
+[Epoch 25/60] [batch 300/321] [lr 5e-05] [total 0.035527] [joint 0.000938] [intensity 0.013681] [sobel 0.024783] ETA: 0:22:06.707300
+[Epoch 26/60] [batch 0/321] [lr 5e-05] [total 0.042180] [joint 0.001105] [intensity 0.012834] [sobel 0.029851] ETA: 0:19:46.445879
+[Epoch 26/60] [batch 50/321] [lr 5e-05] [total 0.042004] [joint 0.001627] [intensity 0.004585] [sobel 0.025274] ETA: 0:22:00.434628
+[Epoch 26/60] [batch 100/321] [lr 5e-05] [total 0.063382] [joint 0.001749] [intensity 0.015573] [sobel 0.044334] ETA: 0:19:35.992695
+[Epoch 26/60] [batch 150/321] [lr 5e-05] [total 0.029375] [joint 0.001012] [intensity 0.005935] [sobel 0.018657] ETA: 0:21:35.230579
+[Epoch 26/60] [batch 200/321] [lr 5e-05] [total 0.033020] [joint 0.001142] [intensity 0.005815] [sobel 0.021015] ETA: 0:21:51.125873
+[Epoch 26/60] [batch 250/321] [lr 5e-05] [total 0.039145] [joint 0.001201] [intensity 0.008024] [sobel 0.026329] ETA: 0:21:46.024120
+[Epoch 26/60] [batch 300/321] [lr 5e-05] [total 0.043168] [joint 0.001238] [intensity 0.013531] [sobel 0.029439] ETA: 0:19:13.818110
+[Epoch 27/60] [batch 0/321] [lr 5e-05] [total 0.024165] [joint 0.000788] [intensity 0.006950] [sobel 0.015590] ETA: 0:21:11.242131
+[Epoch 27/60] [batch 50/321] [lr 5e-05] [total 0.058258] [joint 0.001698] [intensity 0.014784] [sobel 0.039798] ETA: 0:21:21.070179
+[Epoch 27/60] [batch 100/321] [lr 5e-05] [total 0.068340] [joint 0.001733] [intensity 0.038070] [sobel 0.047202] ETA: 0:15:23.654807
+[Epoch 27/60] [batch 150/321] [lr 5e-05] [total 0.029573] [joint 0.000894] [intensity 0.005811] [sobel 0.020051] ETA: 0:20:52.740518
+[Epoch 27/60] [batch 200/321] [lr 5e-05] [total 0.025262] [joint 0.000912] [intensity 0.007304] [sobel 0.015415] ETA: 0:21:22.352201
+[Epoch 27/60] [batch 250/321] [lr 5e-05] [total 0.036026] [joint 0.001088] [intensity 0.011415] [sobel 0.024002] ETA: 0:20:54.682159
+[Epoch 27/60] [batch 300/321] [lr 5e-05] [total 0.062008] [joint 0.001760] [intensity 0.021095] [sobel 0.042294] ETA: 0:18:47.696304
+[Epoch 28/60] [batch 0/321] [lr 5e-05] [total 0.049258] [joint 0.001464] [intensity 0.027878] [sobel 0.031826] ETA: 0:17:03.721390
+[Epoch 28/60] [batch 50/321] [lr 5e-05] [total 0.053822] [joint 0.001534] [intensity 0.019443] [sobel 0.036538] ETA: 0:18:42.920102
+[Epoch 28/60] [batch 100/321] [lr 5e-05] [total 0.052878] [joint 0.001442] [intensity 0.008347] [sobel 0.037619] ETA: 0:18:35.104103
+[Epoch 28/60] [batch 150/321] [lr 5e-05] [total 0.028561] [joint 0.000869] [intensity 0.010365] [sobel 0.018838] ETA: 0:20:19.069611
+[Epoch 28/60] [batch 200/321] [lr 5e-05] [total 0.073288] [joint 0.001982] [intensity 0.030881] [sobel 0.050376] ETA: 0:16:45.001802
+[Epoch 28/60] [batch 250/321] [lr 5e-05] [total 0.054767] [joint 0.001538] [intensity 0.020435] [sobel 0.037343] ETA: 0:20:11.009030
+[Epoch 28/60] [batch 300/321] [lr 5e-05] [total 0.112377] [joint 0.003090] [intensity 0.057364] [sobel 0.075743] ETA: 0:16:17.976880
+[Epoch 29/60] [batch 0/321] [lr 5e-05] [total 0.053499] [joint 0.001403] [intensity 0.027267] [sobel 0.036746] ETA: 0:16:24.297044
+[Epoch 29/60] [batch 50/321] [lr 5e-05] [total 0.047896] [joint 0.001529] [intensity 0.014945] [sobel 0.031111] ETA: 0:18:05.950502
+[Epoch 29/60] [batch 100/321] [lr 5e-05] [total 0.079671] [joint 0.002078] [intensity 0.020865] [sobel 0.056808] ETA: 0:18:16.385685
+[Epoch 29/60] [batch 150/321] [lr 5e-05] [total 0.051013] [joint 0.001056] [intensity 0.045860] [sobel 0.035866] ETA: 0:19:56.289622
+[Epoch 29/60] [batch 200/321] [lr 5e-05] [total 0.042913] [joint 0.001288] [intensity 0.010598] [sobel 0.028977] ETA: 0:20:04.665703
+[Epoch 29/60] [batch 250/321] [lr 5e-05] [total 0.056492] [joint 0.001429] [intensity 0.020695] [sobel 0.040130] ETA: 0:18:03.438047
+[Epoch 29/60] [batch 300/321] [lr 5e-05] [total 0.036386] [joint 0.001173] [intensity 0.009525] [sobel 0.023707] ETA: 0:19:17.962429
+[Epoch 30/60] [batch 0/321] [lr 5e-05] [total 0.084880] [joint 0.002089] [intensity 0.038325] [sobel 0.060153] ETA: 0:17:45.672605
+[Epoch 30/60] [batch 50/321] [lr 5e-05] [total 0.025516] [joint 0.000896] [intensity 0.007978] [sobel 0.015761] ETA: 0:19:20.525799
+[Epoch 30/60] [batch 100/321] [lr 5e-05] [total 0.054090] [joint 0.001565] [intensity 0.026333] [sobel 0.035807] ETA: 0:15:54.530506
+[Epoch 30/60] [batch 150/321] [lr 5e-05] [total 0.013720] [joint 0.000586] [intensity 0.002192] [sobel 0.007640] ETA: 0:18:57.730007
+[Epoch 30/60] [batch 200/321] [lr 5e-05] [total 0.034849] [joint 0.000995] [intensity 0.011643] [sobel 0.023739] ETA: 0:19:06.331947
+[Epoch 30/60] [batch 250/321] [lr 5e-05] [total 0.030154] [joint 0.001047] [intensity 0.003766] [sobel 0.019304] ETA: 0:19:09.807591
+[Epoch 30/60] [batch 300/321] [lr 5e-05] [total 0.041877] [joint 0.001052] [intensity 0.023179] [sobel 0.029040] ETA: 0:14:54.976666
+[Epoch 31/60] [batch 0/321] [lr 5e-05] [total 0.059782] [joint 0.001398] [intensity 0.023658] [sobel 0.043438] ETA: 0:17:09.633056
+[Epoch 31/60] [batch 50/321] [lr 5e-05] [total 0.034801] [joint 0.000973] [intensity 0.010855] [sobel 0.023983] ETA: 0:16:43.012123
+[Epoch 31/60] [batch 100/321] [lr 5e-05] [total 0.014697] [joint 0.000603] [intensity 0.005604] [sobel 0.008111] ETA: 0:18:34.109435
+[Epoch 31/60] [batch 150/321] [lr 5e-05] [total 0.015126] [joint 0.000563] [intensity 0.004529] [sobel 0.009048] ETA: 0:18:08.199879
+[Epoch 31/60] [batch 200/321] [lr 5e-05] [total 0.028014] [joint 0.000980] [intensity 0.010817] [sobel 0.017137] ETA: 0:18:29.784096
+[Epoch 31/60] [batch 250/321] [lr 5e-05] [total 0.018806] [joint 0.000591] [intensity 0.014835] [sobel 0.011415] ETA: 0:18:29.575793
+[Epoch 31/60] [batch 300/321] [lr 5e-05] [total 0.041025] [joint 0.001277] [intensity 0.005587] [sobel 0.027697] ETA: 0:17:58.164251
+[Epoch 32/60] [batch 0/321] [lr 5e-05] [total 0.054310] [joint 0.001358] [intensity 0.040968] [sobel 0.036632] ETA: 0:16:28.252619
+[Epoch 32/60] [batch 50/321] [lr 5e-05] [total 0.037058] [joint 0.000971] [intensity 0.010317] [sobel 0.026316] ETA: 0:18:12.662692
+[Epoch 32/60] [batch 100/321] [lr 5e-05] [total 0.035382] [joint 0.001253] [intensity 0.006491] [sobel 0.022202] ETA: 0:18:07.658506
+[Epoch 32/60] [batch 150/321] [lr 5e-05] [total 0.025725] [joint 0.001039] [intensity 0.004061] [sobel 0.014928] ETA: 0:18:05.574995
+[Epoch 32/60] [batch 200/321] [lr 5e-05] [total 0.031587] [joint 0.000990] [intensity 0.010771] [sobel 0.020613] ETA: 0:17:27.045527
+[Epoch 32/60] [batch 250/321] [lr 5e-05] [total 0.053918] [joint 0.001564] [intensity 0.025335] [sobel 0.035745] ETA: 0:16:07.249824
+[Epoch 32/60] [batch 300/321] [lr 5e-05] [total 0.050834] [joint 0.001367] [intensity 0.028736] [sobel 0.034295] ETA: 0:14:01.392735
+[Epoch 33/60] [batch 0/321] [lr 5e-05] [total 0.021448] [joint 0.000808] [intensity 0.003660] [sobel 0.013002] ETA: 0:17:39.062046
+[Epoch 33/60] [batch 50/321] [lr 5e-05] [total 0.023321] [joint 0.000750] [intensity 0.006320] [sobel 0.015191] ETA: 0:16:38.318241
+[Epoch 33/60] [batch 100/321] [lr 5e-05] [total 0.018150] [joint 0.000723] [intensity 0.004764] [sobel 0.010440] ETA: 0:16:56.468076
+[Epoch 33/60] [batch 150/321] [lr 5e-05] [total 0.035869] [joint 0.001176] [intensity 0.006963] [sobel 0.023408] ETA: 0:16:52.277878
+[Epoch 33/60] [batch 200/321] [lr 5e-05] [total 0.084683] [joint 0.002158] [intensity 0.029687] [sobel 0.060132] ETA: 0:14:23.539105
+[Epoch 33/60] [batch 250/321] [lr 5e-05] [total 0.026475] [joint 0.000864] [intensity 0.022449] [sobel 0.015586] ETA: 0:15:51.318964
+[Epoch 33/60] [batch 300/321] [lr 5e-05] [total 0.023413] [joint 0.000791] [intensity 0.007089] [sobel 0.014793] ETA: 0:16:42.193808
+[Epoch 34/60] [batch 0/321] [lr 5e-05] [total 0.060294] [joint 0.001607] [intensity 0.020630] [sobel 0.042161] ETA: 0:15:26.933817
+[Epoch 34/60] [batch 50/321] [lr 5e-05] [total 0.033203] [joint 0.001021] [intensity 0.005694] [sobel 0.022422] ETA: 0:16:43.812471
+[Epoch 34/60] [batch 100/321] [lr 5e-05] [total 0.060190] [joint 0.001373] [intensity 0.037917] [sobel 0.042665] ETA: 0:11:56.597025
+[Epoch 34/60] [batch 150/321] [lr 5e-05] [total 0.054113] [joint 0.001502] [intensity 0.029751] [sobel 0.036117] ETA: 0:11:57.721373
+[Epoch 34/60] [batch 200/321] [lr 5e-05] [total 0.030941] [joint 0.000995] [intensity 0.009850] [sobel 0.020005] ETA: 0:16:25.720800
+[Epoch 34/60] [batch 250/321] [lr 5e-05] [total 0.049424] [joint 0.001447] [intensity 0.012926] [sobel 0.033660] ETA: 0:14:43.446228
+[Epoch 34/60] [batch 300/321] [lr 5e-05] [total 0.047730] [joint 0.001480] [intensity 0.018597] [sobel 0.031068] ETA: 0:14:49.766703
+[Epoch 35/60] [batch 0/321] [lr 5e-05] [total 0.035565] [joint 0.001054] [intensity 0.009795] [sobel 0.024043] ETA: 0:16:13.114747
+[Epoch 35/60] [batch 50/321] [lr 5e-05] [total 0.017394] [joint 0.000681] [intensity 0.004382] [sobel 0.010142] ETA: 0:16:09.314378
+[Epoch 35/60] [batch 100/321] [lr 5e-05] [total 0.028092] [joint 0.000832] [intensity 0.006655] [sobel 0.019104] ETA: 0:16:07.732215
+[Epoch 35/60] [batch 150/321] [lr 5e-05] [total 0.034714] [joint 0.001118] [intensity 0.004842] [sobel 0.023053] ETA: 0:16:21.894761
+[Epoch 35/60] [batch 200/321] [lr 5e-05] [total 0.023431] [joint 0.000871] [intensity 0.005291] [sobel 0.014190] ETA: 0:15:49.830925
+[Epoch 35/60] [batch 250/321] [lr 5e-05] [total 0.067123] [joint 0.002062] [intensity 0.026332] [sobel 0.043872] ETA: 0:14:26.460389
+[Epoch 35/60] [batch 300/321] [lr 5e-05] [total 0.018488] [joint 0.000700] [intensity 0.004725] [sobel 0.011018] ETA: 0:15:23.823881
+[Epoch 36/60] [batch 0/321] [lr 5e-05] [total 0.037525] [joint 0.000931] [intensity 0.027701] [sobel 0.025446] ETA: 0:14:08.506359
+[Epoch 36/60] [batch 50/321] [lr 5e-05] [total 0.033539] [joint 0.000906] [intensity 0.011340] [sobel 0.023344] ETA: 0:14:03.024986
+[Epoch 36/60] [batch 100/321] [lr 5e-05] [total 0.032963] [joint 0.001290] [intensity 0.004033] [sobel 0.019665] ETA: 0:15:26.161349
+[Epoch 36/60] [batch 150/321] [lr 5e-05] [total 0.044440] [joint 0.001245] [intensity 0.016650] [sobel 0.030323] ETA: 0:13:19.560142
+[Epoch 36/60] [batch 200/321] [lr 5e-05] [total 0.030622] [joint 0.000992] [intensity 0.007516] [sobel 0.019948] ETA: 0:15:05.383045
+[Epoch 36/60] [batch 250/321] [lr 5e-05] [total 0.024930] [joint 0.000871] [intensity 0.007689] [sobel 0.015453] ETA: 0:15:01.415450
+[Epoch 36/60] [batch 300/321] [lr 5e-05] [total 0.022903] [joint 0.000863] [intensity 0.008682] [sobel 0.013402] ETA: 0:14:56.639909
+[Epoch 37/60] [batch 0/321] [lr 5e-05] [total 0.034579] [joint 0.001058] [intensity 0.009003] [sobel 0.023096] ETA: 0:15:09.868554
+[Epoch 37/60] [batch 50/321] [lr 5e-05] [total 0.016652] [joint 0.000660] [intensity 0.004666] [sobel 0.009587] ETA: 0:14:53.994701
+[Epoch 37/60] [batch 100/321] [lr 5e-05] [total 0.031334] [joint 0.000856] [intensity 0.027546] [sobel 0.020018] ETA: 0:13:15.364380
+[Epoch 37/60] [batch 150/321] [lr 5e-05] [total 0.029111] [joint 0.000918] [intensity 0.006176] [sobel 0.019316] ETA: 0:14:19.290203
+[Epoch 37/60] [batch 200/321] [lr 5e-05] [total 0.068211] [joint 0.001776] [intensity 0.029025] [sobel 0.047547] ETA: 0:11:38.532940
+[Epoch 37/60] [batch 250/321] [lr 5e-05] [total 0.022989] [joint 0.000920] [intensity 0.004549] [sobel 0.013333] ETA: 0:14:26.991234
+[Epoch 37/60] [batch 300/321] [lr 5e-05] [total 0.040120] [joint 0.001187] [intensity 0.023299] [sobel 0.025917] ETA: 0:12:55.851454
+[Epoch 38/60] [batch 0/321] [lr 5e-05] [total 0.043481] [joint 0.001298] [intensity 0.029482] [sobel 0.027553] ETA: 0:13:09.376383
+[Epoch 38/60] [batch 50/321] [lr 5e-05] [total 0.021743] [joint 0.000739] [intensity 0.028495] [sobel 0.011500] ETA: 0:12:52.614902
+[Epoch 38/60] [batch 100/321] [lr 5e-05] [total 0.024402] [joint 0.000821] [intensity 0.009207] [sobel 0.015269] ETA: 0:13:53.010813
+[Epoch 38/60] [batch 150/321] [lr 5e-05] [total 0.072208] [joint 0.002070] [intensity 0.029924] [sobel 0.048513] ETA: 0:12:18.571289
+[Epoch 38/60] [batch 200/321] [lr 5e-05] [total 0.031257] [joint 0.000857] [intensity 0.009020] [sobel 0.021785] ETA: 0:13:38.863244
+[Epoch 38/60] [batch 250/321] [lr 5e-05] [total 0.038523] [joint 0.001101] [intensity 0.011123] [sobel 0.026402] ETA: 0:12:13.563820
+[Epoch 38/60] [batch 300/321] [lr 5e-05] [total 0.056067] [joint 0.001546] [intensity 0.026205] [sobel 0.037987] ETA: 0:11:06.888978
+[Epoch 39/60] [batch 0/321] [lr 5e-05] [total 0.059240] [joint 0.001727] [intensity 0.016865] [sobel 0.040288] ETA: 0:11:07.635281
+[Epoch 39/60] [batch 50/321] [lr 5e-05] [total 0.028099] [joint 0.000887] [intensity 0.007756] [sobel 0.018458] ETA: 0:13:09.857256
+[Epoch 39/60] [batch 100/321] [lr 5e-05] [total 0.047889] [joint 0.001374] [intensity 0.011580] [sobel 0.032987] ETA: 0:12:09.823718
+[Epoch 39/60] [batch 150/321] [lr 5e-05] [total 0.015574] [joint 0.000657] [intensity 0.003943] [sobel 0.008605] ETA: 0:13:19.142470
+[Epoch 39/60] [batch 200/321] [lr 5e-05] [total 0.028926] [joint 0.001026] [intensity 0.004083] [sobel 0.018256] ETA: 0:13:04.920811
+[Epoch 39/60] [batch 250/321] [lr 5e-05] [total 0.045899] [joint 0.001201] [intensity 0.011502] [sobel 0.032741] ETA: 0:13:05.482523
+[Epoch 39/60] [batch 300/321] [lr 5e-05] [total 0.024993] [joint 0.000905] [intensity 0.007472] [sobel 0.015192] ETA: 0:12:58.192699
+[Epoch 40/60] [batch 0/321] [lr 5e-05] [total 0.023082] [joint 0.000729] [intensity 0.010784] [sobel 0.014715] ETA: 0:12:50.116096
+[Epoch 40/60] [batch 50/321] [lr 5e-05] [total 0.056467] [joint 0.001467] [intensity 0.014276] [sobel 0.040367] ETA: 0:12:40.114944
+[Epoch 40/60] [batch 100/321] [lr 5e-05] [total 0.019490] [joint 0.000824] [intensity 0.003371] [sobel 0.010916] ETA: 0:12:58.289108
+[Epoch 40/60] [batch 150/321] [lr 5e-05] [total 0.027232] [joint 0.000870] [intensity 0.009364] [sobel 0.017596] ETA: 0:12:19.806376
+[Epoch 40/60] [batch 200/321] [lr 5e-05] [total 0.017881] [joint 0.000651] [intensity 0.004226] [sobel 0.010949] ETA: 0:12:06.773748
+[Epoch 40/60] [batch 250/321] [lr 5e-05] [total 0.046226] [joint 0.001262] [intensity 0.020702] [sobel 0.031534] ETA: 0:08:57.646959
+[Epoch 40/60] [batch 300/321] [lr 5e-05] [total 0.047292] [joint 0.001242] [intensity 0.014265] [sobel 0.033449] ETA: 0:12:12.388630
+[Epoch 41/60] [batch 0/321] [lr 5e-05] [total 0.046468] [joint 0.001282] [intensity 0.010436] [sobel 0.032608] ETA: 0:12:12.380972
+[Epoch 41/60] [batch 50/321] [lr 5e-05] [total 0.061964] [joint 0.001740] [intensity 0.029892] [sobel 0.041579] ETA: 0:09:52.587413
+[Epoch 41/60] [batch 100/321] [lr 5e-05] [total 0.038174] [joint 0.001073] [intensity 0.021087] [sobel 0.025337] ETA: 0:10:33.128962
+[Epoch 41/60] [batch 150/321] [lr 5e-05] [total 0.065733] [joint 0.001646] [intensity 0.037934] [sobel 0.045478] ETA: 0:08:35.549723
+[Epoch 41/60] [batch 200/321] [lr 5e-05] [total 0.038591] [joint 0.001234] [intensity 0.012231] [sobel 0.025033] ETA: 0:12:06.283884
+[Epoch 41/60] [batch 250/321] [lr 5e-05] [total 0.042896] [joint 0.001249] [intensity 0.017100] [sobel 0.028697] ETA: 0:10:52.395134
+[Epoch 41/60] [batch 300/321] [lr 5e-05] [total 0.026941] [joint 0.001088] [intensity 0.008687] [sobel 0.015193] ETA: 0:11:44.372583
+[Epoch 42/60] [batch 0/321] [lr 5e-05] [total 0.082404] [joint 0.002238] [intensity 0.030644] [sobel 0.056965] ETA: 0:09:42.868953
+[Epoch 42/60] [batch 50/321] [lr 5e-05] [total 0.036121] [joint 0.001143] [intensity 0.010601] [sobel 0.023629] ETA: 0:11:45.361496
+[Epoch 42/60] [batch 100/321] [lr 5e-05] [total 0.031397] [joint 0.001076] [intensity 0.006330] [sobel 0.020000] ETA: 0:11:34.487927
+[Epoch 42/60] [batch 150/321] [lr 5e-05] [total 0.026947] [joint 0.000903] [intensity 0.008243] [sobel 0.017089] ETA: 0:10:24.602340
+[Epoch 42/60] [batch 200/321] [lr 5e-05] [total 0.069787] [joint 0.001890] [intensity 0.037077] [sobel 0.047179] ETA: 0:09:12.610203
+[Epoch 42/60] [batch 250/321] [lr 5e-05] [total 0.019094] [joint 0.000776] [intensity 0.006170] [sobel 0.010719] ETA: 0:10:58.258793
+[Epoch 42/60] [batch 300/321] [lr 5e-05] [total 0.023548] [joint 0.000801] [intensity 0.005373] [sobel 0.014998] ETA: 0:10:52.917473
+[Epoch 43/60] [batch 0/321] [lr 5e-05] [total 0.060991] [joint 0.001834] [intensity 0.021887] [sobel 0.040463] ETA: 0:10:02.066178
+[Epoch 43/60] [batch 50/321] [lr 5e-05] [total 0.013720] [joint 0.000470] [intensity 0.008819] [sobel 0.008140] ETA: 0:10:34.468168
+[Epoch 43/60] [batch 100/321] [lr 5e-05] [total 0.034606] [joint 0.000905] [intensity 0.017446] [sobel 0.023815] ETA: 0:09:29.868644
+[Epoch 43/60] [batch 150/321] [lr 5e-05] [total 0.025598] [joint 0.001066] [intensity 0.003566] [sobel 0.014582] ETA: 0:10:43.749127
+[Epoch 43/60] [batch 200/321] [lr 5e-05] [total 0.054442] [joint 0.001459] [intensity 0.030077] [sobel 0.036845] ETA: 0:09:35.039523
+[Epoch 43/60] [batch 250/321] [lr 5e-05] [total 0.033832] [joint 0.001043] [intensity 0.009772] [sobel 0.022428] ETA: 0:10:26.103196
+[Epoch 43/60] [batch 300/321] [lr 5e-05] [total 0.025907] [joint 0.000882] [intensity 0.004518] [sobel 0.016631] ETA: 0:10:16.229129
+[Epoch 44/60] [batch 0/321] [lr 5e-05] [total 0.070443] [joint 0.002031] [intensity 0.028155] [sobel 0.047317] ETA: 0:09:23.414120
+[Epoch 44/60] [batch 50/321] [lr 5e-05] [total 0.022294] [joint 0.000900] [intensity 0.006213] [sobel 0.012669] ETA: 0:10:27.585585
+[Epoch 44/60] [batch 100/321] [lr 5e-05] [total 0.040290] [joint 0.001098] [intensity 0.028430] [sobel 0.026465] ETA: 0:08:18.501450
+[Epoch 44/60] [batch 150/321] [lr 5e-05] [total 0.052128] [joint 0.001532] [intensity 0.017910] [sobel 0.035012] ETA: 0:09:25.993614
+[Epoch 44/60] [batch 200/321] [lr 5e-05] [total 0.049644] [joint 0.001304] [intensity 0.020880] [sobel 0.034512] ETA: 0:10:09.405890
+[Epoch 44/60] [batch 250/321] [lr 5e-05] [total 0.043637] [joint 0.001210] [intensity 0.011892] [sobel 0.030343] ETA: 0:09:00.901806
+[Epoch 44/60] [batch 300/321] [lr 5e-05] [total 0.046847] [joint 0.001344] [intensity 0.011622] [sobel 0.032243] ETA: 0:08:51.717364
+[Epoch 45/60] [batch 0/321] [lr 5e-05] [total 0.031321] [joint 0.000974] [intensity 0.016100] [sobel 0.019972] ETA: 0:09:00.186853
+[Epoch 45/60] [batch 50/321] [lr 5e-05] [total 0.027777] [joint 0.000864] [intensity 0.007325] [sobel 0.018400] ETA: 0:08:47.008975
+[Epoch 45/60] [batch 100/321] [lr 5e-05] [total 0.041990] [joint 0.001305] [intensity 0.010093] [sobel 0.027934] ETA: 0:09:51.436679
+[Epoch 45/60] [batch 150/321] [lr 5e-05] [total 0.035114] [joint 0.000993] [intensity 0.015398] [sobel 0.023644] ETA: 0:09:24.416302
+[Epoch 45/60] [batch 200/321] [lr 5e-05] [total 0.080871] [joint 0.002140] [intensity 0.038853] [sobel 0.055587] ETA: 0:07:33.757837
+[Epoch 45/60] [batch 250/321] [lr 5e-05] [total 0.021035] [joint 0.000718] [intensity 0.007681] [sobel 0.013085] ETA: 0:09:06.584845
+[Epoch 45/60] [batch 300/321] [lr 5e-05] [total 0.037403] [joint 0.001046] [intensity 0.008663] [sobel 0.026073] ETA: 0:09:09.313173
+[Epoch 46/60] [batch 0/321] [lr 5e-05] [total 0.041130] [joint 0.001186] [intensity 0.012408] [sobel 0.028031] ETA: 0:08:20.220735
+[Epoch 46/60] [batch 50/321] [lr 5e-05] [total 0.043993] [joint 0.001307] [intensity 0.008839] [sobel 0.030035] ETA: 0:09:03.233796
+[Epoch 46/60] [batch 100/321] [lr 5e-05] [total 0.035757] [joint 0.001075] [intensity 0.015695] [sobel 0.023432] ETA: 0:08:45.792937
+[Epoch 46/60] [batch 150/321] [lr 5e-05] [total 0.049863] [joint 0.001370] [intensity 0.018818] [sobel 0.034281] ETA: 0:07:52.022072
+[Epoch 46/60] [batch 200/321] [lr 5e-05] [total 0.032312] [joint 0.001046] [intensity 0.008766] [sobel 0.020972] ETA: 0:08:44.296869
+[Epoch 46/60] [batch 250/321] [lr 5e-05] [total 0.053156] [joint 0.001552] [intensity 0.028008] [sobel 0.034836] ETA: 0:07:43.725085
+[Epoch 46/60] [batch 300/321] [lr 5e-05] [total 0.060934] [joint 0.001283] [intensity 0.054191] [sobel 0.042681] ETA: 0:06:46.693521
+[Epoch 47/60] [batch 0/321] [lr 5e-05] [total 0.025608] [joint 0.000933] [intensity 0.008557] [sobel 0.015423] ETA: 0:08:30.954475
+[Epoch 47/60] [batch 50/321] [lr 5e-05] [total 0.062177] [joint 0.001790] [intensity 0.029723] [sobel 0.041309] ETA: 0:06:54.334416
+[Epoch 47/60] [batch 100/321] [lr 5e-05] [total 0.032924] [joint 0.000936] [intensity 0.010862] [sobel 0.022481] ETA: 0:08:18.861667
+[Epoch 47/60] [batch 150/321] [lr 5e-05] [total 0.063991] [joint 0.001753] [intensity 0.026863] [sobel 0.043779] ETA: 0:07:23.408167
+[Epoch 47/60] [batch 200/321] [lr 5e-05] [total 0.048051] [joint 0.001504] [intensity 0.014546] [sobel 0.031559] ETA: 0:08:00.863923
+[Epoch 47/60] [batch 250/321] [lr 5e-05] [total 0.024631] [joint 0.000710] [intensity 0.011805] [sobel 0.016351] ETA: 0:07:52.720909
+[Epoch 47/60] [batch 300/321] [lr 5e-05] [total 0.026666] [joint 0.001062] [intensity 0.003431] [sobel 0.015706] ETA: 0:07:39.540527
+[Epoch 48/60] [batch 0/321] [lr 5e-05] [total 0.041029] [joint 0.001429] [intensity 0.005395] [sobel 0.026204] ETA: 0:07:42.776816
+[Epoch 48/60] [batch 50/321] [lr 5e-05] [total 0.046909] [joint 0.001243] [intensity 0.022343] [sobel 0.032244] ETA: 0:06:11.542873
+[Epoch 48/60] [batch 100/321] [lr 5e-05] [total 0.032571] [joint 0.001021] [intensity 0.013793] [sobel 0.020986] ETA: 0:06:46.238617
+[Epoch 48/60] [batch 150/321] [lr 5e-05] [total 0.023717] [joint 0.000796] [intensity 0.005335] [sobel 0.015219] ETA: 0:07:28.971332
+[Epoch 48/60] [batch 200/321] [lr 5e-05] [total 0.050052] [joint 0.001442] [intensity 0.023577] [sobel 0.033278] ETA: 0:05:17.725351
+[Epoch 48/60] [batch 250/321] [lr 5e-05] [total 0.044762] [joint 0.001145] [intensity 0.011521] [sobel 0.032158] ETA: 0:06:43.438558
+[Epoch 48/60] [batch 300/321] [lr 5e-05] [total 0.026588] [joint 0.000973] [intensity 0.006946] [sobel 0.016168] ETA: 0:07:17.806892
+[Epoch 49/60] [batch 0/321] [lr 5e-05] [total 0.068244] [joint 0.001901] [intensity 0.036269] [sobel 0.045606] ETA: 0:05:46.288206
+[Epoch 49/60] [batch 50/321] [lr 5e-05] [total 0.030215] [joint 0.001188] [intensity 0.005257] [sobel 0.017807] ETA: 0:07:07.183351
+[Epoch 49/60] [batch 100/321] [lr 5e-05] [total 0.058643] [joint 0.001494] [intensity 0.030818] [sobel 0.040622] ETA: 0:05:33.813576
+[Epoch 49/60] [batch 150/321] [lr 5e-05] [total 0.034257] [joint 0.001278] [intensity 0.010831] [sobel 0.020395] ETA: 0:06:03.525470
+[Epoch 49/60] [batch 200/321] [lr 5e-05] [total 0.097126] [joint 0.002187] [intensity 0.059162] [sobel 0.069340] ETA: 0:04:51.079232
+[Epoch 49/60] [batch 250/321] [lr 5e-05] [total 0.051947] [joint 0.001339] [intensity 0.031571] [sobel 0.035396] ETA: 0:05:17.770058
+[Epoch 49/60] [batch 300/321] [lr 5e-05] [total 0.030037] [joint 0.000805] [intensity 0.013886] [sobel 0.020596] ETA: 0:06:26.507130
+[Epoch 50/60] [batch 0/321] [lr 2.5e-05] [total 0.047311] [joint 0.001240] [intensity 0.023351] [sobel 0.032580] ETA: 0:05:53.447120
+[Epoch 50/60] [batch 50/321] [lr 2.5e-05] [total 0.033067] [joint 0.001197] [intensity 0.004764] [sobel 0.020621] ETA: 0:06:18.037138
+[Epoch 50/60] [batch 100/321] [lr 2.5e-05] [total 0.026072] [joint 0.000952] [intensity 0.006216] [sobel 0.015928] ETA: 0:06:14.477959
+[Epoch 50/60] [batch 150/321] [lr 2.5e-05] [total 0.031968] [joint 0.001075] [intensity 0.007140] [sobel 0.020502] ETA: 0:06:01.034861
+[Epoch 50/60] [batch 200/321] [lr 2.5e-05] [total 0.028111] [joint 0.000855] [intensity 0.006914] [sobel 0.018874] ETA: 0:06:00.633438
+[Epoch 50/60] [batch 250/321] [lr 2.5e-05] [total 0.044855] [joint 0.001328] [intensity 0.024012] [sobel 0.029174] ETA: 0:05:33.579254
+[Epoch 50/60] [batch 300/321] [lr 2.5e-05] [total 0.019425] [joint 0.000748] [intensity 0.004241] [sobel 0.011517] ETA: 0:05:55.851109
+[Epoch 51/60] [batch 0/321] [lr 2.5e-05] [total 0.056671] [joint 0.001652] [intensity 0.017322] [sobel 0.038420] ETA: 0:05:20.334781
+[Epoch 51/60] [batch 50/321] [lr 2.5e-05] [total 0.041639] [joint 0.001191] [intensity 0.016901] [sobel 0.028037] ETA: 0:05:05.386302
+[Epoch 51/60] [batch 100/321] [lr 2.5e-05] [total 0.032030] [joint 0.000954] [intensity 0.006318] [sobel 0.021862] ETA: 0:05:37.138664
+[Epoch 51/60] [batch 150/321] [lr 2.5e-05] [total 0.019200] [joint 0.000651] [intensity 0.004901] [sobel 0.012205] ETA: 0:05:21.764115
+[Epoch 51/60] [batch 200/321] [lr 2.5e-05] [total 0.025697] [joint 0.000800] [intensity 0.008051] [sobel 0.016893] ETA: 0:05:20.396067
+[Epoch 51/60] [batch 250/321] [lr 2.5e-05] [total 0.035920] [joint 0.001072] [intensity 0.026381] [sobel 0.022557] ETA: 0:04:39.039237
+[Epoch 51/60] [batch 300/321] [lr 2.5e-05] [total 0.029279] [joint 0.000855] [intensity 0.007608] [sobel 0.019972] ETA: 0:05:13.736403
+[Epoch 52/60] [batch 0/321] [lr 2.5e-05] [total 0.047444] [joint 0.001452] [intensity 0.006706] [sobel 0.032255] ETA: 0:05:14.827818
+[Epoch 52/60] [batch 50/321] [lr 2.5e-05] [total 0.055712] [joint 0.001579] [intensity 0.021997] [sobel 0.037722] ETA: 0:04:38.872602
+[Epoch 52/60] [batch 100/321] [lr 2.5e-05] [total 0.046191] [joint 0.001497] [intensity 0.010559] [sobel 0.030168] ETA: 0:05:02.085666
+[Epoch 52/60] [batch 150/321] [lr 2.5e-05] [total 0.018943] [joint 0.000671] [intensity 0.005614] [sobel 0.011674] ETA: 0:04:52.332537
+[Epoch 52/60] [batch 200/321] [lr 2.5e-05] [total 0.028361] [joint 0.000962] [intensity 0.006472] [sobel 0.018096] ETA: 0:04:49.832016
+[Epoch 52/60] [batch 250/321] [lr 2.5e-05] [total 0.040135] [joint 0.001221] [intensity 0.008108] [sobel 0.027114] ETA: 0:04:46.014057
+[Epoch 52/60] [batch 300/321] [lr 2.5e-05] [total 0.030787] [joint 0.001170] [intensity 0.005475] [sobel 0.018542] ETA: 0:04:29.539347
+[Epoch 53/60] [batch 0/321] [lr 2.5e-05] [total 0.026854] [joint 0.000871] [intensity 0.021654] [sobel 0.015976] ETA: 0:04:03.248782
+[Epoch 53/60] [batch 50/321] [lr 2.5e-05] [total 0.029632] [joint 0.000762] [intensity 0.034537] [sobel 0.018563] ETA: 0:03:37.673187
+[Epoch 53/60] [batch 100/321] [lr 2.5e-05] [total 0.025303] [joint 0.000966] [intensity 0.005336] [sobel 0.015106] ETA: 0:04:24.084383
+[Epoch 53/60] [batch 150/321] [lr 2.5e-05] [total 0.023494] [joint 0.000850] [intensity 0.004798] [sobel 0.014515] ETA: 0:04:19.002226
+[Epoch 53/60] [batch 200/321] [lr 2.5e-05] [total 0.064476] [joint 0.001970] [intensity 0.037263] [sobel 0.041050] ETA: 0:03:48.204436
+[Epoch 53/60] [batch 250/321] [lr 2.5e-05] [total 0.037041] [joint 0.000735] [intensity 0.037046] [sobel 0.025988] ETA: 0:03:36.266471
+[Epoch 53/60] [batch 300/321] [lr 2.5e-05] [total 0.033194] [joint 0.001094] [intensity 0.014848] [sobel 0.020767] ETA: 0:03:33.473030
+[Epoch 54/60] [batch 0/321] [lr 2.5e-05] [total 0.079828] [joint 0.002369] [intensity 0.032243] [sobel 0.052911] ETA: 0:03:28.630285
+[Epoch 54/60] [batch 50/321] [lr 2.5e-05] [total 0.031322] [joint 0.000989] [intensity 0.006991] [sobel 0.020734] ETA: 0:03:45.264702
+[Epoch 54/60] [batch 100/321] [lr 2.5e-05] [total 0.057022] [joint 0.001593] [intensity 0.023616] [sobel 0.038732] ETA: 0:03:22.165430
+[Epoch 54/60] [batch 150/321] [lr 2.5e-05] [total 0.029774] [joint 0.000965] [intensity 0.009191] [sobel 0.019204] ETA: 0:03:09.964027
+[Epoch 54/60] [batch 200/321] [lr 2.5e-05] [total 0.018535] [joint 0.000696] [intensity 0.006673] [sobel 0.010912] ETA: 0:03:28.979007
+[Epoch 54/60] [batch 250/321] [lr 2.5e-05] [total 0.047950] [joint 0.001496] [intensity 0.022177] [sobel 0.030773] ETA: 0:02:41.593210
+[Epoch 54/60] [batch 300/321] [lr 2.5e-05] [total 0.023960] [joint 0.000799] [intensity 0.005843] [sobel 0.015388] ETA: 0:03:17.935063
+[Epoch 55/60] [batch 0/321] [lr 2.5e-05] [total 0.071285] [joint 0.002147] [intensity 0.026321] [sobel 0.047184] ETA: 0:02:58.327678
+[Epoch 55/60] [batch 50/321] [lr 2.5e-05] [total 0.043920] [joint 0.001094] [intensity 0.025650] [sobel 0.030417] ETA: 0:03:09.911650
+[Epoch 55/60] [batch 100/321] [lr 2.5e-05] [total 0.024023] [joint 0.000838] [intensity 0.006026] [sobel 0.015045] ETA: 0:03:02.952969
+[Epoch 55/60] [batch 150/321] [lr 2.5e-05] [total 0.022238] [joint 0.000816] [intensity 0.005864] [sobel 0.013489] ETA: 0:02:54.358392
+[Epoch 55/60] [batch 200/321] [lr 2.5e-05] [total 0.025507] [joint 0.000878] [intensity 0.005041] [sobel 0.016219] ETA: 0:02:50.617747
+[Epoch 55/60] [batch 250/321] [lr 2.5e-05] [total 0.036347] [joint 0.001099] [intensity 0.010158] [sobel 0.024346] ETA: 0:02:25.527242
+[Epoch 55/60] [batch 300/321] [lr 2.5e-05] [total 0.051568] [joint 0.001476] [intensity 0.014969] [sobel 0.035313] ETA: 0:02:40.297394
+[Epoch 56/60] [batch 0/321] [lr 2.5e-05] [total 0.029268] [joint 0.000854] [intensity 0.020341] [sobel 0.018698] ETA: 0:02:20.294538
+[Epoch 56/60] [batch 50/321] [lr 2.5e-05] [total 0.025499] [joint 0.000879] [intensity 0.006877] [sobel 0.016020] ETA: 0:02:30.409402
+[Epoch 56/60] [batch 100/321] [lr 2.5e-05] [total 0.028773] [joint 0.000897] [intensity 0.007819] [sobel 0.019025] ETA: 0:02:23.296242
+[Epoch 56/60] [batch 150/321] [lr 2.5e-05] [total 0.053660] [joint 0.001681] [intensity 0.023464] [sobel 0.034507] ETA: 0:02:04.549002
+[Epoch 56/60] [batch 200/321] [lr 2.5e-05] [total 0.055878] [joint 0.001759] [intensity 0.029620] [sobel 0.035324] ETA: 0:02:01.173577
+[Epoch 56/60] [batch 250/321] [lr 2.5e-05] [total 0.045120] [joint 0.001353] [intensity 0.024193] [sobel 0.029169] ETA: 0:01:50.482559
+[Epoch 56/60] [batch 300/321] [lr 2.5e-05] [total 0.029543] [joint 0.000961] [intensity 0.006037] [sobel 0.019329] ETA: 0:01:58.812086
+[Epoch 57/60] [batch 0/321] [lr 2.5e-05] [total 0.038766] [joint 0.001464] [intensity 0.006770] [sobel 0.023449] ETA: 0:01:57.828998
+[Epoch 57/60] [batch 50/321] [lr 2.5e-05] [total 0.026849] [joint 0.000940] [intensity 0.006031] [sobel 0.016842] ETA: 0:01:49.576221
+[Epoch 57/60] [batch 100/321] [lr 2.5e-05] [total 0.036072] [joint 0.001187] [intensity 0.013816] [sobel 0.022818] ETA: 0:01:34.217996
+[Epoch 57/60] [batch 150/321] [lr 2.5e-05] [total 0.037968] [joint 0.001036] [intensity 0.024864] [sobel 0.025124] ETA: 0:01:28.052334
+[Epoch 57/60] [batch 200/321] [lr 2.5e-05] [total 0.022064] [joint 0.000766] [intensity 0.004142] [sobel 0.013990] ETA: 0:01:34.034844
+[Epoch 57/60] [batch 250/321] [lr 2.5e-05] [total 0.049957] [joint 0.001221] [intensity 0.033054] [sobel 0.034440] ETA: 0:01:09.397377
+[Epoch 57/60] [batch 300/321] [lr 2.5e-05] [total 0.029406] [joint 0.000976] [intensity 0.009254] [sobel 0.018726] ETA: 0:01:20.436273
+[Epoch 58/60] [batch 0/321] [lr 2.5e-05] [total 0.027133] [joint 0.000977] [intensity 0.004228] [sobel 0.016938] ETA: 0:01:17.950202
+[Epoch 58/60] [batch 50/321] [lr 2.5e-05] [total 0.023611] [joint 0.000917] [intensity 0.004821] [sobel 0.013955] ETA: 0:01:11.411705
+[Epoch 58/60] [batch 100/321] [lr 2.5e-05] [total 0.023677] [joint 0.000765] [intensity 0.009153] [sobel 0.015110] ETA: 0:01:06.736763
+[Epoch 58/60] [batch 150/321] [lr 2.5e-05] [total 0.052185] [joint 0.001530] [intensity 0.021278] [sobel 0.034754] ETA: 0:00:53.731092
+[Epoch 58/60] [batch 200/321] [lr 2.5e-05] [total 0.037956] [joint 0.000824] [intensity 0.031885] [sobel 0.026523] ETA: 0:00:47.921383
+[Epoch 58/60] [batch 250/321] [lr 2.5e-05] [total 0.044556] [joint 0.001258] [intensity 0.013160] [sobel 0.030665] ETA: 0:00:43.325291
+[Epoch 58/60] [batch 300/321] [lr 2.5e-05] [total 0.039293] [joint 0.001200] [intensity 0.024452] [sobel 0.024848] ETA: 0:00:37.856998
+[Epoch 59/60] [batch 0/321] [lr 2.5e-05] [total 0.053780] [joint 0.001448] [intensity 0.018650] [sobel 0.037440] ETA: 0:00:35.192872
+[Epoch 59/60] [batch 50/321] [lr 2.5e-05] [total 0.031854] [joint 0.000940] [intensity 0.019036] [sobel 0.020552] ETA: 0:00:29.535244
+[Epoch 59/60] [batch 100/321] [lr 2.5e-05] [total 0.028147] [joint 0.001001] [intensity 0.005824] [sobel 0.017553] ETA: 0:00:26.845391
+[Epoch 59/60] [batch 150/321] [lr 2.5e-05] [total 0.020176] [joint 0.000623] [intensity 0.006600] [sobel 0.013290] ETA: 0:00:20.446310
+[Epoch 59/60] [batch 200/321] [lr 2.5e-05] [total 0.036969] [joint 0.001252] [intensity 0.007105] [sobel 0.023738] ETA: 0:00:15.098603
+[Epoch 59/60] [batch 250/321] [lr 2.5e-05] [total 0.063058] [joint 0.001802] [intensity 0.025351] [sobel 0.042504] ETA: 0:00:07.777271
+[Epoch 59/60] [batch 300/321] [lr 2.5e-05] [total 0.041688] [joint 0.001268] [intensity 0.020684] [sobel 0.026941] ETA: 0:00:02.308616
+done
+[38;5;2m[i 0801 16:55:22.644528 12 compiler.py:955] Jittor(1.3.11.0) src: /root/miniconda3/envs/JittorDome/lib/python3.8/site-packages/jittor[m
+[38;5;2m[i 0801 16:55:22.646899 12 compiler.py:956] g++ at /usr/bin/g++(9.3.0)[m
+[38;5;2m[i 0801 16:55:22.646950 12 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor_gpu/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/82d5/default[m
+[38;5;2m[i 0801 16:55:22.649800 12 __init__.py:412] Found /usr/local/cuda/bin/nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.[m
+[38;5;2m[i 0801 16:55:22.652389 12 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.[m
+[38;5;2m[i 0801 16:55:22.854159 12 compiler.py:1012] cuda key:cu11.3.109_sm_86[m
+[38;5;2m[i 0801 16:55:23.216306 12 __init__.py:227] Total mem: 755.27GB, using 16 procs for compiling.[m
+[38;5;2m[i 0801 16:55:23.309336 12 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0801 16:55:23.483432 12 init.cc:63] Found cuda archs: [86,][m
+[38;5;2m[i 0801 16:55:25.127672 12 cuda_flags.cc:55] CUDA enabled.[m
+[Epoch 0/60] [batch 0/321] [lr 0.0001] [total 0.298100] [joint 0.005498] [intensity 0.149209] [sobel 0.228197] ETA: 6:19:23.899584
+[Epoch 0/60] [batch 50/321] [lr 0.0001] [total 0.218737] [joint 0.006700] [intensity 0.205394] [sobel 0.131197] ETA: 1:05:22.975686
+[Epoch 0/60] [batch 100/321] [lr 0.0001] [total 0.113395] [joint 0.003874] [intensity 0.116925] [sobel 0.062959] ETA: 1:04:33.369627
+[Epoch 0/60] [batch 150/321] [lr 0.0001] [total 0.190552] [joint 0.006848] [intensity 0.128531] [sobel 0.109222] ETA: 1:07:43.446507
+[Epoch 0/60] [batch 200/321] [lr 0.0001] [total 0.227776] [joint 0.008959] [intensity 0.210174] [sobel 0.117171] ETA: 1:05:47.301650
+[Epoch 0/60] [batch 250/321] [lr 0.0001] [total 0.149470] [joint 0.005923] [intensity 0.146549] [sobel 0.075590] ETA: 1:04:52.806282
+[Epoch 0/60] [batch 300/321] [lr 0.0001] [total 0.220349] [joint 0.008691] [intensity 0.190770] [sobel 0.114359] ETA: 1:04:41.961708
+[Epoch 1/60] [batch 0/321] [lr 0.0001] [total 0.188754] [joint 0.006223] [intensity 0.182530] [sobel 0.108275] ETA: 2:15:15.558986
+[Epoch 1/60] [batch 50/321] [lr 0.0001] [total 0.114343] [joint 0.003903] [intensity 0.129695] [sobel 0.062341] ETA: 1:07:42.295279
+[Epoch 1/60] [batch 100/321] [lr 0.0001] [total 0.152358] [joint 0.005707] [intensity 0.184225] [sobel 0.076866] ETA: 1:04:26.489622
+[Epoch 1/60] [batch 150/321] [lr 0.0001] [total 0.169552] [joint 0.006516] [intensity 0.138051] [sobel 0.090582] ETA: 1:03:32.958786
+[Epoch 1/60] [batch 200/321] [lr 0.0001] [total 0.133362] [joint 0.004898] [intensity 0.198526] [sobel 0.064533] ETA: 1:07:30.391023
+[Epoch 1/60] [batch 250/321] [lr 0.0001] [total 0.099400] [joint 0.005047] [intensity 0.073357] [sobel 0.041596] ETA: 1:07:48.354772
+[Epoch 1/60] [batch 300/321] [lr 0.0001] [total 0.139706] [joint 0.006283] [intensity 0.122167] [sobel 0.064663] ETA: 1:03:40.602516
+[Epoch 2/60] [batch 0/321] [lr 0.0001] [total 0.167324] [joint 0.007432] [intensity 0.185594] [sobel 0.074446] ETA: 0:54:39.708738
+[Epoch 2/60] [batch 50/321] [lr 0.0001] [total 0.186053] [joint 0.008083] [intensity 0.184243] [sobel 0.086802] ETA: 1:06:41.738182
+[Epoch 2/60] [batch 100/321] [lr 0.0001] [total 0.121399] [joint 0.005764] [intensity 0.122025] [sobel 0.051558] ETA: 1:06:35.531844
+[Epoch 2/60] [batch 150/321] [lr 0.0001] [total 0.068746] [joint 0.001744] [intensity 0.053111] [sobel 0.045999] ETA: 0:58:47.026663
+[Epoch 2/60] [batch 200/321] [lr 0.0001] [total 0.070322] [joint 0.002119] [intensity 0.114415] [sobel 0.037694] ETA: 1:06:06.046828
+[Epoch 2/60] [batch 250/321] [lr 0.0001] [total 0.061925] [joint 0.001579] [intensity 0.036156] [sobel 0.042522] ETA: 0:55:56.037933
+[Epoch 2/60] [batch 300/321] [lr 0.0001] [total 0.185055] [joint 0.009575] [intensity 0.178741] [sobel 0.071431] ETA: 1:06:13.848792
+[Epoch 3/60] [batch 0/321] [lr 0.0001] [total 0.180362] [joint 0.008787] [intensity 0.194693] [sobel 0.073026] ETA: 0:54:13.528318
+[Epoch 3/60] [batch 50/321] [lr 0.0001] [total 0.207043] [joint 0.008807] [intensity 0.176745] [sobel 0.101300] ETA: 1:03:43.178549
+[Epoch 3/60] [batch 100/321] [lr 0.0001] [total 0.121550] [joint 0.004103] [intensity 0.126228] [sobel 0.067896] ETA: 0:58:57.281187
+[Epoch 3/60] [batch 150/321] [lr 0.0001] [total 0.209489] [joint 0.009751] [intensity 0.264077] [sobel 0.085570] ETA: 1:05:18.096373
+[Epoch 3/60] [batch 200/321] [lr 0.0001] [total 0.117906] [joint 0.004611] [intensity 0.082464] [sobel 0.063547] ETA: 0:57:51.489968
+[Epoch 3/60] [batch 250/321] [lr 0.0001] [total 0.042107] [joint 0.001276] [intensity 0.033635] [sobel 0.025987] ETA: 1:01:13.253524
+[Epoch 3/60] [batch 300/321] [lr 0.0001] [total 0.125738] [joint 0.004908] [intensity 0.181431] [sobel 0.058515] ETA: 1:04:07.015451
+[Epoch 4/60] [batch 0/321] [lr 0.0001] [total 0.059645] [joint 0.001784] [intensity 0.041162] [sobel 0.037685] ETA: 0:49:49.778429
+[Epoch 4/60] [batch 50/321] [lr 0.0001] [total 0.167310] [joint 0.006505] [intensity 0.220715] [sobel 0.080189] ETA: 1:01:26.436522
+[Epoch 4/60] [batch 100/321] [lr 0.0001] [total 0.140741] [joint 0.004563] [intensity 0.180857] [sobel 0.077024] ETA: 1:04:58.488364
+[Epoch 4/60] [batch 150/321] [lr 0.0001] [total 0.142935] [joint 0.006371] [intensity 0.125224] [sobel 0.066698] ETA: 1:03:37.152290
+[Epoch 4/60] [batch 200/321] [lr 0.0001] [total 0.156363] [joint 0.005451] [intensity 0.141909] [sobel 0.087665] ETA: 0:57:24.183067
+[Epoch 4/60] [batch 250/321] [lr 0.0001] [total 0.126077] [joint 0.006567] [intensity 0.121847] [sobel 0.048224] ETA: 1:00:47.969539
+[Epoch 4/60] [batch 300/321] [lr 0.0001] [total 0.057018] [joint 0.001977] [intensity 0.046098] [sobel 0.032634] ETA: 0:59:25.960922
+[Epoch 5/60] [batch 0/321] [lr 0.0001] [total 0.117358] [joint 0.005018] [intensity 0.099467] [sobel 0.057229] ETA: 0:52:16.650234
+[Epoch 5/60] [batch 50/321] [lr 0.0001] [total 0.160069] [joint 0.008625] [intensity 0.144122] [sobel 0.059409] ETA: 0:59:23.091956
+[Epoch 5/60] [batch 100/321] [lr 0.0001] [total 0.111722] [joint 0.003002] [intensity 0.093769] [sobel 0.072327] ETA: 0:56:08.306694
+[Epoch 5/60] [batch 150/321] [lr 0.0001] [total 0.115557] [joint 0.003565] [intensity 0.112165] [sobel 0.068690] ETA: 0:58:26.605868
+[Epoch 5/60] [batch 200/321] [lr 0.0001] [total 0.194795] [joint 0.008485] [intensity 0.328272] [sobel 0.077117] ETA: 1:02:22.477773
+[Epoch 5/60] [batch 250/321] [lr 0.0001] [total 0.107177] [joint 0.003766] [intensity 0.111190] [sobel 0.058402] ETA: 0:58:42.725816
+[Epoch 5/60] [batch 300/321] [lr 0.0001] [total 0.109984] [joint 0.005374] [intensity 0.107353] [sobel 0.045508] ETA: 0:59:28.804929
+[Epoch 6/60] [batch 0/321] [lr 0.0001] [total 0.075291] [joint 0.004103] [intensity 0.045582] [sobel 0.029701] ETA: 0:50:40.945978
+[Epoch 6/60] [batch 50/321] [lr 0.0001] [total 0.073969] [joint 0.003266] [intensity 0.073064] [sobel 0.034007] ETA: 1:01:52.638230
+[Epoch 6/60] [batch 100/321] [lr 0.0001] [total 0.181700] [joint 0.008547] [intensity 0.226573] [sobel 0.073575] ETA: 1:02:06.198198
+[Epoch 6/60] [batch 150/321] [lr 0.0001] [total 0.178363] [joint 0.008877] [intensity 0.180286] [sobel 0.071565] ETA: 0:59:30.161774
+[Epoch 6/60] [batch 200/321] [lr 0.0001] [total 0.195023] [joint 0.009227] [intensity 0.239788] [sobel 0.078771] ETA: 0:58:27.309257
+[Epoch 6/60] [batch 250/321] [lr 0.0001] [total 0.122684] [joint 0.005394] [intensity 0.087413] [sobel 0.060006] ETA: 0:57:39.910960
+[Epoch 6/60] [batch 300/321] [lr 0.0001] [total 0.100766] [joint 0.003197] [intensity 0.100378] [sobel 0.058759] ETA: 1:01:17.980794
+[Epoch 7/60] [batch 0/321] [lr 0.0001] [total 0.167413] [joint 0.008184] [intensity 0.160955] [sobel 0.069472] ETA: 0:47:33.036371
+[Epoch 7/60] [batch 50/321] [lr 0.0001] [total 0.180460] [joint 0.008605] [intensity 0.214235] [sobel 0.072991] ETA: 1:00:50.857314
+[Epoch 7/60] [batch 100/321] [lr 0.0001] [total 0.081495] [joint 0.003307] [intensity 0.095884] [sobel 0.038835] ETA: 0:57:28.465594
+[Epoch 7/60] [batch 150/321] [lr 0.0001] [total 0.133840] [joint 0.004574] [intensity 0.228306] [sobel 0.065266] ETA: 0:57:17.563276
+[Epoch 7/60] [batch 200/321] [lr 0.0001] [total 0.105485] [joint 0.003242] [intensity 0.222890] [sobel 0.050775] ETA: 0:59:52.750642
+[Epoch 7/60] [batch 250/321] [lr 0.0001] [total 0.126006] [joint 0.005487] [intensity 0.108620] [sobel 0.060279] ETA: 0:56:40.967781
+[Epoch 7/60] [batch 300/321] [lr 0.0001] [total 0.166117] [joint 0.007109] [intensity 0.156197] [sobel 0.079402] ETA: 0:59:44.184565
+[Epoch 8/60] [batch 0/321] [lr 0.0001] [total 0.099365] [joint 0.005074] [intensity 0.114597] [sobel 0.037163] ETA: 0:49:09.677307
+[Epoch 8/60] [batch 50/321] [lr 0.0001] [total 0.150684] [joint 0.004765] [intensity 0.150576] [sobel 0.087977] ETA: 0:53:52.281759
+[Epoch 8/60] [batch 100/321] [lr 0.0001] [total 0.268339] [joint 0.013918] [intensity 0.272930] [sobel 0.101864] ETA: 1:00:14.175072
+[Epoch 8/60] [batch 150/321] [lr 0.0001] [total 0.157129] [joint 0.007395] [intensity 0.161403] [sobel 0.067043] ETA: 0:59:14.820863
+[Epoch 8/60] [batch 200/321] [lr 0.0001] [total 0.097499] [joint 0.004680] [intensity 0.139134] [sobel 0.036789] ETA: 0:58:37.078922
+[Epoch 8/60] [batch 250/321] [lr 0.0001] [total 0.065845] [joint 0.002185] [intensity 0.058159] [sobel 0.038175] ETA: 0:59:02.155291
+[Epoch 8/60] [batch 300/321] [lr 0.0001] [total 0.160072] [joint 0.008072] [intensity 0.160287] [sobel 0.063320] ETA: 0:57:03.123756
+[Epoch 9/60] [batch 0/321] [lr 0.0001] [total 0.144281] [joint 0.006909] [intensity 0.164750] [sobel 0.058712] ETA: 0:49:15.992528
+[Epoch 9/60] [batch 50/321] [lr 0.0001] [total 0.150123] [joint 0.006428] [intensity 0.125267] [sobel 0.073314] ETA: 0:52:37.507153
+[Epoch 9/60] [batch 100/321] [lr 0.0001] [total 0.086792] [joint 0.003998] [intensity 0.094272] [sobel 0.037384] ETA: 0:57:37.922672
+[Epoch 9/60] [batch 150/321] [lr 0.0001] [total 0.174791] [joint 0.008050] [intensity 0.195115] [sobel 0.074782] ETA: 0:58:28.594738
+[Epoch 9/60] [batch 200/321] [lr 0.0001] [total 0.124219] [joint 0.005827] [intensity 0.125080] [sobel 0.053442] ETA: 0:55:49.949597
+[Epoch 9/60] [batch 250/321] [lr 0.0001] [total 0.125241] [joint 0.005886] [intensity 0.144980] [sobel 0.051878] ETA: 0:57:30.608684
+[Epoch 9/60] [batch 300/321] [lr 0.0001] [total 0.093488] [joint 0.004441] [intensity 0.081847] [sobel 0.040897] ETA: 0:57:20.672793
+[Epoch 10/60] [batch 0/321] [lr 0.0001] [total 0.107993] [joint 0.005451] [intensity 0.104292] [sobel 0.043049] ETA: 0:47:07.170575
+[Epoch 10/60] [batch 50/321] [lr 0.0001] [total 0.200781] [joint 0.008225] [intensity 0.263108] [sobel 0.092224] ETA: 0:57:49.749451
+[Epoch 10/60] [batch 100/321] [lr 0.0001] [total 0.131240] [joint 0.005738] [intensity 0.143477] [sobel 0.059516] ETA: 0:53:58.318837
+[Epoch 10/60] [batch 150/321] [lr 0.0001] [total 0.135994] [joint 0.005613] [intensity 0.176304] [sobel 0.062237] ETA: 0:55:01.266432
+[Epoch 10/60] [batch 200/321] [lr 0.0001] [total 0.079032] [joint 0.003441] [intensity 0.042533] [sobel 0.040369] ETA: 0:53:35.812778
+[Epoch 10/60] [batch 250/321] [lr 0.0001] [total 0.076976] [joint 0.002669] [intensity 0.058520] [sobel 0.044431] ETA: 0:53:47.558374
+[Epoch 10/60] [batch 300/321] [lr 0.0001] [total 0.153894] [joint 0.005631] [intensity 0.200637] [sobel 0.077524] ETA: 0:53:34.779854
+[Epoch 11/60] [batch 0/321] [lr 0.0001] [total 0.167128] [joint 0.007122] [intensity 0.172454] [sobel 0.078659] ETA: 0:43:57.926626
+[Epoch 11/60] [batch 50/321] [lr 0.0001] [total 0.094449] [joint 0.003584] [intensity 0.080416] [sobel 0.050564] ETA: 0:53:31.726615
+[Epoch 11/60] [batch 100/321] [lr 0.0001] [total 0.169718] [joint 0.006649] [intensity 0.167732] [sobel 0.086451] ETA: 0:53:57.207988
+[Epoch 11/60] [batch 150/321] [lr 0.0001] [total 0.111125] [joint 0.004924] [intensity 0.121286] [sobel 0.049756] ETA: 0:53:30.545695
+[Epoch 11/60] [batch 200/321] [lr 0.0001] [total 0.114633] [joint 0.006534] [intensity 0.139981] [sobel 0.035293] ETA: 0:56:04.591244
+[Epoch 11/60] [batch 250/321] [lr 0.0001] [total 0.122480] [joint 0.006184] [intensity 0.118255] [sobel 0.048814] ETA: 0:52:32.848196
+[Epoch 11/60] [batch 300/321] [lr 0.0001] [total 0.111103] [joint 0.003881] [intensity 0.107320] [sobel 0.061563] ETA: 0:50:02.588024
+[Epoch 12/60] [batch 0/321] [lr 0.0001] [total 0.083325] [joint 0.002420] [intensity 0.065852] [sobel 0.052536] ETA: 0:42:20.927135
+[Epoch 12/60] [batch 50/321] [lr 0.0001] [total 0.077240] [joint 0.002902] [intensity 0.100467] [sobel 0.038171] ETA: 0:55:10.137784
+[Epoch 12/60] [batch 100/321] [lr 0.0001] [total 0.169566] [joint 0.006036] [intensity 0.077428] [sobel 0.101460] ETA: 0:49:11.751710
+[Epoch 12/60] [batch 150/321] [lr 0.0001] [total 0.097960] [joint 0.003224] [intensity 0.114456] [sobel 0.054275] ETA: 0:52:15.000717
+[Epoch 12/60] [batch 200/321] [lr 0.0001] [total 0.103984] [joint 0.004170] [intensity 0.177787] [sobel 0.044501] ETA: 0:54:31.557011
+[Epoch 12/60] [batch 250/321] [lr 0.0001] [total 0.115514] [joint 0.005686] [intensity 0.121854] [sobel 0.046467] ETA: 0:53:51.079856
+[Epoch 12/60] [batch 300/321] [lr 0.0001] [total 0.121189] [joint 0.006171] [intensity 0.086611] [sobel 0.050822] ETA: 0:53:42.381357
+[Epoch 13/60] [batch 0/321] [lr 0.0001] [total 0.141063] [joint 0.005941] [intensity 0.144658] [sobel 0.067190] ETA: 0:45:06.596514
+[Epoch 13/60] [batch 50/321] [lr 0.0001] [total 0.109996] [joint 0.003961] [intensity 0.092301] [sobel 0.061154] ETA: 0:48:40.318634
+[Epoch 13/60] [batch 100/321] [lr 0.0001] [total 0.100612] [joint 0.005602] [intensity 0.095267] [sobel 0.035065] ETA: 0:53:39.570281
+[Epoch 13/60] [batch 150/321] [lr 0.0001] [total 0.128950] [joint 0.006259] [intensity 0.146421] [sobel 0.051713] ETA: 0:53:27.682345
+[Epoch 13/60] [batch 200/321] [lr 0.0001] [total 0.107876] [joint 0.005253] [intensity 0.134660] [sobel 0.041881] ETA: 0:53:27.096079
+[Epoch 13/60] [batch 250/321] [lr 0.0001] [total 0.096229] [joint 0.004347] [intensity 0.071063] [sobel 0.045656] ETA: 0:50:08.321541
+[Epoch 13/60] [batch 300/321] [lr 0.0001] [total 0.120593] [joint 0.004709] [intensity 0.158057] [sobel 0.057700] ETA: 0:53:28.839046
+[Epoch 14/60] [batch 0/321] [lr 0.0001] [total 0.201786] [joint 0.007483] [intensity 0.164099] [sobel 0.110544] ETA: 0:41:06.454411
+[Epoch 14/60] [batch 50/321] [lr 0.0001] [total 0.139696] [joint 0.005054] [intensity 0.192818] [sobel 0.069876] ETA: 0:47:27.690469
+[Epoch 14/60] [batch 100/321] [lr 0.0001] [total 0.132936] [joint 0.004350] [intensity 0.151198] [sobel 0.074315] ETA: 0:47:04.612330
+[Epoch 14/60] [batch 150/321] [lr 0.0001] [total 0.059350] [joint 0.001700] [intensity 0.070462] [sobel 0.035309] ETA: 0:49:38.754198
+[Epoch 14/60] [batch 200/321] [lr 0.0001] [total 0.116074] [joint 0.005125] [intensity 0.110866] [sobel 0.053733] ETA: 0:49:27.682060
+[Epoch 14/60] [batch 250/321] [lr 0.0001] [total 0.171997] [joint 0.009292] [intensity 0.129694] [sobel 0.066110] ETA: 0:52:42.220180
+[Epoch 14/60] [batch 300/321] [lr 0.0001] [total 0.096898] [joint 0.002082] [intensity 0.092060] [sobel 0.066875] ETA: 0:43:58.832758
+[Epoch 15/60] [batch 0/321] [lr 0.0001] [total 0.156668] [joint 0.006574] [intensity 0.197928] [sobel 0.071136] ETA: 0:37:21.633321
+[Epoch 15/60] [batch 50/321] [lr 0.0001] [total 0.132106] [joint 0.005080] [intensity 0.174739] [sobel 0.063836] ETA: 0:51:45.590531
+[Epoch 15/60] [batch 100/321] [lr 0.0001] [total 0.107974] [joint 0.002831] [intensity 0.088765] [sobel 0.070790] ETA: 0:45:49.378759
+[Epoch 15/60] [batch 150/321] [lr 0.0001] [total 0.086098] [joint 0.002861] [intensity 0.116092] [sobel 0.045875] ETA: 0:48:41.663729
+[Epoch 15/60] [batch 200/321] [lr 0.0001] [total 0.140494] [joint 0.005790] [intensity 0.168164] [sobel 0.065773] ETA: 0:46:04.114240
+[Epoch 15/60] [batch 250/321] [lr 0.0001] [total 0.064282] [joint 0.002577] [intensity 0.040968] [sobel 0.034417] ETA: 0:48:30.501876
+[Epoch 15/60] [batch 300/321] [lr 0.0001] [total 0.090492] [joint 0.003311] [intensity 0.125704] [sobel 0.044809] ETA: 0:48:03.522763
+[Epoch 16/60] [batch 0/321] [lr 0.0001] [total 0.102728] [joint 0.004389] [intensity 0.101166] [sobel 0.048717] ETA: 0:39:12.613744
+[Epoch 16/60] [batch 50/321] [lr 0.0001] [total 0.133339] [joint 0.006197] [intensity 0.145517] [sobel 0.056821] ETA: 0:50:36.747067
+[Epoch 16/60] [batch 100/321] [lr 0.0001] [total 0.094058] [joint 0.002762] [intensity 0.083900] [sobel 0.058049] ETA: 0:47:51.712435
+[Epoch 16/60] [batch 150/321] [lr 0.0001] [total 0.116653] [joint 0.005709] [intensity 0.124897] [sobel 0.047069] ETA: 0:50:29.319632
+[Epoch 16/60] [batch 200/321] [lr 0.0001] [total 0.132305] [joint 0.006054] [intensity 0.104864] [sobel 0.061283] ETA: 0:50:26.079389
+[Epoch 16/60] [batch 250/321] [lr 0.0001] [total 0.095026] [joint 0.003494] [intensity 0.077289] [sobel 0.052356] ETA: 0:47:17.910547
+[Epoch 16/60] [batch 300/321] [lr 0.0001] [total 0.154200] [joint 0.006664] [intensity 0.182986] [sobel 0.069265] ETA: 0:44:30.732422
+[Epoch 17/60] [batch 0/321] [lr 0.0001] [total 0.149662] [joint 0.005046] [intensity 0.233358] [sobel 0.075863] ETA: 0:38:13.962095
+[Epoch 17/60] [batch 50/321] [lr 0.0001] [total 0.094402] [joint 0.003064] [intensity 0.060429] [sobel 0.057722] ETA: 0:49:31.941016
+[Epoch 17/60] [batch 100/321] [lr 0.0001] [total 0.095789] [joint 0.002189] [intensity 0.060336] [sobel 0.067864] ETA: 0:43:59.919980
+[Epoch 17/60] [batch 150/321] [lr 0.0001] [total 0.079172] [joint 0.001736] [intensity 0.025007] [sobel 0.059307] ETA: 0:46:26.071302
+[Epoch 17/60] [batch 200/321] [lr 0.0001] [total 0.032166] [joint 0.000913] [intensity 0.013757] [sobel 0.021661] ETA: 0:48:29.835345
+[Epoch 17/60] [batch 250/321] [lr 0.0001] [total 0.053941] [joint 0.001262] [intensity 0.062409] [sobel 0.035076] ETA: 0:46:18.276721
+[Epoch 17/60] [batch 300/321] [lr 0.0001] [total 0.065601] [joint 0.001643] [intensity 0.031012] [sobel 0.046069] ETA: 0:43:15.530193
+[Epoch 18/60] [batch 0/321] [lr 0.0001] [total 0.040856] [joint 0.001153] [intensity 0.009625] [sobel 0.028363] ETA: 0:39:48.882890
+[Epoch 18/60] [batch 50/321] [lr 0.0001] [total 0.106394] [joint 0.002504] [intensity 0.057338] [sobel 0.075619] ETA: 0:40:45.929544
+[Epoch 18/60] [batch 100/321] [lr 0.0001] [total 0.051772] [joint 0.001363] [intensity 0.014318] [sobel 0.036710] ETA: 0:45:47.179077
+[Epoch 18/60] [batch 150/321] [lr 0.0001] [total 0.117340] [joint 0.002836] [intensity 0.045779] [sobel 0.084408] ETA: 0:40:07.980741
+[Epoch 18/60] [batch 200/321] [lr 0.0001] [total 0.044630] [joint 0.001264] [intensity 0.012714] [sobel 0.030717] ETA: 0:48:21.317655
+[Epoch 18/60] [batch 250/321] [lr 0.0001] [total 0.076964] [joint 0.002041] [intensity 0.024398] [sobel 0.054114] ETA: 0:48:34.261383
+[Epoch 18/60] [batch 300/321] [lr 0.0001] [total 0.041025] [joint 0.001181] [intensity 0.032452] [sobel 0.025966] ETA: 0:47:33.526438
+[Epoch 19/60] [batch 0/321] [lr 0.0001] [total 0.036172] [joint 0.000971] [intensity 0.010813] [sobel 0.025375] ETA: 0:38:47.564701
+[Epoch 19/60] [batch 50/321] [lr 0.0001] [total 0.077188] [joint 0.001935] [intensity 0.043236] [sobel 0.053519] ETA: 0:42:08.826687
+[Epoch 19/60] [batch 100/321] [lr 0.0001] [total 0.030647] [joint 0.000914] [intensity 0.017524] [sobel 0.019752] ETA: 0:46:03.917089
+[Epoch 19/60] [batch 150/321] [lr 0.0001] [total 0.060959] [joint 0.001572] [intensity 0.043445] [sobel 0.040891] ETA: 0:41:56.512303
+[Epoch 19/60] [batch 200/321] [lr 0.0001] [total 0.044195] [joint 0.001197] [intensity 0.019772] [sobel 0.030243] ETA: 0:41:58.185508
+[Epoch 19/60] [batch 250/321] [lr 0.0001] [total 0.139503] [joint 0.003964] [intensity 0.046928] [sobel 0.095168] ETA: 0:41:24.516310
+[Epoch 19/60] [batch 300/321] [lr 0.0001] [total 0.057240] [joint 0.001466] [intensity 0.035001] [sobel 0.039085] ETA: 0:44:09.716711
+[Epoch 20/60] [batch 0/321] [lr 0.0001] [total 0.059359] [joint 0.001553] [intensity 0.025206] [sobel 0.041308] ETA: 0:35:44.032745
+[Epoch 20/60] [batch 50/321] [lr 0.0001] [total 0.037309] [joint 0.001145] [intensity 0.010092] [sobel 0.024853] ETA: 0:45:43.798945
+[Epoch 20/60] [batch 100/321] [lr 0.0001] [total 0.035333] [joint 0.000957] [intensity 0.014458] [sobel 0.024321] ETA: 0:43:26.757092
+[Epoch 20/60] [batch 150/321] [lr 0.0001] [total 0.066121] [joint 0.002098] [intensity 0.012189] [sobel 0.043925] ETA: 0:46:20.197449
+[Epoch 20/60] [batch 200/321] [lr 0.0001] [total 0.029587] [joint 0.000939] [intensity 0.014182] [sobel 0.018776] ETA: 0:45:10.818291
+[Epoch 20/60] [batch 250/321] [lr 0.0001] [total 0.040974] [joint 0.001174] [intensity 0.018073] [sobel 0.027425] ETA: 0:45:17.255778
+[Epoch 20/60] [batch 300/321] [lr 0.0001] [total 0.070873] [joint 0.001821] [intensity 0.031130] [sobel 0.049546] ETA: 0:42:51.933818
+[Epoch 21/60] [batch 0/321] [lr 0.0001] [total 0.060887] [joint 0.001483] [intensity 0.033112] [sobel 0.042747] ETA: 0:37:17.723971
+[Epoch 21/60] [batch 50/321] [lr 0.0001] [total 0.029068] [joint 0.000825] [intensity 0.011870] [sobel 0.019633] ETA: 0:41:54.509407
+[Epoch 21/60] [batch 100/321] [lr 0.0001] [total 0.048928] [joint 0.001194] [intensity 0.016373] [sobel 0.035354] ETA: 0:44:44.462163
+[Epoch 21/60] [batch 150/321] [lr 0.0001] [total 0.030955] [joint 0.001040] [intensity 0.004652] [sobel 0.020088] ETA: 0:44:18.623230
+[Epoch 21/60] [batch 200/321] [lr 0.0001] [total 0.023066] [joint 0.000790] [intensity 0.005141] [sobel 0.014651] ETA: 0:44:07.699882
+[Epoch 21/60] [batch 250/321] [lr 0.0001] [total 0.039095] [joint 0.001185] [intensity 0.012170] [sobel 0.026027] ETA: 0:44:16.800668
+[Epoch 21/60] [batch 300/321] [lr 0.0001] [total 0.031245] [joint 0.000952] [intensity 0.011656] [sobel 0.020555] ETA: 0:43:56.910298
+[Epoch 22/60] [batch 0/321] [lr 0.0001] [total 0.028006] [joint 0.000849] [intensity 0.011538] [sobel 0.018361] ETA: 0:35:34.821004
+[Epoch 22/60] [batch 50/321] [lr 0.0001] [total 0.049018] [joint 0.001154] [intensity 0.033852] [sobel 0.034090] ETA: 0:41:51.143260
+[Epoch 22/60] [batch 100/321] [lr 0.0001] [total 0.081227] [joint 0.002220] [intensity 0.022091] [sobel 0.056818] ETA: 0:41:18.508432
+[Epoch 22/60] [batch 150/321] [lr 0.0001] [total 0.058145] [joint 0.001552] [intensity 0.021496] [sobel 0.040473] ETA: 0:41:10.832954
+[Epoch 22/60] [batch 200/321] [lr 0.0001] [total 0.051510] [joint 0.001363] [intensity 0.019558] [sobel 0.035923] ETA: 0:40:59.314472
+[Epoch 22/60] [batch 250/321] [lr 0.0001] [total 0.031047] [joint 0.000909] [intensity 0.009950] [sobel 0.020965] ETA: 0:42:38.959883
+[Epoch 22/60] [batch 300/321] [lr 0.0001] [total 0.055561] [joint 0.001323] [intensity 0.030496] [sobel 0.039286] ETA: 0:39:51.443808
+[Epoch 23/60] [batch 0/321] [lr 0.0001] [total 0.064600] [joint 0.001702] [intensity 0.022324] [sobel 0.045348] ETA: 0:33:14.169137
+[Epoch 23/60] [batch 50/321] [lr 0.0001] [total 0.026176] [joint 0.000852] [intensity 0.008127] [sobel 0.016842] ETA: 0:42:36.386848
+[Epoch 23/60] [batch 100/321] [lr 0.0001] [total 0.061582] [joint 0.001816] [intensity 0.018803] [sobel 0.041546] ETA: 0:39:54.185471
+[Epoch 23/60] [batch 150/321] [lr 0.0001] [total 0.032824] [joint 0.000881] [intensity 0.018271] [sobel 0.022190] ETA: 0:40:16.392137
+[Epoch 23/60] [batch 200/321] [lr 0.0001] [total 0.046131] [joint 0.001389] [intensity 0.022031] [sobel 0.030037] ETA: 0:42:22.422603
+[Epoch 23/60] [batch 250/321] [lr 0.0001] [total 0.039924] [joint 0.001397] [intensity 0.007832] [sobel 0.025174] ETA: 0:41:49.550680
+[Epoch 23/60] [batch 300/321] [lr 0.0001] [total 0.081429] [joint 0.002045] [intensity 0.037646] [sobel 0.057216] ETA: 0:36:41.932646
+[Epoch 24/60] [batch 0/321] [lr 0.0001] [total 0.042262] [joint 0.001461] [intensity 0.011500] [sobel 0.026506] ETA: 0:31:34.294478
+[Epoch 24/60] [batch 50/321] [lr 0.0001] [total 0.044910] [joint 0.001334] [intensity 0.008981] [sobel 0.030675] ETA: 0:39:05.196699
+[Epoch 24/60] [batch 100/321] [lr 0.0001] [total 0.021060] [joint 0.000740] [intensity 0.014239] [sobel 0.012235] ETA: 0:41:08.220337
+[Epoch 24/60] [batch 150/321] [lr 0.0001] [total 0.027572] [joint 0.001004] [intensity 0.010376] [sobel 0.016494] ETA: 0:40:47.426730
+[Epoch 24/60] [batch 200/321] [lr 0.0001] [total 0.026143] [joint 0.000899] [intensity 0.009672] [sobel 0.016187] ETA: 0:40:54.949181
+[Epoch 24/60] [batch 250/321] [lr 0.0001] [total 0.039982] [joint 0.001224] [intensity 0.007918] [sobel 0.026955] ETA: 0:40:54.407530
+[Epoch 24/60] [batch 300/321] [lr 0.0001] [total 0.027522] [joint 0.000891] [intensity 0.011085] [sobel 0.017505] ETA: 0:40:37.726902
+[Epoch 25/60] [batch 0/321] [lr 5e-05] [total 0.055280] [joint 0.001501] [intensity 0.032713] [sobel 0.037002] ETA: 0:31:32.480814
+[Epoch 25/60] [batch 50/321] [lr 5e-05] [total 0.040236] [joint 0.001087] [intensity 0.034480] [sobel 0.025921] ETA: 0:38:02.395968
+[Epoch 25/60] [batch 100/321] [lr 5e-05] [total 0.029047] [joint 0.000934] [intensity 0.005158] [sobel 0.019193] ETA: 0:40:09.634215
+[Epoch 25/60] [batch 150/321] [lr 5e-05] [total 0.050421] [joint 0.001421] [intensity 0.031669] [sobel 0.033042] ETA: 0:37:51.496507
+[Epoch 25/60] [batch 200/321] [lr 5e-05] [total 0.021879] [joint 0.000778] [intensity 0.005326] [sobel 0.013570] ETA: 0:39:40.608959
+[Epoch 25/60] [batch 250/321] [lr 5e-05] [total 0.062490] [joint 0.001710] [intensity 0.019219] [sobel 0.043470] ETA: 0:37:28.951565
+[Epoch 25/60] [batch 300/321] [lr 5e-05] [total 0.036734] [joint 0.000978] [intensity 0.011773] [sobel 0.025781] ETA: 0:39:33.061938
+[Epoch 26/60] [batch 0/321] [lr 5e-05] [total 0.042386] [joint 0.001139] [intensity 0.011151] [sobel 0.029881] ETA: 0:30:05.082232
+[Epoch 26/60] [batch 50/321] [lr 5e-05] [total 0.041499] [joint 0.001577] [intensity 0.004913] [sobel 0.025238] ETA: 0:39:10.877945
+[Epoch 26/60] [batch 100/321] [lr 5e-05] [total 0.068814] [joint 0.001935] [intensity 0.014391] [sobel 0.048023] ETA: 0:36:44.207347
+[Epoch 26/60] [batch 150/321] [lr 5e-05] [total 0.030435] [joint 0.001145] [intensity 0.005342] [sobel 0.018448] ETA: 0:38:24.050185
+[Epoch 26/60] [batch 200/321] [lr 5e-05] [total 0.034012] [joint 0.001187] [intensity 0.005830] [sobel 0.021558] ETA: 0:38:37.009172
+[Epoch 26/60] [batch 250/321] [lr 5e-05] [total 0.038514] [joint 0.001197] [intensity 0.007232] [sobel 0.025820] ETA: 0:39:04.097158
+[Epoch 26/60] [batch 300/321] [lr 5e-05] [total 0.042545] [joint 0.001215] [intensity 0.012482] [sobel 0.029147] ETA: 0:36:16.873828
+[Epoch 27/60] [batch 0/321] [lr 5e-05] [total 0.024538] [joint 0.000790] [intensity 0.007724] [sobel 0.015862] ETA: 0:31:13.441093
+[Epoch 27/60] [batch 50/321] [lr 5e-05] [total 0.060251] [joint 0.001720] [intensity 0.015994] [sobel 0.041456] ETA: 0:37:58.500422
+[Epoch 27/60] [batch 100/321] [lr 5e-05] [total 0.069559] [joint 0.001764] [intensity 0.038405] [sobel 0.048075] ETA: 0:32:07.239764
+[Epoch 27/60] [batch 150/321] [lr 5e-05] [total 0.031784] [joint 0.000902] [intensity 0.012658] [sobel 0.021500] ETA: 0:37:41.039428
+[Epoch 27/60] [batch 200/321] [lr 5e-05] [total 0.025810] [joint 0.000901] [intensity 0.008389] [sobel 0.015964] ETA: 0:37:38.673303
+[Epoch 27/60] [batch 250/321] [lr 5e-05] [total 0.036825] [joint 0.001105] [intensity 0.012310] [sobel 0.024539] ETA: 0:37:12.451429
+[Epoch 27/60] [batch 300/321] [lr 5e-05] [total 0.065595] [joint 0.001901] [intensity 0.022923] [sobel 0.044290] ETA: 0:34:57.926521
+[Epoch 28/60] [batch 0/321] [lr 5e-05] [total 0.050630] [joint 0.001543] [intensity 0.031313] [sobel 0.032066] ETA: 0:26:36.367149
+[Epoch 28/60] [batch 50/321] [lr 5e-05] [total 0.053573] [joint 0.001562] [intensity 0.020315] [sobel 0.035918] ETA: 0:34:46.674679
+[Epoch 28/60] [batch 100/321] [lr 5e-05] [total 0.055178] [joint 0.001524] [intensity 0.008613] [sobel 0.039081] ETA: 0:34:40.685308
+[Epoch 28/60] [batch 150/321] [lr 5e-05] [total 0.026817] [joint 0.000847] [intensity 0.007984] [sobel 0.017545] ETA: 0:36:14.957336
+[Epoch 28/60] [batch 200/321] [lr 5e-05] [total 0.073608] [joint 0.001984] [intensity 0.029475] [sobel 0.050820] ETA: 0:32:41.364222
+[Epoch 28/60] [batch 250/321] [lr 5e-05] [total 0.055397] [joint 0.001658] [intensity 0.019813] [sobel 0.036832] ETA: 0:36:23.395144
+[Epoch 28/60] [batch 300/321] [lr 5e-05] [total 0.116153] [joint 0.003346] [intensity 0.057407] [sobel 0.076950] ETA: 0:32:17.133390
+[Epoch 29/60] [batch 0/321] [lr 5e-05] [total 0.058194] [joint 0.001506] [intensity 0.031041] [sobel 0.040027] ETA: 0:25:34.342949
+[Epoch 29/60] [batch 50/321] [lr 5e-05] [total 0.047317] [joint 0.001477] [intensity 0.012356] [sobel 0.031312] ETA: 0:34:03.768594
+[Epoch 29/60] [batch 100/321] [lr 5e-05] [total 0.078513] [joint 0.002049] [intensity 0.024556] [sobel 0.055569] ETA: 0:34:11.994952
+[Epoch 29/60] [batch 150/321] [lr 5e-05] [total 0.050521] [joint 0.001059] [intensity 0.051603] [sobel 0.034768] ETA: 0:35:26.954942
+[Epoch 29/60] [batch 200/321] [lr 5e-05] [total 0.044802] [joint 0.001336] [intensity 0.011245] [sobel 0.030314] ETA: 0:35:17.896675
+[Epoch 29/60] [batch 250/321] [lr 5e-05] [total 0.056473] [joint 0.001431] [intensity 0.022314] [sobel 0.039930] ETA: 0:33:17.097769
+[Epoch 29/60] [batch 300/321] [lr 5e-05] [total 0.037625] [joint 0.001215] [intensity 0.008453] [sobel 0.024634] ETA: 0:34:28.963222
+[Epoch 30/60] [batch 0/321] [lr 5e-05] [total 0.088409] [joint 0.002275] [intensity 0.037691] [sobel 0.061886] ETA: 0:26:51.289430
+[Epoch 30/60] [batch 50/321] [lr 5e-05] [total 0.025250] [joint 0.000881] [intensity 0.004479] [sobel 0.015997] ETA: 0:34:22.225337
+[Epoch 30/60] [batch 100/321] [lr 5e-05] [total 0.054956] [joint 0.001593] [intensity 0.025698] [sobel 0.036451] ETA: 0:30:58.542495
+[Epoch 30/60] [batch 150/321] [lr 5e-05] [total 0.014920] [joint 0.000602] [intensity 0.005619] [sobel 0.008336] ETA: 0:33:54.878941
+[Epoch 30/60] [batch 200/321] [lr 5e-05] [total 0.036361] [joint 0.001001] [intensity 0.015483] [sobel 0.024801] ETA: 0:33:59.203236
+[Epoch 30/60] [batch 250/321] [lr 5e-05] [total 0.029528] [joint 0.001034] [intensity 0.003965] [sobel 0.018792] ETA: 0:33:42.095547
+[Epoch 30/60] [batch 300/321] [lr 5e-05] [total 0.041199] [joint 0.001094] [intensity 0.017624] [sobel 0.028492] ETA: 0:29:40.704088
+[Epoch 31/60] [batch 0/321] [lr 5e-05] [total 0.060727] [joint 0.001454] [intensity 0.023658] [sobel 0.043824] ETA: 0:25:35.878112
+[Epoch 31/60] [batch 50/321] [lr 5e-05] [total 0.035940] [joint 0.001025] [intensity 0.011693] [sobel 0.024521] ETA: 0:31:20.716715
+[Epoch 31/60] [batch 100/321] [lr 5e-05] [total 0.014803] [joint 0.000618] [intensity 0.005666] [sobel 0.008060] ETA: 0:32:59.613652
+[Epoch 31/60] [batch 150/321] [lr 5e-05] [total 0.015855] [joint 0.000572] [intensity 0.003747] [sobel 0.009761] ETA: 0:32:27.388946
+[Epoch 31/60] [batch 200/321] [lr 5e-05] [total 0.029354] [joint 0.001000] [intensity 0.009083] [sobel 0.018443] ETA: 0:32:42.597472
+[Epoch 31/60] [batch 250/321] [lr 5e-05] [total 0.019398] [joint 0.000598] [intensity 0.012164] [sobel 0.012198] ETA: 0:32:44.101120
+[Epoch 31/60] [batch 300/321] [lr 5e-05] [total 0.042874] [joint 0.001307] [intensity 0.008312] [sobel 0.028974] ETA: 0:32:11.996175
+[Epoch 32/60] [batch 0/321] [lr 5e-05] [total 0.055345] [joint 0.001392] [intensity 0.037735] [sobel 0.037649] ETA: 0:24:45.310424
+[Epoch 32/60] [batch 50/321] [lr 5e-05] [total 0.037196] [joint 0.000995] [intensity 0.007647] [sobel 0.026482] ETA: 0:32:15.448184
+[Epoch 32/60] [batch 100/321] [lr 5e-05] [total 0.035672] [joint 0.001288] [intensity 0.004834] [sobel 0.022306] ETA: 0:32:16.996443
+[Epoch 32/60] [batch 150/321] [lr 5e-05] [total 0.025988] [joint 0.001068] [intensity 0.004353] [sobel 0.014871] ETA: 0:32:00.937247
+[Epoch 32/60] [batch 200/321] [lr 5e-05] [total 0.032066] [joint 0.000992] [intensity 0.009765] [sobel 0.021173] ETA: 0:31:43.649997
+[Epoch 32/60] [batch 250/321] [lr 5e-05] [total 0.054850] [joint 0.001602] [intensity 0.025914] [sobel 0.036234] ETA: 0:29:51.212251
+[Epoch 32/60] [batch 300/321] [lr 5e-05] [total 0.051480] [joint 0.001426] [intensity 0.024385] [sobel 0.034784] ETA: 0:27:57.327381
+[Epoch 33/60] [batch 0/321] [lr 5e-05] [total 0.021268] [joint 0.000807] [intensity 0.003900] [sobel 0.012805] ETA: 0:26:03.660202
+[Epoch 33/60] [batch 50/321] [lr 5e-05] [total 0.024953] [joint 0.000766] [intensity 0.007403] [sobel 0.016553] ETA: 0:30:20.871874
+[Epoch 33/60] [batch 100/321] [lr 5e-05] [total 0.020057] [joint 0.000737] [intensity 0.009455] [sobel 0.011744] ETA: 0:30:26.777273
+[Epoch 33/60] [batch 150/321] [lr 5e-05] [total 0.036018] [joint 0.001231] [intensity 0.006444] [sobel 0.023063] ETA: 0:30:19.809245
+[Epoch 33/60] [batch 200/321] [lr 5e-05] [total 0.088909] [joint 0.002296] [intensity 0.028445] [sobel 0.063104] ETA: 0:27:31.696285
+[Epoch 33/60] [batch 250/321] [lr 5e-05] [total 0.026252] [joint 0.000867] [intensity 0.018606] [sobel 0.015722] ETA: 0:28:58.953793
+[Epoch 33/60] [batch 300/321] [lr 5e-05] [total 0.023235] [joint 0.000852] [intensity 0.005346] [sobel 0.014185] ETA: 0:29:38.554835
+[Epoch 34/60] [batch 0/321] [lr 5e-05] [total 0.061234] [joint 0.001649] [intensity 0.022254] [sobel 0.042518] ETA: 0:23:12.256253
+[Epoch 34/60] [batch 50/321] [lr 5e-05] [total 0.034757] [joint 0.001054] [intensity 0.010310] [sobel 0.023182] ETA: 0:29:41.799822
+[Epoch 34/60] [batch 100/321] [lr 5e-05] [total 0.058198] [joint 0.001366] [intensity 0.041589] [sobel 0.040376] ETA: 0:24:58.201794
+[Epoch 34/60] [batch 150/321] [lr 5e-05] [total 0.055647] [joint 0.001571] [intensity 0.028563] [sobel 0.037077] ETA: 0:24:47.845273
+[Epoch 34/60] [batch 200/321] [lr 5e-05] [total 0.030581] [joint 0.001021] [intensity 0.007164] [sobel 0.019653] ETA: 0:29:19.089956
+[Epoch 34/60] [batch 250/321] [lr 5e-05] [total 0.048696] [joint 0.001468] [intensity 0.008292] [sobel 0.033187] ETA: 0:27:52.843597
+[Epoch 34/60] [batch 300/321] [lr 5e-05] [total 0.048310] [joint 0.001546] [intensity 0.015452] [sobel 0.031309] ETA: 0:27:33.078023
+[Epoch 35/60] [batch 0/321] [lr 5e-05] [total 0.036521] [joint 0.001074] [intensity 0.009743] [sobel 0.024803] ETA: 0:23:55.186547
+[Epoch 35/60] [batch 50/321] [lr 5e-05] [total 0.019797] [joint 0.000708] [intensity 0.012596] [sobel 0.011459] ETA: 0:28:39.672501
+[Epoch 35/60] [batch 100/321] [lr 5e-05] [total 0.027834] [joint 0.000829] [intensity 0.005751] [sobel 0.018973] ETA: 0:28:28.477062
+[Epoch 35/60] [batch 150/321] [lr 5e-05] [total 0.035134] [joint 0.001200] [intensity 0.004211] [sobel 0.022710] ETA: 0:28:55.447973
+[Epoch 35/60] [batch 200/321] [lr 5e-05] [total 0.024254] [joint 0.000871] [intensity 0.006812] [sobel 0.014862] ETA: 0:27:41.216271
+[Epoch 35/60] [batch 250/321] [lr 5e-05] [total 0.070101] [joint 0.002170] [intensity 0.025955] [sobel 0.045810] ETA: 0:26:38.473448
+[Epoch 35/60] [batch 300/321] [lr 5e-05] [total 0.018860] [joint 0.000728] [intensity 0.003617] [sobel 0.011217] ETA: 0:27:42.073338
+[Epoch 36/60] [batch 0/321] [lr 5e-05] [total 0.038228] [joint 0.000942] [intensity 0.025030] [sobel 0.026308] ETA: 0:21:17.221069
+[Epoch 36/60] [batch 50/321] [lr 5e-05] [total 0.034455] [joint 0.000930] [intensity 0.013696] [sobel 0.023782] ETA: 0:26:12.073129
+[Epoch 36/60] [batch 100/321] [lr 5e-05] [total 0.033911] [joint 0.001333] [intensity 0.004556] [sobel 0.020121] ETA: 0:27:25.443261
+[Epoch 36/60] [batch 150/321] [lr 5e-05] [total 0.045262] [joint 0.001270] [intensity 0.017462] [sobel 0.030816] ETA: 0:25:45.070054
+[Epoch 36/60] [batch 200/321] [lr 5e-05] [total 0.031362] [joint 0.001023] [intensity 0.007924] [sobel 0.020338] ETA: 0:27:11.026649
+[Epoch 36/60] [batch 250/321] [lr 5e-05] [total 0.025641] [joint 0.000880] [intensity 0.008911] [sobel 0.015954] ETA: 0:26:53.128442
+[Epoch 36/60] [batch 300/321] [lr 5e-05] [total 0.021929] [joint 0.000844] [intensity 0.008318] [sobel 0.012654] ETA: 0:26:49.331820
+[Epoch 37/60] [batch 0/321] [lr 5e-05] [total 0.036465] [joint 0.001142] [intensity 0.008061] [sobel 0.024238] ETA: 0:22:04.758152
+[Epoch 37/60] [batch 50/321] [lr 5e-05] [total 0.018044] [joint 0.000689] [intensity 0.006616] [sobel 0.010490] ETA: 0:26:24.780021
+[Epoch 37/60] [batch 100/321] [lr 5e-05] [total 0.032022] [joint 0.000884] [intensity 0.028398] [sobel 0.020341] ETA: 0:24:38.456446
+[Epoch 37/60] [batch 150/321] [lr 5e-05] [total 0.030264] [joint 0.000940] [intensity 0.010773] [sobel 0.019782] ETA: 0:25:30.763669
+[Epoch 37/60] [batch 200/321] [lr 5e-05] [total 0.068668] [joint 0.001730] [intensity 0.030132] [sobel 0.048353] ETA: 0:22:50.284856
+[Epoch 37/60] [batch 250/321] [lr 5e-05] [total 0.025752] [joint 0.000954] [intensity 0.009008] [sobel 0.015306] ETA: 0:25:39.291531
+[Epoch 37/60] [batch 300/321] [lr 5e-05] [total 0.041459] [joint 0.001233] [intensity 0.024795] [sobel 0.026651] ETA: 0:23:56.214807
+[Epoch 38/60] [batch 0/321] [lr 5e-05] [total 0.044779] [joint 0.001354] [intensity 0.029632] [sobel 0.028276] ETA: 0:19:43.740460
+[Epoch 38/60] [batch 50/321] [lr 5e-05] [total 0.021007] [joint 0.000733] [intensity 0.027740] [sobel 0.010900] ETA: 0:23:55.789346
+[Epoch 38/60] [batch 100/321] [lr 5e-05] [total 0.024442] [joint 0.000805] [intensity 0.009042] [sobel 0.015491] ETA: 0:25:11.925921
+[Epoch 38/60] [batch 150/321] [lr 5e-05] [total 0.077633] [joint 0.002214] [intensity 0.032314] [sobel 0.052262] ETA: 0:23:15.743774
+[Epoch 38/60] [batch 200/321] [lr 5e-05] [total 0.033063] [joint 0.000917] [intensity 0.012718] [sobel 0.022620] ETA: 0:24:32.121160
+[Epoch 38/60] [batch 250/321] [lr 5e-05] [total 0.040332] [joint 0.001119] [intensity 0.012889] [sobel 0.027858] ETA: 0:23:07.468422
+[Epoch 38/60] [batch 300/321] [lr 5e-05] [total 0.059271] [joint 0.001640] [intensity 0.026665] [sobel 0.040201] ETA: 0:21:41.680937
+[Epoch 39/60] [batch 0/321] [lr 5e-05] [total 0.059534] [joint 0.001715] [intensity 0.018334] [sobel 0.040551] ETA: 0:17:27.521118
+[Epoch 39/60] [batch 50/321] [lr 5e-05] [total 0.028645] [joint 0.000898] [intensity 0.005892] [sobel 0.019074] ETA: 0:23:41.385085
+[Epoch 39/60] [batch 100/321] [lr 5e-05] [total 0.048879] [joint 0.001395] [intensity 0.013288] [sobel 0.033597] ETA: 0:22:35.742477
+[Epoch 39/60] [batch 150/321] [lr 5e-05] [total 0.015032] [joint 0.000670] [intensity 0.001686] [sobel 0.008165] ETA: 0:23:51.763468
+[Epoch 39/60] [batch 200/321] [lr 5e-05] [total 0.029065] [joint 0.000992] [intensity 0.006429] [sobel 0.018504] ETA: 0:23:31.830376
+[Epoch 39/60] [batch 250/321] [lr 5e-05] [total 0.045208] [joint 0.001357] [intensity 0.011218] [sobel 0.030512] ETA: 0:23:46.235832
+[Epoch 39/60] [batch 300/321] [lr 5e-05] [total 0.025248] [joint 0.000919] [intensity 0.005037] [sobel 0.015556] ETA: 0:23:14.510567
+[Epoch 40/60] [batch 0/321] [lr 5e-05] [total 0.024140] [joint 0.000739] [intensity 0.012998] [sobel 0.015454] ETA: 0:18:51.762128
+[Epoch 40/60] [batch 50/321] [lr 5e-05] [total 0.058603] [joint 0.001535] [intensity 0.011707] [sobel 0.042084] ETA: 0:22:47.199984
+[Epoch 40/60] [batch 100/321] [lr 5e-05] [total 0.018979] [joint 0.000822] [intensity 0.004123] [sobel 0.010351] ETA: 0:23:13.022022
+[Epoch 40/60] [batch 150/321] [lr 5e-05] [total 0.028021] [joint 0.000886] [intensity 0.008893] [sobel 0.018273] ETA: 0:22:31.519089
+[Epoch 40/60] [batch 200/321] [lr 5e-05] [total 0.019529] [joint 0.000680] [intensity 0.004591] [sobel 0.012268] ETA: 0:22:01.502938
+[Epoch 40/60] [batch 250/321] [lr 5e-05] [total 0.046347] [joint 0.001246] [intensity 0.023796] [sobel 0.031502] ETA: 0:18:39.329579
+[Epoch 40/60] [batch 300/321] [lr 5e-05] [total 0.046062] [joint 0.001226] [intensity 0.015142] [sobel 0.032284] ETA: 0:21:49.766006
+[Epoch 41/60] [batch 0/321] [lr 5e-05] [total 0.048297] [joint 0.001371] [intensity 0.011118] [sobel 0.033478] ETA: 0:17:53.892946
+[Epoch 41/60] [batch 50/321] [lr 5e-05] [total 0.066001] [joint 0.001850] [intensity 0.028029] [sobel 0.044702] ETA: 0:19:24.322143
+[Epoch 41/60] [batch 100/321] [lr 5e-05] [total 0.039268] [joint 0.001112] [intensity 0.020478] [sobel 0.026100] ETA: 0:20:01.482287
+[Epoch 41/60] [batch 150/321] [lr 5e-05] [total 0.068337] [joint 0.001705] [intensity 0.041864] [sobel 0.047100] ETA: 0:17:53.642918
+[Epoch 41/60] [batch 200/321] [lr 5e-05] [total 0.038695] [joint 0.001363] [intensity 0.007158] [sobel 0.024345] ETA: 0:21:19.711747
+[Epoch 41/60] [batch 250/321] [lr 5e-05] [total 0.044431] [joint 0.001272] [intensity 0.018035] [sobel 0.029902] ETA: 0:19:56.821704
+[Epoch 41/60] [batch 300/321] [lr 5e-05] [total 0.027201] [joint 0.001082] [intensity 0.006393] [sobel 0.015743] ETA: 0:20:57.922642
+[Epoch 42/60] [batch 0/321] [lr 5e-05] [total 0.084611] [joint 0.002337] [intensity 0.027979] [sobel 0.058444] ETA: 0:15:11.163405
+[Epoch 42/60] [batch 50/321] [lr 5e-05] [total 0.038759] [joint 0.001180] [intensity 0.017254] [sobel 0.025233] ETA: 0:20:51.048470
+[Epoch 42/60] [batch 100/321] [lr 5e-05] [total 0.031235] [joint 0.001050] [intensity 0.007139] [sobel 0.020025] ETA: 0:20:26.387537
+[Epoch 42/60] [batch 150/321] [lr 5e-05] [total 0.027920] [joint 0.000917] [intensity 0.009540] [sobel 0.017798] ETA: 0:19:20.934408
+[Epoch 42/60] [batch 200/321] [lr 5e-05] [total 0.071031] [joint 0.001958] [intensity 0.037394] [sobel 0.047715] ETA: 0:17:57.795232
+[Epoch 42/60] [batch 250/321] [lr 5e-05] [total 0.019087] [joint 0.000779] [intensity 0.004179] [sobel 0.010879] ETA: 0:19:39.783968
+[Epoch 42/60] [batch 300/321] [lr 5e-05] [total 0.024352] [joint 0.000824] [intensity 0.005913] [sobel 0.015516] ETA: 0:19:34.538345
+[Epoch 43/60] [batch 0/321] [lr 5e-05] [total 0.063618] [joint 0.001941] [intensity 0.025651] [sobel 0.041639] ETA: 0:15:11.792884
+[Epoch 43/60] [batch 50/321] [lr 5e-05] [total 0.013503] [joint 0.000469] [intensity 0.007866] [sobel 0.008022] ETA: 0:19:09.020244
+[Epoch 43/60] [batch 100/321] [lr 5e-05] [total 0.034529] [joint 0.000915] [intensity 0.016209] [sobel 0.023756] ETA: 0:17:55.921573
+[Epoch 43/60] [batch 150/321] [lr 5e-05] [total 0.025964] [joint 0.001102] [intensity 0.004506] [sobel 0.014492] ETA: 0:19:05.035750
+[Epoch 43/60] [batch 200/321] [lr 5e-05] [total 0.053940] [joint 0.001436] [intensity 0.030667] [sobel 0.036509] ETA: 0:17:59.390431
+[Epoch 43/60] [batch 250/321] [lr 5e-05] [total 0.034095] [joint 0.001095] [intensity 0.007544] [sobel 0.022387] ETA: 0:18:41.343134
+[Epoch 43/60] [batch 300/321] [lr 5e-05] [total 0.026371] [joint 0.000906] [intensity 0.005009] [sobel 0.016812] ETA: 0:18:26.124604
+[Epoch 44/60] [batch 0/321] [lr 5e-05] [total 0.072882] [joint 0.002120] [intensity 0.029901] [sobel 0.048689] ETA: 0:14:23.429558
+[Epoch 44/60] [batch 50/321] [lr 5e-05] [total 0.023033] [joint 0.000927] [intensity 0.008277] [sobel 0.012934] ETA: 0:18:38.158635
+[Epoch 44/60] [batch 100/321] [lr 5e-05] [total 0.041445] [joint 0.001105] [intensity 0.024915] [sobel 0.027906] ETA: 0:16:23.920334
+[Epoch 44/60] [batch 150/321] [lr 5e-05] [total 0.052002] [joint 0.001519] [intensity 0.017017] [sobel 0.035111] ETA: 0:17:05.522326
+[Epoch 44/60] [batch 200/321] [lr 5e-05] [total 0.055708] [joint 0.001464] [intensity 0.016536] [sobel 0.039412] ETA: 0:17:59.100388
+[Epoch 44/60] [batch 250/321] [lr 5e-05] [total 0.045595] [joint 0.001310] [intensity 0.010540] [sobel 0.031443] ETA: 0:16:34.131081
+[Epoch 44/60] [batch 300/321] [lr 5e-05] [total 0.049866] [joint 0.001354] [intensity 0.018942] [sobel 0.034436] ETA: 0:16:29.902648
+[Epoch 45/60] [batch 0/321] [lr 5e-05] [total 0.033192] [joint 0.000995] [intensity 0.021672] [sobel 0.021076] ETA: 0:13:31.957487
+[Epoch 45/60] [batch 50/321] [lr 5e-05] [total 0.029087] [joint 0.000905] [intensity 0.008750] [sobel 0.019157] ETA: 0:16:20.429369
+[Epoch 45/60] [batch 100/321] [lr 5e-05] [total 0.042933] [joint 0.001291] [intensity 0.011637] [sobel 0.028856] ETA: 0:17:03.216864
+[Epoch 45/60] [batch 150/321] [lr 5e-05] [total 0.036897] [joint 0.001002] [intensity 0.012731] [sobel 0.025605] ETA: 0:16:44.737473
+[Epoch 45/60] [batch 200/321] [lr 5e-05] [total 0.083166] [joint 0.002226] [intensity 0.041241] [sobel 0.056781] ETA: 0:14:51.563499
+[Epoch 45/60] [batch 250/321] [lr 5e-05] [total 0.020362] [joint 0.000710] [intensity 0.005375] [sobel 0.012726] ETA: 0:16:23.946321
+[Epoch 45/60] [batch 300/321] [lr 5e-05] [total 0.037824] [joint 0.001070] [intensity 0.008742] [sobel 0.026251] ETA: 0:16:20.637732
+[Epoch 46/60] [batch 0/321] [lr 5e-05] [total 0.040923] [joint 0.001200] [intensity 0.009502] [sobel 0.027973] ETA: 0:12:36.839108
+[Epoch 46/60] [batch 50/321] [lr 5e-05] [total 0.043931] [joint 0.001278] [intensity 0.009910] [sobel 0.030160] ETA: 0:16:03.977198
+[Epoch 46/60] [batch 100/321] [lr 5e-05] [total 0.037057] [joint 0.001148] [intensity 0.015625] [sobel 0.024015] ETA: 0:15:46.941035
+[Epoch 46/60] [batch 150/321] [lr 5e-05] [total 0.051358] [joint 0.001440] [intensity 0.018236] [sobel 0.035132] ETA: 0:14:43.479046
+[Epoch 46/60] [batch 200/321] [lr 5e-05] [total 0.032897] [joint 0.001079] [intensity 0.011087] [sobel 0.020994] ETA: 0:15:34.278626
+[Epoch 46/60] [batch 250/321] [lr 5e-05] [total 0.051715] [joint 0.001544] [intensity 0.026744] [sobel 0.033598] ETA: 0:14:27.718733
+[Epoch 46/60] [batch 300/321] [lr 5e-05] [total 0.058928] [joint 0.001266] [intensity 0.053037] [sobel 0.040960] ETA: 0:13:23.441763
+[Epoch 47/60] [batch 0/321] [lr 5e-05] [total 0.025683] [joint 0.000927] [intensity 0.008827] [sobel 0.015535] ETA: 0:12:25.015547
+[Epoch 47/60] [batch 50/321] [lr 5e-05] [total 0.063887] [joint 0.001828] [intensity 0.028278] [sobel 0.042779] ETA: 0:13:18.582158
+[Epoch 47/60] [batch 100/321] [lr 5e-05] [total 0.033071] [joint 0.000933] [intensity 0.011650] [sobel 0.022575] ETA: 0:14:41.245337
+[Epoch 47/60] [batch 150/321] [lr 5e-05] [total 0.065604] [joint 0.001805] [intensity 0.028942] [sobel 0.044655] ETA: 0:13:49.957450
+[Epoch 47/60] [batch 200/321] [lr 5e-05] [total 0.050063] [joint 0.001556] [intensity 0.014244] [sobel 0.033075] ETA: 0:14:21.208949
+[Epoch 47/60] [batch 250/321] [lr 5e-05] [total 0.025923] [joint 0.000747] [intensity 0.013206] [sobel 0.017135] ETA: 0:14:09.143544
+[Epoch 47/60] [batch 300/321] [lr 5e-05] [total 0.027060] [joint 0.001042] [intensity 0.004783] [sobel 0.016162] ETA: 0:13:49.412921
+[Epoch 48/60] [batch 0/321] [lr 5e-05] [total 0.042524] [joint 0.001503] [intensity 0.007775] [sobel 0.026719] ETA: 0:11:36.087871
+[Epoch 48/60] [batch 50/321] [lr 5e-05] [total 0.047871] [joint 0.001257] [intensity 0.021328] [sobel 0.033171] ETA: 0:12:17.017854
+[Epoch 48/60] [batch 100/321] [lr 5e-05] [total 0.032274] [joint 0.001019] [intensity 0.013809] [sobel 0.020708] ETA: 0:12:41.609741
+[Epoch 48/60] [batch 150/321] [lr 5e-05] [total 0.023496] [joint 0.000804] [intensity 0.004823] [sobel 0.014969] ETA: 0:13:19.533442
+[Epoch 48/60] [batch 200/321] [lr 5e-05] [total 0.049623] [joint 0.001454] [intensity 0.020040] [sobel 0.033075] ETA: 0:11:01.852209
+[Epoch 48/60] [batch 250/321] [lr 5e-05] [total 0.044841] [joint 0.001142] [intensity 0.011052] [sobel 0.032317] ETA: 0:12:25.733433
+[Epoch 48/60] [batch 300/321] [lr 5e-05] [total 0.027253] [joint 0.000979] [intensity 0.006909] [sobel 0.016774] ETA: 0:12:46.020424
+[Epoch 49/60] [batch 0/321] [lr 5e-05] [total 0.071212] [joint 0.001951] [intensity 0.037661] [sobel 0.047938] ETA: 0:09:04.852572
+[Epoch 49/60] [batch 50/321] [lr 5e-05] [total 0.030008] [joint 0.001147] [intensity 0.005965] [sobel 0.017942] ETA: 0:12:32.701316
+[Epoch 49/60] [batch 100/321] [lr 5e-05] [total 0.060399] [joint 0.001496] [intensity 0.033219] [sobel 0.042113] ETA: 0:10:57.260459
+[Epoch 49/60] [batch 150/321] [lr 5e-05] [total 0.033807] [joint 0.001282] [intensity 0.010201] [sobel 0.019967] ETA: 0:11:28.801010
+[Epoch 49/60] [batch 200/321] [lr 5e-05] [total 0.100632] [joint 0.002256] [intensity 0.059241] [sobel 0.072145] ETA: 0:10:08.540074
+[Epoch 49/60] [batch 250/321] [lr 5e-05] [total 0.054439] [joint 0.001420] [intensity 0.034977] [sobel 0.036740] ETA: 0:10:40.753821
+[Epoch 49/60] [batch 300/321] [lr 5e-05] [total 0.029927] [joint 0.000837] [intensity 0.012326] [sobel 0.020329] ETA: 0:11:44.360872
+[Epoch 50/60] [batch 0/321] [lr 2.5e-05] [total 0.050616] [joint 0.001318] [intensity 0.024341] [sobel 0.035006] ETA: 0:09:04.813235
+[Epoch 50/60] [batch 50/321] [lr 2.5e-05] [total 0.033208] [joint 0.001196] [intensity 0.005387] [sobel 0.020709] ETA: 0:11:20.040121
+[Epoch 50/60] [batch 100/321] [lr 2.5e-05] [total 0.025769] [joint 0.000985] [intensity 0.003682] [sobel 0.015547] ETA: 0:11:11.844778
+[Epoch 50/60] [batch 150/321] [lr 2.5e-05] [total 0.034154] [joint 0.001194] [intensity 0.008086] [sobel 0.021410] ETA: 0:10:55.256538
+[Epoch 50/60] [batch 200/321] [lr 2.5e-05] [total 0.028665] [joint 0.000879] [intensity 0.005623] [sobel 0.019315] ETA: 0:10:43.887351
+[Epoch 50/60] [batch 250/321] [lr 2.5e-05] [total 0.046173] [joint 0.001345] [intensity 0.024081] [sobel 0.030317] ETA: 0:10:00.024872
+[Epoch 50/60] [batch 300/321] [lr 2.5e-05] [total 0.023119] [joint 0.000861] [intensity 0.005826] [sobel 0.013924] ETA: 0:10:29.362957
+[Epoch 51/60] [batch 0/321] [lr 2.5e-05] [total 0.058158] [joint 0.001674] [intensity 0.016344] [sobel 0.039788] ETA: 0:08:02.866791
+[Epoch 51/60] [batch 50/321] [lr 2.5e-05] [total 0.042383] [joint 0.001200] [intensity 0.017840] [sobel 0.028594] ETA: 0:09:39.068673
+[Epoch 51/60] [batch 100/321] [lr 2.5e-05] [total 0.032638] [joint 0.000997] [intensity 0.005984] [sobel 0.022068] ETA: 0:10:03.460880
+[Epoch 51/60] [batch 150/321] [lr 2.5e-05] [total 0.019218] [joint 0.000660] [intensity 0.004859] [sobel 0.012127] ETA: 0:09:42.035802
+[Epoch 51/60] [batch 200/321] [lr 2.5e-05] [total 0.026339] [joint 0.000815] [intensity 0.007203] [sobel 0.017473] ETA: 0:09:42.360309
+[Epoch 51/60] [batch 250/321] [lr 2.5e-05] [total 0.037843] [joint 0.001097] [intensity 0.024488] [sobel 0.024420] ETA: 0:08:49.630430
+[Epoch 51/60] [batch 300/321] [lr 2.5e-05] [total 0.030101] [joint 0.000890] [intensity 0.006518] [sobel 0.020550] ETA: 0:09:19.556296
+[Epoch 52/60] [batch 0/321] [lr 2.5e-05] [total 0.048346] [joint 0.001559] [intensity 0.004917] [sobel 0.032264] ETA: 0:07:39.316635
+[Epoch 52/60] [batch 50/321] [lr 2.5e-05] [total 0.057471] [joint 0.001647] [intensity 0.024152] [sobel 0.038581] ETA: 0:08:36.075744
+[Epoch 52/60] [batch 100/321] [lr 2.5e-05] [total 0.046902] [joint 0.001505] [intensity 0.008590] [sobel 0.030994] ETA: 0:08:54.984077
+[Epoch 52/60] [batch 150/321] [lr 2.5e-05] [total 0.019317] [joint 0.000697] [intensity 0.005561] [sobel 0.011794] ETA: 0:08:39.194715
+[Epoch 52/60] [batch 200/321] [lr 2.5e-05] [total 0.029383] [joint 0.000993] [intensity 0.005416] [sobel 0.018910] ETA: 0:08:36.079315
+[Epoch 52/60] [batch 250/321] [lr 2.5e-05] [total 0.041290] [joint 0.001229] [intensity 0.008883] [sobel 0.028110] ETA: 0:08:26.935390
+[Epoch 52/60] [batch 300/321] [lr 2.5e-05] [total 0.031279] [joint 0.001191] [intensity 0.006023] [sobel 0.018771] ETA: 0:08:07.818254
+[Epoch 53/60] [batch 0/321] [lr 2.5e-05] [total 0.026965] [joint 0.000847] [intensity 0.021868] [sobel 0.016310] ETA: 0:06:15.569489
+[Epoch 53/60] [batch 50/321] [lr 2.5e-05] [total 0.029470] [joint 0.000760] [intensity 0.035347] [sobel 0.018336] ETA: 0:07:09.800319
+[Epoch 53/60] [batch 100/321] [lr 2.5e-05] [total 0.026019] [joint 0.000980] [intensity 0.007707] [sobel 0.015447] ETA: 0:07:52.575016
+[Epoch 53/60] [batch 150/321] [lr 2.5e-05] [total 0.023837] [joint 0.000869] [intensity 0.004726] [sobel 0.014676] ETA: 0:07:36.257428
+[Epoch 53/60] [batch 200/321] [lr 2.5e-05] [total 0.066206] [joint 0.001982] [intensity 0.035388] [sobel 0.042843] ETA: 0:07:02.627034
+[Epoch 53/60] [batch 250/321] [lr 2.5e-05] [total 0.037917] [joint 0.000750] [intensity 0.037075] [sobel 0.026706] ETA: 0:06:50.977952
+[Epoch 53/60] [batch 300/321] [lr 2.5e-05] [total 0.033650] [joint 0.001115] [intensity 0.016292] [sobel 0.020873] ETA: 0:06:40.516314
+[Epoch 54/60] [batch 0/321] [lr 2.5e-05] [total 0.081847] [joint 0.002430] [intensity 0.033476] [sobel 0.054196] ETA: 0:05:18.512239
+[Epoch 54/60] [batch 50/321] [lr 2.5e-05] [total 0.031563] [joint 0.000961] [intensity 0.006524] [sobel 0.021299] ETA: 0:06:44.933026
+[Epoch 54/60] [batch 100/321] [lr 2.5e-05] [total 0.058650] [joint 0.001665] [intensity 0.024037] [sobel 0.039600] ETA: 0:06:15.411276
+[Epoch 54/60] [batch 150/321] [lr 2.5e-05] [total 0.029843] [joint 0.000974] [intensity 0.007534] [sobel 0.019345] ETA: 0:05:58.238628
+[Epoch 54/60] [batch 200/321] [lr 2.5e-05] [total 0.018709] [joint 0.000698] [intensity 0.006071] [sobel 0.011127] ETA: 0:06:12.786510
+[Epoch 54/60] [batch 250/321] [lr 2.5e-05] [total 0.048230] [joint 0.001527] [intensity 0.020732] [sobel 0.030890] ETA: 0:05:20.287798
+[Epoch 54/60] [batch 300/321] [lr 2.5e-05] [total 0.023768] [joint 0.000850] [intensity 0.004127] [sobel 0.014853] ETA: 0:05:52.677253
+[Epoch 55/60] [batch 0/321] [lr 2.5e-05] [total 0.072190] [joint 0.002171] [intensity 0.027811] [sobel 0.047696] ETA: 0:04:28.067615
+[Epoch 55/60] [batch 50/321] [lr 2.5e-05] [total 0.044475] [joint 0.001112] [intensity 0.023866] [sobel 0.030969] ETA: 0:05:35.233552
+[Epoch 55/60] [batch 100/321] [lr 2.5e-05] [total 0.024614] [joint 0.000831] [intensity 0.007128] [sobel 0.015592] ETA: 0:05:26.631299
+[Epoch 55/60] [batch 150/321] [lr 2.5e-05] [total 0.022719] [joint 0.000825] [intensity 0.005802] [sobel 0.013884] ETA: 0:05:10.392072
+[Epoch 55/60] [batch 200/321] [lr 2.5e-05] [total 0.026116] [joint 0.000889] [intensity 0.004221] [sobel 0.016803] ETA: 0:05:04.407667
+[Epoch 55/60] [batch 250/321] [lr 2.5e-05] [total 0.036267] [joint 0.001119] [intensity 0.008562] [sobel 0.024218] ETA: 0:04:34.449346
+[Epoch 55/60] [batch 300/321] [lr 2.5e-05] [total 0.052283] [joint 0.001480] [intensity 0.016736] [sobel 0.035806] ETA: 0:04:45.017291
+[Epoch 56/60] [batch 0/321] [lr 2.5e-05] [total 0.030744] [joint 0.000919] [intensity 0.023212] [sobel 0.019235] ETA: 0:03:32.172815
+[Epoch 56/60] [batch 50/321] [lr 2.5e-05] [total 0.025474] [joint 0.000862] [intensity 0.006341] [sobel 0.016220] ETA: 0:04:26.536744
+[Epoch 56/60] [batch 100/321] [lr 2.5e-05] [total 0.029257] [joint 0.000938] [intensity 0.005939] [sobel 0.019283] ETA: 0:04:14.503159
+[Epoch 56/60] [batch 150/321] [lr 2.5e-05] [total 0.054419] [joint 0.001723] [intensity 0.021939] [sobel 0.034992] ETA: 0:03:52.113841
+[Epoch 56/60] [batch 200/321] [lr 2.5e-05] [total 0.056593] [joint 0.001758] [intensity 0.028657] [sobel 0.036149] ETA: 0:03:44.781890
+[Epoch 56/60] [batch 250/321] [lr 2.5e-05] [total 0.045906] [joint 0.001363] [intensity 0.025350] [sobel 0.029737] ETA: 0:03:29.246068
+[Epoch 56/60] [batch 300/321] [lr 2.5e-05] [total 0.030663] [joint 0.000974] [intensity 0.006194] [sobel 0.020299] ETA: 0:03:33.421263
+[Epoch 57/60] [batch 0/321] [lr 2.5e-05] [total 0.040838] [joint 0.001396] [intensity 0.009233] [sobel 0.025957] ETA: 0:02:53.196796
+[Epoch 57/60] [batch 50/321] [lr 2.5e-05] [total 0.027112] [joint 0.000978] [intensity 0.006056] [sobel 0.016722] ETA: 0:03:18.154529
+[Epoch 57/60] [batch 100/321] [lr 2.5e-05] [total 0.037184] [joint 0.001222] [intensity 0.014915] [sobel 0.023472] ETA: 0:02:56.354045
+[Epoch 57/60] [batch 150/321] [lr 2.5e-05] [total 0.038657] [joint 0.001044] [intensity 0.024448] [sobel 0.025776] ETA: 0:02:45.363534
+[Epoch 57/60] [batch 200/321] [lr 2.5e-05] [total 0.022237] [joint 0.000827] [intensity 0.003930] [sobel 0.013579] ETA: 0:02:47.235149
+[Epoch 57/60] [batch 250/321] [lr 2.5e-05] [total 0.051750] [joint 0.001273] [intensity 0.033775] [sobel 0.035646] ETA: 0:02:17.519810
+[Epoch 57/60] [batch 300/321] [lr 2.5e-05] [total 0.028777] [joint 0.000961] [intensity 0.009296] [sobel 0.018241] ETA: 0:02:24.185725
+[Epoch 58/60] [batch 0/321] [lr 2.5e-05] [total 0.027327] [joint 0.000958] [intensity 0.005315] [sobel 0.017215] ETA: 0:01:54.818903
+[Epoch 58/60] [batch 50/321] [lr 2.5e-05] [total 0.023821] [joint 0.000935] [intensity 0.003706] [sobel 0.014104] ETA: 0:02:07.902393
+[Epoch 58/60] [batch 100/321] [lr 2.5e-05] [total 0.024352] [joint 0.000795] [intensity 0.008947] [sobel 0.015504] ETA: 0:01:58.501507
+[Epoch 58/60] [batch 150/321] [lr 2.5e-05] [total 0.052745] [joint 0.001551] [intensity 0.020348] [sobel 0.035200] ETA: 0:01:41.354390
+[Epoch 58/60] [batch 200/321] [lr 2.5e-05] [total 0.038397] [joint 0.000830] [intensity 0.032151] [sobel 0.026884] ETA: 0:01:29.780934
+[Epoch 58/60] [batch 250/321] [lr 2.5e-05] [total 0.045558] [joint 0.001261] [intensity 0.014031] [sobel 0.031542] ETA: 0:01:20.361279
+[Epoch 58/60] [batch 300/321] [lr 2.5e-05] [total 0.040836] [joint 0.001247] [intensity 0.023491] [sobel 0.026016] ETA: 0:01:10.276395
+[Epoch 59/60] [batch 0/321] [lr 2.5e-05] [total 0.054795] [joint 0.001435] [intensity 0.018521] [sobel 0.038592] ETA: 0:00:53.586890
+[Epoch 59/60] [batch 50/321] [lr 2.5e-05] [total 0.032023] [joint 0.000954] [intensity 0.018890] [sobel 0.020592] ETA: 0:00:55.166212
+[Epoch 59/60] [batch 100/321] [lr 2.5e-05] [total 0.028154] [joint 0.001006] [intensity 0.005720] [sobel 0.017525] ETA: 0:00:47.866269
+[Epoch 59/60] [batch 150/321] [lr 2.5e-05] [total 0.021473] [joint 0.000658] [intensity 0.005947] [sobel 0.014298] ETA: 0:00:36.669544
+[Epoch 59/60] [batch 200/321] [lr 2.5e-05] [total 0.038233] [joint 0.001246] [intensity 0.006959] [sobel 0.025077] ETA: 0:00:26.289369
+[Epoch 59/60] [batch 250/321] [lr 2.5e-05] [total 0.062975] [joint 0.001820] [intensity 0.023481] [sobel 0.042428] ETA: 0:00:14.493327
+[Epoch 59/60] [batch 300/321] [lr 2.5e-05] [total 0.042208] [joint 0.001283] [intensity 0.020743] [sobel 0.027307] ETA: 0:00:04.297744
+done
+{
+  "passed": true,
+  "shared_initial_state_sha256": "f58dcdaf3e64504646723d79a25a79bbb341f66e6e48239969bdf818cf6919be",
+  "initialization_archive_sha256": "870e1e10c7a1927d23dc77a8e36ea1974f2ef66325e87342267e30e1f3533983",
+  "schedule_sha256": "41a68929ee9759eaee89eae8f36c8231693d55da7f677f52650b0d8a99ae02fa",
+  "epochs": 60,
+  "batch_size": 4,
+  "patch_size": 128,
+  "training_pairs": 1283,
+  "frameworks": [
+    "PyTorch",
+    "Jittor"
+  ]
+}
+{
+  "framework": "pytorch",
+  "framework_version": "1.10.0+cu111",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/pytorch/SIBA_epoch60.pth",
+  "checkpoint_sha256": "83a74b175f4286e8f5fefc1b554b82e188692023cbf9e29ba5ac12883c26d366",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/MSRS",
+  "image_count": 361,
+  "parameter_count": 565941,
+  "total_model_seconds": 30.058791895397007,
+  "mean_model_seconds": 0.08326535151079503,
+  "model_fps": 12.009797374966391,
+  "synchronized_fps": 12.009797374966391
+}
+[38;5;2m[i 0801 18:05:12.564891 56 compiler.py:955] Jittor(1.3.11.0) src: /root/miniconda3/envs/JittorDome/lib/python3.8/site-packages/jittor[m
+[38;5;2m[i 0801 18:05:12.568090 56 compiler.py:956] g++ at /usr/bin/g++(9.3.0)[m
+[38;5;2m[i 0801 18:05:12.568143 56 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor_gpu/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/82d5/default[m
+[38;5;2m[i 0801 18:05:12.572288 56 __init__.py:412] Found /usr/local/cuda/bin/nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.[m
+[38;5;2m[i 0801 18:05:12.577264 56 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.[m
+[38;5;2m[i 0801 18:05:12.761164 56 compiler.py:1012] cuda key:cu11.3.109_sm_86[m
+[38;5;2m[i 0801 18:05:13.145242 56 __init__.py:227] Total mem: 755.27GB, using 16 procs for compiling.[m
+[38;5;2m[i 0801 18:05:13.236181 56 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0801 18:05:13.429453 56 init.cc:63] Found cuda archs: [86,][m
+[38;5;2m[i 0801 18:05:15.137218 56 cuda_flags.cc:55] CUDA enabled.[m
+
+Compiling Operators(29/29) used: 3.31s eta:    0s
+
+
+Compiling Operators(1/1) used: 2.04s eta:    0s
+
+{
+  "framework": "jittor",
+  "framework_version": "1.3.11.0",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/jittor/shared_seed2025/SIBA_epoch60.pkl",
+  "checkpoint_sha256": "8d4e84b46e3f6ac5e1c93466828ddb608391a1bf8d62607e7eba495fd1e45cbd",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/MSRS",
+  "image_count": 361,
+  "parameter_count": 565941,
+  "total_model_seconds": 39.54372989665717,
+  "mean_model_seconds": 0.10953941799628025,
+  "model_fps": 9.12913377021921,
+  "synchronized_fps": 9.12913377021921
+}
+{
+  "reference": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/pytorch/MSRS",
+  "candidate": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/jittor/MSRS",
+  "reference_images": 361,
+  "candidate_images": 361,
+  "compared_images": 361,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 65,
+  "global_mean_abs_uint8": 0.9846533248210988,
+  "different_value_fraction": 0.7053729663213681,
+  "all_filenames_and_shapes_match": true
+}
+{
+  "framework": "pytorch",
+  "framework_version": "1.10.0+cu111",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/pytorch/SIBA_epoch60.pth",
+  "checkpoint_sha256": "83a74b175f4286e8f5fefc1b554b82e188692023cbf9e29ba5ac12883c26d366",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/M3FD_2x",
+  "image_count": 300,
+  "parameter_count": 565941,
+  "total_model_seconds": 15.113519420847297,
+  "mean_model_seconds": 0.05037839806949099,
+  "model_fps": 19.84977764915469,
+  "synchronized_fps": 19.84977764915469
+}
+[38;5;2m[i 0801 18:07:55.082879 16 compiler.py:955] Jittor(1.3.11.0) src: /root/miniconda3/envs/JittorDome/lib/python3.8/site-packages/jittor[m
+[38;5;2m[i 0801 18:07:55.088584 16 compiler.py:956] g++ at /usr/bin/g++(9.3.0)[m
+[38;5;2m[i 0801 18:07:55.088650 16 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor_gpu/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/82d5/default[m
+[38;5;2m[i 0801 18:07:55.095083 16 __init__.py:412] Found /usr/local/cuda/bin/nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.[m
+[38;5;2m[i 0801 18:07:55.099883 16 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.[m
+[38;5;2m[i 0801 18:07:55.286338 16 compiler.py:1012] cuda key:cu11.3.109_sm_86[m
+[38;5;2m[i 0801 18:07:55.680368 16 __init__.py:227] Total mem: 755.27GB, using 16 procs for compiling.[m
+[38;5;2m[i 0801 18:07:55.773761 16 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0801 18:07:55.962406 16 init.cc:63] Found cuda archs: [86,][m
+[38;5;2m[i 0801 18:07:57.590386 16 cuda_flags.cc:55] CUDA enabled.[m
+[38;5;3m[w 0801 18:08:42.412882 16 cudnn_conv__Tx_float32__Ty_float32__Tw_float32__XFORMAT_abcd__WFORMAT_oihw__YFORMAT_abcd_____hash_4d5b3e2d24c769d3_op.cc:214] forward_ algorithm cache is full[m
+{
+  "framework": "jittor",
+  "framework_version": "1.3.11.0",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/jittor/shared_seed2025/SIBA_epoch60.pkl",
+  "checkpoint_sha256": "8d4e84b46e3f6ac5e1c93466828ddb608391a1bf8d62607e7eba495fd1e45cbd",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/M3FD_2x",
+  "image_count": 300,
+  "parameter_count": 565941,
+  "total_model_seconds": 23.610918222926557,
+  "mean_model_seconds": 0.07870306074308853,
+  "model_fps": 12.705986152994909,
+  "synchronized_fps": 12.705986152994909
+}
+{
+  "reference": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/pytorch/M3FD_2x",
+  "candidate": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/jittor/M3FD_2x",
+  "reference_images": 300,
+  "candidate_images": 300,
+  "compared_images": 300,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 108,
+  "global_mean_abs_uint8": 3.086499829712122,
+  "different_value_fraction": 0.9065499419152766,
+  "all_filenames_and_shapes_match": true
+}
+{
+  "framework": "pytorch",
+  "framework_version": "1.10.0+cu111",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/pytorch/SIBA_epoch60.pth",
+  "checkpoint_sha256": "83a74b175f4286e8f5fefc1b554b82e188692023cbf9e29ba5ac12883c26d366",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/TNO",
+  "image_count": 45,
+  "parameter_count": 565941,
+  "total_model_seconds": 3.6640338506549597,
+  "mean_model_seconds": 0.0814229744589991,
+  "model_fps": 12.281545922933022,
+  "synchronized_fps": 12.281545922933022
+}
+[38;5;2m[i 0801 18:09:09.054784 76 compiler.py:955] Jittor(1.3.11.0) src: /root/miniconda3/envs/JittorDome/lib/python3.8/site-packages/jittor[m
+[38;5;2m[i 0801 18:09:09.058518 76 compiler.py:956] g++ at /usr/bin/g++(9.3.0)[m
+[38;5;2m[i 0801 18:09:09.058571 76 compiler.py:957] cache_path: /root/autodl-tmp/.cache/jittor_gpu/.cache/jittor/jt1.3.11/g++9.3.0/py3.8.18/Linux-5.15.0-9xc8/IntelRXeonRPlaxf4/82d5/default[m
+[38;5;2m[i 0801 18:09:09.063038 76 __init__.py:412] Found /usr/local/cuda/bin/nvcc(11.3.109) at /usr/local/cuda/bin/nvcc.[m
+[38;5;2m[i 0801 18:09:09.065647 76 __init__.py:412] Found addr2line(2.34) at /usr/bin/addr2line.[m
+[38;5;2m[i 0801 18:09:09.235561 76 compiler.py:1012] cuda key:cu11.3.109_sm_86[m
+[38;5;2m[i 0801 18:09:09.613272 76 __init__.py:227] Total mem: 755.27GB, using 16 procs for compiling.[m
+[38;5;2m[i 0801 18:09:09.704540 76 jit_compiler.cc:28] Load cc_path: /usr/bin/g++[m
+[38;5;2m[i 0801 18:09:09.887139 76 init.cc:63] Found cuda archs: [86,][m
+[38;5;2m[i 0801 18:09:11.487896 76 cuda_flags.cc:55] CUDA enabled.[m
+[38;5;3m[w 0801 18:09:18.764208 76 cudnn_conv__Tx_float32__Ty_float32__Tw_float32__XFORMAT_abcd__WFORMAT_oihw__YFORMAT_abcd_____hash_4d5b3e2d24c769d3_op.cc:214] forward_ algorithm cache is full[m
+{
+  "framework": "jittor",
+  "framework_version": "1.3.11.0",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/jittor/shared_seed2025/SIBA_epoch60.pkl",
+  "checkpoint_sha256": "8d4e84b46e3f6ac5e1c93466828ddb608391a1bf8d62607e7eba495fd1e45cbd",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/TNO",
+  "image_count": 45,
+  "parameter_count": 565941,
+  "total_model_seconds": 6.480518503114581,
+  "mean_model_seconds": 0.14401152229143513,
+  "model_fps": 6.9438888228422915,
+  "synchronized_fps": 6.9438888228422915
+}
+{
+  "reference": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/pytorch/TNO",
+  "candidate": "/root/autodl-tmp/SIBA-Jittor/results/shared_seed2025/jittor/TNO",
+  "reference_images": 45,
+  "candidate_images": 45,
+  "compared_images": 45,
+  "reference_only": [],
+  "candidate_only": [],
+  "shape_mismatches": [],
+  "global_max_abs_uint8": 46,
+  "global_mean_abs_uint8": 3.064897121781003,
+  "different_value_fraction": 0.8773009385345281,
+  "all_filenames_and_shapes_match": true
+}
+{
+  "samples": 6310,
+  "first_timestamp": "2026/08/01 16:17:53.020",
+  "last_timestamp": "2026/08/01 18:09:26.716",
+  "gpu_name": "NVIDIA GeForce RTX 3090",
+  "memory_total_mib": 24576.0,
+  "peak_memory_used_mib": 15053.0,
+  "peak_gpu_utilization_percent": 100.0,
+  "peak_power_draw_w": 309.07
+}
+2026-08-01T18:09:27+08:00
+2026-08-01T18:09:27+08:00
+Sat Aug  1 18:09:27 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        On  |   00000000:53:00.0 Off |                  N/A |
+| 55%   56C    P0            146W /  350W |       0MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+

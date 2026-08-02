@@ -5,7 +5,7 @@ experiment:
   seed: 2025
 
 paths:
-  data_root: /root/autodl-tmp/datasets/SIBA
+  data_root: datasets/SIBA
   pytorch_root: official_pytorch
   jittor_python: /root/miniconda3/envs/JittorDome/bin/python
   pytorch_python: /root/miniconda3/envs/PytorchDome/bin/python
@@ -21,7 +21,7 @@ runtime:
   gpu_monitor_interval: 1
 
 output:
-  logs: logs
-  checkpoints: checkpoints
-  results: results
-  shared: shared
+  logs: logs/comparisons
+  checkpoints: checkpoint/comparisons
+  results: results/comparisons
+  shared: shared/comparisons

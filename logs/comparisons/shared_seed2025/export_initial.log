@@ -1,0 +1,13 @@
+{
+  "purpose": "Shared initialization for complete PyTorch/Jittor training comparison",
+  "official_pytorch_root": "/root/autodl-tmp/delete/SIBA-Jittor_legacy_20260801_024314/official_pytorch",
+  "seed": 2025,
+  "torch_version": "1.10.0+cu111",
+  "state_tensors": 137,
+  "trainable_parameters": 565941,
+  "state_sha256": "f58dcdaf3e64504646723d79a25a79bbb341f66e6e48239969bdf818cf6919be",
+  "pytorch_checkpoint": "/root/autodl-tmp/SIBA-Jittor/shared/initial.pth",
+  "pytorch_checkpoint_sha256": "d1a88192b4b18c058bf09071e94fa3f4c6a54ea73e0cc8cb5fa7ab7e60c1795f",
+  "framework_neutral_archive": "/root/autodl-tmp/SIBA-Jittor/shared/initial.npz",
+  "framework_neutral_archive_sha256": "870e1e10c7a1927d23dc77a8e36ea1974f2ef66325e87342267e30e1f3533983"
+}

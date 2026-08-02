@@ -1,7 +1,7 @@
 class args:
     # trainset path
-    ir_path = "/root/autodl-tmp/datasets/SIBA/train/ir"
-    vi_path = "/root/autodl-tmp/datasets/SIBA/train/vi"
+    ir_path = "./datasets/SIBA/train/ir"
+    vi_path = "./datasets/SIBA/train/vi"
     patch_size = 128
 
     model_save_path = "./checkpoint/runs"

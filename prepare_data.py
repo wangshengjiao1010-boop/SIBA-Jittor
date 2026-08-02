@@ -7,7 +7,9 @@ from pathlib import Path
 from PIL import Image
 
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff"}
-DEFAULT_DATA_ROOT = Path("/root/autodl-tmp/datasets/SIBA")
+PROJECT_ROOT = Path(__file__).resolve().parent
+DEFAULT_SOURCE_ROOT = PROJECT_ROOT / "datasets" / "source"
+DEFAULT_DATA_ROOT = PROJECT_ROOT / "datasets" / "SIBA"
 
 
 def image_files(directory):
@@ -133,19 +135,33 @@ def prepare_m3fd(args):
             size = (infrared.size[0] // 2, infrared.size[1] // 2)
             infrared.resize(size, resample=resampling).save(infrared_output / name)
             visible.resize(size, resample=resampling).save(visible_output / name)
+    expected = {name for name, _, _ in pairs}
+    if (
+        set(image_files(infrared_output)) != expected
+        or set(image_files(visible_output)) != expected
+    ):
+        raise RuntimeError(f"Unexpected files under {output}")
     return len(pairs)
 
 
 def main():
     parser = argparse.ArgumentParser(description="Prepare the complete SIBA datasets")
-    parser.add_argument("--msrs-root", type=Path, required=True)
-    parser.add_argument("--roadscene-root", type=Path, required=True)
-    parser.add_argument("--m3fd-root", type=Path, required=True)
-    parser.add_argument("--tno-root", type=Path, required=True)
+    parser.add_argument(
+        "--msrs-root", type=Path, default=DEFAULT_SOURCE_ROOT / "MSRS"
+    )
+    parser.add_argument(
+        "--roadscene-root", type=Path, default=DEFAULT_SOURCE_ROOT / "RoadScene"
+    )
+    parser.add_argument(
+        "--m3fd-root", type=Path, default=DEFAULT_SOURCE_ROOT / "M3FD_Fusion"
+    )
+    parser.add_argument(
+        "--tno-root", type=Path, default=DEFAULT_SOURCE_ROOT / "TNO"
+    )
     parser.add_argument(
         "--roadscene-manifest",
         type=Path,
-        default=Path("data/manifests/roadscene_200_seed2025.json"),
+        default=PROJECT_ROOT / "data/manifests/roadscene_200_seed2025.json",
     )
     parser.add_argument("--output", type=Path, default=DEFAULT_DATA_ROOT)
     args = parser.parse_args()

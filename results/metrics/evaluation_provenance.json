@@ -13,20 +13,25 @@
     "OfficialPyTorch": "author checkpoint evaluated with the official PyTorch implementation",
     "OfficialJittor": "the same author checkpoint converted and evaluated with Jittor",
     "PyTorchSelfTrained": "independent complete 60-epoch PyTorch training",
-    "JittorSelfTrained": "independent complete 60-epoch Jittor training"
+    "JittorSelfTrained": "independent complete 60-epoch Jittor training",
+    "ControlledPyTorch": "complete 60-epoch PyTorch training from the shared seed-2025 initialization and crop schedule",
+    "ControlledJittor": "complete 60-epoch Jittor training from the same initialization and crop schedule"
   },
   "artifacts": {
     "summary": "results/metrics/metrics_summary.csv",
     "per_image_root": "results/metrics",
     "official_checkpoint_alignment": "results/alignment/official_checkpoint",
+    "self_trained_output_difference": "results/alignment/self_trained",
     "qualitative_grids": "results/visual",
     "training_curve": "results/loss_curve.png",
+    "controlled_training_curve": "results/comparisons/shared_seed2025/loss_components.png",
+    "controlled_training_evidence": "results/comparisons/shared_seed2025",
     "performance": "results/inference_timing.csv",
     "historical_machine_manifest": "results/metrics/evaluation_manifest_historical.json"
   },
   "notes": [
     "MATLAB is used only for the metric definitions linked by the official SIBA repository.",
     "The historical manifest preserves the original absolute paths and commands for audit purposes.",
-    "Shared-initialization and shared-crop 60-epoch training is implemented but not reported as completed."
+    "The shared-initialization and shared-crop run completed on 2026-08-01; its completion marker, batch logs, checkpoints, loss components and all 706 output comparisons are retained."
   ]
 }

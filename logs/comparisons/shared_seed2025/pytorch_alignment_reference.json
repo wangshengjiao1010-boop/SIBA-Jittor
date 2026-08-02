@@ -1,0 +1,14 @@
+{
+  "framework": "PyTorch",
+  "torch_version": "1.10.0+cu111",
+  "device": "cuda",
+  "checkpoint": "/root/autodl-tmp/delete/SIBA-Jittor_legacy_20260801_024314/official_pytorch/checkpoint/SIBA_epoch60.pth",
+  "seed": 2025,
+  "shape": [
+    1,
+    1,
+    32,
+    32
+  ],
+  "arrays": 707
+}

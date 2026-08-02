@@ -74,7 +74,13 @@ def main():
             if skipped:
                 returncode = 0
             else:
-                completed = subprocess.run(command, capture_output=True, text=True)
+                completed = subprocess.run(
+                    command,
+                    capture_output=True,
+                    text=True,
+                    encoding="utf-8",
+                    errors="replace",
+                )
                 returncode = completed.returncode
                 log.write_text(
                     completed.stdout + completed.stderr,

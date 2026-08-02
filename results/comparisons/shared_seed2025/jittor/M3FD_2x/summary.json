@@ -1,0 +1,17 @@
+{
+  "framework": "jittor",
+  "framework_version": "1.3.11.0",
+  "use_cuda": true,
+  "warmup_runs": 10,
+  "timing_mode": "synchronized",
+  "skip_save": false,
+  "checkpoint": "/root/autodl-tmp/SIBA-Jittor/checkpoints/shared_seed2025/jittor/shared_seed2025/SIBA_epoch60.pkl",
+  "checkpoint_sha256": "8d4e84b46e3f6ac5e1c93466828ddb608391a1bf8d62607e7eba495fd1e45cbd",
+  "data_dir": "/root/autodl-tmp/datasets/SIBA/test/M3FD_2x",
+  "image_count": 300,
+  "parameter_count": 565941,
+  "total_model_seconds": 23.610918222926557,
+  "mean_model_seconds": 0.07870306074308853,
+  "model_fps": 12.705986152994909,
+  "synchronized_fps": 12.705986152994909
+}
