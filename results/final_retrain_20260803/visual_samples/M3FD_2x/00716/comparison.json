@@ -1,0 +1,17 @@
+{
+  "inputs": {
+    "Infrared": "results\\final_retrain_20260803\\visual_samples\\M3FD_2x\\00716\\infrared.png",
+    "Visible": "results\\final_retrain_20260803\\visual_samples\\M3FD_2x\\00716\\visible.png",
+    "PyTorch": "results\\final_retrain_20260803\\visual_samples\\M3FD_2x\\00716\\pytorch.png",
+    "Jittor": "results\\final_retrain_20260803\\visual_samples\\M3FD_2x\\00716\\jittor.png"
+  },
+  "crop_xywh": [
+    384,
+    256,
+    128,
+    128
+  ],
+  "local_mean_abs_uint8": 6.7282304763793945,
+  "full_mean_abs_uint8": 3.05203914642334,
+  "output": "results\\final_retrain_20260803\\visual_samples\\M3FD_2x\\00716\\comparison.png"
+}

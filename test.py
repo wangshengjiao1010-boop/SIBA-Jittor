@@ -9,7 +9,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent
 
 # Use the newest completed local training run when present. On a fresh clone,
-# fall back to the published Jittor checkpoint included in this repository.
+# fall back to the final verified Jittor checkpoint included in this repository.
 model_path = "latest"
 testdata_paths = {
     "MSRS": "./datasets/SIBA/test/MSRS",
@@ -47,7 +47,12 @@ def resolve_checkpoint(path):
     ) + list(checkpoint_root.glob("[0-9]*-*/SIBA_epoch60.pkl"))
     if completed_runs:
         return max(completed_runs, key=lambda candidate: candidate.stat().st_mtime)
-    return PROJECT_ROOT / "checkpoint" / "SIBA_jittor_self_trained_epoch60.pkl"
+    return (
+        PROJECT_ROOT
+        / "checkpoint"
+        / "final_retrain_20260803"
+        / "SIBA_epoch60.pkl"
+    )
 
 parser = argparse.ArgumentParser(
     description="Test SIBA with Jittor; paths are configured near the top of test.py"

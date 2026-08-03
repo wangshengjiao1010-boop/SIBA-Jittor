@@ -1,0 +1,124 @@
+{
+  "mode": "chunked MATLAB; validated CSV accepted even if MATLAB crashes on exit",
+  "chunk_size": 40,
+  "datasets": [
+    {
+      "dataset": "MSRS",
+      "images": 361,
+      "chunks": [
+        {
+          "index": 1,
+          "images": 40,
+          "mode": "existing"
+        },
+        {
+          "index": 2,
+          "images": 40,
+          "mode": "existing"
+        },
+        {
+          "index": 3,
+          "images": 40,
+          "mode": "existing"
+        },
+        {
+          "index": 4,
+          "images": 40,
+          "mode": "existing"
+        },
+        {
+          "index": 5,
+          "images": 40,
+          "mode": "existing"
+        },
+        {
+          "index": 6,
+          "images": 40,
+          "mode": "existing"
+        },
+        {
+          "index": 7,
+          "images": 40,
+          "mode": "existing"
+        },
+        {
+          "index": 8,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 9,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 10,
+          "images": 1,
+          "mode": "default"
+        }
+      ]
+    },
+    {
+      "dataset": "M3FD_2x",
+      "images": 300,
+      "chunks": [
+        {
+          "index": 1,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 2,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 3,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 4,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 5,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 6,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 7,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 8,
+          "images": 20,
+          "mode": "default"
+        }
+      ]
+    },
+    {
+      "dataset": "TNO",
+      "images": 45,
+      "chunks": [
+        {
+          "index": 1,
+          "images": 40,
+          "mode": "default"
+        },
+        {
+          "index": 2,
+          "images": 5,
+          "mode": "default"
+        }
+      ]
+    }
+  ]
+}

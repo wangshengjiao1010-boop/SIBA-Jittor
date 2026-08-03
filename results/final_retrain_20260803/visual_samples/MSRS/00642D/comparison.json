@@ -1,0 +1,17 @@
+{
+  "inputs": {
+    "Infrared": "results\\final_retrain_20260803\\visual_samples\\MSRS\\00642D\\infrared.png",
+    "Visible": "results\\final_retrain_20260803\\visual_samples\\MSRS\\00642D\\visible.png",
+    "PyTorch": "results\\final_retrain_20260803\\visual_samples\\MSRS\\00642D\\pytorch.png",
+    "Jittor": "results\\final_retrain_20260803\\visual_samples\\MSRS\\00642D\\jittor.png"
+  },
+  "crop_xywh": [
+    56,
+    320,
+    128,
+    128
+  ],
+  "local_mean_abs_uint8": 7.90093994140625,
+  "full_mean_abs_uint8": 4.344475746154785,
+  "output": "results\\final_retrain_20260803\\visual_samples\\MSRS\\00642D\\comparison.png"
+}

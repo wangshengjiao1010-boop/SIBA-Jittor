@@ -82,6 +82,10 @@ results/*
 !results/metrics/**
 !results/comparisons/
 !results/comparisons/**
+!results/final_retrain_20260803/
+!results/final_retrain_20260803/**
+results/final_retrain_20260803/visual_samples/M3FD_2x/02405/
+results/final_retrain_20260803/visual_samples/TNO/31/
 
 # Full fused-image batches remain in the local experiment archive (0.862 GiB).
 # Their complete filenames, timing, metrics, and alignment records are tracked.
@@ -95,6 +99,11 @@ checkpoint/*
 !checkpoint/SIBA_pytorch_self_trained_epoch60.pth
 !checkpoint/comparisons/
 !checkpoint/comparisons/**
+!checkpoint/final_retrain_20260803/
+!checkpoint/final_retrain_20260803/**
+
+# Redundant launcher output; train.log and test_console.log are retained.
+logs/final/retrain_20260803/console.log
 results/fused/
 results/generated/
 results/*_reproduced/

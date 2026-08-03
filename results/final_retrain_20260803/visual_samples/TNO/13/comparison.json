@@ -1,0 +1,17 @@
+{
+  "inputs": {
+    "Infrared": "results\\final_retrain_20260803\\visual_samples\\TNO\\13\\infrared.png",
+    "Visible": "results\\final_retrain_20260803\\visual_samples\\TNO\\13\\visible.png",
+    "PyTorch": "results\\final_retrain_20260803\\visual_samples\\TNO\\13\\pytorch.png",
+    "Jittor": "results\\final_retrain_20260803\\visual_samples\\TNO\\13\\jittor.png"
+  },
+  "crop_xywh": [
+    360,
+    288,
+    128,
+    128
+  ],
+  "local_mean_abs_uint8": 14.53338623046875,
+  "full_mean_abs_uint8": 8.416007041931152,
+  "output": "results\\final_retrain_20260803\\visual_samples\\TNO\\13\\comparison.png"
+}

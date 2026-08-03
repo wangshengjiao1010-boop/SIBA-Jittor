@@ -1,0 +1,33 @@
+{
+  "experiment": "final_retrain_20260803",
+  "code_revision": "126400f",
+  "framework": "Jittor 1.3.11.0",
+  "gpu": "NVIDIA GeForce RTX 3090 24 GB",
+  "training_pairs": 1283,
+  "epochs": 60,
+  "batch_size": 4,
+  "patch_size": 128,
+  "logged_batches": 19260,
+  "duration_seconds": 4096.387711824849,
+  "checkpoint_sha256": "9926f7c5943385e5fc57a90bd6eb2bb3b8a33b6f20de5ee6803ce41a391119d3",
+  "test_pairs": {
+    "MSRS": 361,
+    "M3FD_2x": 300,
+    "TNO": 45
+  },
+  "model_fps": {
+    "MSRS": 8.866656457404462,
+    "M3FD_2x": 12.706854624768322,
+    "TNO": 9.13324269615884
+  },
+  "validation": {
+    "python_files_parsed": 41,
+    "module_tests_passed": true,
+    "checkpoint_reloaded_in_new_process": true,
+    "cuda_forward_passed": true,
+    "filenames_and_dimensions_validated": true,
+    "blank_outputs": 0,
+    "outputs_equal_to_infrared": 0,
+    "outputs_equal_to_visible": 0
+  }
+}

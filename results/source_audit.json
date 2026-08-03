@@ -334,9 +334,9 @@
       ]
     },
     "test.py": {
-      "bytes": 6611,
-      "lines": 191,
-      "sha256": "ad9c8f6c5d59f281ddbbaceb3691241bee0f91d354030e35a4ce9bc2866830d3",
+      "bytes": 6663,
+      "lines": 196,
+      "sha256": "3d6eb6f73f6bc9b5105240764ff4b748c3a517e72fe533e5fbcb9d6a5de446a1",
       "classes": [],
       "functions": [
         "file_sha256",

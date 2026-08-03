@@ -34,6 +34,13 @@ pip install -r requirements.txt
 
 Exact package records are retained in [logs/environment](logs/environment) and [logs/final/environment.txt](logs/final/environment.txt).
 
+If Jittor import fails with `Flags has no attribute cuda_archs`, the compiled cache is stale for the installed Jittor version. Move the cache aside and let Jittor rebuild it:
+
+```bash
+mv ~/.cache/jittor ~/.cache/jittor.stale
+python -c "import jittor as jt; print(jt.__version__)"
+```
+
 ## Data
 
 Datasets are not redistributed. Download them from their official sources:
@@ -96,7 +103,7 @@ checkpoint/runs/<YYYYMMDD_HHMMSS>/
 `-- train_metadata.json
 ```
 
-The published self-trained checkpoint is [checkpoint/SIBA_jittor_self_trained_epoch60.pkl](checkpoint/SIBA_jittor_self_trained_epoch60.pkl). Its provenance and SHA256 are in [checkpoint/README.md](checkpoint/README.md). A new run writes a timestamped directory and does not overwrite this published artifact.
+The final verified checkpoint is [checkpoint/final_retrain_20260803/SIBA_epoch60.pkl](checkpoint/final_retrain_20260803/SIBA_epoch60.pkl). Its provenance and SHA256 are in [checkpoint/README.md](checkpoint/README.md). A new run writes a timestamped directory and does not overwrite this published artifact.
 
 ## Testing
 
@@ -140,6 +147,18 @@ The optional [configs/comparison.yaml](configs/comparison.yaml) and [scripts/run
 ![Independent 60-epoch total loss](results/loss_curve.png)
 
 The retained independent-run logs contain total loss only. The completed controlled run records total, Laplacian, intensity and Sobel losses for every batch and publishes the four curves in [results/comparisons/shared_seed2025](results/comparisons/shared_seed2025).
+
+### Final verified Jittor rerun
+
+After the final runtime-path cleanup, revision `126400f` was trained again for all 60 epochs and tested on all 706 pairs. The run produced 19,260 batch records, four loss-component curves, per-image metrics and synchronized timing. The checkpoint was reloaded in a new CUDA process, and no output was blank or identical to either source image.
+
+| Dataset | Pairs | FPS | VIF | SCD | MI | Qabf | SSIM | MS-SSIM | FMI |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| MSRS | 361 | 8.867 | 1.043209 | 1.717021 | 4.600446 | 0.701985 | 0.980110 | 0.972747 | 0.932252 |
+| M3FD_2x | 300 | 12.707 | 0.742944 | 1.722990 | 3.656116 | 0.642761 | 0.965119 | 0.929791 | 0.880667 |
+| TNO | 45 | 9.133 | 0.817349 | 1.734976 | 3.362529 | 0.569876 | 0.933072 | 0.906155 | 0.911969 |
+
+Complete evidence and red-box qualitative comparisons are indexed in [results/final_retrain_20260803](results/final_retrain_20260803). The final checkpoint SHA256 is `9926f7c5943385e5fc57a90bd6eb2bb3b8a33b6f20de5ee6803ce41a391119d3`.
 
 ### Controlled shared-initialization training
 
