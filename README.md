@@ -34,12 +34,7 @@ pip install -r requirements.txt
 
 Exact package records are retained in [logs/environment](logs/environment) and [logs/final/environment.txt](logs/final/environment.txt).
 
-If Jittor import fails with `Flags has no attribute cuda_archs`, the compiled cache is stale for the installed Jittor version. Move the cache aside and let Jittor rebuild it:
 
-```bash
-mv ~/.cache/jittor ~/.cache/jittor.stale
-python -c "import jittor as jt; print(jt.__version__)"
-```
 
 ## Data
 
