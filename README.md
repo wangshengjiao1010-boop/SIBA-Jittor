@@ -94,7 +94,7 @@ The training directory intentionally combines MSRS and RoadScene because the off
 Run the complete Jittor training protocol:
 
 ```bash
-conda activate JittorDome
+
 python train.py
 ```
 
