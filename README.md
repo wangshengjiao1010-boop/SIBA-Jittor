@@ -120,7 +120,6 @@ The final verified 60-epoch rerun is indexed in [`results/final_retrain_20260803
 Test all three datasets:
 
 ```bash
-conda activate JittorDome
 python test.py
 ```
 
@@ -145,7 +144,7 @@ The optional module check is:
 python tests/test_jittor_modules.py
 ```
 
-It checks Res-SE, CBSM, self-attention, cross-attention, SIBA and the three losses for valid shapes and finite values. It does not train the model or generate fused images.
+It checks Res-SE, CBSM, self-attention, cross-attention, SIBA and the three losses for valid shapes and finite values. 
 
 ## PyTorch Alignment Logs
 
