@@ -76,8 +76,8 @@ The prepared training directory deliberately combines MSRS and RoadScene because
 Optional module smoke test (terminal checks only; no files are generated):
 
 ```bash
-conda activate JittorDome
-python tests/test_jittor_modules.py
+
+python tests.py
 ```
 
 Complete training:
